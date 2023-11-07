@@ -1,0 +1,26 @@
+
+<nav class="nav">
+    <div class="logo " [style]="logoUrl"></div>
+
+    <div class="nav-items" [style.display]="navItemsDisplay">
+        <div class="nav-item">Dashboard</div>
+       
+        <div class="nav-item">Analytics</div>
+      
+        <div class="nav-item">Services</div>
+        <div class="nav-item">Help</div>
+    </div>
+   
+    <div class="profile">
+        <i class="fa-solid fa-gear"></i>
+                    <i class="fa-solid fa-bell"></i>    
+           
+            <i class="fa-solid fa-user"></i>
+    </div>
+    <div class="menu" (click)="showNavItems()" >
+        <i class="fa-solid fa-bars" *ngIf="!isMenuOpen"></i>
+        <i class="fa-solid fa-xmark" *ngIf="isMenuOpen"></i>
+    </div>
+</nav>
+
+<!-- ['fas', 'coffee'] is an array that indicates the [prefix, iconName] -->
