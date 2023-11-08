@@ -5,16 +5,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginEntrepriseComponent } from './login-entreprise/login-entreprise.component';
+import { SignupEntrepriseComponent } from './signup-entreprise/signup-entreprise.component';
+import { ProfilEntrepriseComponent } from './profil-entreprise/profil-entreprise.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,  
+     LoginEntrepriseComponent,
+    SignupEntrepriseComponent,
+    ProfilEntrepriseComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
