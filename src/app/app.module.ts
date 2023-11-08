@@ -9,6 +9,7 @@ import { LoginEntrepriseComponent } from './login-entreprise/login-entreprise.co
 import { SignupEntrepriseComponent } from './signup-entreprise/signup-entreprise.component';
 import { ProfilEntrepriseComponent } from './profil-entreprise/profil-entreprise.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreationEntrepriseComponent } from './creation-entreprise/creation-entreprise.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,  
      LoginEntrepriseComponent,
     SignupEntrepriseComponent,
-    ProfilEntrepriseComponent
+    ProfilEntrepriseComponent,
+    CreationEntrepriseComponent
   ],
   imports: [
     BrowserModule,

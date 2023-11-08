@@ -1,0 +1,214 @@
+.container {
+    max-width: 26.4rem;
+    background: #F8F9FD;
+    background: white;
+    border-radius:4%;
+    padding: 2.5625rem 2.1875rem;
+    border: 0.3125rem solid rgb(255, 255, 255);
+    box-shadow: rgba(127, 183, 209, 0.878) -1rem 1.875rem 1.875rem -1.25rem;
+    margin: 10rem auto;
+    min-height: 25.2rem;
+  }
+  
+  .heading {
+    text-align: center;
+    font-weight: 900;
+    font-size: 1.875rem;
+    color: #007CF8;
+  }
+  
+  .form {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+gap: 1rem;
+  }
+  
+  .form .input {
+    width: 90%;
+    background: rgb(247, 246, 246);
+    border: none;
+    padding: 0.9375rem 1.25rem;
+    border-radius: 1.25rem;
+    
+    box-shadow: #cff0ff 0rem 0.625rem 0.625rem -0.3125rem;
+    border-inline: 0.125rem solid transparent;
+  }
+  .text-danger {
+    color:rgb(228, 26, 26);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+   
+  }
+@media screen and (min-width:500px) {
+    
+
+  .form .division {
+    
+    display: flex;
+    flex-wrap: nowrap;
+    width: 90%;
+    
+  } 
+
+}
+  .form .input::-moz-placeholder {
+    color: rgb(34, 32, 32);
+  }
+  
+  .form .input::placeholder {
+    color: rgb(75, 73, 73);
+  }
+  
+  .form .input:focus {
+    outline: none;
+    border-inline: 0.125rem solid #007CF8;
+  }
+  
+  .form .forgot-password {
+    display: block;
+    margin-top: 0.8rem;
+    margin-left: 0.8rem;
+  }
+  .other {
+    color: #007CF8;
+   
+    margin-top: 0.8rem;
+    margin-left: 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .form .forgot-password a {
+    font-size: 0.9rem;
+    color: #007CF8;
+    text-decoration: none;
+  }
+  
+  .form .login-button {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    background: linear-gradient(45deg, rgb(12, 105, 163) 0%, #007CF8 100%);
+    color: white;
+    padding-block: 0.9375rem;
+    margin: 1.25rem auto;
+    border-radius: 1.25rem;
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0rem 1.25rem 0.625rem -0.9375rem;
+    border: none;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .form .login-button:hover {
+    transform: scale(1.03);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0rem 1.4375rem 0.625rem -1.25rem;
+  }
+  
+  .form .login-button:active {
+    transform: scale(0.95);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0rem 0.9375rem 0.625rem -0.625rem;
+  }
+  
+  .social-account-container {
+    margin-top: 1.5625rem;
+  }
+  
+  .social-account-container .title {
+    display: block;
+    text-align: center;
+    font-size: 0.625rem;
+    color: rgb(170, 170, 170);
+  }
+  
+  .social-account-container .social-accounts {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 0.9375rem;
+    margin-top: 0.3125rem;
+  }
+  
+  .h3, h3 {
+    font-size: var(--font-size-h3);
+    letter-spacing: var(--letter-spacing-h3);
+    line-height: var(--line-height-h3);
+    
+  }
+  /* Style pour centrer le texte horizontalement */
+  .container {
+    text-align: center;
+  }
+  
+  /* Style optionnel pour le titre (h3) */
+  h3 {
+    font-size: 24px; /* Taille de la police */
+    color: #007CF8; /* Couleur du texte */
+  }
+  
+  .social-account-container .social-accounts .social-button {
+    background: linear-gradient(45deg, rgb(0, 0, 0) 0%, rgb(112, 112, 112) 100%);
+    border: 0.3125rem solid white;
+    padding: 0.3125rem;
+    border-radius: 1.25rem;
+    width: 2.5rem;
+    aspect-ratio: 1;
+    display: grid;
+    place-content: center;
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0rem 0.75rem 0.625rem -0.5rem;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .social-account-container .social-accounts .social-button .svg {
+    fill: white;
+    margin: auto;
+  }
+  
+  .social-account-container .social-accounts .social-button:hover {
+    transform: scale(1.2);
+  }
+  
+  .social-account-container .social-accounts .social-button:active {
+    transform: scale(0.9);
+  }
+  
+  .agreement {
+    display: block;
+    text-align: center;
+    margin-top: 0.9375rem;
+  }
+  
+  .agreement a {
+    text-decoration: none;
+    color: #007CF8;
+    font-size: 0.5625rem;
+  }
+  a:visited{
+    color:   grey;
+  }
+  
+  
+  
+  .form .signup-button {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    background: linear-gradient(45deg, rgb(12, 105, 163) 0%, #007CF8 100%);
+    color: white;
+    padding-block: 0.9375rem;
+    margin: 1.25rem auto;
+    border-radius: 1.25rem;
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0rem 1.25rem 0.625rem -0.9375rem;
+    border: none;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .form .signup-button:hover {
+    transform: scale(1.03);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0rem 1.4375rem 0.625rem -1.25rem;
+  }
+  
+  .form .signup-button:active {
+    transform: scale(0.95);
+    box-shadow: rgba(133, 189, 215, 0.8784313725) 0rem 0.9375rem 0.625rem -0.625rem;
+  }
