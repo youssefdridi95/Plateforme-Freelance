@@ -3,7 +3,7 @@
     <form [formGroup]="userForm"  (ngSubmit)="loginUser()" action="" class="form">
    
 
-      <input required="" class="input" type="email" formControlName="email" id="email" placeholder="E-mail"><br><br>
+      <input required="" class="input" type="email" formControlName="email" id="email" placeholder="E-mail"><br>
       <!-- <div  *ngIf="userForm.controls.email." > email is required.</div> -->
       <div class="validator" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched"> Email is required *</div>
 
