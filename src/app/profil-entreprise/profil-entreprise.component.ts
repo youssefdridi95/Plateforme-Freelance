@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./profil-entreprise.component.css']
 })
 export class ProfilEntrepriseComponent {
+  constructor() { }
 
+
+  ngOnInit (): void{}
 }
