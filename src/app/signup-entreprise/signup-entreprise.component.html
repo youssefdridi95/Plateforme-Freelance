@@ -1,0 +1,110 @@
+
+
+<div class="container">
+    <div class="heading">Profil Entreprise</div>
+      <form [formGroup]="signupForm" class="form">
+
+        
+      
+          <input type="text"  class="input" formControlName="nom" id="Nom_entreprise" placeholder="Nom entreprise*" />
+
+          <div
+            *ngIf=" signupForm.controls['nom'].invalid &&(signupForm.controls['nom'].dirty ||signupForm.controls['nom'].touched) "class="text-danger">
+            <div *ngIf="signupForm.controls['nom'].errors?.['minlength']">
+             Nom entreprise min len 3
+            </div>
+
+            <div *ngIf="signupForm.controls['nom'].errors?.['required']" >
+              Nom entreprise Req *
+            </div>
+          </div>
+        
+       
+          <input type="text" class="input"  formControlName="domaine" placeholder="Domaine*" />
+
+          <div
+            *ngIf=" signupForm.controls['domaine'].invalid &&(signupForm.controls['domaine'].dirty ||signupForm.controls['domaine'].touched) "class="text-danger">
+            <div *ngIf="signupForm.controls['domaine'].errors?.['minlength']">
+              Domaine min 2
+            </div>
+
+            <div *ngIf="signupForm.controls['domaine'].errors?.['required']" >
+              Domaine Req *
+            </div>
+          </div>
+
+     
+          <input type="text" class="input"  formControlName="numero_fiscale" placeholder="Numero fiscale *" />
+
+          <div
+            *ngIf=" signupForm.controls['numero_fiscale'].invalid && (signupForm.controls['numero_fiscale'].dirty ||signupForm.controls['numero_fiscale'].touched) "class="text-danger">
+            <div *ngIf="signupForm.controls['numero_fiscale'].errors?.['minlength']">
+              Numero fiscale min len 11
+            </div>
+
+            <div *ngIf="signupForm.controls['numero_fiscale'].errors?.['required']" >
+              Numero fiscale Req *
+            </div>
+          </div>
+          <input type="text" class="input"  formControlName="email_e" placeholder="E-mail professionnel*" />
+
+          <div
+            *ngIf=" signupForm.controls['email_e'].invalid &&(signupForm.controls['email_e'].dirty ||signupForm.controls['email_e'].touched) "class="text-danger">
+            <div *ngIf="signupForm.controls['email_e'].errors?.['minlength']">
+              E-mail professionnel min 3
+            </div>
+
+            <div *ngIf="signupForm.controls['email_e'].errors?.['required']" >
+              E-mail professionnel Req *
+            </div>
+          </div>
+<div class="division">
+          <input type="text" class="input"  formControlName="adresse"  placeholder="Adresse*" />
+
+          <div
+            *ngIf=" signupForm.controls['adresse'].invalid &&(signupForm.controls['adresse'].dirty ||signupForm.controls['adresse'].touched) "class="text-danger">
+            <div *ngIf="signupForm.controls['adresse'].errors?.['minlength']">
+              Adresse min 5
+            </div>
+
+            <div *ngIf="signupForm.controls['adresse'].errors?.['required']" >
+              Adresse Req *
+            </div>
+          </div>
+          <input type="text" class="input"  formControlName="code_postal"  placeholder="Code Postal*" />
+
+          <div
+            *ngIf=" signupForm.controls['code_postal'].invalid &&(signupForm.controls['code_postal'].dirty ||signupForm.controls['code_postal'].touched) "class="text-danger">
+            <div *ngIf="signupForm.controls['code_postal'].errors?.['minlength']">
+              Code postal min 4
+            </div>
+
+            <div *ngIf="signupForm.controls['code_postal'].errors?.['required']" >
+              Code postal Req *
+            </div>
+          </div>
+        </div>
+          <input type="text" class="input"  formControlName="num_tel"  id="num_tel" placeholder="Numero telephone*" />
+
+          <div
+            *ngIf=" signupForm.controls['num_tel'].invalid &&(signupForm.controls['num_tel'].dirty ||signupForm.controls['num_tel'].touched) "class="text-danger">
+            <div *ngIf="signupForm.controls['num_tel'].errors?.['minlength']">
+              Numero telephone min 6
+            </div>
+
+            <div *ngIf="signupForm.controls['num_tel'].errors?.['required']" >
+              Numero telephone Req *
+            </div>
+          </div>
+        
+        
+         
+        
+        
+        
+     
+        <input class="login-button" type="submit" value="S'inscrire" (click)="signup()">
+      </form>
+</div>
+
+      

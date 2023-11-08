@@ -5,18 +5,32 @@ import { AppComponent } from './app.component';
 import { UserSignComponent } from './user-sign/user-sign.component';
 import { UserInscritComponent } from './user-inscrit/user-inscrit.component';
 
-import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { LoginEntrepriseComponent } from './login-entreprise/login-entreprise.component';
+import { SignupEntrepriseComponent } from './signup-entreprise/signup-entreprise.component';
+import { ProfilEntrepriseComponent } from './profil-entreprise/profil-entreprise.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CvBuilderComponent } from './cv-builder/cv-builder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserSignComponent,
-    UserInscritComponent
+    UserInscritComponent,
+    NavbarComponent,
+    FooterComponent,  
+     LoginEntrepriseComponent,
+    SignupEntrepriseComponent,
+    ProfilEntrepriseComponent,
+    CvBuilderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule, // Add ReactiveFormsModule here
+    FormsModule,
+    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
