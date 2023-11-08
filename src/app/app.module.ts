@@ -12,6 +12,7 @@ import { SignupEntrepriseComponent } from './signup-entreprise/signup-entreprise
 import { ProfilEntrepriseComponent } from './profil-entreprise/profil-entreprise.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CvBuilderComponent } from './cv-builder/cv-builder.component';
+import { CreationEntrepriseComponent } from './creation-entreprise/creation-entreprise.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CvBuilderComponent } from './cv-builder/cv-builder.component';
      LoginEntrepriseComponent,
     SignupEntrepriseComponent,
     ProfilEntrepriseComponent,
-    CvBuilderComponent
+    CvBuilderComponent,
+    CreationEntrepriseComponent
   ],
   imports: [
     BrowserModule,

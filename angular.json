@@ -96,6 +96,10 @@
     }
   },
   "cli": {
+<<<<<<< HEAD
     "analytics": false
+=======
+    "analytics": "335fc053-b964-402f-a218-c2f814372137"
+>>>>>>> amal
   }
 }
