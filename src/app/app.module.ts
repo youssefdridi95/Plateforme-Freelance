@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import {HttpClientModule} from '@angular/common/http'
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
+
 import { AppComponent } from './app.component';
 import { UserSignComponent } from './user-sign/user-sign.component';
 import { UserInscritComponent } from './user-inscrit/user-inscrit.component';
@@ -32,7 +38,15 @@ import { CreationEntrepriseComponent } from './creation-entreprise/creation-entr
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule, 
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-top-center',
+      closeButton : true
+
+    }), // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]

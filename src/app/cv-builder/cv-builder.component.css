@@ -58,8 +58,11 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    border-bottom: 2px dashed #007bff;
-    border-top: 2px dashed #007bff;
+    border-bottom: 2px dashed #0056b3;
+    border-top: 2px dashed #0056b3;
+    border-left:2px dashed white ;
+    border-right:2px dashed white ;
+
     
 
  }
@@ -78,7 +81,8 @@
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    outline: 1px solid #ccc;
+    border: none;
     background-color: rgba(236, 235, 235, 0.062);
     border-radius: 5px;
   }
@@ -97,7 +101,6 @@
   }
   .input-field:hover ,.input-field:focus,  .textarea-field:hover ,.textarea-field:focus  {
     outline: 1px dashed #0056b3;
-    border: none;
   }
   
 
@@ -110,6 +113,7 @@
     gap: 1rem;
     flex-wrap: wrap;
     border-top: 1px solid rgba(128, 128, 128, 0.356);
+    margin-top: 1rem;
   }
   /* Apply styles to buttons (both add and remove buttons) */
 
@@ -118,7 +122,7 @@
     padding: 0.5rem 2rem;
     text-align: center;
     cursor: pointer;
-    border: none;
+    border: 1px solid transparent;
     border-radius: 0.5rem;
     color: rgb(116, 119, 119);
   }
@@ -156,9 +160,37 @@ background: none;
   .build-cv-button{
    align-self: end;
   }
+
+  .build-cv-button:enabled:hover{
+
+  color :white;
+  background: #007bff;
+}
+
+  .build-cv-button:disabled:hover{
+   
+    transition: all 0.5s;
+
+    cursor: no-drop;
+    color: gray;
+    border:1px solid gray ;
+   }
   .cv-form .error {
     width: 100% ;
-    padding: 0 4rem;
+    border: none;
     color :red ;
     font-size: .7rem;
+    margin: 0.5rem 0;
+    padding: 0 10px;
+    text-align: right;
+  }
+
+
+  .certifImage{
+    max-width: 98%;
+    margin: 0 auto;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    border: 1px solid #0056b3;
   }

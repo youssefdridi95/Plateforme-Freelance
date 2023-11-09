@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators,FormArray } from '@angular/forms';
-
+import {  Component } from '@angular/core';
+import { CvBuiderService } from '../cv-buider.service';
+import { CvBuilderApiCallsService } from '../cv-builder-api-calls.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-cv-builder',
   templateUrl: './cv-builder.component.html',
@@ -115,81 +116,28 @@ export class CvBuilderComponent {
     'Internet of Things (IoT)',
   ];
   
-  constructor(){
-    this.createCvForm()
-  }
-  cvForm :any 
-
-  createCvForm(){
-    this.cvForm=new FormGroup({
-      experience : new FormArray([
-        new FormGroup({
-          societe : new FormControl ("",[Validators.required]),
-          post : new FormControl ("",[Validators.required]),
-          localisation : new FormControl ("",[Validators.required]),
-          desc : new FormControl ("",[Validators.minLength(100),Validators.required]),
-          debut : new FormControl ("",[Validators.required]),
-          fin : new FormControl ("")
-        })
-      ]) ,
-      formation : new FormArray([
-       
-      ]),
-      certification : new FormArray([
-       
-      ]),
-      competence : new FormArray([])
-      
-    })
-    
-  }
-
-  experience = new FormGroup({
-    societe : new FormControl ("",[Validators.required]),
-    post : new FormControl ("",[Validators.required]),
-    localisation : new FormControl ("",[Validators.required]),
-    desc : new FormControl ("",[Validators.minLength(100),Validators.required]),
-    debut : new FormControl ("",[Validators.required]),
-    fin : new FormControl ("")
-  })
-
-  formation=  new FormGroup({
-    institut : new FormControl ("",[Validators.required]),
-    niveau : new FormControl ("",[Validators.required]),
-    specialite : new FormControl ("",[Validators.required]),
-    debut : new FormControl ("",[Validators.required]),
-    fin : new FormControl (""),
-  })
-
-  certification = 
-    new FormGroup({
-      organisation : new FormControl ("",[Validators.required]),
-      niveau : new FormControl ("",[Validators.required]),
-      titre : new FormControl ("",[Validators.required]),
-      dateObtentien : new FormControl ("",[Validators.required]),
-      desc : new FormControl ("",[Validators.required]),
-      
-    })
- 
-    competence = new FormGroup({
-        type : new FormControl ("",[Validators.required]),
-        nom : new FormControl ("",[Validators.required]),
-        niveau : new FormControl ("",[Validators.required]),
-      })
-
-  addField(field:any,obj:any){
-    const control = <FormArray> this.cvForm.controls[field] ;
-    control.push(obj);
-  }
-
-  removeField(field:any,index :any){
-    const control = <FormArray> this.cvForm.controls[field] ;
-    control.removeAt(index)
-  }
+ constructor(public cv:CvBuiderService ,private cvApi :CvBuilderApiCallsService ,private toastr: ToastrService){
+ }
+  
   buildCv(){
-    console.log(
-      this.cvForm
-    );
+    const experiences =this.cv.cvForm.get('experience')
+    const certifications =this.cv.cvForm.get('certification')
+    const formations =this.cv.cvForm.get('formation')
+    const competences =this.cv.cvForm.get('competence')
+   
+
+      try {
+        this.cvApi.addExperiences(experiences)
+        this.cvApi.addFormations(formations)
+        this.cvApi.addCertifications(certifications)
+        this.cvApi.addCompetences(competences)
+
+        this.toastr.success(' crée avec succés', 'CV');
+      } catch (error) {
+        this.toastr.error('erreur prodiute lors de la création', ' CV');
+      }
+     
+     
     
   }
 
