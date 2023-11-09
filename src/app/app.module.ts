@@ -42,7 +42,12 @@ import { MdpComponent } from './mdp/mdp.component';
     ReactiveFormsModule,
     HttpClientModule, 
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-top-center',
+      closeButton : true
+
+    }), // ToastrModule added
     
   ],
   providers: [],
