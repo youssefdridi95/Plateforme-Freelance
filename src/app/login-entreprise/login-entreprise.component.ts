@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MustMatch } from '../confirmPwd';
 
 @Component({
   selector: 'app-login-entreprise',
@@ -7,17 +8,27 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./login-entreprise.component.css']
 })
 export class LoginEntrepriseComponent {
+  display =true;
+  signupForm !:FormGroup
+  
+  constructor(private formBuilder:FormBuilder) { }
 
+ 
 
-  loginForm !:FormGroup
-  user:any={};
-  constructor() { }
+  ngOnInit (): void {
+  this.signupForm = this.formBuilder.group({
+    email:['',[Validators.minLength(3),Validators.required]],
+    password:['',Validators.minLength(2)],
+    confirmPwd:[''],
+   },
+{
+  Validators:MustMatch('password','confirmPwd')
+})
+} 
+  
 
-  ngOnInit (): void{
-
-  }
-
-  login(){
-  console.log('here into login', this.user)
+  signup(){
+  console.log('here into signupform', this.signupForm.value)
   }
 }
+
