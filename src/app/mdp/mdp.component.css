@@ -6,7 +6,8 @@
     padding: 2.5625rem 2.1875rem;
     border: 0.3125rem solid rgb(255, 255, 255);
     box-shadow: rgba(127, 183, 209, 0.878) -1rem 1.875rem 1.875rem -1.25rem;
-    min-height: 25.2rem;
+    margin: 10rem auto;
+    height: 26.2rem;;
   }
   
   .heading {
@@ -18,47 +19,25 @@
   
   .form {
     margin-top: 1.25rem;
-    display: flex;
-    flex-wrap: wrap;
-gap: 1rem;
   }
   
   .form .input {
-    width: 90%;
+    width: 100%;
     background: rgb(247, 246, 246);
     border: none;
     padding: 0.9375rem 1.25rem;
     border-radius: 1.25rem;
-    
+    margin-top: 0.9375rem;
     box-shadow: #cff0ff 0rem 0.625rem 0.625rem -0.3125rem;
     border-inline: 0.125rem solid transparent;
   }
-  .text-danger {
-    color:rgb(228, 26, 26);
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-align: center;
-    width: 100%;
-   
-  }
-@media screen and (min-width:500px) {
-    
-
-  .form .division {
-    
-    display: flex;
-    flex-wrap: nowrap;
-    width: 90%;
-    
-  } 
-
-}
+  
   .form .input::-moz-placeholder {
-    color: rgb(34, 32, 32);
+    color: rgb(170, 170, 170);
   }
   
   .form .input::placeholder {
-    color: rgb(75, 73, 73);
+    color: rgb(102, 100, 100);
   }
   
   .form .input:focus {
@@ -192,13 +171,13 @@ gap: 1rem;
     display: block;
     width: 100%;
     font-weight: bold;
-    background: linear-gradient(45deg, rgb(12, 105, 163) 0%, #007CF8 100%);
-    color: white;
+    border:0.8px solid  #3596f8;
+    color: #007CF8;
     padding-block: 0.9375rem;
     margin: 1.25rem auto;
     border-radius: 1.25rem;
     box-shadow: rgba(133, 189, 215, 0.8784313725) 0rem 1.25rem 0.625rem -0.9375rem;
-    border: none;
+    background-color: white;
     transition: all 0.2s ease-in-out;
   }
   

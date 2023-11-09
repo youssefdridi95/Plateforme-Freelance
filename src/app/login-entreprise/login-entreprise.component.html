@@ -1,21 +1,66 @@
 
 
-<div class="container">
-  <div class="heading">CONNEXION</div>
-    <form action="" class="form">
+<div class="container" *ngIf="display==true">
+  <div class="heading">Connexion</div>
+    <form class="form" >
       
       <input required="" class="input" type="email" name="email" id="email" placeholder="E-mail professionnel">
       <input required="" class="input" type="password" name="password" id="password" placeholder="Mot de passe">
-      <span class="forgot-password"><a href="#">Mot de passe oublié ?</a></span>
-      <input class="login-button" type="submit" value="Connexion">
- 
+      <span class="forgot-password"><a routerLink="/mdp" >Mot de passe oublié ?</a></span>
+      <input class="login-button" type="submit"  value="Connexion">
     
     <span class="other" >
 
       <p>Vous n'avez pas encore de compte ?
       </p>
   </span>
-  <input class="signup-button" type="submit" value="S'inscrire">
+  <input class="signup-button" type="submit" value="S'inscrire" (click)="display =!display" >
+    </form>
+
+</div>
+
+
+
+
+<div class="container" *ngIf="display==false">
+  <div class="heading">Inscription </div>
+  <form [formGroup]="signupForm" class="form">
+       <input type="text" class="input" formControlName="email"  placeholder="E-mail professionnel*"/>
+        <div *ngIf=" signupForm.controls['email'].invalid && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched) " class="text-danger" >
+          <label *ngIf="signupForm.controls['email'].errors?.['minlength']">
+            E-mail professionnel min len 3
+          </label>
+
+          <div *ngIf="signupForm.controls['email'].errors?.['required']">
+            E-mail professionnel Req *
+          </div>
+        </div>
+      
+      
+        <input type="text" class="input" formControlName="password" placeholder="Mot de passe"/>
+     
+
+
+  
+    <input type="text" class="input" formControlName="confirmPwd"placeholder="Confirm Mot de passe*" />
+    <div *ngIf=" signupForm.controls['confirmPwd'].invalid && (signupForm.controls['confirmPwd'].dirty ||  signupForm.controls['confirmPwd'].touched)" class="text-danger">
+      <div *ngIf="signupForm.controls['confirmPwd'].errors?.['mustMatch']">
+        confirmPwd *
+      </div>
+    </div>
+  
+  
+  
+    <input class="login-button" type="submit" value="S'inscrire" >
+
+
+    <span class="other" >
+
+      <p> Vous avez un Compte Entreprise ?
+      </p>
+  </span>
+  <input class="signup-button" type="submit" value="Connexion" (click)="display =!display" >
+  
     </form>
 
 </div>
