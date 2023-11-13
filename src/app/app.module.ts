@@ -14,7 +14,6 @@ import { UserInscritComponent } from './user-inscrit/user-inscrit.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginEntrepriseComponent } from './login-entreprise/login-entreprise.component';
-import { SignupEntrepriseComponent } from './signup-entreprise/signup-entreprise.component';
 import { ProfilEntrepriseComponent } from './profil-entreprise/profil-entreprise.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CvBuilderComponent } from './cv-builder/cv-builder.component';
@@ -22,6 +21,7 @@ import { CreationEntrepriseComponent } from './creation-entreprise/creation-entr
 import { CvPreviewComponent } from './cv-preview/cv-preview.component';
 import { CvUpdateComponent } from './cv-update/cv-update.component';
 
+import { MdpComponent } from './mdp/mdp.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,12 +30,12 @@ import { CvUpdateComponent } from './cv-update/cv-update.component';
     NavbarComponent,
     FooterComponent,  
      LoginEntrepriseComponent,
-    SignupEntrepriseComponent,
     ProfilEntrepriseComponent,
     CvBuilderComponent,
     CreationEntrepriseComponent,
     CvPreviewComponent,
-    CvUpdateComponent
+    CvUpdateComponent,
+    MdpComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +50,8 @@ import { CvUpdateComponent } from './cv-update/cv-update.component';
       positionClass: 'toast-top-center',
       closeButton : true
 
-    }),
-// ToastrModule added
+    }), // ToastrModule added
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

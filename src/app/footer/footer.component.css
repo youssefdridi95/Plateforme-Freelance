@@ -1,15 +1,18 @@
 
     .footer{
-        margin-top: 10rem;
-        background: linear-gradient(0deg, #031338 -40%, #007CF8 100%);    padding:30px 0px;
+       
+     background: linear-gradient(0deg, #031338 -40%, #0062be 100%); 
+     padding:30px 0px;
     font-family: 'Play', sans-serif;
     text-align:center;
   
     width: 100%;
  
-    box-shadow: 0px -9px 23px -6px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 0px -9px 23px -6px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px -9px 23px -6px rgba(0,0,0,0.75);
+    box-shadow: 0px -4px 2px -2px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px -4px 2px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px -4px 2px -2px rgba(0,0,0,0.75);
+    bottom: 0;
+  
     }
     
     .footer .row{
