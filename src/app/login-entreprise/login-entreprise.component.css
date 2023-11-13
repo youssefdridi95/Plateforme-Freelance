@@ -191,3 +191,11 @@ a:visited{
   box-shadow: rgba(133, 189, 215, 0.8784313725) 0rem 0.9375rem 0.625rem -0.625rem;
 }
 
+.text-danger {
+  color:rgb(228, 26, 26);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+ 
+}

@@ -19,16 +19,26 @@ export class LoginEntrepriseComponent {
   this.signupForm = this.formBuilder.group({
     email:['',[Validators.minLength(3),Validators.required]],
     password:['',Validators.minLength(2)],
-    confirmPwd:[''],
-   },
-{
-  Validators:MustMatch('password','confirmPwd')
-})
+    confirmPwd:['',Validators.minLength(2)],
+   })
 } 
   
 
   signup(){
   console.log('here into signupform', this.signupForm.value)
+  }
+
+  isMush=true
+
+
+
+  inscrire(){
+    
+    if(this.signupForm.get('password')!.value===this.signupForm.get('confirmPwd')!.value)
+        this.isMush=true
+      else
+      this.isMush=false
+
   }
 }
 
