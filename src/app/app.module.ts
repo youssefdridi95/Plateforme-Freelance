@@ -19,6 +19,8 @@ import { ProfilEntrepriseComponent } from './profil-entreprise/profil-entreprise
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CvBuilderComponent } from './cv-builder/cv-builder.component';
 import { CreationEntrepriseComponent } from './creation-entreprise/creation-entreprise.component';
+import { CvPreviewComponent } from './cv-preview/cv-preview.component';
+import { CvUpdateComponent } from './cv-update/cv-update.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { CreationEntrepriseComponent } from './creation-entreprise/creation-entr
     SignupEntrepriseComponent,
     ProfilEntrepriseComponent,
     CvBuilderComponent,
-    CreationEntrepriseComponent
+    CreationEntrepriseComponent,
+    CvPreviewComponent,
+    CvUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,8 @@ import { CreationEntrepriseComponent } from './creation-entreprise/creation-entr
       positionClass: 'toast-top-center',
       closeButton : true
 
-    }), // ToastrModule added
+    }),
+// ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]

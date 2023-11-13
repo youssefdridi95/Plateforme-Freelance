@@ -7,6 +7,8 @@ import { CreationEntrepriseComponent } from './creation-entreprise/creation-entr
 import { CvBuilderComponent } from './cv-builder/cv-builder.component';
 import { UserSignComponent } from './user-sign/user-sign.component';
 import { UserInscritComponent } from './user-inscrit/user-inscrit.component';
+import { CvPreviewComponent } from './cv-preview/cv-preview.component';
+import { CvUpdateComponent } from './cv-update/cv-update.component';
 
 const routes: Routes = [
    {path : "user/connexion" , component : UserSignComponent},
@@ -19,8 +21,10 @@ const routes: Routes = [
 
   
   {path:"cv/creer",component :CvBuilderComponent },
+  {path:":id/cv/edit",component :CvUpdateComponent },
+  {path:"cv/afficher",component :CvPreviewComponent },
 
-
+  
 
 ];
 

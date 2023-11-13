@@ -14,14 +14,7 @@ export class CvBuiderService {
   createCvForm(){
     this.cvForm=new FormGroup({
       experience : new FormArray([
-        new FormGroup({
-          societe : new FormControl ("",[Validators.required]),
-          post : new FormControl ("",[Validators.required]),
-          localisation : new FormControl ("",[Validators.required]),
-          desc : new FormControl ("",[Validators.minLength(100),Validators.required]),
-          debut : new FormControl ("",[Validators.required]),
-          fin : new FormControl ("")
-        })
+       
       ]) ,
       formation : new FormArray([
        
@@ -29,7 +22,13 @@ export class CvBuiderService {
       certification : new FormArray([
        
       ]),
-      competence : new FormArray([])
+      competence : new FormArray([
+         new FormGroup({
+          type : new FormControl ("principale",[Validators.required]),
+          nom : new FormControl ("",[Validators.required]),
+          niveau : new FormControl ("",[Validators.required]),
+        })
+      ])
       
     })
     
@@ -71,7 +70,7 @@ export class CvBuiderService {
  
     competence (){ 
       return new FormGroup({
-        type : new FormControl ("",[Validators.required]),
+        type : new FormControl ("secondaire",[Validators.required]),
         nom : new FormControl ("",[Validators.required]),
         niveau : new FormControl ("",[Validators.required]),
       })
@@ -109,15 +108,5 @@ export class CvBuiderService {
   }
   
   
-  // onSubmit() {
-  //   const formData = new FormData();
-  //   formData.append('organisation', this.certification.get('organisation').value);
-  //   formData.append('niveau', this.certification.get('niveau').value);
-  //   formData.append('titre', this.certification.get('titre').value);
-  //   formData.append('dateObtentien', this.certification.get('dateObtentien').value);
-  //   formData.append('desc', this.certification.get('desc').value);
-  //   formData.append('image', this.certification.get('image').value);
-  
-  //   // Send the formData to the server using HttpClient
-  // }
+
 }

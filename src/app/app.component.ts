@@ -1,5 +1,6 @@
-import { Component, ElementRef, } from '@angular/core';
+import { Component, ElementRef, ViewChild, } from '@angular/core';
 import { WidthCheckService } from './width-check.service';
+import { Router, RouterOutlet } from '@angular/router';
 
 
           @Component({
@@ -8,7 +9,7 @@ import { WidthCheckService } from './width-check.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private elementRef: ElementRef, private widhtChecker :WidthCheckService ){
+  constructor(private elementRef: ElementRef, private widhtChecker :WidthCheckService){
     this.widhtChecker.width=this.checkScreenWidth()
   }
 

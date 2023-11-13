@@ -1,13 +1,19 @@
-import {  Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { CvBuiderService } from '../cv-buider.service';
 import { CvBuilderApiCallsService } from '../cv-builder-api-calls.service';
 import { ToastrService } from 'ngx-toastr';
+import { CvUpdaterService } from '../cv-updater.service';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
-  selector: 'app-cv-builder',
-  templateUrl: './cv-builder.component.html',
-  styleUrls: ['./cv-builder.component.css']
+  selector: 'app-cv-update',
+  templateUrl: './cv-update.component.html',
+  styleUrls: ['./cv-update.component.css']
 })
-export class CvBuilderComponent {
+
+
+
+export class CvUpdateComponent {
 
 
    devSkills = [
@@ -115,8 +121,60 @@ export class CvBuilderComponent {
     'Virtual Reality (VR)',
     'Internet of Things (IoT)',
   ];
+  userID :any 
+  usercv:any ={
+    "experience": [
+      {
+        "societe": "Company 1",
+        "post": "Developer",
+        "localisation": "Paris",
+        "desc": "Lorem ipsum...", 
+        "debut": "2022-01-01",
+        "fin": "2022-12-31"
+      } , {
+        "societe": "Company 1",
+        "post": "Developer",
+        "localisation": "Paris",
+        "desc": "Lorem ipsum...", 
+        "debut": "2022-01-01",
+        "fin": "2022-12-31"
+      }
+
+    ],
+    "formation": [
+      {
+        "institut": "University of Paris",
+        "niveau": "Bachelor",
+        "specialite": "Computer Science",
+        "debut": "2018-09-01", 
+        "fin": "2022-06-30"
+      }
+    ],
+    "certification": [
+      {
+        "organisation": "Microsoft",
+        "niveau": "Expert",
+        "titre": "MCSA",
+        "dateObtentien": "2020-03-15",
+        "desc": "Lorem ipsum...",
+        "image": "image1.png",
+        "imageSrc": "http://imageurl.com/1",
+        "imageFile": null  
+      }
+    ],
+    "competence": [
+      {
+        "type": "Programming",
+        "nom": "JavaScript",
+        "niveau": "Advanced"  
+      }
+    ]
+  }
+
+ constructor(public cv:CvUpdaterService ,private cvApi :CvBuilderApiCallsService ,private toastr: ToastrService, private route: ActivatedRoute){
   
- constructor(public cv:CvBuiderService ,private cvApi :CvBuilderApiCallsService ,private toastr: ToastrService){
+  this.route.paramMap.subscribe(params => { this.userID= params.get('id') ;console.log(this.userID)}) ;
+  this.cv.createCvForm(this.usercv)
  }
        
 // In your component class
@@ -128,36 +186,32 @@ isSectionOpen: { [key: string]: boolean } = {
 };
 
 toggleSection(section: string): void {
-
   for (const key in this.isSectionOpen) {
     if (key !== section) {
       this.isSectionOpen[key] = false;
     }
   }
   this.isSectionOpen[section] = !this.isSectionOpen[section];
-
 }
 
-  buildCv(){
+  updateCv(){
     const experiences =this.cv.cvForm.get('experience')
     const certifications =this.cv.cvForm.get('certification')
     const formations =this.cv.cvForm.get('formation')
     const competences =this.cv.cvForm.get('competence')
-   
-      
-      try {
-        this.cvApi.addExperiences(experiences)
-        this.cvApi.addFormations(formations)
-        this.cvApi.addCertifications(certifications)
-        this.cvApi.addCompetences(competences)
 
-        this.toastr.success(' crée avec succés', 'CV');
+      try {
+        this.cvApi.editExperiences(this.userID,experiences)
+        this.cvApi.editFormations(this.userID,formations)
+        this.cvApi.editCertifications(this.userID,certifications)
+        this.cvApi.editCompetences(this.userID,competences)
+
+        this.toastr.success(' mis à jour avec succés', 'CV');
       } catch (error) {
         this.toastr.error('erreur prodiute lors de la création', ' CV');
       }
      
-     
-    console.log(this.cv.cvForm);
+     console.log(this.cv.cvForm)
     
   }
 
