@@ -38,11 +38,36 @@
     font-size: 1.5rem;
     margin-bottom: 1rem;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .form-heading span {
+   width: 80%;
+    display: flex;
     gap: 1rem;
     align-items: center;
     cursor: pointer;
-    justify-content: space-between;
+    justify-content: start;
   }
+
+  .form-heading span i{
+   margin-top: 7px;
+   }
+ 
+  .form-heading > span > i {
+    font-size: 1.3rem;
+   
+   }
+
+   .form-heading  > i {
+    font-size: 1.3rem;
+    width: 20%;
+    text-align: right;
+    cursor: pointer;
+   
+   }
+
 
   .form-heading:hover {
     color: #007bff;
@@ -77,13 +102,23 @@
     animation: show 1s ease-out forwards;
   }
   
+        
+.break{
+width: 100%;
+border-bottom: 1px solid rgba(128, 128, 128, 0.356);
+margin: 0.5rem 0;
+}
+  .form-subsection h4{
+    width: 100%;
+    margin: 0.5rem 0;
+  }
   @keyframes show {
     from {
       max-height: 0;
       opacity: 0;
     }
     to {
-      max-height: 1000px; /* Set a sufficiently large value for max-height */
+      max-height: 5000px; /* Set a sufficiently large value for max-height */
       opacity: 1;
     }
   }
@@ -115,6 +150,7 @@
     margin-left: 1rem;
     margin-right: 1rem;
   }
+
 
 
   label + .input-field[type="date"]{
@@ -154,6 +190,10 @@
   button.add-button,button.build-cv-button {
     background-color: #007bff;
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
   }
   
 
@@ -173,6 +213,14 @@ background: none;
     background: none;
     transition: all 0.5s;
   }
+
+
+  button.add-button:hover i 
+  {
+   color :#007bff !important;
+   background: none;
+   transition: all 0.5s;
+ }
   
   .build-cv-button:disabled{
     cursor: no-drop;

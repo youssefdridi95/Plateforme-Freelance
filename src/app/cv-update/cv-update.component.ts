@@ -128,25 +128,25 @@ export class CvUpdateComponent {
         "societe": "Company 1",
         "post": "Developer",
         "localisation": "Paris",
-        "desc": "Lorem ipsum...", 
+        "desc": "Lorem ipsum...",
         "debut": "2022-01-01",
         "fin": "2022-12-31"
-      } , {
-        "societe": "Company 1",
+      },
+      {
+        "societe": "Company 2",
         "post": "Developer",
         "localisation": "Paris",
-        "desc": "Lorem ipsum...", 
+        "desc": "Lorem ipsum...",
         "debut": "2022-01-01",
         "fin": "2022-12-31"
       }
-
     ],
     "formation": [
       {
         "institut": "University of Paris",
         "niveau": "Bachelor",
         "specialite": "Computer Science",
-        "debut": "2018-09-01", 
+        "debut": "2018-09-01",
         "fin": "2022-06-30"
       }
     ],
@@ -159,18 +159,44 @@ export class CvUpdateComponent {
         "desc": "Lorem ipsum...",
         "image": "image1.png",
         "imageSrc": "http://imageurl.com/1",
-        "imageFile": null  
+        "imageFile": null
       }
     ],
-    "competence": [
-      {
-        "type": "Programming",
+    "competence": {
+      "principale": {
         "nom": "JavaScript",
-        "niveau": "Advanced"  
-      }
-    ]
+        "niveau": "debutant"
+      },
+      "secondaire": [
+        {
+          "type": "secondaire",
+          "nom": "Secondary Skill 1",
+          "niveau": "avance"
+        },
+        {
+          "type": "secondaire",
+          "nom": "Secondary Skill 2",
+          "niveau": "intermediaire"
+        },
+        {
+          "type": "secondaire",
+          "nom": "Secondary Skill 3",
+          "niveau": "intermediaire"
+        },
+        {
+          "type": "secondaire",
+          "nom": "Secondary Skill 4",
+          "niveau": "intermediaire"
+        },
+        {
+          "type": "secondaire",
+          "nom": "Secondary Skill 5",
+          "niveau": "intermediaire"
+        }
+      ]
+    }
   }
-
+  
  constructor(public cv:CvUpdaterService ,private cvApi :CvBuilderApiCallsService ,private toastr: ToastrService, private route: ActivatedRoute){
   
   this.route.paramMap.subscribe(params => { this.userID= params.get('id') ;console.log(this.userID)}) ;

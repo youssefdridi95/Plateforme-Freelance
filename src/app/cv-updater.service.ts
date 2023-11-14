@@ -10,56 +10,47 @@ export class CvUpdaterService {
 
   constructor(){
   }
-  cvForm :any  = new FormGroup({
-    experience : new FormArray([
-    ]) ,
-    formation : new FormArray([
-     
-    ]),
-    certification : new FormArray([
-     
-    ]),
-    competence : new FormArray([])
-    
-  })
+   cvForm:any = new FormGroup({
+    experience: new FormArray([]),
+    formation: new FormArray([]),
+    certification: new FormArray([]),
+    competence: new FormGroup({
+      principale: new FormGroup({
+        nom: new FormControl( "", [Validators.required]),
+        niveau: new FormControl("", [Validators.required]),
+      }),
+      secondaire: new FormArray([]),
+    }),
+  });
+
+
+  createCvForm(cv: any) {
+    const experiences = cv.experience || [];
+    const formations = cv.formation || [];
+    const competences = cv.competence || { principale: {}, secondaire: [] };
+    const certifications = cv.certification || [];
   
 
-  createCvForm(cv:any){
-    const experiences = cv.experience;
-    const formations = cv.formation;
-    const competences = cv.competence;
-    const certifications = cv.certification;
-
-    experiences.map((item:any)=>{
-        this.addField('experience',this.experience(item))
-    })
-
-    
-    formations.map((item:any)=>{
-      this.addField('formation',this.formation(item))
-  })  
   
-  certifications.map((item:any)=>{
-    this.addField('certification',this.certification(item))
-})
-
-competences.map((item:any)=>{
-  this.addField('competence',this.competence(item))
-})
-
-
-    const  cvForm=new FormGroup({
-      experience : new FormArray([
-      ]) ,
-      formation : new FormArray([
-       
-      ]),
-      certification : new FormArray([
-       
-      ]),
-      competence : new FormArray([])
-      
-    })
+    const competencesArray = competences.secondaire || [];
+    const competenceControls = competencesArray.map((item: any) => this.competence(item));
+    const experienceControls = experiences.map((item: any) => this.experience(item));
+    const formationControls = formations.map((item: any) => this.formation(item));
+    const certificationControls = certifications.map((item: any) => this.certification(item));
+  
+    this.cvForm = new FormGroup({
+      experience: new FormArray(experienceControls),
+      formation: new FormArray(formationControls),
+      certification: new FormArray(certificationControls),
+      competence: new FormGroup({
+        principale: new FormGroup({
+          nom: new FormControl(competences.principale.nom || "", [Validators.required]),
+          niveau: new FormControl(competences.principale.niveau || "", [Validators.required]),
+        }),
+        secondaire: new FormArray(competenceControls),
+      }),
+    });
+  
     
   }
 
@@ -104,16 +95,23 @@ competences.map((item:any)=>{
         niveau : new FormControl (comp.niveau,[Validators.required]),
       })
     }
-  addField(field:any,obj:any){
-    const control = <FormArray> this.cvForm.controls[field] ;
-    control.push(obj);
-  }
-
-  removeField(field:any,index :any){
-    const control = <FormArray> this.cvForm.controls[field] ;
-    control.removeAt(index)
-  }
-
+    addField(field:any,obj:any){
+      let control = <FormArray> this.cvForm.controls[field] ;
+  
+      if (field=== 'competence')
+           control = <FormArray> this.cvForm.controls[field].controls['secondaire'] ;
+  
+      control.push(obj);
+    }
+  
+    removeField(field:any,index :any){
+      let control = <FormArray> this.cvForm.controls[field] ;
+      if (field=== 'competence')
+      control = <FormArray> this.cvForm.controls[field].controls['secondaire'] ;
+  
+      control.removeAt(index)
+    }
+  
 
   onFileChange(event: any,index:any) {
     if (event.target.files && event.target.files.length > 0) {
