@@ -22,6 +22,7 @@ import { CvPreviewComponent } from './cv-preview/cv-preview.component';
 import { CvUpdateComponent } from './cv-update/cv-update.component';
 
 import { MdpComponent } from './mdp/mdp.component';
+import { LogoutComponent } from './logout/logout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { MdpComponent } from './mdp/mdp.component';
     CreationEntrepriseComponent,
     CvPreviewComponent,
     CvUpdateComponent,
-    MdpComponent
+    MdpComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

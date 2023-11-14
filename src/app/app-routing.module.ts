@@ -11,8 +11,7 @@ import { CvUpdateComponent } from './cv-update/cv-update.component';
 import { MdpComponent } from './mdp/mdp.component';
 
 const routes: Routes = [
-   {path : "user/connexion" , component : UserSignComponent},
-  {path : "user/register" , component : UserInscritComponent },
+  {path : "user/connexion" , component : UserInscritComponent },
   {path:"profil/entreprise",component :ProfilEntrepriseComponent},
   {path:"login/entreprise",component :LoginEntrepriseComponent},
   {path:"creation/entreprise",component :CreationEntrepriseComponent},

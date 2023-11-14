@@ -1,13 +1,15 @@
 .container {
   max-width: 26.4rem;
-  background: #F8F9FD;
   background: white;
   border-radius:4%;
   padding: 2.5625rem 2.1875rem;
   border: 0.3125rem solid rgb(255, 255, 255);
   box-shadow: rgba(127, 183, 209, 0.878) -1rem 1.875rem 1.875rem -1.25rem;
-  margin: 10rem auto;
-  height: 32.2rem;
+  margin: 2rem auto;
+}
+.container2{
+  background: rgba(213, 218, 219, 0.342);
+
 }
 
 .heading {
