@@ -85,8 +85,16 @@
                                 <h2>compétences</h2>
                             </div>
                             <div class="resume__text">
-                                <div class="extra" *ngFor="let comp of this.cv.competence">
-                                    <div class="extra-info">{{comp.nom}}</div>
+                                <div class="extra">
+                                    <div class="extra-info principale">{{this.cv.competence.principale.nom}}</div>
+                                    <div class="extra-details">
+                                        <div class="extra-details__progress" [style.width.]="skillLevels[this.cv.competence.principale.niveau]"></div>
+
+                                    </div>
+                                </div>
+                                <div class="extra" *ngFor="let comp of this.cv.competence.secondaire">
+                                   
+                                    <div class="extra-info" *ngIf="comp.type==='secondaire'">{{comp.nom}}</div>
                                     <div class="extra-details">
                                         <div class="extra-details__progress" [style.width.]="skillLevels[comp.niveau]"></div>
 
@@ -101,24 +109,14 @@
                             <div class="resume__section-title"><i class="fa fa-globe"></i>
                                 <h2>Languages</h2>
                             </div>
-                            <div class="extra">
-                                <div class="extra-info">Portuguese <small>(native)</small></div>
-                                <div class="extra-details">
-                                    <div class="extra-details__progress" style="width:100%"></div>
-                                </div>
+                            <div class="resume__text" >
+                            <div class="extra" *ngFor="let comp of this.cv.competence.secondaire" >
+
+                                <div class="extra-info" *ngIf="comp.type==='langue'">{{comp.nom}} <small>({{comp.niveau}})</small></div>
+                                
                             </div>
-                            <div class="extra">
-                                <div class="extra-info">English</div>
-                                <div class="extra-details">
-                                    <div class="extra-details__progress" style="width:65%"></div>
-                                </div>
-                            </div>
-                            <div class="extra">
-                                <div class="extra-info">Spanish</div>
-                                <div class="extra-details">
-                                    <div class="extra-details__progress" style="width:20%"></div>
-                                </div>
-                            </div>
+                           
+                        </div>
                         </div>
                     </section>
                 </div>

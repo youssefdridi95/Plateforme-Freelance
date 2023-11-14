@@ -13,6 +13,7 @@
     border: 1px solid #00000048; 
     border-radius: 0.3rem;
     margin: 1rem auto;
+    user-select: none;
   }
 
   .resume {
@@ -45,6 +46,7 @@
     display: flex;
     align-items: center;
     gap: 4rem;
+    filter:blur(5px);      
   }
 
   .resume__header .resume__photo{
@@ -91,13 +93,11 @@
     padding-top: 0;
   }
   .resume .resume__main {
-    float: left;
-    width: 75%;
-    padding-right: 6em;
+   
+    width: 100%;
   }
   .resume .resume__side {
-    float: left;
-    width: 25%;
+    width:100%;
   }
  
   .resume .info-item {
@@ -143,20 +143,39 @@
     text-align: right;
     margin-right: 2rem;
   }
+
+  .resume .resume__text {
+    width: 100%;
+    display:flex ;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   .resume .extra {
     margin-bottom: 2em;
+  }
+
+  .resume .principale{
+    color: #0c80e6;
+    font-weight: 800;
   }
   .resume .extra:last-child {
     margin-bottom: 0;
   }
+
+ 
   .resume .extra-info small {
     color: #666;
     display: inline-block;
     font-size: 0.7em;
+    font-weight: 800;
+    max-width: 6rem;
+
   }
   .resume .extra-details,
   .resume .extra-details__progress {
     border-radius: 6px;
+    max-width: 6rem;
   }
   .resume .extra-details {
     margin-top: 0.5em;

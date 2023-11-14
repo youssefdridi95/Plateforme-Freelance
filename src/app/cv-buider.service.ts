@@ -22,13 +22,17 @@ export class CvBuiderService {
       certification : new FormArray([
        
       ]),
-      competence : new FormArray([
-         new FormGroup({
-          type : new FormControl ("principale",[Validators.required]),
-          nom : new FormControl ("",[Validators.required]),
-          niveau : new FormControl ("",[Validators.required]),
-        })
-      ])
+      competence : new FormGroup({
+          principale : new FormGroup({
+            nom : new FormControl ("",[Validators.required]),
+            niveau : new FormControl ("",[Validators.required]),
+              }),
+          secondaire : new FormArray([
+          
+      
+             ]),
+
+      })
       
     })
     
@@ -68,23 +72,39 @@ export class CvBuiderService {
     })
   }
  
-    competence (){ 
+    competence (type:string){ 
+
       return new FormGroup({
-        type : new FormControl ("secondaire",[Validators.required]),
+        type : new FormControl (type,[Validators.required]),
         nom : new FormControl ("",[Validators.required]),
         niveau : new FormControl ("",[Validators.required]),
       })
     }
   addField(field:any,obj:any){
-    const control = <FormArray> this.cvForm.controls[field] ;
+    let control = <FormArray> this.cvForm.controls[field] ;
+
+    if (field=== 'competence')
+         control = <FormArray> this.cvForm.controls[field].controls['secondaire'] ;
+
     control.push(obj);
   }
 
   removeField(field:any,index :any){
-    const control = <FormArray> this.cvForm.controls[field] ;
+    let control = <FormArray> this.cvForm.controls[field] ;
+    if (field=== 'competence')
+    control = <FormArray> this.cvForm.controls[field].controls['secondaire'] ;
+
     control.removeAt(index)
   }
 
+
+  removeAll(field:any){
+    let control = <FormArray> this.cvForm.controls[field] ;
+    if (field=== 'competence')
+    control = <FormArray> this.cvForm.controls[field].controls['secondaire'] ;
+
+    control.clear()
+  }
 
   onFileChange(event: any,index:any) {
     if (event.target.files && event.target.files.length > 0) {

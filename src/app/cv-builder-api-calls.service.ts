@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormArray } from '@angular/forms';
+import { FormArray, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -119,26 +119,53 @@ editCertifications(id:any ,certifications :FormArray){
     }
 }
 
-addCompetences(competences :FormArray){
+addCompetences(competences: FormGroup) {
+  // Assuming competences is the main FormGroup
+  const principaleFormGroup = competences.get('competence.principale') as FormGroup;
+  const secondaireFormArray = competences.get('competence.secondaire') as FormArray;
 
-  for (let i = 0; i < competences.length; i++) {
-      this.http.post(this.url + '',competences.at(i).value).subscribe({
+  // Post data for 'principale'
+  this.http.post(this.url, principaleFormGroup.value)
+    .subscribe({
+      next: (v) => console.log(v),
+      error: (e) => console.error(e),
+      complete: () => console.info('complete')
+    });
+
+  // Post data for each control in 'secondaire' FormArray
+  for (let i = 0; i < secondaireFormArray.length; i++) {
+    this.http.post(this.url, secondaireFormArray.at(i).value)
+      .subscribe({
         next: (v) => console.log(v),
         error: (e) => console.error(e),
-        complete: () => console.info('complete') 
-    })
-    }
+        complete: () => console.info('complete')
+      });
+  }
 }
+
 
 
 editCompetences(id:any ,competences :FormArray){
 
-  for (let i = 0; i < competences.length; i++) {
-      this.http.put(this.url + '/----/'+id,competences.at(i).value).subscribe({
+  const principaleFormGroup = competences.get('competence.principale') as FormGroup;
+  const secondaireFormArray = competences.get('competence.secondaire') as FormArray;
+
+  // Post data for 'principale'
+  this.http.put(this.url +'/---/'+id, principaleFormGroup.value)
+    .subscribe({
+      next: (v) => console.log(v),
+      error: (e) => console.error(e),
+      complete: () => console.info('complete')
+    });
+
+  // Post data for each control in 'secondaire' FormArray
+  for (let i = 0; i < secondaireFormArray.length; i++) {
+    this.http.put(this.url +'/---/'+id, secondaireFormArray.at(i).value)
+      .subscribe({
         next: (v) => console.log(v),
         error: (e) => console.error(e),
-        complete: () => console.info('complete') 
-    })
-    }
+        complete: () => console.info('complete')
+      });
+  }
 }
 }
