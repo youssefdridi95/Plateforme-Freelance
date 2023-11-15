@@ -2,14 +2,22 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http'
+import { CommonModule } from '@angular/common';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
+
 import { UserSignComponent } from './user-sign/user-sign.component';
 import { UserInscritComponent } from './user-inscrit/user-inscrit.component';
+import { ProfilComponent } from './profil/profil.component'; 
+import { UserCompteComponent } from './user-compte/user-compte.component';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
@@ -23,6 +31,7 @@ import { CvUpdateComponent } from './cv-update/cv-update.component';
 
 import { MdpComponent } from './mdp/mdp.component';
 import { LogoutComponent } from './logout/logout.component';
+import { DialogBodyComponent } from './dialog-body/dialog-body.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +46,10 @@ import { LogoutComponent } from './logout/logout.component';
     CvPreviewComponent,
     CvUpdateComponent,
     MdpComponent,
-    LogoutComponent
+    LogoutComponent,
+    DialogBodyComponent,
+    ProfilComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -46,7 +58,16 @@ import { LogoutComponent } from './logout/logout.component';
     ReactiveFormsModule,
     ReactiveFormsModule,
     HttpClientModule, 
-    BrowserAnimationsModule, // required animations module
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    CommonModule,
+
+     // required animations module
     ToastrModule.forRoot({
       timeOut: 5000,
       positionClass: 'toast-top-center',

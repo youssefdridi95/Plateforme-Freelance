@@ -9,6 +9,8 @@ import { UserInscritComponent } from './user-inscrit/user-inscrit.component';
 import { CvPreviewComponent } from './cv-preview/cv-preview.component';
 import { CvUpdateComponent } from './cv-update/cv-update.component';
 import { MdpComponent } from './mdp/mdp.component';
+import { UserCompteComponent } from './user-compte/user-compte.component';
+import { ProfilComponent } from './profil/profil.component';
 
 const routes: Routes = [
   {path : "user/connexion" , component : UserInscritComponent },
@@ -20,7 +22,8 @@ const routes: Routes = [
   {path:":id/cv/edit",component :CvUpdateComponent },
   {path:"cv/afficher",component :CvPreviewComponent },
 
-  
+  {path: "user/profil", component : ProfilComponent},
+  {path: "user/compte", component : UserCompteComponent}
 
 ];
 

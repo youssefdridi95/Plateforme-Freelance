@@ -1,0 +1,141 @@
+<!--ICON-->
+<!-- <link rel="shortcut icon" href="/DevanagariBrahmi/logo.png" /> -->
+ 
+<!--META TAGS-->
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, user-scalable=no"
+/>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="author" content="Team Bboysdreamsfell" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="" />
+<meta property="og:site_name" content="Profiler Name || Krishivalahs" />
+ 
+<!--EXTERNAL CSS-->
+ 
+<div class="container">
+  <table>
+    <tr>
+      <td>
+        <section>
+          <label for="fileToUpload">
+            <i class="fa fa-camera"></i>
+            <input
+              type="file"
+              id="fileToUpload"
+              style="visibility: hidden"
+              accept=".png,.jpg,jpeg,.PNG,.JPEG"
+              name="fileToUpload"
+              onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])"
+            />
+          </label>
+          <img src="/assets/user.png" id="blah" alt="Avatar" />
+        </section>
+        <br>
+        <!-- <h1>Fedi Mriri</h1>
+        <h3>Full Stack developper</h3>
+        <br><br> -->
+    <div class="contact_card">
+     <span> <i class="fa-solid fa-phone"></i> :  22971208</span><br>
+     <span> <i class="fa-solid fa-envelope"></i> :  dridiwadi@gmail.com</span><br>
+     <span><i class="fa-solid fa-location-dot"></i></span>
+
+    </div>
+   
+      </td>
+      <td>
+        <ul>
+          <li>
+            <div>
+              <b>Status </b>
+          
+              <i
+                class="fa fa-check"
+                style="display: none"
+                id="check1"
+                onclick="document.getElementById('edit1').style.display='inline-block';this.style.display='none';document.getElementById('fname').style.pointerEvents='none';"
+              ></i>
+            </div>
+            <input
+              type="text"
+              name="fname"
+              id="fname"
+              maxlength="100"
+              value="Full Stack developper"
+              required
+              readonly
+            />
+          </li>
+          <li>
+            <div>
+              <b>E-mail </b>
+            
+           
+            </div>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              maxlength="150"
+              value="E-mail professionnel"
+              required
+              readonly
+            />
+          </li>
+          <li>
+            <div>
+              <b>Adresse</b>
+           
+              <i
+                class="fa fa-check"
+                style="display: none"
+                id="check2"
+                onclick="document.getElementById('edit2').style.display='inline-block';document.getElementById('mobile').style.pointerEvents='none';this.style.display='none';"
+              ></i>
+            </div>
+            <input
+              type="tel"
+              name="mobile"
+              id="mobile"
+              maxlength="10"
+              value="Adresse"
+              required
+              readonly
+            />
+          </li>
+          <li>
+        <div>
+            <b>Numéro de téléphone</b>
+          
+         
+        </div>
+            <input
+              type="text"
+              name="address"
+              id="address"
+              maxlength="250"
+              value="Numéro de téléphone"
+              required
+              readonly
+            />
+       
+          </li>
+
+              <li>
+            
+                     
+        </ul>
+       
+      </td>
+    </tr>
+
+  </table>
+
+</div>
+ 
+<!--JAVASCRIPT-->
+ 
