@@ -15,7 +15,6 @@ body{
     overflow: hidden;
     overflow-y: auto;
     font-family: 'Nunito', sans-serif;
-   
 }
 
 
@@ -27,7 +26,4 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

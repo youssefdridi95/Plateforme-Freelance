@@ -10,13 +10,25 @@ import { CvUpdateComponent } from './cv-update/cv-update.component';
 import { MdpComponent } from './mdp/mdp.component';
 import { UserCompteComponent } from './user-compte/user-compte.component';
 import { ProfilComponent } from './profil/profil.component';
+import { RoleComponent } from './role/role.component';
 
 const routes: Routes = [
   {path : "user/connexion/:type" , component : UserInscritComponent },
   {path:"profil/entreprise",component :ProfilEntrepriseComponent},
   {path:"login/entreprise",component :LoginEntrepriseComponent},
   {path:"creation/entreprise",component :CreationEntrepriseComponent},
+
+
+  {path:"entreprise/profil",component :ProfilEntrepriseComponent},
+
+  {path:"entreprise/connexion/:type",component :LoginEntrepriseComponent},
+  {path:"entreprise/creation",component :CreationEntrepriseComponent},
+
+
+
   {path:"mdp",component :MdpComponent},
+  {path:"role",component :RoleComponent },
+  {path :"user/connexion", component : UserInscritComponent },
   {path:"cv/creer",component :CvBuilderComponent },
   {path:":id/cv/edit",component :CvUpdateComponent },
   {path:"cv/afficher",component :CvPreviewComponent },

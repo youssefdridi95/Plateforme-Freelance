@@ -1,0 +1,32 @@
+<section>
+    <div class="wrapper" >
+        <img class="icon" src="assets/entreprise.png" alt="icon">
+       <div (click)="navigateToPage('entreprise/connexion/signup')">
+        <input type="radio" id="1" name="role">
+        <label for="1"><span></span></label>
+        <p class="content-title">ENTREPRISE</p>
+        <p class="content">
+            Je suis client, je recrute pour un projet.
+        </p>
+    </div>
+    <p class="contente">Vous avez déjà un compte?</p>
+
+    <a class="login-button" type="submit" (click)="navigateToPage('entreprise/connexion/login')">  Connexion </a>
+    </div>
+    <div class="wrapper child1" >      
+        <img class="icon" src="assets/dev.png" alt="icon">
+        <!-- <i style="color: white;font-size: 5em; font-weight: 200 !important;" class="fa-regular fa-user"></i> -->
+        <div (click)="navigateToPage('user/connexion/signup')">
+        <input type="radio" id="2" name="role">
+        <label for="2"><span></span></label>
+        <p class="content-title child1">TALENT</p>
+        <p class="content child1">
+            Je suis freelancer, à la recherche d'un travail. 
+        </p>
+    </div>
+    <p class="contente">Vous avez déjà un compte?</p>
+    <a class="signup-button" type="submit" (click)="navigateToPage('user/connexion/signin')">  Connexion </a>
+
+    </div>
+
+</section>

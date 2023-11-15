@@ -11,7 +11,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ToastrModule } from 'ngx-toastr';
-
 import { AppComponent } from './app.component';
 
 import { UserInscritComponent } from './user-inscrit/user-inscrit.component';
@@ -27,27 +26,26 @@ import { CvBuilderComponent } from './cv-builder/cv-builder.component';
 import { CreationEntrepriseComponent } from './creation-entreprise/creation-entreprise.component';
 import { CvPreviewComponent } from './cv-preview/cv-preview.component';
 import { CvUpdateComponent } from './cv-update/cv-update.component';
-
 import { MdpComponent } from './mdp/mdp.component';
-import { LogoutComponent } from './logout/logout.component';
 import { DialogBodyComponent } from './dialog-body/dialog-body.component';
+import { RoleComponent } from './role/role.component';
 @NgModule({
   declarations: [
     AppComponent,
     UserInscritComponent,
     NavbarComponent,
     FooterComponent,  
-     LoginEntrepriseComponent,
+    LoginEntrepriseComponent,
     ProfilEntrepriseComponent,
     CvBuilderComponent,
     CreationEntrepriseComponent,
     CvPreviewComponent,
     CvUpdateComponent,
     MdpComponent,
-    LogoutComponent,
     DialogBodyComponent,
     ProfilComponent,
 
+    RoleComponent
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,12 @@
 import { Component, ElementRef, ViewChild, } from '@angular/core';
 import { WidthCheckService } from './width-check.service';
 import { Router, RouterOutlet } from '@angular/router';
-import { slideInAnimation } from './app.animation';
 
 
           @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  animations:[slideInAnimation]
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   constructor(private elementRef: ElementRef, private widhtChecker :WidthCheckService){
