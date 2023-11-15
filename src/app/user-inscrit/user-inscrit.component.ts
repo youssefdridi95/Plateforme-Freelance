@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators,AbstractControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
+import { UserService } from '../user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-inscrit',
@@ -19,8 +21,9 @@ export class UserInscritComponent {
   userForm = new FormGroup({
 
 
+    username :  new FormControl('', [Validators.required,Validators.minLength(4)]),
     email :  new FormControl('', [Validators.required,Validators.email]),
-    password : new FormControl('', [Validators.required, Validators.minLength(8)]),
+    password : new FormControl('', [Validators.required, Validators.minLength(6)]),
     confirmpassword : new FormControl('',[Validators.required])
   },
   {
@@ -31,16 +34,46 @@ export class UserInscritComponent {
       ? null
       : { mismatch: true };
   }
+  signupUser() {
+    const user= {
+      'username' : this.userForm.value.username ,
+      'email' : this.userForm.value.email ,
+      'password' : this.userForm.value.password ,
+      'role' : 'ROLE_DEV' ,
+    }
+
+    this.userService.signup(user).subscribe(
+      res=>{
+        console.log(res);
+        
+        this.toastr.success('a été crée avec succés','compte')
+
+      },
+      err=>{
+        console.log(err);
+
+    console.log('Formulaire soumis avec error', this.userForm.value);
+    this.toastr.error('sssssss','compte')
+
+      }
+    )
+
+  }
 
   loginUser() {
     // Vous pouvez ajouter ici le code pour traiter la soumission du formulaire
     console.log('Formulaire soumis avec succès', this.userForm.value);
   }
 
-  constructor(private router : Router){}
+  constructor(private roote : ActivatedRoute,private userService: UserService ,private toastr : ToastrService){
+    this.roote.paramMap.subscribe(params =>{this.inscrit=params.get('type')})
+  }
 
-  inscrit=true;
+  inscrit:any;
   // sign = true;
+
+
+
 
 
 }

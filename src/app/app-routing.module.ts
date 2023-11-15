@@ -4,7 +4,6 @@ import { ProfilEntrepriseComponent } from './profil-entreprise/profil-entreprise
 import { LoginEntrepriseComponent } from './login-entreprise/login-entreprise.component';
 import { CreationEntrepriseComponent } from './creation-entreprise/creation-entreprise.component';
 import { CvBuilderComponent } from './cv-builder/cv-builder.component';
-import { UserSignComponent } from './user-sign/user-sign.component';
 import { UserInscritComponent } from './user-inscrit/user-inscrit.component';
 import { CvPreviewComponent } from './cv-preview/cv-preview.component';
 import { CvUpdateComponent } from './cv-update/cv-update.component';
@@ -13,7 +12,7 @@ import { UserCompteComponent } from './user-compte/user-compte.component';
 import { ProfilComponent } from './profil/profil.component';
 
 const routes: Routes = [
-  {path : "user/connexion" , component : UserInscritComponent },
+  {path : "user/connexion/:type" , component : UserInscritComponent },
   {path:"profil/entreprise",component :ProfilEntrepriseComponent},
   {path:"login/entreprise",component :LoginEntrepriseComponent},
   {path:"creation/entreprise",component :CreationEntrepriseComponent},

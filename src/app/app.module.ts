@@ -14,7 +14,6 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 
-import { UserSignComponent } from './user-sign/user-sign.component';
 import { UserInscritComponent } from './user-inscrit/user-inscrit.component';
 import { ProfilComponent } from './profil/profil.component'; 
 import { UserCompteComponent } from './user-compte/user-compte.component';
@@ -35,7 +34,6 @@ import { DialogBodyComponent } from './dialog-body/dialog-body.component';
 @NgModule({
   declarations: [
     AppComponent,
-    UserSignComponent,
     UserInscritComponent,
     NavbarComponent,
     FooterComponent,  
