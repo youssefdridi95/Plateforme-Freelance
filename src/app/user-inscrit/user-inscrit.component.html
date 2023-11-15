@@ -1,25 +1,25 @@
 <div class="container">
-    <div class="heading"> s’enregistrer</div>
-    <form [formGroup]="userForm"  (ngSubmit)="loginUser()" action="" class="form">
-   
+  <div class="heading"> s’enregistrer</div>
+  <form [formGroup]="userForm"  (ngSubmit)="loginUser()" action="" class="form">
+ 
 
-      <input required="" class="input" type="email" formControlName="email" id="email" placeholder="E-mail"><br>
-      <!-- <div  *ngIf="userForm.controls.email." > email is required.</div> -->
-      <div class="validator" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched"> Email is required *</div>
+    <input required="" class="input" type="email" formControlName="email" id="email" placeholder="E-mail"><br>
+    <!-- <div  *ngIf="userForm.controls.email." > email is required.</div> -->
+    <div class="validator" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched"> Email is required *</div>
 
-      <input required="" class="input" type="password" formControlName="password" id="password" placeholder="mot de passe">
-      <input required="" class="input" type="password" formControlName="password" id="password" placeholder="confirmer le mot de passe"><br><br>
-      <div class="validator" *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched"> Password is required *</div>
+    <input required="" class="input" type="password" formControlName="password" id="password" placeholder="mot de passe">
+    <input required="" class="input" type="password" formControlName="password" id="password" placeholder="confirmer le mot de passe"><br><br>
+    <div class="validator" *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched"> Password is required *</div>
 
-      <!-- <span class="forgot-password"><a href="tatatata">mot de passe oublié ?</a></span> -->
-      
-      <input class="login-button" type="submit" value="s’enregistrer">
-      
-    </form>
-    <div class="social-account-container">
-        <span class="title"> <a  routerLink="/user/connexion" > Connexion</a></span>
-        <div class="social-accounts">
-       
-        </div>
+    <!-- <span class="forgot-password"><a href="tatatata">mot de passe oublié ?</a></span> -->
+    
+    <input class="login-button" type="submit" value="s’enregistrer">
+    
+  </form>
+  <div class="social-account-container">
+      <span class="title"> <a  routerLink="/user/connexion" > Connexion</a></span>
+      <div class="social-accounts">
+     
       </div>
-  </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login-entreprise',
@@ -7,12 +8,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login-entreprise.component.css']
 })
 export class LoginEntrepriseComponent {
-  display =true;
+  loginForm!:FormGroup
+  user:any={};
+  
+  display :any;
   signupForm !:FormGroup
   tab!:["gmail","outlook"]
-  constructor(private formBuilder:FormBuilder) { }
+  constructor(private formBuilder:FormBuilder, private route: ActivatedRoute) { 
+  this.route.paramMap.subscribe(params => { this.display= params.get('type') ;console.log(this.display)}) ;
 
- 
+  }
+
+
 
   ngOnInit (): void {
   this.signupForm = this.formBuilder.group({

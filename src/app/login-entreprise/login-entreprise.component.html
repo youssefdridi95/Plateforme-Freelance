@@ -1,6 +1,6 @@
 
 
-<div class="container" *ngIf="display==true">
+<div class="container" *ngIf="display=='login'">
   <div class="heading">Connexion</div>
     <form class="form" >
       
@@ -14,7 +14,7 @@
       <p>Vous n'avez pas encore de compte ?
       </p>
   </span>
-  <input class="signup-button" type="submit" value="S'inscrire" (click)="display =!display" >
+  <input class="signup-button" type="submit" value="S'inscrire" (click)="display ='signup'" >
     </form>
 
 </div>
@@ -22,7 +22,7 @@
 
 
 
-<div class="container container2" *ngIf="display==false">
+<div class="container container2" *ngIf="display=='signup'">
   <div class="heading">Inscription </div>
   <form [formGroup]="signupForm" class="form">
        <input type="email" class="input" formControlName="email"  placeholder="E-mail professionnel*"/>
@@ -59,7 +59,7 @@
       <p> Vous avez un Compte Entreprise ?
       </p>
   </span>
-  <input class="login-button" type="submit" value="Connexion" (click)="display =!display" >
+  <input class="login-button" type="submit" value="Connexion" (click)="display ='login'" >
   
     </form>
 
