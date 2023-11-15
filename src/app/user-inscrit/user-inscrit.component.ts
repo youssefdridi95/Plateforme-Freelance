@@ -20,5 +20,6 @@ export class UserInscritComponent {
 
   constructor(private router : Router){}
 
+  disable =true;
 
 }

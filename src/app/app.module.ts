@@ -23,6 +23,7 @@ import { CvUpdateComponent } from './cv-update/cv-update.component';
 
 import { MdpComponent } from './mdp/mdp.component';
 import { LogoutComponent } from './logout/logout.component';
+import { CompteComponent } from './compte/compte.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { LogoutComponent } from './logout/logout.component';
     CvPreviewComponent,
     CvUpdateComponent,
     MdpComponent,
-    LogoutComponent
+    LogoutComponent,
+    CompteComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { UserInscritComponent } from './user-inscrit/user-inscrit.component';
 import { CvPreviewComponent } from './cv-preview/cv-preview.component';
 import { CvUpdateComponent } from './cv-update/cv-update.component';
 import { MdpComponent } from './mdp/mdp.component';
+import { CompteComponent } from './compte/compte.component';
 
 const routes: Routes = [
   {path : "user/connexion" , component : UserInscritComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:"cv/creer",component :CvBuilderComponent },
   {path:":id/cv/edit",component :CvUpdateComponent },
   {path:"cv/afficher",component :CvPreviewComponent },
+  {path: "user/compte", component: CompteComponent},
 
   
 

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="disable==true">
     <div class="heading"> s’enregistrer</div>
     <form [formGroup]="userForm"  (ngSubmit)="loginUser()" action="" class="form">
    
@@ -17,7 +17,23 @@
       
     </form>
     <div class="social-account-container">
-        <span class="title"> <a  routerLink="/user/connexion" > Connexion</a></span>
+        <span class="title"> <a  (click)="disable=!disable" > Connexion</a></span>
+        <div class="social-accounts">
+       
+        </div>
+      </div>
+  </div>
+  <div class="container" *ngIf="disable==false">
+    <div class="heading"> Connexion</div>
+    <form action="" class="form">
+      <input required="" class="input" type="email" name="email" id="email" placeholder="E-mail">
+      <input required="" class="input" type="password" name="password" id="password" placeholder="Password">
+      <span class="forgot-password"><a href="tatatata">mot de passe oublié ?</a></span>
+      <input class="login-button" type="submit" value="Connexion">
+      
+    </form>
+    <div class="social-account-container">
+        <span class="title">Vous n'avez pas encore de compte ? <a (click)="disable=!disable"   > s'inscrire</a></span>
         <div class="social-accounts">
        
         </div>
