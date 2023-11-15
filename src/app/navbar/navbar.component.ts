@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WidthCheckService } from '../width-check.service';
+import { WidthCheckService } from '../services/width-check.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -25,6 +25,11 @@ export class NavbarComponent {
 
     shouldShowNavbar(): boolean {
       // Check if the current route is not '/login/entreprise'
-      return (this.router.url === '/login/entreprise' ||  this.router.url === '/user/connexion/signin'  || this.router.url === '/user/connexion/signup'  ||  this.router.url === '/creation/entreprise');
-    }
+      return (
+        this.router.url === '/user/connexion/signin'  ||
+         this.router.url === '/user/connexion/signup'  ||  
+         this.router.url === 'entreprise/connexion/login'||  
+         this.router.url === 'entreprise/connexion/signup'|| 
+         this.router.url === '/');
+     }    
 }

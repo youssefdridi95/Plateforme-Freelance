@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { CvBuiderService } from '../cv-buider.service';
-import { CvBuilderApiCallsService } from '../cv-builder-api-calls.service';
+import { CvBuiderService } from '../services/cv-buider.service';
+import { CvBuilderApiCallsService } from '../services/cv-builder-api-calls.service';
 import { ToastrService } from 'ngx-toastr';
-import { CvUpdaterService } from '../cv-updater.service';
+import { CvUpdaterService } from '../services/cv-updater.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

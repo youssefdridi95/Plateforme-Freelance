@@ -13,10 +13,10 @@ import { ProfilComponent } from './profil/profil.component';
 import { RoleComponent } from './role/role.component';
 
 const routes: Routes = [
+  {path:"",component :RoleComponent },
+
   {path : "user/connexion/:type" , component : UserInscritComponent },
   {path:"profil/entreprise",component :ProfilEntrepriseComponent},
-  {path:"login/entreprise",component :LoginEntrepriseComponent},
-  {path:"creation/entreprise",component :CreationEntrepriseComponent},
 
 
   {path:"entreprise/profil",component :ProfilEntrepriseComponent},

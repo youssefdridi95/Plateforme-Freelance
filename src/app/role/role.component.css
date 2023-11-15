@@ -111,32 +111,19 @@ input[type="radio"]:checked ~ label span::before {
 
 }
 .login-button {
-    display: block;
-    width: 30%;
+    
     font-weight: bold;
-    background: #007CF8;
-    color: white;
-    padding-block: 0.9375rem;
-    margin: 0.25rem auto;
-    border-radius: 1.25rem;
-    justify-content:center ;
-
+     color: #007CF8;
+   
   }
 .signup-button {
-    display: block;
-    width: 30%;
-    font-weight: bold;
-    border:0.1px solid  #3596f8;
-    color: #007CF8;
-    padding-block: 0.9375rem;
-    margin: 0.25rem auto;
-    border-radius: 1.25rem;
-    background-color: white;
-    transition: all 0.2s ease-in-out;
-    justify-content:center ;
+  
+    color:white;
+    font-weight: 800;
+
   }
 
-  
+
  
 .content-title{
     font-size: 35px;
@@ -174,15 +161,11 @@ input[type="radio"]:checked ~ label span::before {
     color: white;
     
 }
-
-a {
-    padding: 2rem;
-    z-index: 9999;
-    margin: 2rem;
-    position: center;
-    bottom: 2;
-    width: 80%;
+p{
+    width: 100%;
+    
 }
+
 
 .contente{
     font-size: 14px;

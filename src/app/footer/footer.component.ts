@@ -10,6 +10,11 @@ export class FooterComponent {
 constructor(private router: Router){}
 shouldShowNavbar(): boolean {
   // Check if the current route is not '/login/entreprise'
-  return (this.router.url === '/login/entreprise' ||  this.router.url === '/user/connexion/signin'  || this.router.url === '/user/connexion/signup'  ||  this.router.url === '/creation/entreprise');
+  return (
+   this.router.url === '/user/connexion/signin'  ||
+    this.router.url === '/user/connexion/signup'  ||  
+    this.router.url === 'entreprise/connexion/login'||  
+    this.router.url === 'entreprise/connexion/signup'|| 
+    this.router.url === '/');
 }
 }

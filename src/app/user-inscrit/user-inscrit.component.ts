@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators,AbstractControl } from '@angular/for
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -34,12 +34,14 @@ export class UserInscritComponent {
       ? null
       : { mismatch: true };
   }
+
+
   signupUser() {
     const user= {
       'username' : this.userForm.value.username ,
       'email' : this.userForm.value.email ,
       'password' : this.userForm.value.password ,
-      'role' : 'ROLE_DEV' ,
+      'role' : 'DEV' ,
     }
 
     this.userService.signup(user).subscribe(
@@ -52,8 +54,7 @@ export class UserInscritComponent {
       err=>{
         console.log(err);
 
-    console.log('Formulaire soumis avec error', this.userForm.value);
-    this.toastr.error('sssssss','compte')
+    this.toastr.error('error','compte')
 
       }
     )

@@ -18,7 +18,7 @@ export class UserService {
 
   // function signup api call
 signup(user: any){
-  return this.http.post(this.url + '/auth/signup', user);
+  return this.http.post(this.url + '/auth/signup',user);
 }
 
 

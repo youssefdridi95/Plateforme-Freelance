@@ -1,6 +1,6 @@
 import {  Component } from '@angular/core';
-import { CvBuiderService } from '../cv-buider.service';
-import { CvBuilderApiCallsService } from '../cv-builder-api-calls.service';
+import { CvBuiderService } from '../services/cv-buider.service';
+import { CvBuilderApiCallsService } from '../services/cv-builder-api-calls.service';
 import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-cv-builder',

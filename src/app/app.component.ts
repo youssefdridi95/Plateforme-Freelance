@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild, } from '@angular/core';
-import { WidthCheckService } from './width-check.service';
+import { WidthCheckService } from './services/width-check.service';
 import { Router, RouterOutlet } from '@angular/router';
 
 
