@@ -47,11 +47,11 @@
             <div class="break"></div>
           </ng-container>
           <ng-container formArrayName="secondaire">
-            <h4 *ngIf="cv.cvForm.get('competence.secondaire').controls.length>0 ">secondaire</h4>
-
+            
             <ng-container
-              *ngFor="let competenceControl of cv.cvForm.get('competence.secondaire').controls; let i = index"
-              [formGroupName]="i">
+            *ngFor="let competenceControl of cv.cvForm.get('competence.secondaire').controls; let i = index"
+            [formGroupName]="i">
+            <h4 *ngIf="cv.cvForm.get('competence.secondaire').controls.length>0 ">{{competenceControl.get('type').value}}</h4>
               <label for="nom">Nom:</label>
               <input type="text" required formControlName="nom" class="input-field" />
               <div *ngIf="competenceControl.get('nom').invalid && competenceControl.get('nom').touched" class="error">
@@ -86,15 +86,15 @@
               </div>
               <div class="actions">
                 <button type="button" (click)="cv.removeField('competence', i);" class="remove-button">
-                  Supprimer compétence
+                  <i class="fa-regular fa-trash-can"></i> Supprimer 
                 </button>
                 <button type="button" (click)="cv.addField('competence', cv.competence('langue'));"
                 class="add-button" *ngIf="i===cv.cvForm.get('competence.secondaire').controls.length-1 ">
-               <i class="fa-solid fa-angle-up" style="color: #ffffff;"></i>   <i class="fa-solid fa-language" style="color: #ffffff;"></i>   langue
+                <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   <i class="fa-solid fa-language" style="color: #ffffff;"></i>   langue
               </button>
                 <button type="button" (click)="cv.addField('competence', cv.competence('secondaire'));"
                   class="add-button" *ngIf="i===cv.cvForm.get('competence.secondaire').controls.length-1 ">
-                 <i class="fa-solid fa-angle-up" style="color: #ffffff;"></i>   compétence
+                 <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   compétence
                 </button>
               </div>
             </ng-container>
@@ -104,11 +104,11 @@
         <div class="actions">
           <button type="button" (click)="cv.addField('competence', cv.competence('langue'));"
           class="add-button"   *ngIf="cv.cvForm.get('competence.secondaire').controls.length==0 ">
-         <i class="fa-solid fa-angle-up" style="color: #ffffff;"></i>   <i class="fa-solid fa-language" style="color: #ffffff;"></i>   langue
+         <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   <i class="fa-solid fa-language" style="color: #ffffff;"></i>   langue
         </button>
           <button type="button" (click)="cv.addField('competence', cv.competence('secondaire'));" class="add-button"
             *ngIf="cv.cvForm.get('competence.secondaire').controls.length==0 ">
-           <i class="fa-solid fa-angle-up" style="color: #ffffff;"></i>   compétence
+           <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   compétence
           </button>
         </div>
       </ng-container>
@@ -176,11 +176,11 @@
           <input type="date" formControlName="fin" class="input-field" />
           <div class="actions">
             <button type="button" (click)="cv.removeField('experience', i);" class="remove-button">
-              Supprimer expérience
+              <i class="fa-regular fa-trash-can"></i> Supprimer 
             </button>
             <button type="button" (click)="cv.addField('experience', cv.experience());" class="add-button"
               *ngIf="i===cv.cvForm.get('experience').controls.length-1">
-             <i class="fa-solid fa-angle-up" style="color: #ffffff;"></i>   expérience
+             <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   expérience
             </button>
           </div>
         </div>
@@ -188,7 +188,7 @@
 
           <button type="button" (click)="cv.addField('experience', cv.experience());" class="add-button"
             *ngIf="cv.cvForm.get('experience').controls.length==0 ">
-           <i class="fa-solid fa-angle-up" style="color: #ffffff;"></i>   expérience
+           <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   expérience
           </button>
         </div>
       </ng-container>
@@ -245,11 +245,11 @@
 
           <div class="actions">
             <button type="button" (click)="cv.removeField('formation', i);" class="remove-button">
-              Supprimer formation
+              <i class="fa-regular fa-trash-can"></i> Supprimer 
             </button>
             <button type="button" (click)="cv.addField('formation', cv.formation());" class="add-button"
               *ngIf="i===cv.cvForm.get('formation').controls.length-1 ">
-             <i class="fa-solid fa-angle-up" style="color: #ffffff;"></i>   formation
+             <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   formation
             </button>
           </div>
         </div>
@@ -257,7 +257,7 @@
 
           <button type="button" (click)="cv.addField('formation', cv.formation());" class="add-button"
             *ngIf="cv.cvForm.get('formation').controls.length==0 ">
-           <i class="fa-solid fa-angle-up" style="color: #ffffff;"></i>   formation
+           <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   formation
           </button>
         </div>
       </ng-container>
@@ -338,11 +338,11 @@
 
           <div class="actions">
             <button type="button" (click)="cv.removeField('certification', i);" class="remove-button">
-              Supprimer certification
+              <i class="fa-regular fa-trash-can"></i> Supprimer 
             </button>
             <button type="button" (click)="cv.addField('certification', cv.certification());" class="add-button"
               *ngIf="i===cv.cvForm.get('certification').controls.length-1 ">
-             <i class="fa-solid fa-angle-up" style="color: #ffffff;"></i>   certification
+             <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   certification
             </button>
           </div>
         </div>
@@ -350,7 +350,7 @@
 
           <button type="button" (click)="cv.addField('certification', cv.certification());" class="add-button"
             *ngIf="cv.cvForm.get('certification').controls.length==0 ">
-           <i class="fa-solid fa-angle-up" style="color: #ffffff;"></i>   certification
+           <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   certification
           </button>
         </div>
       </ng-container>

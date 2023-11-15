@@ -86,7 +86,7 @@ nav.nav{
 display: initial;    }
     .nav-items{
        position :absolute;
-       top: 4.7rem;
+       top: 4rem;
        flex-direction: column;
        width: 100%;
        gap: 1rem;
@@ -100,7 +100,7 @@ display: initial;    }
 
     .nav-item {
        
-        color: white;
+
         width: 80%;
         padding: 0.5rem 1rem;
         border-radius: 0.5rem;
@@ -111,7 +111,8 @@ display: initial;    }
         background: rgba(236, 236, 236, 0.815);
         margin-bottom: 0.2rem;
         font-size:1.1rem ;
-    transition: all 0.5s;
+        transition: all 0.5s;
+        padding-left:1rem ;
 
     
     }

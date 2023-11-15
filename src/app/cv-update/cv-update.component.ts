@@ -208,7 +208,7 @@ isSectionOpen: { [key: string]: boolean } = {
   'experience': false,
   'formation': false,
   'certification': false,
-  'competence': false
+  'competence': true
 };
 
 toggleSection(section: string): void {

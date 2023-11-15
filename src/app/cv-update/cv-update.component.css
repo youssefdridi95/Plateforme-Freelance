@@ -107,6 +107,7 @@ margin: 0.5rem 0;
 .form-subsection h4{
   width: 100%;
   margin: 0.5rem 0;
+  color: #007bff;
 }
 @keyframes show {
   from {
@@ -166,8 +167,9 @@ label + .input-field[type="date"]{
   justify-content: end;
   gap: 1rem;
   flex-wrap: wrap;
-  border-top: 1px solid rgba(128, 128, 128, 0.356);
-  margin-top: 1rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.356);
+  padding: 1rem 0;
+  margin-bottom: 1rem;
 }
 /* Apply styles to buttons (both add and remove buttons) */
 

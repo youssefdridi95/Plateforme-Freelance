@@ -88,7 +88,7 @@ export class CvUpdaterService {
     })
   }
  
-    competence (comp:any={type :'secondaire',niveau:'',nom:''}){ 
+    competence (comp:any={type :'',niveau:'',nom:''}){ 
       return new FormGroup({
         type : new FormControl (comp.type,[Validators.required]),
         nom : new FormControl (comp.nom,[Validators.required]),

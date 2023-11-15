@@ -1,266 +1,268 @@
 #cvBuilder{
-    width: 100%;
-    padding: 1rem;
+  width: 100%;
+  padding: 1rem;
 }
 
 #cvBuilder > div {
-    width: 80%;
-    margin: 1rem auto;
-    background-color: #007bff;
-    padding: 1rem;
-    border-radius: 0.5rem;
+  width: 80%;
+  margin: 1rem auto;
+  background-color: #007bff;
+  padding: 1rem;
+  border-radius: 0.5rem;
 
 }
 
 
 #cvBuilder > div >h1 {
-    color: white;
-    text-align: center;
+  color: white;
+  text-align: center;
 }
 
 
 
 /* Apply styles to the main form */
 .cv-form {
-    width: 80%;
-    margin: 0 auto;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    background-color: #f9f9f9;
-    display: flex;
-    flex-direction:column ;
-    flex-wrap: wrap;
-  }
-  
-  /* Style headings for form sections */
-  .form-heading {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+  width: 80%;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction:column ;
+  flex-wrap: wrap;
+}
 
-  .form-heading span {
-   width: 80%;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    cursor: pointer;
-    justify-content: start;
-  }
+/* Style headings for form sections */
+.form-heading {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  .form-heading span i{
-   margin-top: 7px;
-   }
+.form-heading span {
+ width: 80%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  cursor: pointer;
+  justify-content: start;
+}
+
+.form-heading > span > i {
+  font-size: 1.3rem;
  
-  .form-heading > span > i {
-    font-size: 1.3rem;
-   
-   }
+ }
 
-   .form-heading  > i {
-    font-size: 1.3rem;
-    width: 20%;
-    text-align: right;
-    cursor: pointer;
-   
-   }
+ .form-heading  > i {
+  font-size: 1.3rem;
+  width: 20%;
+  text-align: right;
+  cursor: pointer;
+ 
+ }
 
 
-  .form-heading:hover {
-    color: #007bff;
-    transition: color 0.3s;
-  }
-  
-  /* Apply styles to form sections */
-  .form-section {
-    padding: 1rem;
-    width: 100%;
-    margin-bottom: 1.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: white;
-    display: flex;
-    flex-direction: column; 
-  }
-  
-  /* Apply styles to form subsections (individual input rows) */
-  .form-subsection {
-    margin-bottom: 1rem;
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    border-bottom: 2px dashed #0056b3;
-    border-top: 2px dashed #0056b3;
-    border-left: 2px dashed white;
-    border-right: 2px dashed white;
-    max-height: 0;
-    overflow: hidden;
-    animation: show 1s ease-out forwards;
-  }
-  
-        
+.form-heading:hover {
+  color: #007bff;
+  transition: color 0.3s;
+}
+
+/* Apply styles to form sections */
+.form-section {
+  padding: 1rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  flex-direction: column; 
+}
+
+/* Apply styles to form subsections (individual input rows) */
+.form-subsection {
+  margin-bottom: 1rem;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-bottom: 2px dashed #0056b3;
+  border-top: 2px dashed #0056b3;
+  border-left: 2px dashed white;
+  border-right: 2px dashed white;
+  max-height: 0;
+  overflow: hidden;
+  animation: show 1s ease-out forwards;
+}
+
+      
 .break{
 width: 100%;
 border-bottom: 1px solid rgba(128, 128, 128, 0.356);
 margin: 0.5rem 0;
 }
-  .form-subsection h4{
-    width: 100%;
-    margin: 0.5rem 0;
+.form-subsection h4{
+  width: 100%;
+  margin: 0.5rem 0;
+  color: #007bff;
+}
+@keyframes show {
+  from {
+    max-height: 0;
+    opacity: 0;
   }
-  @keyframes show {
-    from {
-      max-height: 0;
-      opacity: 0;
-    }
-    to {
-      max-height: 5000px; /* Set a sufficiently large value for max-height */
-      opacity: 1;
-    }
+  to {
+    max-height: 5000px; /* Set a sufficiently large value for max-height */
+    opacity: 1;
   }
-  
-  .form-subsection:hover {
-    border:2px dashed #007bff ;
-  }
-  
-  .form-subsection:hover > button.remove-button{
-    display: initial;
- transition: all 0.5s; 
-
-  }
-  
-  /* Apply styles to all input fields */
-  .input-field ,.textarea-field{
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    outline: 1px solid #ccc;
-    border: none;
-    background-color: rgba(236, 235, 235, 0.062);
-    border-radius: 5px;
-  }
-
-  .input-field[type="date"]{
-    width: 40%;
-    margin-top: 1rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-
-
-  label + .input-field[type="date"]{
-    display: inline-block;
-   
-  }
-  .input-field:hover ,.input-field:focus,  .textarea-field:hover ,.textarea-field:focus  {
-    outline: 1px dashed #0056b3;
-  }
-  
-
-  .actions{
-    width: 100%;
-    padding-top: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    gap: 1rem;
-    flex-wrap: wrap;
-    border-top: 1px solid rgba(128, 128, 128, 0.356);
-    margin-top: 1rem;
-  }
-  /* Apply styles to buttons (both add and remove buttons) */
-
-  button.remove-button ,  button.add-button,button.build-cv-button{
-    width: fit-content;
-    padding: 0.5rem 2rem;
-    text-align: center;
-    cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: 0.5rem;
-    color: rgb(116, 119, 119);
-  }
-
-  
-  /* Style the "+" button for adding fields */
-  button.add-button,button.build-cv-button {
-    background-color: #007bff;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-  }
-  
-
-  /* Hover effect for buttons */
-
-  button.remove-button:hover {
-background: none;   
- color :red;
- border :1px solid red ;
- transition: all 0.5s; 
-  }
-
-  button.add-button:hover ,button.build-cv-button
-   {
-    color :#007bff;
-    border: 1px solid #007bff;
-    background: none;
-    transition: all 0.5s;
-  }
-
-
-  button.add-button:hover i 
-  {
-   color :#007bff !important;
-   background: none;
-   transition: all 0.5s;
- }
-  
-  .build-cv-button:disabled{
-    cursor: no-drop;
-    color: gray;
-    border:1px solid gray ;
-  }
-  .build-cv-button{
-   align-self: end;
-  }
-
-  .build-cv-button:enabled:hover{
-
-  color :white;
-  background: #007bff;
 }
 
-  .build-cv-button:disabled:hover{
-   
-    transition: all 0.5s;
+.form-subsection:hover {
+  /* border:2px dashed #007bff ; */
+  border: none;
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 155, 255, 1);
+-moz-box-shadow: 0px 0px 5px 1px rgba(0, 155, 255, 1);
+box-shadow: 0px 0px 5px 1px rgba(0, 155, 255, 1);
+}
 
-    cursor: no-drop;
-    color: gray;
-    border:1px solid gray ;
-   }
-  .cv-form .error {
-    width: 100% ;
-    border: none;
-    color :red ;
-    font-size: .7rem;
-    margin: 0.5rem 0;
-    padding: 0 10px;
-    text-align: right;
-  }
+.form-subsection:hover > button.remove-button{
+  display: initial;
+transition: all 0.5s; 
+
+}
+
+/* Apply styles to all input fields */
+.input-field ,.textarea-field{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  outline: 1px solid #ccc;
+  border: none;
+  background-color: rgba(236, 235, 235, 0.062);
+  border-radius: 5px;
+}
+
+.input-field[type="date"]{
+  width: 40%;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
 
 
-  .certifImage{
-    max-width: 98%;
-    margin: 0 auto;
-    height: auto;
-    object-fit: cover;
-    border-radius: 0.5rem;
-    border: 1px solid #0056b3;
-  }
+
+label + .input-field[type="date"]{
+  display: inline-block;
+ 
+}
+.input-field:hover ,.input-field:focus,  .textarea-field:hover ,.textarea-field:focus  {
+  outline: 1px dashed #0056b3;
+}
+
+
+.actions{
+  width: 100%;
+  padding-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.356);
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+/* Apply styles to buttons (both add and remove buttons) */
+
+button.remove-button ,  button.add-button,button.build-cv-button{
+  width: fit-content;
+  padding: 0.5rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  color: rgb(116, 119, 119);
+}
+
+
+/* Style the "+" button for adding fields */
+button.add-button,button.build-cv-button {
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+
+/* Hover effect for buttons */
+
+button.remove-button:hover {
+background: none;   
+color :red;
+border :1px solid red ;
+transition: all 0.5s; 
+}
+
+button.add-button:hover ,button.build-cv-button
+ {
+  color :#007bff;
+  border: 1px solid #007bff;
+  background: none;
+  transition: all 0.5s;
+}
+
+
+button.add-button:hover i 
+{
+ color :#007bff !important;
+ background: none;
+ transition: all 0.5s;
+}
+
+.build-cv-button:disabled{
+  cursor: no-drop;
+  color: gray;
+  border:1px solid gray ;
+}
+.build-cv-button{
+ align-self: end;
+}
+
+.build-cv-button:enabled:hover{
+
+color :white;
+background: #007bff;
+}
+
+.build-cv-button:disabled:hover{
+ 
+  transition: all 0.5s;
+
+  cursor: no-drop;
+  color: gray;
+  border:1px solid gray ;
+ }
+.cv-form .error {
+  width: 100% ;
+  border: none;
+  color :red ;
+  font-size: .7rem;
+  margin: 0.5rem 0;
+  padding: 0 10px;
+  text-align: right;
+}
+
+
+.certifImage{
+  max-width: 98%;
+  margin: 0 auto;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  border: 1px solid #0056b3;
+}
