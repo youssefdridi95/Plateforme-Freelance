@@ -1,7 +1,6 @@
 <div class="container" *ngIf="inscrit=='signup'">
-  <div class="heading"> s’inscrire</div>
   <form [formGroup]="userForm"  (ngSubmit)="signupUser()" action="" class="form">
-    <input required="" class="input" type="text" formControlName="username" id="username" placeholder="nom d'utilisateur *"><br>
+    <input required="" class="input" type="text" formControlName="username" id="username" placeholder="Nom d'utilisateur *"><br>
  
     <div class="validator" *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched"> nom d'utilisateur invalid!</div>
  
@@ -21,7 +20,7 @@
    
   </form>
   <div class="social-account-container">
-      <p class="title"> vous avez déja un compte ? <br> <a   (click)="inscrit = 'signin'"  > Connectez-vouz ici </a></p>
+      <p class="title"> vous avez déja un compte ? <br><br> <a   (click)="inscrit = 'signin'"  > Connectez-vouz ici </a></p>
       <div class="social-accounts">
      
       </div>
@@ -36,11 +35,13 @@
  
     <input required="" class="input" type="password" formControlName="password" placeholder="Mot de passe *">
     <div class="validator" *ngIf="userFormlogin.get('password')?.invalid && userFormlogin.get('password')?.touched">    ce champ est obligatoire! <br></div>
- 
+    <br>
+    <span class="forgot-password"><a routerLink="/mdp" >Mot de passe oublié ?</a></span>
+
     <button class="login-button" type="submit" > connexion</button>
   </form>
   <div class="social-account-container">
-    <p class="title">Vous n'avez pas encore de compte ? <br> <a  (click)="inscrit = 'signup'"  > Inscrivez-vous ici </a></p>
+    <p class="title">Vous n'avez pas encore de compte ? <br><br> <a  (click)="inscrit = 'signup'"  > Inscrivez-vous ici </a></p>
     <div class="social-accounts">
    
     </div>
