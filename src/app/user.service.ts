@@ -20,7 +20,9 @@ export class UserService {
 signup(user: any){
   return this.http.post(this.url + '/auth/signup', user);
 }
-
+loginUser(user: any){
+  return this.http.post(this.url + '/auth/signin', user);
+}
 
 
   // function signin api call

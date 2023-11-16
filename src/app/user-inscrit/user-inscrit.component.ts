@@ -20,7 +20,6 @@ export class UserInscritComponent {
 
   userForm = new FormGroup({
 
-
     username :  new FormControl('', [Validators.required,Validators.minLength(4)]),
     email :  new FormControl('', [Validators.required,Validators.email]),
     password : new FormControl('', [Validators.required, Validators.minLength(6)]),
@@ -34,12 +33,19 @@ export class UserInscritComponent {
       ? null
       : { mismatch: true };
   }
+
+  userFormlogin = new FormGroup({
+    username :  new FormControl('', [Validators.required,Validators.minLength(3)]),
+    password : new FormControl('', [Validators.required, Validators.minLength(6)]),
+  })
+
+
   signupUser() {
     const user= {
       'username' : this.userForm.value.username ,
       'email' : this.userForm.value.email ,
       'password' : this.userForm.value.password ,
-      'role' : 'ROLE_DEV' ,
+      'role' : 'DEV' ,
     }
 
     this.userService.signup(user).subscribe(
@@ -52,8 +58,8 @@ export class UserInscritComponent {
       err=>{
         console.log(err);
 
-    console.log('Formulaire soumis avec error', this.userForm.value);
-    this.toastr.error('sssssss','compte')
+    // console.log('Formulaire soumis avec error', this.userForm.value);
+    this.toastr.error(err.error.message, 'Connexion')
 
       }
     )
@@ -61,8 +67,25 @@ export class UserInscritComponent {
   }
 
   loginUser() {
+    const user={
+      'username' : this.userFormlogin.value.username , 
+      'password': this.userFormlogin.value.password , 
+      'role' : 'DEV' , 
+
+    }
+    this.userService.loginUser(user).subscribe(
+      res=>{
+        // console.log(res) ; 
+        this.toastr.success('succes', 'Connexion')
+        
+      },
+      err=>{
+        // console.log(err.error) ;
+        this.toastr.error(err.error.message, 'Connexion')
+      }
+    )
     // Vous pouvez ajouter ici le code pour traiter la soumission du formulaire
-    console.log('Formulaire soumis avec succès', this.userForm.value);
+    // console.log('Formulaire soumis avec succès', this.userFormlogin.value);
   }
 
   constructor(private roote : ActivatedRoute,private userService: UserService ,private toastr : ToastrService){

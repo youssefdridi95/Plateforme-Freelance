@@ -1,7 +1,7 @@
 <div class="container" *ngIf="inscrit=='signup'">
   <div class="heading"> s’inscrire</div>
   <form [formGroup]="userForm"  (ngSubmit)="signupUser()" action="" class="form">
-    <input required="" class="input" type="email" formControlName="username" id="username" placeholder="username"><br>
+    <input required="" class="input" type="text" formControlName="username" id="username" placeholder="username"><br>
 
     <div class="validator" *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched"> username invalid*</div>
 
@@ -28,25 +28,21 @@
     </div>
 </div>
 
-
 <div *ngIf="inscrit=='signin'" class="container">
   <div class="heading"> Connexion</div>
-  <form [formGroup]="userForm" (ngSubmit)="loginUser()" action="" class="form">
-    <input required="" class="input" type="email" formControlName="email" placeholder="E-mail">
-    <div class="validator" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">Email is required *</div>
+  <form [formGroup]="userFormlogin" (ngSubmit)="loginUser()" action="" class="form">
+    <input required="" class="input" type="text" formControlName="username" placeholder="username">
+    <div class="validator" *ngIf="userFormlogin.get('username')?.invalid && userFormlogin.get('username')?.touched">Email is required *</div>
 
     <input required="" class="input" type="password" formControlName="password" placeholder="Mot de passe">
-    <div class="validator" *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">Password is required *</div>
+    <div class="validator" *ngIf="userFormlogin.get('password')?.invalid && userFormlogin.get('password')?.touched">Password is required *</div>
 
-    <!-- <input required="" class="input" type="password" formControlName="confirmpassword" placeholder="Confirmer le mot de passe"><br><br>
-    <div class="validator" *ngIf="userForm?.errors?.['mismatch'] && userForm?.touched">Les mots de passe doivent correspondre *</div>
- -->
-    <input class="login-button" type="submit" value="Connexion">
+    <button class="login-button" type="submit" > connexion</button>
   </form>
   <div class="social-account-container">
-      <span class="title">Vous n'avez pas encore de compte ? <a  (click)="inscrit = 'signup'"  > s'inscrire</a></span>
-      <div class="social-accounts">
-     
-      </div>
+    <span class="title">Vous n'avez pas encore de compte ? <a  (click)="inscrit = 'signup'"  > s'inscrire</a></span>
+    <div class="social-accounts">
+   
     </div>
+  </div>
 </div>
