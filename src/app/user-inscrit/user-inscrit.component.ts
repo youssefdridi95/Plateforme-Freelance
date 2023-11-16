@@ -52,6 +52,8 @@ export class UserInscritComponent {
       res=>{
         console.log(res);
         
+        this.router.navigate(['/user/connexion/signin']);
+
         this.toastr.success('a été crée avec succés','compte')
 
       },
@@ -67,28 +69,46 @@ export class UserInscritComponent {
   }
 
   loginUser() {
-    const user={
-      'username' : this.userFormlogin.value.username , 
-      'password': this.userFormlogin.value.password , 
-      'role' : 'DEV' , 
-
-    }
+    const user = {
+      'username': this.userFormlogin.value.username,
+      'password': this.userFormlogin.value.password,
+      'role': 'DEV',
+    };
+  
     this.userService.loginUser(user).subscribe(
-      res=>{
-        // console.log(res) ; 
-        this.toastr.success('succes', 'Connexion')
-        
-      },
-      err=>{
-        // console.log(err.error) ;
-        this.toastr.error(err.error.message, 'Connexion')
-      }
-    )
-    // Vous pouvez ajouter ici le code pour traiter la soumission du formulaire
-    // console.log('Formulaire soumis avec succès', this.userFormlogin.value);
-  }
+      (res: any) => {
+        console.log(res);
+  
+        // Assurez-vous que la réponse contient la propriété 'token'
+        if (res && res.token) {
+          // Stockez les informations de l'utilisateur dans sessionStorage
+          sessionStorage.setItem('userToken', res.token);
+          sessionStorage.setItem('userId', res.id);
+          sessionStorage.setItem('userRoles', JSON.stringify(res.roles));
+          sessionStorage.setItem('useremail', JSON.stringify(res.email));
+          sessionStorage.setItem('username', JSON.stringify(res.username));
 
-  constructor(private roote : ActivatedRoute,private userService: UserService ,private toastr : ToastrService){
+          this.router.navigate(['/user/form']);
+
+          this.toastr.success('Connexion réussie', 'Connexion');
+                //  this.router.navigate(['/profil']);
+
+        } else {
+          this.toastr.error('Réponse invalide du serveur', 'Connexion');
+        }
+      },
+      err => {
+        console.log(err.error);
+        this.toastr.error(err.error.message, 'Connexion');
+      }
+    );
+  
+    // Vous pouvez ajouter ici le code pour traiter la soumission du formulaire
+    console.log('Formulaire soumis avec succès', this.userFormlogin.value);
+  }
+  
+
+  constructor(private roote : ActivatedRoute,private userService: UserService ,private toastr : ToastrService, private router: Router){
     this.roote.paramMap.subscribe(params =>{this.inscrit=params.get('type')})
   }
 

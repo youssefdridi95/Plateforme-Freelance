@@ -4,7 +4,7 @@
 
     <div class="user-image">
       <img [src]="url" alt="User Image" />
-      <label  *ngIf="popup == false" for="file" class="file-button">&#x1F4F7;</label>
+      <label  *ngIf="popup == false" for="file" class="file-button"></label>
       <input  class="file-input" type="file" id="file" (change)="onFileChange($event)" />
     </div>
 
@@ -19,7 +19,7 @@
               name="fname"
               id="fname"
               maxlength="100"
-              value="Fedi"
+              [value]=username
               readonly
             />
           </span>
@@ -29,7 +29,7 @@
         <div class="field">
           <p class="mail">Email</p>
           <span>   
-                   <button class="edit-button" (click)="enableEdit('email')"><i class="fa-solid fa-pen-to-square"></i></button>
+                   <button class="edit-button" (click)="toggleButtonAndEdit('email')"><i class="fa-solid fa-pen-to-square"></i></button>
 
 
             <input
@@ -37,8 +37,9 @@
               name="email"
               id="email"
               maxlength="100"
-              value="Fedi13@gmail"
               readonly
+              [value]=email
+
             />
           </span>
         </div>
@@ -51,11 +52,11 @@
               name="password"
               id="password"
               maxlength="100"
-              value="****5****"
+              value="********"
               readonly
             />
           </span>
-          <button class="edit-button" (click)="popup =! popup"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button class="edit-button" (click)="popup =! popup " ><i class="fa-solid fa-pen-to-square"></i></button>
 
         </div>
       </div>
@@ -84,5 +85,6 @@
       <button [disabled]="!form.valid" type="submit" class="save-button">Enregistrer</button>
     </div>
   </div>
+  <button *ngIf="button==true"> name</button>
 
 </body>

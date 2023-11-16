@@ -11,13 +11,12 @@ import { MdpComponent } from './mdp/mdp.component';
 import { UserCompteComponent } from './user-compte/user-compte.component';
 import { ProfilComponent } from './profil/profil.component';
 import { RoleComponent } from './role/role.component';
+import { UserFormComponent } from './user-form/user-form.component';
 
 const routes: Routes = [
-  {path : "user/connexion/:type" , component : UserInscritComponent },
   {path:"profil/entreprise",component :ProfilEntrepriseComponent},
   {path:"login/entreprise",component :LoginEntrepriseComponent},
   {path:"creation/entreprise",component :CreationEntrepriseComponent},
-
 
   {path:"entreprise/profil",component :ProfilEntrepriseComponent},
 
@@ -28,13 +27,15 @@ const routes: Routes = [
 
   {path:"mdp",component :MdpComponent},
   {path:"role",component :RoleComponent },
-  {path :"user/connexion", component : UserInscritComponent },
   {path:"cv/creer",component :CvBuilderComponent },
   {path:":id/cv/edit",component :CvUpdateComponent },
   {path:"cv/afficher",component :CvPreviewComponent },
 
   {path: "user/profil", component : ProfilComponent},
-  {path: "user/compte", component : UserCompteComponent}
+  {path: "user/compte", component : UserCompteComponent},
+  {path: "user/form" , component : UserFormComponent},
+  {path :"user/connexion", component : UserInscritComponent },
+  {path : "user/connexion/:type" , component : UserInscritComponent },
 
 ];
 

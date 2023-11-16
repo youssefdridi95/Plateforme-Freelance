@@ -1,10 +1,11 @@
 
 .container {
+  
     margin: 2rem auto;
     width: 100%;
     max-width: 50rem;
     background-color: white;
-    padding: 1rem 2rem;
+    padding: 2rem 5rem;
     border-radius: 0.5rem;
     transition: background-color 0.3s ease; /* Optional: Add a smooth transition effect */
   }
@@ -36,6 +37,7 @@
     color: gray;
     
   }
+  
   .card2 {
     font-size: 1rem;
     font-weight: bold;
@@ -84,8 +86,7 @@
 }
 .user-image {
     position: relative;
-    width: 100px; /* Ajustez la largeur et la hauteur selon vos besoins */
-    height: 100px;
+    width: 40%; /* Ajustez la largeur et la hauteur selon vos besoins */
     border-radius: 50%;
     overflow: hidden;
     background-color: #2e90e5;
@@ -124,7 +125,7 @@
 
 .file-button::before {
     content: '📷';  /* Remplacez le contenu par l'emoji ou l'icône que vous souhaitez utiliser */
-    font-size: 20px;  /* Ajustez la taille de l'icône selon vos préférences */
+    font-size: 25px;  /* Ajustez la taille de l'icône selon vos préférences */
 }
 
 
@@ -145,8 +146,8 @@
   }
   .file-button {
     position: absolute;
-    top: 50%;
-    left: 85%;
+    top: 22%;
+    left: 84%;
     transform: translate(-50%, -50%);
     padding: 5px;
     background-color: transparent;

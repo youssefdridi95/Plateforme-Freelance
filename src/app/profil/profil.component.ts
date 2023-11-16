@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+// import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-profil',
@@ -30,10 +31,21 @@ export class ProfilComponent {
       ? null
       : { mismatch: true };
   }
-
+   button = false ;
   popup = false;
+  username: string = '';
+  email: string = '';
 
-  ngOnInit() {}
+  ngOnInit() {
+    // Récupérer le nom d'utilisateur et l'e-mail depuis le sessionStorage
+    const storedUsername = sessionStorage.getItem('username');
+    const storedEmail = sessionStorage.getItem('useremail');
+  
+    // Assurez-vous que la valeur n'est pas null avant de l'assigner
+    this.username = storedUsername ?JSON.parse (storedUsername) : '';
+    this.email = storedEmail ? JSON.parse (storedEmail) : '';
+  }
+  
 
   url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHzl1DW0w9lJrVWAMzVhAzg-ZSd-L0QiAGOoqtP58&s";
 
@@ -61,4 +73,13 @@ export class ProfilComponent {
       element.focus();
     }
   }
+  toggleButtonAndEdit(fieldName: string): void {
+    this.enableEdit(fieldName);
+    this.toggleButton();
+  }
+  
+  toggleButton(): void {
+    this.button = !this.button;
+  }
+  
 }
