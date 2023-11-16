@@ -25,6 +25,8 @@
 <div class="container container2" *ngIf="display=='signup'">
   <div class="heading">Inscription </div>
   <form [formGroup]="signupForm" class="form">
+    <input type="text"  class="input" formControlName="nom" id="Nom_utilisateur" placeholder="Nom utilisateur*" />
+
        <input type="email" class="input" formControlName="email"  placeholder="E-mail professionnel*"/>
         <div *ngIf="   signupForm.controls['email'].touched " class="text-danger" >
           <span *ngIf="!isPro">
