@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+const TOKEN_KEY = 'myAuthTokenKey';
+const entreprise_KEY = 'myUserKey';
 @Injectable({
   providedIn: 'root'
 })
@@ -24,6 +25,9 @@ login(entreprise: any){
   return this.http.post(this.url + '/auth/signin',entreprise);
 }
 
-
+saveEntrepriseDate(token:any,entreprise:any) {
+  sessionStorage.setItem(TOKEN_KEY, token);
+  sessionStorage.setItem(entreprise_KEY, JSON.stringify(entreprise));
+}
   // function signin api call
 }
