@@ -1,68 +1,117 @@
 
-
+ 
 <div class="container" *ngIf="display=='login'">
   <div class="heading">Connexion</div>
-    <form class="form" >
+  <form [formGroup]="signupForm" class="form">
+    <input type="text"  class="input" formControlName="username" id="username" placeholder="Nom utilisateur *" />
+    <div *ngIf="   signupForm.controls['username'].touched " class="text-danger" >
+      <span *ngIf="signupForm.controls['username'].errors?.['required']">
+        ce champ est obligatoire! <br>
+      </span>
+      <span *ngIf="signupForm.controls['username'].errors?.['minlength']">
+        le longueur minimal est 6.
+      </span>
+  
+   
+    </div>
       
-      <input required="" class="input" type="email" name="email" id="email" placeholder="E-mail professionnel*">
-      <input required="" class="input" type="password" name="password" id="password" placeholder="Mot de passe*">
+     
+        <input type="password" class="input" formControlName="password" placeholder="Mot de passe *"/>
+     
+        <div *ngIf="   signupForm.controls['password'].touched " class="text-danger" >
+          <span *ngIf="signupForm.controls['password'].errors?.['required']">
+            ce champ est obligatoire! <br>
+          </span>
+          <span *ngIf="signupForm.controls['password'].errors?.['minlength']">
+            le longueur minimal est 6.
+          </span>
+
+       
+        </div>
       <span class="forgot-password"><a routerLink="/mdp" >Mot de passe oublié ?</a></span>
       <input class="login-button" type="submit"  value="Connexion">
-    
+   
     <span class="other" >
-
+ 
       <p>Vous n'avez pas encore de compte ?
       </p>
   </span>
   <input class="signup-button" type="submit" value="S'inscrire" (click)="display ='signup'" >
     </form>
-
+ 
 </div>
-
-
-
-
+ 
+ 
+ 
+ 
 <div class="container container2" *ngIf="display=='signup'">
   <div class="heading">Inscription </div>
   <form [formGroup]="signupForm" class="form">
-    <input type="text"  class="input" formControlName="nom" id="Nom_utilisateur" placeholder="Nom utilisateur*" />
-
+    <input type="text"  class="input" formControlName="username" id="username" placeholder="Nom utilisateur*" />
+    <div *ngIf="   signupForm.controls['username'].touched " class="text-danger" >
+      <span *ngIf="signupForm.controls['username'].errors?.['required']">
+        ce champ est obligatoire! <br>
+      </span>
+      <span *ngIf="signupForm.controls['username'].errors?.['minlength']">
+        le longueur minimal est 6.
+      </span>
+  
+   
+    </div>
        <input type="email" class="input" formControlName="email"  placeholder="E-mail professionnel*"/>
         <div *ngIf="   signupForm.controls['email'].touched " class="text-danger" >
-          <span *ngIf="!isPro">
-            E-mail non professionnel*
-          </span>
           <span *ngIf="signupForm.controls['email'].errors?.['required']">
-            E-mail professionnel* min len 3
+            ce champ est obligatoire! <br>
           </span>
+          <span *ngIf="!isPro">
+            E-mail non professionnel
+          </span>
+      
        
         </div>
-      
-      
+     
+     
         <input type="password" class="input" formControlName="password" placeholder="Mot de passe*"/>
      
+        <div *ngIf="   signupForm.controls['password'].touched " class="text-danger" >
+          <span *ngIf="signupForm.controls['password'].errors?.['required']">
+            ce champ est obligatoire! <br>
+          </span>
+          <span *ngIf="signupForm.controls['password'].errors?.['minlength']">
+            le longueur minimal est 6.
+          </span>
 
-
-  
+       
+        </div>
+ 
+ 
     <input type="password" class="input" formControlName="confirmPwd"placeholder="Confirm Mot de passe*"  />
-    <div *ngIf="isMush===false || signupForm.controls['confirmPwd'].errors?.['minlength']" class="text-danger">
-     
-        verifier votre mot passe
-     
-    </div>
-  
-  
-  
+    <div  class="text-danger" *ngIf="   signupForm.controls['password'].touched">
+      <span *ngIf="isMush===false ">
+        Confirmer le mot de passe! <br>
+      </span>
+      <span *ngIf="signupForm.controls['confirmPwd'].errors?.['required']">
+        ce champ est obligatoire! <br>
+      </span>
+      <span *ngIf="signupForm.controls['confirmPwd'].errors?.['minlength']">
+        le longueur minimal est 6.
+      </span>
+
+  </div>
+
+ 
+ 
+ 
     <input class=" signup-button" type="submit" value="S'inscrire" (click)="inscrire()" >
-
-
+ 
+ 
     <span class="other" >
-
+ 
       <p> Vous avez un Compte Entreprise ?
       </p>
   </span>
   <input class="login-button" type="submit" value="Connexion" (click)="display ='login'" >
-  
+ 
     </form>
-
+ 
 </div>

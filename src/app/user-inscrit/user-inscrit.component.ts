@@ -25,6 +25,15 @@ export class UserInscritComponent {
     email :  new FormControl('', [Validators.required,Validators.email]),
     password : new FormControl('', [Validators.required, Validators.minLength(6)]),
     confirmpassword : new FormControl('',[Validators.required])
+  });
+
+  userFormlogin = new FormGroup({
+
+
+    username :  new FormControl('', [Validators.required,Validators.minLength(4)]),
+    email :  new FormControl('', [Validators.required,Validators.email]),
+    password : new FormControl('', [Validators.required, Validators.minLength(6)]),
+    confirmpassword : new FormControl('',[Validators.required])
   },
   {
     validators: this.passwordMatchValidator, // Utilisez 'validators' au lieu de 'Validators'
@@ -38,9 +47,9 @@ export class UserInscritComponent {
 
   signupUser() {
     const user= {
-      'username' : this.userForm.value.username ,
-      'email' : this.userForm.value.email ,
-      'password' : this.userForm.value.password ,
+      'username' : this.userFormlogin.value.username ,
+      'email' : this.userFormlogin.value.email ,
+      'password' : this.userFormlogin.value.password ,
       'role' : 'DEV' ,
     }
 
@@ -63,7 +72,7 @@ export class UserInscritComponent {
 
   loginUser() {
     // Vous pouvez ajouter ici le code pour traiter la soumission du formulaire
-    console.log('Formulaire soumis avec succès', this.userForm.value);
+    console.log('Formulaire soumis avec succès', this.userFormlogin.value);
   }
 
   constructor(private roote : ActivatedRoute,private userService: UserService ,private toastr : ToastrService){

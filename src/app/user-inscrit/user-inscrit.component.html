@@ -1,52 +1,48 @@
 <div class="container" *ngIf="inscrit=='signup'">
   <div class="heading"> s’inscrire</div>
   <form [formGroup]="userForm"  (ngSubmit)="signupUser()" action="" class="form">
-    <input required="" class="input" type="email" formControlName="username" id="username" placeholder="username"><br>
-
-    <div class="validator" *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched"> username invalid*</div>
-
-    <input required="" class="input" type="email" formControlName="email" id="email" placeholder="E-mail"><br>
+    <input required="" class="input" type="text" formControlName="username" id="username" placeholder="nom d'utilisateur *"><br>
+ 
+    <div class="validator" *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched"> nom d'utilisateur invalid!</div>
+ 
+    <input required="" class="input" type="email" formControlName="email" id="email" placeholder="E-mail *"><br>
     <!-- <div  *ngIf="userForm.controls.email." > email is required.</div> -->
     <div class="validator" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched"> Email invalid*</div>
-
-    <input required="" class="input" type="password" formControlName="password" id="password" placeholder="mot de passe">
-    <div class="validator" *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched"> Password is required *</div>
-
+ 
+    <input required="" class="input" type="password" formControlName="password" id="password" placeholder="mot de passe *">
+    <div class="validator" *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">    ce champ est obligatoire! <br></div>
+ 
     <input required="" class="input" type="password" formControlName="confirmpassword" id="confirmpassword" placeholder="confirmer le mot de passe"  ><br><br>
-    <div class="validator" *ngIf="userForm?.errors?.['mismatch'] && userForm?.touched"> password must match *</div>
-
+    <div class="validator" *ngIf="userForm?.errors?.['mismatch'] && userForm?.touched"> merci de cpnfirmer votre mot de passe.</div>
+ 
     <!-- <span class="forgot-password"><a href="tatatata">mot de passe oublié ?</a></span> -->
-    
+   
     <button class="login-button" type="submit" >s’inscrire</button>
-    
+   
   </form>
   <div class="social-account-container">
-      <span class="title"> vous avez déja un compte  <a   (click)="inscrit = 'signin'"  > Connexion</a></span>
+      <p class="title"> vous avez déja un compte ? <br> <a   (click)="inscrit = 'signin'"  > Connectez-vouz ici </a></p>
       <div class="social-accounts">
      
       </div>
     </div>
 </div>
-
-
+ 
 <div *ngIf="inscrit=='signin'" class="container">
   <div class="heading"> Connexion</div>
-  <form [formGroup]="userForm" (ngSubmit)="loginUser()" action="" class="form">
-    <input required="" class="input" type="email" formControlName="email" placeholder="E-mail">
-    <div class="validator" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">Email is required *</div>
-
-    <input required="" class="input" type="password" formControlName="password" placeholder="Mot de passe">
-    <div class="validator" *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">Password is required *</div>
-
-    <!-- <input required="" class="input" type="password" formControlName="confirmpassword" placeholder="Confirmer le mot de passe"><br><br>
-    <div class="validator" *ngIf="userForm?.errors?.['mismatch'] && userForm?.touched">Les mots de passe doivent correspondre *</div>
- -->
-    <input class="login-button" type="submit" value="Connexion">
+  <form [formGroup]="userFormlogin" (ngSubmit)="loginUser()" action="" class="form">
+    <input required="" class="input" type="text" formControlName="username" placeholder="nom d'utlilisateur *">
+    <div class="validator" *ngIf="userFormlogin.get('username')?.invalid && userFormlogin.get('username')?.touched">    ce champ est obligatoire! <br></div>
+ 
+    <input required="" class="input" type="password" formControlName="password" placeholder="Mot de passe *">
+    <div class="validator" *ngIf="userFormlogin.get('password')?.invalid && userFormlogin.get('password')?.touched">    ce champ est obligatoire! <br></div>
+ 
+    <button class="login-button" type="submit" > connexion</button>
   </form>
   <div class="social-account-container">
-      <span class="title">Vous n'avez pas encore de compte ? <a  (click)="inscrit = 'signup'"  > s'inscrire</a></span>
-      <div class="social-accounts">
-     
-      </div>
+    <p class="title">Vous n'avez pas encore de compte ? <br> <a  (click)="inscrit = 'signup'"  > Inscrivez-vous ici </a></p>
+    <div class="social-accounts">
+   
     </div>
+  </div>
 </div>
