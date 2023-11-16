@@ -14,15 +14,15 @@ export class ProfilEntrepriseComponent {
   @ViewChild('telephoneInput') telephoneInput!: ElementRef;
   @ViewChild('siteWebInput') siteWebInput!: ElementRef;
   @ViewChild('fondeeEnInput') fondeeEnInput!: ElementRef;
-
-   entreprise = {
-    nom : 'nom' ,
-    adresse : 'paris' ,
-    telephone : 99999999 ,
-    siteWeb : 'www.com' ,
-    fondeeEn : 2018 ,
-    email : "entreprize@hhhhh.tn" ,
+  entreprise = {
+    nom : '' ,
+    adresse : '' ,
+    telephone : '' ,
+    siteWeb : '' ,
+    fondeeEn : '' ,
+    email : "" ,
   }
+   
   isClicked =false
   // Function to focus on the input field
   focusOn(inputName: string) {
@@ -70,6 +70,8 @@ export class ProfilEntrepriseComponent {
 
   }
 
-
-  ngOnInit (): void{}
+  ngOnInit (): void{
+   const entreprise1 = JSON.parse( sessionStorage.getItem("user")!)
+   this.entreprise.email=entreprise1.email
+  }
 }

@@ -5,7 +5,7 @@
         <section>
           <label for="fileToUpload">
             <i class="fa fa-camera"></i>
-            <input type="file" id="fileToUpload" style="visibility: hidden" accept=".png,.jpg,jpeg,.PNG,.JPEG"
+            <input type="file" id="fileToUpload" style="visibility: hidden" accept="image/*"
               name="fileToUpload"
               onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" />
           </label>

@@ -13,8 +13,8 @@ shouldShowNavbar(): boolean {
   return (
    this.router.url === '/user/connexion/signin'  ||
     this.router.url === '/user/connexion/signup'  ||  
-    this.router.url === 'entreprise/connexion/login'||  
-    this.router.url === 'entreprise/connexion/signup'|| 
+    this.router.url === '/entreprise/connexion/login'||  
+    this.router.url === '/entreprise/connexion/signup'|| 
     this.router.url === '/');
 }
 }

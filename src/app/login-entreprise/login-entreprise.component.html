@@ -2,14 +2,14 @@
  
 <div class="container" *ngIf="display=='login'">
   <div class="heading">Connexion</div>
-  <form [formGroup]="signupForm" class="form">
+  <form [formGroup]="loginForm" class="form" >
     <input type="text"  class="input" formControlName="username" id="username" placeholder="Nom utilisateur *" />
     <div *ngIf="   signupForm.controls['username'].touched " class="text-danger" >
       <span *ngIf="signupForm.controls['username'].errors?.['required']">
         ce champ est obligatoire! <br>
       </span>
       <span *ngIf="signupForm.controls['username'].errors?.['minlength']">
-        le longueur minimal est 6.
+        la longueur minimal est 6.
       </span>
   
    
@@ -23,20 +23,20 @@
             ce champ est obligatoire! <br>
           </span>
           <span *ngIf="signupForm.controls['password'].errors?.['minlength']">
-            le longueur minimal est 6.
+            la longueur minimal est 6.
           </span>
 
        
         </div>
       <span class="forgot-password"><a routerLink="/mdp" >Mot de passe oublié ?</a></span>
-      <input class="login-button" type="submit"  value="Connexion">
+      <input class="login-button" type="submit"  value="Connexion"(click)="login()">
    
     <span class="other" >
  
       <p>Vous n'avez pas encore de compte ?
       </p>
   </span>
-  <input class="signup-button" type="submit" value="S'inscrire" (click)="display ='signup'" >
+  <input class="signup-button" type="submit" value="S'inscrire" (click)="navigateToPage('/entreprise/connexion/signup')" >
     </form>
  
 </div>
@@ -53,7 +53,7 @@
         ce champ est obligatoire! <br>
       </span>
       <span *ngIf="signupForm.controls['username'].errors?.['minlength']">
-        le longueur minimal est 6.
+        la longueur minimal est 6.
       </span>
   
    
@@ -78,7 +78,7 @@
             ce champ est obligatoire! <br>
           </span>
           <span *ngIf="signupForm.controls['password'].errors?.['minlength']">
-            le longueur minimal est 6.
+            la longueur minimal est 6.
           </span>
 
        
@@ -94,7 +94,7 @@
         ce champ est obligatoire! <br>
       </span>
       <span *ngIf="signupForm.controls['confirmPwd'].errors?.['minlength']">
-        le longueur minimal est 6.
+        la longueur minimal est 6.
       </span>
 
   </div>
@@ -110,7 +110,7 @@
       <p> Vous avez un Compte Entreprise ?
       </p>
   </span>
-  <input class="login-button" type="submit" value="Connexion" (click)="display ='login'" >
+  <input class="login-button" type="submit" value="Connexion" (click)="navigateToPage('/entreprise/connexion/login')" >
  
     </form>
  
