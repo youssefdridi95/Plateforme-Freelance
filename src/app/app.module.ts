@@ -29,6 +29,7 @@ import { CvUpdateComponent } from './cv-update/cv-update.component';
 import { MdpComponent } from './mdp/mdp.component';
 import { DialogBodyComponent } from './dialog-body/dialog-body.component';
 import { RoleComponent } from './role/role.component';
+import { RecupMDPComponent } from './recup-mdp/recup-mdp.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import { RoleComponent } from './role/role.component';
     DialogBodyComponent,
     ProfilComponent,
 
-    RoleComponent
+    RoleComponent,
+      RecupMDPComponent
   ],
   imports: [
     BrowserModule,
