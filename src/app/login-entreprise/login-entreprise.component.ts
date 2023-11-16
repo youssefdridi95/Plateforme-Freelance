@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-
+import { EntrepriseService } from '../services/entreprise.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login-entreprise',
   templateUrl: './login-entreprise.component.html',
@@ -9,44 +10,57 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LoginEntrepriseComponent {
   loginForm!:FormGroup
-  user:any={};
-  
   display :any;
   signupForm !:FormGroup
-  tab!:["gmail","outlook"]
-  constructor(private formBuilder:FormBuilder, private route: ActivatedRoute) { 
-  this.route.paramMap.subscribe(params => { this.display= params.get('type') ;console.log(this.display)}) ;
+  constructor(private formBuilder:FormBuilder, private route: ActivatedRoute,private toastr : ToastrService,private  entrepriseService : EntrepriseService ) { 
+  this.route.paramMap.subscribe(params => { this.display= params.get('type') ;}) ;
 
   }
-
-
 
   ngOnInit (): void {
   this.signupForm = this.formBuilder.group({
-    email:['',[Validators.minLength(3),Validators.required]],
-    password:['',Validators.minLength(2)],
-    confirmPwd:['',Validators.minLength(2)],
+    username : ['', [Validators.required,Validators.minLength(4)]],
+    email:['',[Validators.minLength(5),Validators.required]],
+    password:['',[Validators.required,Validators.minLength(6)]],
+    confirmPwd:['',[Validators.required,Validators.minLength(6)]],
+  }
+  
+   )
+   this.loginForm =  this.formBuilder.group({
+    username : ['', [Validators.required,Validators.minLength(4)]],
+    password:['',[Validators.required,Validators.minLength(6)]],
    })
 } 
   
-
-  signup(){
-  console.log('here into signupform', this.signupForm.value)
-  }
-
   isMush=true
   isPro=true
   validateEmail(email: string): boolean {
-    console.log(email);
-    
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-  
-    // Vérifier que le domaine n'est ni "gmail" ni "outlook"
-    const domain = email.split('@')[1];
-    const isExcludedDomain = ["gmail", "outlook", "yahoo", "mail", "protonmail", "zoho", "aol", "yandex", "gmx", "Hotmail", " icloud"].some(excluded => domain.includes(excluded));
-  
-    return emailRegex.test(email) && !isExcludedDomain;
-  }
+    // Extracting the domain from the email address
+    const emailParts = email.split('@');
+    if (emailParts.length !== 2) {
+        // Invalid email format
+        return false;
+    }
+
+    const domainWithDot = emailParts[1];
+    const firstDotIndex = domainWithDot.indexOf('.');
+
+    if (firstDotIndex === -1) {
+        // No dot found in the domain, consider the whole domain
+        return false;
+    }
+
+    const domain = domainWithDot.substring(0, firstDotIndex).toLowerCase();
+
+    // List of allowed domains
+    const allowedDomains = ["gmail", "outlook", "yahoo", "mail", "protonmail", "aol", "yandex", "gmx", "hotmail", "icloud"];
+
+   console.log(allowedDomains.includes(domain));
+   
+   return !allowedDomains.includes(domain);
+}
+
+
   inscrire() {
     if (this.signupForm.get('password')!.value === this.signupForm.get('confirmPwd')!.value) {
       this.isMush =true
@@ -59,7 +73,56 @@ export class LoginEntrepriseComponent {
     } else {
       this.isPro = false;
     }
+if (this.isMush && this.isPro)
+    {const entreprise= {
+      'username' : this.signupForm.value.username ,
+      'email' : this.signupForm.value.email ,
+      'password' : this.signupForm.value.password ,
+      'role' : 'entreprise' ,
+    }
+  
+    this.entrepriseService.signup(entreprise).subscribe(
+      res=>{
+        console.log(res);
+        
+        this.toastr.success('a été crée avec succés','compte')
+  
+      },
+      err=>{
+        console.log(err);
+  
+    this.toastr.error(err.error.message,'compte')
+  
+      }
+    )}
+    else
+    this.toastr.error("Valider votre formulaire",'')
+
+
+
   }
+  login() {
+    console.log(this.loginForm.value);
+    
+    const entreprise = {
+      'username': this.loginForm.value.username,
+      'password': this.loginForm.value.password,
+    };
+  
+    this.entrepriseService.login(entreprise).subscribe(
+      res => {
+        console.log(res);
+        this.toastr.success('Connexion réussie', 'Compte');
+      },
+      err => {
+        console.log(err);
+        this.toastr.error(err.error.message, 'Compte');
+      }
+    );
+  }
+  
+ 
+
  
 }
 
