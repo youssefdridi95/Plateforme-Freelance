@@ -15,7 +15,6 @@ import { AppComponent } from './app.component';
 
 import { UserInscritComponent } from './user-inscrit/user-inscrit.component';
 import { ProfilComponent } from './profil/profil.component'; 
-import { UserCompteComponent } from './user-compte/user-compte.component';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
@@ -30,6 +29,7 @@ import { MdpComponent } from './mdp/mdp.component';
 import { DialogBodyComponent } from './dialog-body/dialog-body.component';
 import { RoleComponent } from './role/role.component';
 import { RecupMDPComponent } from './recup-mdp/recup-mdp.component';
+import { UserFormComponent } from './user-form/user-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,9 +45,10 @@ import { RecupMDPComponent } from './recup-mdp/recup-mdp.component';
     MdpComponent,
     DialogBodyComponent,
     ProfilComponent,
-
     RoleComponent,
-      RecupMDPComponent
+    RecupMDPComponent,
+    UserFormComponent
+    
   ],
   imports: [
     BrowserModule,
