@@ -34,7 +34,7 @@ const routes: Routes = [
 
   {path: "user/profil", component : ProfilComponent},
   {path: "user/compte", component : UserCompteComponent},
-  {path: "user/form" , component : UserFormComponent},
+  {path: "user/profile/create" , component : UserFormComponent},
   {path :"user/connexion", component : UserInscritComponent },
   {path : "user/connexion/:type" , component : UserInscritComponent },
 
