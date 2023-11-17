@@ -12,6 +12,7 @@ import { UserCompteComponent } from './user-compte/user-compte.component';
 import { ProfilComponent } from './profil/profil.component';
 import { RoleComponent } from './role/role.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { RecupMDPComponent } from './recup-mdp/recup-mdp.component';
 
 const routes: Routes = [
   {path:"",component :RoleComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path:"entreprise/connexion/:type",component :LoginEntrepriseComponent},
   {path:"entreprise/creation",component :CreationEntrepriseComponent},
 
+  {path:"changeMdp/:email",component :RecupMDPComponent},
 
 
   {path:"mdp",component :MdpComponent},
