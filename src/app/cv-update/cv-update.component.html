@@ -50,7 +50,7 @@
             <ng-container
             *ngFor="let competenceControl of cv.cvForm.get('competence.secondaire').controls; let i = index"
             [formGroupName]="i">
-            <h4 *ngIf="cv.cvForm.get('competence.secondaire').controls.length>0 ">{{competenceControl.get('type').value}}</h4>
+          
               <label for="nom">Nom:</label>
               <input type="text" required formControlName="nom" class="input-field" />
               <div *ngIf="competenceControl.get('nom').invalid && competenceControl.get('nom').touched" class="error">
@@ -60,14 +60,78 @@
                 </p>
               </div>
               <label for="niveau">Niveau:</label>
-              <select id="niveau" formControlName="niveau" class="input-field"  *ngIf="competenceControl.get('type').value==='secondaire'" >
+              <select id="niveau" formControlName="niveau" class="input-field"   >
                 <option value="debutant">débutant</option>
                 <option value="intermediaire">intermediaire</option>
                 <option value="avance">avancé</option>
                 <option value="expert">expert</option>
               </select>
 
-              <select id="niveau" formControlName="niveau" class="input-field"  *ngIf="competenceControl.get('type').value==='langue'" >
+        
+              <div *ngIf="competenceControl.get('niveau').invalid && competenceControl.get('niveau').touched"
+                class="error">
+                <p>
+                  <i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"></i> ce champ est obligatoir !
+                  <br>
+                </p>
+              </div>
+              <div class="actions">
+                <button type="button" (click)="cv.removeField('secondaire', i);" class="remove-button">
+                  <i class="fa-regular fa-trash-can"></i> Supprimer 
+                </button>
+      
+                <button type="button" (click)="cv.addField('secondaire', cv.competence());"
+                  class="add-button" *ngIf="i===cv.cvForm.get('competence.secondaire').controls.length-1 ">
+                 <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   compétence
+                </button>
+              </div>
+            </ng-container>
+
+          </ng-container>
+        </div>
+        <div class="actions">
+   
+          <button type="button" (click)="cv.addField('secondaire', cv.competence());" class="add-button"
+            *ngIf="cv.cvForm.get('competence.secondaire').controls.length==0 ">
+           <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   compétence
+          </button>
+        </div>
+      </ng-container>
+
+    </div>
+
+    <div formGroupName="competence" class="form-section">
+      <h2 class="form-heading" >
+       <span (click)="toggleSection('langue')">
+       
+        Langue 
+
+       <i class="fa-solid fa-angle-up" *ngIf="!isSectionOpen['langue']"></i> 
+       <i class="fa-solid fa-angle-down" *ngIf="isSectionOpen['langue']"></i>
+
+      </span>
+      </h2>
+      <ng-container *ngIf="isSectionOpen['langue']">
+
+        <div class="form-subsection" formArrayName="langue" *ngIf="cv.cvForm.get('competence.langue').controls.length !==0 ">
+      
+    
+            <ng-container
+            *ngFor="let competenceControl of cv.cvForm.get('competence.langue').controls; let i = index"
+            [formGroupName]="i">
+           
+              <label for="nom">Nom:</label>
+              <input type="text" required formControlName="nom" class="input-field" />
+              <div *ngIf="competenceControl.get('nom').invalid && competenceControl.get('nom').touched" class="error">
+                <p>
+                  <i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"></i> ce champ est obligatoir !
+                  <br>
+                </p>
+              </div>
+              <label for="niveau">Niveau:</label>
+          
+
+              <select id="niveau" formControlName="niveau" class="input-field" >
                 <option value="A1">A1 (Découverte)</option>
                 <option value="A2">A2 (Survie)</option>
                 <option value="B1">B1 (Seuil)</option>
@@ -84,35 +148,32 @@
                 </p>
               </div>
               <div class="actions">
-                <button type="button" (click)="cv.removeField('competence', i);" class="remove-button">
+                <button type="button" (click)="cv.removeField('langue', i);" class="remove-button">
                   <i class="fa-regular fa-trash-can"></i> Supprimer 
                 </button>
-                <button type="button" (click)="cv.addField('competence', cv.competence({type :'langue',niveau:'',nom:''}));"
-                class="add-button" *ngIf="i===cv.cvForm.get('competence.secondaire').controls.length-1 ">
+                <button type="button" (click)="cv.addField('langue', cv.competence());"
+                class="add-button" *ngIf="i===cv.cvForm.get('competence.langue').controls.length-1 ">
                 <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   <i class="fa-solid fa-language" style="color: #ffffff;"></i>   langue
               </button>
-                <button type="button" (click)="cv.addField('competence', cv.competence({type :'secondaire',niveau:'',nom:''}));"
-                  class="add-button" *ngIf="i===cv.cvForm.get('competence.secondaire').controls.length-1 ">
-                 <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   compétence
-                </button>
+               
               </div>
             </ng-container>
 
-          </ng-container>
+        
         </div>
         <div class="actions">
-          <button type="button" (click)="cv.addField('competence', cv.competence({type :'langue',niveau:'',nom:''}));"
-          class="add-button"   *ngIf="cv.cvForm.get('competence.secondaire').controls.length==0 ">
+          <button type="button" (click)="cv.addField('langue', cv.competence());"
+          class="add-button"   *ngIf="cv.cvForm.get('competence.langue').controls.length==0 ">
          <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   <i class="fa-solid fa-language" style="color: #ffffff;"></i>   langue
         </button>
-          <button type="button" (click)="cv.addField('competence', cv.competence({type :'secondaire',niveau:'',nom:''}));" class="add-button"
-            *ngIf="cv.cvForm.get('competence.secondaire').controls.length==0 ">
-           <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   compétence
-          </button>
         </div>
       </ng-container>
 
     </div>
+
+
+
+
 
     <div formGroupName="experience" class="form-section">
       <h2 class="form-heading" >

@@ -20,7 +20,10 @@ export class CvUpdaterService {
         niveau: new FormControl("", [Validators.required]),
       }),
       secondaire: new FormArray([]),
+      langue: new FormArray([]),
     }),
+
+    
   });
 
 
@@ -32,8 +35,12 @@ export class CvUpdaterService {
   
 
   
-    const competencesArray = competences.secondaire || [];
-    const competenceControls = competencesArray.map((item: any) => this.competence(item));
+    const competencesSecondArray = competences.secondaire || [];
+    const languesArray = competences.langue || [];
+
+    const competenceSecondControls = competencesSecondArray.map((item: any) => this.competence(item));
+    const langueControls = languesArray.map((item: any) => this.competence(item));
+
     const experienceControls = experiences.map((item: any) => this.experience(item));
     const formationControls = formations.map((item: any) => this.formation(item));
     const certificationControls = certifications.map((item: any) => this.certification(item));
@@ -47,8 +54,10 @@ export class CvUpdaterService {
           nom: new FormControl(competences.principale.nom || "", [Validators.required]),
           niveau: new FormControl(competences.principale.niveau || "", [Validators.required]),
         }),
-        secondaire: new FormArray(competenceControls),
+        secondaire: new FormArray(competenceSecondControls),
+       langue: new FormArray(langueControls),
       }),
+    
     });
   
     
@@ -88,9 +97,8 @@ export class CvUpdaterService {
     })
   }
  
-    competence (comp:any={type :'',niveau:'',nom:''}){ 
+    competence (comp:any={niveau:'',nom:''}){ 
       return new FormGroup({
-        type : new FormControl (comp.type,[Validators.required]),
         nom : new FormControl (comp.nom,[Validators.required]),
         niveau : new FormControl (comp.niveau,[Validators.required]),
       })
@@ -98,17 +106,19 @@ export class CvUpdaterService {
     addField(field:any,obj:any){
       let control = <FormArray> this.cvForm.controls[field] ;
   
-      if (field=== 'competence')
-           control = <FormArray> this.cvForm.controls[field].controls['secondaire'] ;
-  
+      if (field=== 'secondaire')
+           control = <FormArray> this.cvForm.controls['competence'].controls['secondaire'] ;
+      else if (field=== 'langue')
+      control = <FormArray> this.cvForm.controls['competence'].controls['langue'] ;
       control.push(obj);
     }
   
     removeField(field:any,index :any){
       let control = <FormArray> this.cvForm.controls[field] ;
-      if (field=== 'competence')
-      control = <FormArray> this.cvForm.controls[field].controls['secondaire'] ;
-  
+      if (field=== 'secondaire')
+           control = <FormArray> this.cvForm.controls['competence'].controls['secondaire'] ;
+      else if (field=== 'langue')
+      control = <FormArray> this.cvForm.controls['competence'].controls['langue'] ;
       control.removeAt(index)
     }
   

@@ -28,10 +28,9 @@ export class CvBuiderService {
             niveau : new FormControl ("",[Validators.required]),
               }),
           secondaire : new FormArray([
-          
-      
              ]),
-
+             langue : new FormArray([
+            ]),
       })
       
     })
@@ -72,10 +71,9 @@ export class CvBuiderService {
     })
   }
  
-    competence (type:string){ 
+    competence (){ 
 
       return new FormGroup({
-        type : new FormControl (type,[Validators.required]),
         nom : new FormControl ("",[Validators.required]),
         niveau : new FormControl ("",[Validators.required]),
       })
@@ -83,26 +81,29 @@ export class CvBuiderService {
   addField(field:any,obj:any){
     let control = <FormArray> this.cvForm.controls[field] ;
 
-    if (field=== 'competence')
-         control = <FormArray> this.cvForm.controls[field].controls['secondaire'] ;
-
+    if (field=== 'secondaire')
+         control = <FormArray> this.cvForm.controls['competence'].controls['secondaire'] ;
+    else if (field=== 'langue')
+    control = <FormArray> this.cvForm.controls['competence'].controls['langue'] ;
     control.push(obj);
   }
 
   removeField(field:any,index :any){
     let control = <FormArray> this.cvForm.controls[field] ;
-    if (field=== 'competence')
-    control = <FormArray> this.cvForm.controls[field].controls['secondaire'] ;
-
+    if (field=== 'secondaire')
+         control = <FormArray> this.cvForm.controls['competence'].controls['secondaire'] ;
+    else if (field=== 'langue')
+    control = <FormArray> this.cvForm.controls['competence'].controls['langue'] ;
     control.removeAt(index)
   }
 
 
   removeAll(field:any){
     let control = <FormArray> this.cvForm.controls[field] ;
-    if (field=== 'competence')
-    control = <FormArray> this.cvForm.controls[field].controls['secondaire'] ;
-
+    if (field=== 'secondaire')
+         control = <FormArray> this.cvForm.controls['competence'].controls['secondaire'] ;
+    else if (field=== 'langue')
+    control = <FormArray> this.cvForm.controls['competence'].controls['langue'] ;
     control.clear()
   }
 

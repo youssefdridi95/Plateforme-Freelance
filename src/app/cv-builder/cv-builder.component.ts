@@ -2,6 +2,7 @@ import {  Component } from '@angular/core';
 import { CvBuiderService } from '../services/cv-buider.service';
 import { CvBuilderApiCallsService } from '../services/cv-builder-api-calls.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-cv-builder',
   templateUrl: './cv-builder.component.html',
@@ -116,7 +117,7 @@ export class CvBuilderComponent {
     'Internet of Things (IoT)',
   ];
   
- constructor(public cv:CvBuiderService ,private cvApi :CvBuilderApiCallsService ,private toastr: ToastrService){
+ constructor(public cv:CvBuiderService ,private cvApi :CvBuilderApiCallsService ,private toastr: ToastrService ,private route:Router){
  }
        
 // In your component class
@@ -124,7 +125,8 @@ isSectionOpen: { [key: string]: boolean } = {
   'experience': false,
   'formation': false,
   'certification': false,
-  'competence': true
+  'competence': true,
+  'langue': false
 };
 
 toggleSection(section: string): void {
@@ -153,11 +155,11 @@ toggleSection(section: string): void {
 
         this.toastr.success(' crée avec succés', 'CV');
       } catch (error) {
-        this.toastr.error('erreur prodiute lors de la création', ' CV');
+        this.toastr.error('erreur lors de la création', ' CV');
       }
      
-     
-    console.log(this.cv.cvForm);
+     console.log(this.cv.cvForm)
+    //this.route.navigate(['/cv/afficher'])
     
   }
 

@@ -169,29 +169,56 @@ export class CvUpdateComponent {
       },
       "secondaire": [
         {
-          "type": "secondaire",
+          
           "nom": "Secondary Skill 1",
           "niveau": "avance"
         },
         {
-          "type": "secondaire",
+          
           "nom": "Secondary Skill 2",
           "niveau": "intermediaire"
         },
         {
-          "type": "secondaire",
+          
           "nom": "Secondary Skill 3",
           "niveau": "intermediaire"
         },
         {
-          "type": "secondaire",
+          
           "nom": "Secondary Skill 4",
           "niveau": "intermediaire"
         },
         {
-          "type": "secondaire",
+          
           "nom": "Secondary Skill 5",
           "niveau": "intermediaire"
+        }
+      ],
+      "langue": [
+        {
+          
+          "nom": "langue 1",
+          "niveau": "A1"
+        },
+        {
+          
+          "nom": "langue 2",
+          "niveau": "A1"
+        },
+        {
+          
+          "nom": "langue 3",
+          "niveau": "A1"
+        },
+        {
+          
+          "nom": "langue 4",
+          "niveau": "A1"
+        },
+        {
+          
+          "nom": "langue 5",
+          "niveau": "A1"
         }
       ]
     }
