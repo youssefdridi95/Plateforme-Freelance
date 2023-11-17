@@ -90,7 +90,7 @@ export class UserInscritComponent {
           sessionStorage.setItem('useremail', JSON.stringify(res.email));
           sessionStorage.setItem('username', JSON.stringify(res.username));
 
-          this.router.navigate(['/user/form']);
+          this.router.navigate(['/user/profile/create']);
 
           this.toastr.success('Connexion réussie', 'Connexion');
                 //  this.router.navigate(['/profil']);

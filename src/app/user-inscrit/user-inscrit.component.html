@@ -1,4 +1,6 @@
 <div class="container" *ngIf="inscrit=='signup'">
+  <div class="heading">Inscription</div>
+
   <form [formGroup]="userForm"  (ngSubmit)="signupUser()" action="" class="form">
     <input required="" class="input" type="text" formControlName="username" id="username" placeholder="Nom d'utilisateur *"><br>
  
@@ -20,7 +22,7 @@
    
   </form>
   <div class="social-account-container">
-      <p class="title"> vous avez déja un compte ? <br><br> <a   (click)="inscrit = 'signin'"  > Connectez-vouz ici </a></p>
+      <p class="title"> vous avez déja un compte ? <br><br> <a   routerLink="/user/connexion/signin" > Connectez-vouz ici </a></p>
       <div class="social-accounts">
      
       </div>
@@ -41,7 +43,7 @@
     <button class="login-button" type="submit" > connexion</button>
   </form>
   <div class="social-account-container">
-    <p class="title">Vous n'avez pas encore de compte ? <br><br> <a  (click)="inscrit = 'signup'"  > Inscrivez-vous ici </a></p>
+    <p class="title">Vous n'avez pas encore de compte ? <br><br> <a  routerLink="/user/connexion/signup"  > Inscrivez-vous ici </a></p>
     <div class="social-accounts">
    
     </div>
