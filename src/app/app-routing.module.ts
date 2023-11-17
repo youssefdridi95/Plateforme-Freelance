@@ -34,8 +34,8 @@ const routes: Routes = [
   {path:":id/cv/edit",component :CvUpdateComponent },
   {path:"cv/afficher",component :CvPreviewComponent },
 
-  {path: "user/profil", component : ProfilComponent},
-  {path: "user/compte", component : UserCompteComponent},
+  {path: "user/compte", component : ProfilComponent},
+  {path: "user/profil", component : UserCompteComponent},
   {path: "user/profile/create" , component : UserFormComponent},
   {path :"user/connexion", component : UserInscritComponent },
   {path : "user/connexion/:type" , component : UserInscritComponent },
