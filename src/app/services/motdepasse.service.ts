@@ -25,7 +25,7 @@ recuperationMdp(email: string){
 changeMdp(email:string ,password: string){
   return this.http.put(this.url + '/auth/setPassword',{
     "newPassword": password,
-    "email":email
+    "id":email
   });
 }
 }
