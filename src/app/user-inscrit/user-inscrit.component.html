@@ -14,7 +14,7 @@
     <div class="validator" *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">    ce champ est obligatoire! <br></div>
  
     <input required="" class="input" type="password" formControlName="confirmpassword" id="confirmpassword" placeholder="confirmer le mot de passe"  ><br><br>
-    <div class="validator" *ngIf="userForm?.errors?.['mismatch'] && userForm?.touched"> merci de cpnfirmer votre mot de passe.</div>
+    <div class="validator" *ngIf="userForm?.errors?.['mismatch'] && userForm?.touched"> merci de confirmer votre mot de passe.</div>
  
     <!-- <span class="forgot-password"><a href="tatatata">mot de passe oublié ?</a></span> -->
    

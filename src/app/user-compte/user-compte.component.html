@@ -40,9 +40,9 @@
         <h3>Full Stack developper</h3>
         <br><br> -->
     <div class="contact_card">
-     <span> <i class="fa-solid fa-phone"></i> :  22971208</span><br>
-     <span> <i class="fa-solid fa-envelope"></i>  {{email}} </span><br>
-     <span><i class="fa-solid fa-location-dot"></i></span>
+     <span> <i class="fa-solid fa-phone"></i> :  </span><br>
+     <span> <i class="fa-solid fa-envelope"></i> : {{email}} </span><br>
+     <span><i class="fa-solid fa-location-dot"></i> :</span>
 
     </div>
    
@@ -60,7 +60,7 @@
                 onclick="document.getElementById('edit1').style.display='inline-block';this.style.display='none';document.getElementById('fname').style.pointerEvents='none';"
               ></i>
             </div>
-            <input
+            <!-- <input
               type="text"
               name="fname"
               id="fname"
@@ -68,15 +68,15 @@
               value="Full Stack developper"
               required
               readonly
-            />
+            /> -->
           </li>
           <li>
             <div>
-              <b>E-mail </b>
+              <b>Formations </b>
             
            
             </div>
-            <input
+            <!-- <input
               type="email"
               name="email"
               id="email"
@@ -84,11 +84,11 @@
               [value]=email
               required
               readonly
-            />
+            /> -->
           </li>
           <li>
             <div>
-              <b>Adresse</b>
+              <b>Expérience</b>
            
               <i
                 class="fa fa-check"
@@ -97,34 +97,24 @@
                 onclick="document.getElementById('edit2').style.display='inline-block';document.getElementById('mobile').style.pointerEvents='none';this.style.display='none';"
               ></i>
             </div>
-            <input
-              type="tel"
-              name="mobile"
-              id="mobile"
-              maxlength="10"
-              value="Adresse"
-              required
-              readonly
-            />
+      
           </li>
           <li>
         <div>
-            <b>Numéro de téléphone</b>
-          
-         
+            <!-- <b>Numéro de téléphone</b> -->
+
+
         </div>
-            <input
-              type="text"
-              name="address"
-              id="address"
-              maxlength="250"
-              value="Numéro de téléphone"
-              required
-              readonly
-            />
+     
        
           </li>
+          <div>
+            <button (click)="navigateToCvCreer('/cv/creer')"> Créer un cv</button>
+            <button class="edit" (click)="navigateToCvCreer('/15/cv/edit')"> Modifier cv</button>
+            <button class="read" (click)="navigateToCvCreer('cv/afficher')"> Afficher  cv</button>
 
+        
+        </div>
               <li>
             
                      

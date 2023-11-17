@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-compte',
@@ -7,7 +8,13 @@ import { Component } from '@angular/core';
 })
 export class UserCompteComponent {
 
+  constructor(private router: Router) {}
 
+  navigateToCvCreer(link: String) {
+    
+    this.router.navigate([link]);
+
+  }
   username: string = '';
   email: string = '';
 
