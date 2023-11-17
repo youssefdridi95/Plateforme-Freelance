@@ -358,6 +358,8 @@
        <i class="fa-solid fa-angle-down" *ngIf="isSectionOpen['langue']"></i>
 
       </span>
+      <i class="fa-solid fa-trash" style="color: #a92d2d;" (click)="cv.removeAll('langue')" *ngIf="cv.cvForm.get('competence.langue').controls.length !==0 " ></i>
+
       </h2>
       <ng-container *ngIf="isSectionOpen['langue']">
 
