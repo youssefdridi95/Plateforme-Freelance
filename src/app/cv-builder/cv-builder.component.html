@@ -101,79 +101,7 @@
 
     </div>
 
-    <div formGroupName="competence" class="form-section">
-      <h2 class="form-heading" >
-       <span (click)="toggleSection('langue')">
-       
-        Langue 
-
-       <i class="fa-solid fa-angle-up" *ngIf="!isSectionOpen['langue']"></i> 
-       <i class="fa-solid fa-angle-down" *ngIf="isSectionOpen['langue']"></i>
-
-      </span>
-        <i class="fa-solid fa-trash" style="color: #a92d2d;" (click)="cv.removeAll('langue')" *ngIf="cv.cvForm.get('competence.langue').controls.length !==0 " ></i>
-      </h2>
-      <ng-container *ngIf="isSectionOpen['langue']">
-
-        <div class="form-subsection" formArrayName="langue" *ngIf="cv.cvForm.get('competence.langue').controls.length !==0 ">
-      
-    
-            <ng-container
-            *ngFor="let competenceControl of cv.cvForm.get('competence.langue').controls; let i = index"
-            [formGroupName]="i">
-           
-              <label for="nom">Nom:</label>
-              <input type="text" required formControlName="nom" class="input-field" />
-              <div *ngIf="competenceControl.get('nom').invalid && competenceControl.get('nom').touched" class="error">
-                <p>
-                  <i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"></i> ce champ est obligatoir !
-                  <br>
-                </p>
-              </div>
-              <label for="niveau">Niveau:</label>
-          
-
-              <select id="niveau" formControlName="niveau" class="input-field" >
-                <option value="A1">A1 (Découverte)</option>
-                <option value="A2">A2 (Survie)</option>
-                <option value="B1">B1 (Seuil)</option>
-                <option value="B2">B2 (Avancé ou seuil avancé) </option>
-                <option value="C1">C1 (Autonome)</option>
-                <option value="C2">C2 (Maîtrise)</option>
-
-              </select>
-              <div *ngIf="competenceControl.get('niveau').invalid && competenceControl.get('niveau').touched"
-                class="error">
-                <p>
-                  <i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"></i> ce champ est obligatoir !
-                  <br>
-                </p>
-              </div>
-              <div class="actions">
-                <button type="button" (click)="cv.removeField('langue', i);" class="remove-button">
-                  <i class="fa-regular fa-trash-can"></i> Supprimer 
-                </button>
-                <button type="button" (click)="cv.addField('langue', cv.competence());"
-                class="add-button" *ngIf="i===cv.cvForm.get('competence.langue').controls.length-1 ">
-                <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   <i class="fa-solid fa-language" style="color: #ffffff;"></i>   langue
-              </button>
-               
-              </div>
-            </ng-container>
-
-        
-        </div>
-        <div class="actions">
-          <button type="button" (click)="cv.addField('langue', cv.competence());"
-          class="add-button"   *ngIf="cv.cvForm.get('competence.langue').controls.length==0 ">
-         <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   <i class="fa-solid fa-language" style="color: #ffffff;"></i>   langue
-        </button>
-        </div>
-      </ng-container>
-
-    </div>
-
-
+  
 
 
 
@@ -418,6 +346,79 @@
       </ng-container>
 
     </div>
+    <div formGroupName="competence" class="form-section">
+      <h2 class="form-heading" >
+       <span (click)="toggleSection('langue')">
+       
+        Langue 
+
+       <i class="fa-solid fa-angle-up" *ngIf="!isSectionOpen['langue']"></i> 
+       <i class="fa-solid fa-angle-down" *ngIf="isSectionOpen['langue']"></i>
+
+      </span>
+        <i class="fa-solid fa-trash" style="color: #a92d2d;" (click)="cv.removeAll('langue')" *ngIf="cv.cvForm.get('competence.langue').controls.length !==0 " ></i>
+      </h2>
+      <ng-container *ngIf="isSectionOpen['langue']">
+
+        <div class="form-subsection" formArrayName="langue" *ngIf="cv.cvForm.get('competence.langue').controls.length !==0 ">
+      
+    
+            <ng-container
+            *ngFor="let competenceControl of cv.cvForm.get('competence.langue').controls; let i = index"
+            [formGroupName]="i">
+           
+              <label for="nom">Nom:</label>
+              <input type="text" required formControlName="nom" class="input-field" />
+              <div *ngIf="competenceControl.get('nom').invalid && competenceControl.get('nom').touched" class="error">
+                <p>
+                  <i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"></i> ce champ est obligatoir !
+                  <br>
+                </p>
+              </div>
+              <label for="niveau">Niveau:</label>
+          
+
+              <select id="niveau" formControlName="niveau" class="input-field" >
+                <option value="A1">A1 (Découverte)</option>
+                <option value="A2">A2 (Survie)</option>
+                <option value="B1">B1 (Seuil)</option>
+                <option value="B2">B2 (Avancé ou seuil avancé) </option>
+                <option value="C1">C1 (Autonome)</option>
+                <option value="C2">C2 (Maîtrise)</option>
+                <option value="NA">Na (Native)</option>
+
+              </select>
+              <div *ngIf="competenceControl.get('niveau').invalid && competenceControl.get('niveau').touched"
+                class="error">
+                <p>
+                  <i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"></i> ce champ est obligatoir !
+                  <br>
+                </p>
+              </div>
+              <div class="actions">
+                <button type="button" (click)="cv.removeField('langue', i);" class="remove-button">
+                  <i class="fa-regular fa-trash-can"></i> Supprimer 
+                </button>
+                <button type="button" (click)="cv.addField('langue', cv.competence());"
+                class="add-button" *ngIf="i===cv.cvForm.get('competence.langue').controls.length-1 ">
+                <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   <i class="fa-solid fa-language" style="color: #ffffff;"></i>   langue
+              </button>
+               
+              </div>
+            </ng-container>
+
+        
+        </div>
+        <div class="actions">
+          <button type="button" (click)="cv.addField('langue', cv.competence());"
+          class="add-button"   *ngIf="cv.cvForm.get('competence.langue').controls.length==0 ">
+         <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   <i class="fa-solid fa-language" style="color: #ffffff;"></i>   langue
+        </button>
+        </div>
+      </ng-container>
+
+    </div>
+
 
     <div *ngIf="cv.cvForm.invalid " class="error">
       <p>

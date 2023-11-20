@@ -198,7 +198,7 @@ export class CvUpdateComponent {
         {
           
           "nom": "langue 1",
-          "niveau": "A1"
+          "niveau": "Na"
         },
         {
           
