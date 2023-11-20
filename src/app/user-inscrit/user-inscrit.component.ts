@@ -6,6 +6,19 @@ import { NgForm } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 
+
+
+interface LoginResponse {
+  id: string;
+  token: string;
+  type: string;
+  username: string;
+  email: string;
+  roles: string[];
+  msg: string;
+}
+
+
 @Component({
   selector: 'app-user-inscrit',
   templateUrl: './user-inscrit.component.html',
@@ -78,35 +91,24 @@ export class UserInscritComponent {
     };
   
     this.userService.loginUser(user).subscribe(
-      (res: any) => {
-        console.log(res);
-  
-        // Assurez-vous que la réponse contient la propriété 'token'
-        if (res && res.token) {
-          // Stockez les informations de l'utilisateur dans sessionStorage
-          sessionStorage.setItem('userToken', res.token);
-          sessionStorage.setItem('userId', res.id);
-          sessionStorage.setItem('userRoles', JSON.stringify(res.roles));
-          sessionStorage.setItem('useremail', JSON.stringify(res.email));
-          sessionStorage.setItem('username', JSON.stringify(res.username));
-
-          this.router.navigate(['/user/profile/create']);
-
-          this.toastr.success('Connexion réussie', 'Connexion');
-                //  this.router.navigate(['/profil']);
-
-        } else {
-          this.toastr.error('Réponse invalide du serveur', 'Connexion');
-        }
-      },
-      err => {
-        console.log(err.error);
-        this.toastr.error(err.error.message, 'Connexion');
+    (res: any) => {
+      const loginResponse: LoginResponse = res as LoginResponse;
+     
+      
+      if (!loginResponse.roles.includes("ROLE_DEV")) {
+        this.toastr.error("vous n'êtes pas un developpeur.  essayez de se connecter en tant qu'une entreprise ", 'erreur');
+      } else {
+        this.router.navigate(['/user/profile/create']);
+        this.toastr.success('Connexion réussie', 'Compte');
+        sessionStorage.setItem('user', JSON.stringify(res));
       }
-    );
+    },
+    err => {
+      this.toastr.error(err.error.message, 'Compte');
+    }
+  );
   
-    // Vous pouvez ajouter ici le code pour traiter la soumission du formulaire
-    console.log('Formulaire soumis avec succès', this.userFormlogin.value);
+
   }
   
 
