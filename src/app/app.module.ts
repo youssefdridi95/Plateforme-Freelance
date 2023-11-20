@@ -30,6 +30,7 @@ import { DialogBodyComponent } from './dialog-body/dialog-body.component';
 import { RoleComponent } from './role/role.component';
 import { RecupMDPComponent } from './recup-mdp/recup-mdp.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { ProfComponent } from './prof/prof.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { UserFormComponent } from './user-form/user-form.component';
     ProfilComponent,
     RoleComponent,
     RecupMDPComponent,
-    UserFormComponent
+    UserFormComponent,
+    ProfComponent
     
   ],
   imports: [
