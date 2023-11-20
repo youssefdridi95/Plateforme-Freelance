@@ -1,15 +1,27 @@
 #cvBuilder{
   width: 100%;
   padding: 1rem;
+  margin: 0 auto;
+  max-width: 70rem;
 }
 
 #cvBuilder > div {
-  width: 80%;
-  margin: 1rem auto;
+  width: 100%;
   background-color: #007bff;
   padding: 1rem;
+  margin: 2rem auto;
   border-radius: 0.5rem;
 
+}
+
+@media screen and (max-width:400px) {
+  #cvBuilder > div {
+ 
+    padding: 1rem;
+    margin: 1rem auto;
+    font-size: 1rem;
+  
+}
 }
 
 
@@ -22,8 +34,7 @@
 
 /* Apply styles to the main form */
 .cv-form {
-  width: 80%;
-  margin: 0 auto;
+  width: 100%;
   padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
@@ -53,7 +64,6 @@
 
 .form-heading > span > i {
   font-size: 1.3rem;
- 
  }
 
  .form-heading  > i {
@@ -145,19 +155,10 @@ transition: all 0.5s;
   border-radius: 5px;
 }
 
-.input-field[type="date"]{
-  width: 40%;
-  margin-top: 1rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
 
 
 
-label + .input-field[type="date"]{
-  display: inline-block;
- 
-}
+
 .input-field:hover ,.input-field:focus,  .textarea-field:hover ,.textarea-field:focus  {
   outline: 1px dashed #0056b3;
 }
