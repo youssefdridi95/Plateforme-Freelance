@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 .text{
-    font-size: 2.5rem;
+    font-size: 2rem;
     width: 100%;
     max-width: 80rem;
     text-wrap: wrap;
@@ -147,9 +147,7 @@ input[type="radio"]:checked ~ label span::before {
     cursor: pointer;
 }
 .login-button:hover{
-    margin-bottom: 0.2rem;
-    padding: 0.2rem;
-    font-size:1rem ;
+   font-weight: 800;
     border-bottom: 2px solid  #007CF8;
     color: #007CF8;
     transition: all 0.8s;
@@ -165,8 +163,8 @@ input[type="radio"]:checked ~ label span::before {
 }
 .signup-button:hover{
     margin-bottom: 0.2rem;
-    padding: 0.2rem;
-    font-size:1rem ;
+   
+ 
     border-bottom: 2px solid  white;
     color: white;
     transition: all 0.8s;
@@ -174,7 +172,7 @@ input[type="radio"]:checked ~ label span::before {
 }
 
 .content-title{
-    font-size: 2rem;
+    font-size: 1.2rem;
     width: 100%;
     position: absolute;
     font-family: 'Fredoka One', cursive;
@@ -193,14 +191,13 @@ input[type="radio"]:checked ~ label span::before {
 }
 .content{
     position: absolute;
-    font-size: 17px;
+    font-size: 1rem;
     width: 90%;
     text-align: center;
     top: 65%;
     left: 50%;
     transform: translate(-50%, 20%);
     color: rgb(173, 166, 166);
-    font-family: sans-serif;
     font-weight: 600;
     letter-spacing: 1px;
 }
@@ -216,7 +213,7 @@ p{
 
 
 .contente{
-    font-size: 14px;
+    font-size: 0.9rem;
     width: 65%;
     text-align: center;
     
