@@ -19,44 +19,43 @@
           </div>
         
        
-          <input type="text" class="input"  formControlName="domaine" placeholder="Domaine*" />
+          <input type="text" class="input"  formControlName="siteweb" placeholder="Site Web*" />
 
           <div
-            *ngIf=" signupForm.controls['domaine'].invalid &&(signupForm.controls['domaine'].dirty ||signupForm.controls['domaine'].touched) "class="text-danger">
-            <div *ngIf="signupForm.controls['domaine'].errors?.['minlength']">
-              Domaine min 2
+            *ngIf=" signupForm.controls['siteweb'].invalid &&(signupForm.controls['siteweb'].dirty ||signupForm.controls['siteweb'].touched) "class="text-danger">
+            <div *ngIf="signupForm.controls['siteweb'].errors?.['minlength']">
+              Site Web min 5
             </div>
 
-            <div *ngIf="signupForm.controls['domaine'].errors?.['required']" >
-              Domaine Req *
+            <div *ngIf="signupForm.controls['siteweb'].errors?.['required']" >
+              Site Web Req *
             </div>
           </div>
 
      
-          <input type="text" class="input"  formControlName="numero_fiscale" placeholder="Numero fiscale *" />
 
-          <div
-            *ngIf=" signupForm.controls['numero_fiscale'].invalid && (signupForm.controls['numero_fiscale'].dirty ||signupForm.controls['numero_fiscale'].touched) "class="text-danger">
-            <div *ngIf="signupForm.controls['numero_fiscale'].errors?.['minlength']">
-              Numero fiscale min len 11
+          
+          <select class="input"  formControlName="secteurActivite" id="secteurActivite">
+            <option value="" disabled selected>Secteur d'activité*</option>
+            <option value="sector1">Technologie de l'Information (TI) </option>
+            <option value="sector2">Santé et Sciences de la Vie </option>
+            <option value="sector3">Finance et Banque </option>
+            <option value="sector4">Énergie et Environnement </option>
+            <option value="sector5">Énergie et Environnement </option>
+            <option value="sector6">Commerce de Détail et E-commerce </option>
+            <option value="sector7">Industrie Automobile  </option>
+            <option value="sector8">Agroalimentaire </option>
+            <option value="sector9">Éducation</option>
+            <option value="sector10">Divertissement et Médias </option>
+          </select>
+      
+          <div *ngIf="signupForm.controls['secteurActivite'].invalid && 
+                     (signupForm.controls['secteurActivite'].dirty || 
+                     signupForm.controls['secteurActivite'].touched)" class="text-danger">
+            <div *ngIf="signupForm.controls['secteurActivite'].errors?.['required']">
+              Secteur d'activité Req *
             </div>
-
-            <div *ngIf="signupForm.controls['numero_fiscale'].errors?.['required']" >
-              Numero fiscale Req *
-            </div>
-          </div>
-          <input type="text" class="input"  formControlName="email_e" placeholder="E-mail professionnel*" />
-
-          <div
-            *ngIf=" signupForm.controls['email_e'].invalid &&(signupForm.controls['email_e'].dirty ||signupForm.controls['email_e'].touched) "class="text-danger">
-            <div *ngIf="signupForm.controls['email_e'].errors?.['minlength']">
-              E-mail professionnel min 3
-            </div>
-
-            <div *ngIf="signupForm.controls['email_e'].errors?.['required']" >
-              E-mail professionnel Req *
-            </div>
-          </div>
+          </div >
 <div class="division">
           <input type="text" class="input"  formControlName="adresse"  placeholder="Adresse*" />
 
@@ -96,10 +95,30 @@
             </div>
           </div>
         
-        
          
-     
-        <input class="login-button" type="submit" value="S'inscrire" [routerLink]="['/entreprise/profil']" >
+    
+            <select class="input"  formControlName="effectif" id="effectif">
+              <option value="" disabled selected>
+                Avec combien de freelancers travaillez-vous ?*</option>
+              <option value="sector1">0-10</option>
+              <option value="sector2">10-50</option>
+              <option value="sector2">50-100 freelancers</option>
+              <option value="sector2">100-200 freelancers</option>
+              <option value="sector2">200-1000 freelancers</option>
+              <option value="sector2">1000+ freelancers</option>
+        
+            </select>
+        
+            <div *ngIf="signupForm.controls['effectif'].invalid && 
+                       (signupForm.controls['effectif'].dirty || 
+                       signupForm.controls['effectif'].touched)" class="text-danger">
+              <div *ngIf="signupForm.controls['effectif'].errors?.['required']">
+                Effectif Req *
+              </div>
+            </div>
+          
+
+        <input class="login-button" type="submit" value="Sauvegarder" [routerLink]="['/entreprise/profil']">
       </form>
 </div>
 

@@ -13,32 +13,34 @@ import { ProfilComponent } from './profil/profil.component';
 import { RoleComponent } from './role/role.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { RecupMDPComponent } from './recup-mdp/recup-mdp.component';
+import { AuthGuard } from './guard/auth-gard.guard';
 
 const routes: Routes = [
   {path:"",component :RoleComponent },
 
   {path : "user/connexion/:type" , component : UserInscritComponent },
-  {path:"profil/entreprise",component :ProfilEntrepriseComponent},
+  {path:"profil/entreprise",component :ProfilEntrepriseComponent , canActivate: [AuthGuard]},
 
-  {path:"entreprise/profil",component :ProfilEntrepriseComponent},
+  {path:"entreprise/profil",component :ProfilEntrepriseComponent, canActivate: [AuthGuard]},
 
-  {path:"entreprise/connexion/:type",component :LoginEntrepriseComponent},
-  {path:"entreprise/creation",component :CreationEntrepriseComponent},
+  {path:"entreprise/connexion/:type",component :LoginEntrepriseComponent },
+  {path:"entreprise/creation",component :CreationEntrepriseComponent , canActivate: [AuthGuard]},
 
-  {path:"changeMdp//:role/:reset",component :RecupMDPComponent},
+  {path:"changeMdp/:role/:reset",component :RecupMDPComponent},
 
 
   {path:"mdp",component :MdpComponent},
   {path:"role",component :RoleComponent },
-  {path:"cv/creer",component :CvBuilderComponent },
-  {path:":id/cv/edit",component :CvUpdateComponent },
-  {path:"cv/afficher",component :CvPreviewComponent },
+  {path:"cv/creer",component :CvBuilderComponent , canActivate: [AuthGuard] },
+  {path:":id/cv/edit",component :CvUpdateComponent , canActivate: [AuthGuard] },
+  {path:"cv/afficher",component :CvPreviewComponent , canActivate: [AuthGuard]},
 
-  {path: "user/compte", component : ProfilComponent},
-  {path: "user/profil", component : UserCompteComponent},
+  {path: "user/profil", component : ProfilComponent , canActivate: [AuthGuard]},
+  {path: "user/compte", component : UserCompteComponent , canActivate: [AuthGuard]},
+  {path: "user/form" , component : UserFormComponent , canActivate: [AuthGuard]},
+
   {path: "user/profile/create" , component : UserFormComponent},
-  {path :"user/connexion", component : UserInscritComponent },
-  {path : "user/connexion/:type" , component : UserInscritComponent },
+
 
 ];
 
