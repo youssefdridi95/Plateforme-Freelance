@@ -27,7 +27,6 @@ constructor()
           "societe": "Solutions Tech Inc.",
           "post": "Développeur Logiciel",
           "localisation": "Paris",
-          "desc": "Travaillé sur le développement d'applications web innovantes en utilisant des technologies de pointe. Collaboré avec des équipes interfonctionnelles pour fournir des solutions logicielles de haute qualité.",
           "debut": "2022-01-01",
           "fin": "2022-12-31"
         },
@@ -35,7 +34,6 @@ constructor()
           "societe": "Co. Tech Globale",
           "post": "Ingénieur Logiciel Senior",
           "localisation": "Berlin",
-          "desc": "Dirigé une équipe de développeurs dans la conception et la mise en œuvre de systèmes logiciels complexes. Contribué à l'architecture et au développement de projets critiques.",
           "debut": "2023-01-01",
           "fin": "2023-12-31"
         }
@@ -43,17 +41,15 @@ constructor()
       "formation": [
         {
           "institut": "Université de Paris",
-          "niveau": "Licence",
-          "specialite": "Informatique",
-          "debut": "2018-09-01",
-          "fin": "2022-06-30"
+          "diploma": "Licence Informatique",
+          "dateObtentien": "2020-03-15",
+
         },
         {
           "institut": "Institut Tech",
-          "niveau": "Master",
-          "specialite": "Génie Logiciel",
-          "debut": "2023-09-01",
-          "fin": "2024-06-30"
+          "diploma": "Master Génie Logiciel",
+          "dateObtentien": "2023-03-15",
+
         }
       ],
       "certification": [
@@ -61,8 +57,7 @@ constructor()
           "organisation": "Microsoft",
           "niveau": "Expert",
           "titre": "Microsoft Certified Solutions Associate (MCSA)",
-          "dateObtentien": "2020-03-15",
-          "desc": "Atteint une expertise dans les technologies Microsoft, démontrant des compétences avancées en administration système et configuration.",
+          "dateObtentien": "2022-03-15",
     
         },
         {
@@ -70,7 +65,6 @@ constructor()
           "niveau": "Associé",
           "titre": "Cisco Certified Network Associate (CCNA)",
           "dateObtentien": "2021-06-10",
-          "desc": "Acquis une compétence dans les concepts et la configuration réseau, validant les connaissances en routage et commutation.",
        
         }
       ],
@@ -117,7 +111,7 @@ constructor()
           {
             "type": "langue",
             "nom": "Spanish",
-            "niveau": "B1"
+            "niveau": "Na"
           }
         ]
       }

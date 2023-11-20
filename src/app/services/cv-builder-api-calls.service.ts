@@ -76,14 +76,7 @@ addCertifications(certifications :FormArray){
       data.append('image',certifications.at(i).value['image'])
       data.append('imageFile',certifications.at(i).value['imageFile'])
       data.append('dateObtentien',certifications.at(i).value['dateObtentien'])
-      data.append('desc',certifications.at(i).value['desc'])
-
       data.append('titre',certifications.at(i).value['titre'])
-      data.append('niveau',certifications.at(i).value['niveau'])
-      data.append('organisation',certifications.at(i).value['organisation'])
-
-
-
       this.http.post(this.url + '',data).subscribe({
         next: (v) => console.log(v),
         error: (e) => console.error(e),
@@ -102,11 +95,8 @@ editCertifications(id:any ,certifications :FormArray){
       data.append('image',certifications.at(i).value['image'])
       data.append('imageFile',certifications.at(i).value['imageFile'])
       data.append('dateObtentien',certifications.at(i).value['dateObtentien'])
-      data.append('desc',certifications.at(i).value['desc'])
-
       data.append('titre',certifications.at(i).value['titre'])
-      data.append('niveau',certifications.at(i).value['niveau'])
-      data.append('organisation',certifications.at(i).value['organisation'])
+
 
 
 

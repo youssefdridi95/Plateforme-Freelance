@@ -4,6 +4,7 @@ import { CvBuilderApiCallsService } from '../services/cv-builder-api-calls.servi
 import { ToastrService } from 'ngx-toastr';
 import { CvUpdaterService } from '../services/cv-updater.service';
 import { ActivatedRoute } from '@angular/router';
+import { FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-cv-update',
@@ -128,7 +129,6 @@ export class CvUpdateComponent {
         "societe": "Company 1",
         "post": "Developer",
         "localisation": "Paris",
-        "desc": "Lorem ipsum...",
         "debut": "2022-01-01",
         "fin": "2022-12-31"
       },
@@ -136,7 +136,6 @@ export class CvUpdateComponent {
         "societe": "Company 2",
         "post": "Developer",
         "localisation": "Paris",
-        "desc": "Lorem ipsum...",
         "debut": "2022-01-01",
         "fin": "2022-12-31"
       }
@@ -144,19 +143,16 @@ export class CvUpdateComponent {
     "formation": [
       {
         "institut": "University of Paris",
-        "niveau": "Bachelor",
-        "specialite": "Computer Science",
-        "debut": "2018-09-01",
-        "fin": "2022-06-30"
+        "diploma": "Computer Science",
+        "dateObtentien": "2020-03-15",
+
       }
     ],
     "certification": [
       {
-        "organisation": "Microsoft",
-        "niveau": "Expert",
+      
         "titre": "MCSA",
         "dateObtentien": "2020-03-15",
-        "desc": "Lorem ipsum...",
         "image": "image1.png",
         "imageSrc": "http://imageurl.com/1",
         "imageFile": null
@@ -235,16 +231,33 @@ isSectionOpen: { [key: string]: boolean } = {
   'experience': false,
   'formation': false,
   'certification': false,
-  'competence': true
+  'competence': true,
+  'langue': false
 };
 
 toggleSection(section: string): void {
+  let control = <FormArray> this.cv.cvForm.controls[section] ;
+
+  if (section=== 'secondaire')
+       control = <FormArray> this.cv.cvForm.controls['competence'].controls['secondaire'] ;
+  else if (section=== 'langue')
+  control = <FormArray> this.cv.cvForm.controls['competence'].controls['langue'] ;
+if(control.length == 0)
+  switch (section) {
+   case "experience" : this.cv.addField('experience',this.cv.experience()) ;break ;
+   case "formation" : this.cv.addField('formation',this.cv.formation()) ;break ;
+   case "certification" : this.cv.addField('certification',this.cv.certification()) ;break ;
+   case "langue" : this.cv.addField('langue',this.cv.competence()) ;break ;
+   case "competence" : this.cv.addField('secondaire',this.cv.competence()) ;break ;
+   default : break ;
+}
   for (const key in this.isSectionOpen) {
     if (key !== section) {
       this.isSectionOpen[key] = false;
     }
   }
   this.isSectionOpen[section] = !this.isSectionOpen[section];
+
 }
 
   updateCv(){

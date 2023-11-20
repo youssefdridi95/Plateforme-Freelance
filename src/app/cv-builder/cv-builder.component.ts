@@ -3,6 +3,7 @@ import { CvBuiderService } from '../services/cv-buider.service';
 import { CvBuilderApiCallsService } from '../services/cv-builder-api-calls.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { FormArray } from '@angular/forms';
 @Component({
   selector: 'app-cv-builder',
   templateUrl: './cv-builder.component.html',
@@ -130,7 +131,21 @@ isSectionOpen: { [key: string]: boolean } = {
 };
 
 toggleSection(section: string): void {
+  let control = <FormArray> this.cv.cvForm.controls[section] ;
 
+  if (section=== 'secondaire')
+       control = <FormArray> this.cv.cvForm.controls['competence'].controls['secondaire'] ;
+  else if (section=== 'langue')
+  control = <FormArray> this.cv.cvForm.controls['competence'].controls['langue'] ;
+if(control.length == 0)
+  switch (section) {
+   case "experience" : this.cv.addField('experience',this.cv.experience()) ;break ;
+   case "formation" : this.cv.addField('formation',this.cv.formation()) ;break ;
+   case "certification" : this.cv.addField('certification',this.cv.certification()) ;break ;
+   case "langue" : this.cv.addField('langue',this.cv.competence()) ;break ;
+   case "competence" : this.cv.addField('secondaire',this.cv.competence()) ;break ;
+   default : break ;
+}
   for (const key in this.isSectionOpen) {
     if (key !== section) {
       this.isSectionOpen[key] = false;

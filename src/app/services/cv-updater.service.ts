@@ -63,33 +63,29 @@ export class CvUpdaterService {
     
   }
 
-  experience (exp:any={societe :'',post:'',localisation:'',dec:'',debut :'',fin:''}){ 
+  experience (exp:any={societe :'',post:'',localisation:'',debut :'',fin:''}){ 
     return new FormGroup({
     societe : new FormControl (exp.societe,[Validators.required]),
     post : new FormControl (exp.post,[Validators.required]),
     localisation : new FormControl (exp.localisation,[Validators.required]),
-    desc : new FormControl (exp.desc,[Validators.minLength(100),Validators.required]),
     debut : new FormControl (exp.debut,[Validators.required]),
     fin : new FormControl (exp.fin)
   })
 }
 
-  formation(form:any={institut :'',niveau:'',specialite:'',debut :'',fin:''}){ 
+  formation(form:any={institut :'',diploma:'',dateObtentien :''}){ 
     return new FormGroup({
     institut : new FormControl (form.institut,[Validators.required]),
-    niveau : new FormControl (form.niveau,[Validators.required]),
-    specialite : new FormControl (form.specialite,[Validators.required]),
-    debut : new FormControl (form.debut,[Validators.required]),
-    fin : new FormControl (form.fin),
+    diploma : new FormControl (form.diploma,[Validators.required]),
+    dateObtentien : new FormControl (form.dateObtentien,[Validators.required]),
+    
   })}
 
-  certification(cert:any={organisation :'',niveau:'',titre:'',dateObtentien :'',imageSrc:''}){ 
+  certification(cert:any={titre:'',dateObtentien :'',imageSrc:''}){ 
     return new FormGroup({
-      organisation : new FormControl (cert.organisation,[Validators.required]),
-      niveau : new FormControl (cert.niveau,[Validators.required]),
+     
       titre : new FormControl (cert.titre,[Validators.required]),
       dateObtentien : new FormControl (cert.dateObtentien,[Validators.required]),
-      desc : new FormControl (cert.desc,[Validators.required]),
       image : new FormControl (null,[Validators.required]),
       imageSrc : new FormControl (cert.imageSrc,[Validators.required]),
       imageFile : new FormControl (null,[Validators.required]),
