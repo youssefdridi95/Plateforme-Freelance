@@ -29,7 +29,7 @@ export class CvBuiderService {
               }),
           secondaire : new FormArray([
              ]),
-             langue : new FormArray([
+          langue : new FormArray([
             ]),
       })
       
@@ -42,7 +42,6 @@ export class CvBuiderService {
     societe : new FormControl ("",[Validators.required]),
     post : new FormControl ("",[Validators.required]),
     localisation : new FormControl ("",[Validators.required]),
-    desc : new FormControl ("",[Validators.minLength(100),Validators.required]),
     debut : new FormControl ("",[Validators.required]),
     fin : new FormControl ("")
   })
@@ -51,19 +50,14 @@ export class CvBuiderService {
   formation(){ 
     return new FormGroup({
     institut : new FormControl ("",[Validators.required]),
-    niveau : new FormControl ("",[Validators.required]),
-    specialite : new FormControl ("",[Validators.required]),
-    debut : new FormControl ("",[Validators.required]),
-    fin : new FormControl (""),
+    diploma : new FormControl ("",[Validators.required]),
+    dateObtentien : new FormControl ("",[Validators.required]),
   })}
 
   certification(){ 
     return new FormGroup({
-      organisation : new FormControl ("",[Validators.required]),
-      niveau : new FormControl ("",[Validators.required]),
       titre : new FormControl ("",[Validators.required]),
       dateObtentien : new FormControl ("",[Validators.required]),
-      desc : new FormControl ("",[Validators.required]),
       image : new FormControl (null,[Validators.required]),
       imageSrc : new FormControl (null,[Validators.required]),
       imageFile : new FormControl (null,[Validators.required]),

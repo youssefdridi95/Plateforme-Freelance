@@ -40,9 +40,7 @@
                                 <div class="xp-job">{{exp.post}}
                                     <span> {{exp.societe}}</span><br/><small>{{exp.localisation}}</small></div>
                                 <div class="xp-date"> de {{exp.debut}}  à {{exp.fin}}</div>
-                                <div class="xp-detail">
-                                    {{exp.desc}} 
-                                </div>
+                              
                             </div>
                           
                         </div>
@@ -53,9 +51,9 @@
                                 <h2>Formations</h2>
                             </div>
                             <div class="xp-item"  *ngFor="let exp of this.cv.formation" >
-                                <div class="xp-job">{{exp.niveau}} {{exp.specialite}}
+                                <div class="xp-job">{{exp.diploma}}
                                     <span> {{exp.institut}}</span></div>
-                                <div class="xp-date"> de {{exp.debut}}  à {{exp.fin}}</div>
+                                <div class="xp-date"> de {{exp.dateObtentien}}  </div>
                                 
                             </div>
                           
@@ -67,12 +65,9 @@
                                 <h2>Certifications</h2>
                             </div>
                             <div class="xp-item"  *ngFor="let exp of this.cv.certification" >
-                                <div class="xp-job">{{exp.titre}} , {{exp.niveau}}
-                                    <span> {{exp.organisation}}</span></div>
+                                <div class="xp-job">{{exp.titre}}</div>
                                 <div class="xp-date"> {{exp.dateObtentien}}</div>
-                                <div class="xp-detail">
-                                    {{exp.desc}} 
-                                </div>
+
                             </div>
                           
                         </div>

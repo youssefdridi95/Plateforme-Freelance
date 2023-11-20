@@ -11,9 +11,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RecupMDPComponent {
   reset :any
+  role:any
   pwdForm !:FormGroup
   constructor(private route: ActivatedRoute,private formBuilder:FormBuilder,private toastr : ToastrService,private  mdp : MotdepasseService,private router: Router,private  mdpService : MotdepasseService ) {
-    this.route.paramMap.subscribe(params => { this.reset= params.get('reset') ;}) ;
+    this.route.paramMap.subscribe(params => { 
+      this.reset= params.get('reset') ;
+      this.role= params.get('role') ;
+    }) ;
 
   };
 isMush=true
@@ -33,7 +37,10 @@ if (this.isMush )
       
         
         this.toastr.success('a été changé avec succés','Mot de passe')
-        this.navigateToPage('/entreprise/connexion/login', 1500)
+        if(this.role==='dev')
+         this.navigateToPage('/user/connexion/signin', 1500)
+        else
+          this.navigateToPage('/entreprise/connexion/login', 1500)
   
       },
       err=>{
