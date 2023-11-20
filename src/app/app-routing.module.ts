@@ -41,7 +41,6 @@ const routes: Routes = [
 
   {path: "user/profile/create" , component : UserFormComponent},
 
-
 ];
 
 @NgModule({
