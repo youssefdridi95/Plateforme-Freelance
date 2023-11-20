@@ -3,6 +3,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EntrepriseService } from '../services/entreprise.service';
 import { ToastrService } from 'ngx-toastr';
+
+
+
+interface LoginResponse {
+  id: string;
+  token: string;
+  type: string;
+  username: string;
+  email: string;
+  roles: string[];
+  msg: string;
+}
+
+
 @Component({
   selector: 'app-login-entreprise',
   templateUrl: './login-entreprise.component.html',
@@ -110,12 +124,16 @@ if (this.isMush && this.isPro)
     };
   
     this.entrepriseService.login(entreprise).subscribe(
-      res => {
-        this.toastr.success('Connexion réussie', 'Compte');
-        sessionStorage.setItem('user', JSON.stringify(res));
-        this.navigateToPage('/entreprise/creation', 1500)
-
-
+      (res: any) => {
+        const loginResponse: LoginResponse = res as LoginResponse;
+      
+        if (!loginResponse.roles.includes("ROLE_ENTREPRISE")) {
+          this.toastr.error("vous n'êtes pas une entreprise.  essayez de se connecter en tant qu'un developpeur", 'erreur');
+        } else {
+          this.toastr.success('Connexion réussie', 'Compte');
+          sessionStorage.setItem('user', JSON.stringify(res));
+          this.navigateToPage('/entreprise/creation', 1500);
+        }
       },
       err => {
         this.toastr.error(err.error.message, 'Compte');

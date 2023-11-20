@@ -10,10 +10,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./recup-mdp.component.css']
 })
 export class RecupMDPComponent {
-  email :any
+  reset :any
   pwdForm !:FormGroup
   constructor(private route: ActivatedRoute,private formBuilder:FormBuilder,private toastr : ToastrService,private  mdp : MotdepasseService,private router: Router,private  mdpService : MotdepasseService ) {
-    this.route.paramMap.subscribe(params => { this.email= params.get('email') ;}) ;
+    this.route.paramMap.subscribe(params => { this.reset= params.get('reset') ;}) ;
 
   };
 isMush=true
@@ -28,11 +28,11 @@ isMush=true
 if (this.isMush )
    {
   
-    this.mdpService.changeMdp(this.email,this.pwdForm.get('password')!.value).subscribe(
+    this.mdpService.changeMdp(this.reset,this.pwdForm.get('password')!.value).subscribe(
       res=>{
       
         
-        this.toastr.success('a été crée avec succés','compte')
+        this.toastr.success('a été changé avec succés','Mot de passe')
         this.navigateToPage('/entreprise/connexion/login', 1500)
   
       },
@@ -45,8 +45,6 @@ if (this.isMush )
     )}
     else
     this.toastr.error("Valider votre formulaire",'')
-
-
 
   }  
 

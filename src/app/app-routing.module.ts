@@ -25,7 +25,7 @@ const routes: Routes = [
   {path:"entreprise/connexion/:type",component :LoginEntrepriseComponent},
   {path:"entreprise/creation",component :CreationEntrepriseComponent},
 
-  {path:"changeMdp/:email",component :RecupMDPComponent},
+  {path:"changeMdp/:reset",component :RecupMDPComponent},
 
 
   {path:"mdp",component :MdpComponent},

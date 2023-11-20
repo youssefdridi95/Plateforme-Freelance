@@ -22,10 +22,10 @@ recuperationMdp(email: string){
     "email": email
   });
 }
-changeMdp(email:string ,password: string){
+changeMdp(reset:string ,password: string){
   return this.http.put(this.url + '/auth/setPassword',{
     "newPassword": password,
-    "id":email
+    "reset":reset
   });
 }
 }
