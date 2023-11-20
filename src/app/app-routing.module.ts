@@ -13,6 +13,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { RoleComponent } from './role/role.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { RecupMDPComponent } from './recup-mdp/recup-mdp.component';
+import { ProfComponent } from './prof/prof.component';
 
 const routes: Routes = [
   {path:"",component :RoleComponent },
@@ -39,6 +40,7 @@ const routes: Routes = [
   {path: "user/profile/create" , component : UserFormComponent},
   {path :"user/connexion", component : UserInscritComponent },
   {path : "user/connexion/:type" , component : UserInscritComponent },
+  {path : "prof", component : ProfComponent},
 
 ];
 
