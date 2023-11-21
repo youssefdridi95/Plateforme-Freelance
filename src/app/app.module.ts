@@ -29,6 +29,7 @@ import { RecupMDPComponent } from './recup-mdp/recup-mdp.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { ProfComponent } from './prof/prof.component';
 import { AuthGuard } from './guard/auth-gard.guard';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { AuthGuard } from './guard/auth-gard.guard';
     RoleComponent,
     RecupMDPComponent,
     UserFormComponent,
-    ProfComponent
+    ProfComponent,
+    HomeComponent
     
   ],
   imports: [
