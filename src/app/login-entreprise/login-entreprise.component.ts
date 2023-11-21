@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EntrepriseService } from '../services/entreprise.service';
 import { ToastrService } from 'ngx-toastr';
-import { roles } from 'src/environments/environment';
+import { Env } from '../env';
+import { environments } from 'src/env.iroments';
+
 
 
 
@@ -27,9 +29,12 @@ export class LoginEntrepriseComponent {
   loginForm!:FormGroup
   display :any;
   signupForm !:FormGroup
+  env : Env = environments as Env
   constructor(private formBuilder:FormBuilder, private route: ActivatedRoute,private toastr : ToastrService,private  entrepriseService : EntrepriseService,private router: Router ) { 
   this.route.paramMap.subscribe(params => { this.display= params.get('type') ;}) ;
-
+    
+    console.log(this.env);
+    
   }
 
   ngOnInit (): void {
@@ -93,7 +98,7 @@ if (this.isMush && this.isPro)
       'username' : this.signupForm.value.username ,
       'email' : this.signupForm.value.email ,
       'password' : this.signupForm.value.password ,
-      'role' : roles.entRoleAdmin ,
+      'role' : this.env.roles.entRoleAdmin ,
     }
     console.log(entreprise);
   
@@ -134,7 +139,7 @@ if (this.isMush && this.isPro)
         const loginResponse: LoginResponse = res as LoginResponse;
   console.log(res);
       
-        if (!loginResponse.roles.includes(roles.entAdmin)  || !loginResponse.roles.includes(roles.entEditor)  ||!loginResponse.roles.includes(roles.entEmployee)  ||!loginResponse.roles.includes(roles.entRecruter) ) {
+        if (!loginResponse.roles.includes(this.env.roles.entAdmin)  || !loginResponse.roles.includes(this.env.roles.entEditor)  ||!loginResponse.roles.includes(this.env.roles.entEmployee)  ||!loginResponse.roles.includes(this.env.roles.entRecruter) ) {
           this.toastr.error("vous n'êtes pas une entreprise.  essayez de se connecter en tant qu'un developpeur", 'erreur');
         } else {
           this.toastr.success('Connexion réussie', 'Compte');

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable ,throwError} from 'rxjs';
 import { catchError,map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { Env } from '../env';
+import { environments } from 'src/env.iroments';
 const AUTH_TOKEN = 'user';
 
 @Injectable({
@@ -10,11 +11,18 @@ const AUTH_TOKEN = 'user';
 })
 export class EntrepriseService {
   router: any;
-   
-  constructor(private http: HttpClient) { }
-  private url =environment.backendUrl;
-  private  userSignup = environment.usersSignup
-  private  userSignin  = environment.usersSignin
+  private env :Env 
+
+  constructor(private http: HttpClient) {
+    this.env =environments as Env
+
+    this.url =this.env.backendUrl;
+    this.userSignup = this.env.usersSignup
+    this.userSignin  = this.env.usersSignin
+   }
+   private url 
+   private  userSignup 
+   private  userSignin 
 
 
   

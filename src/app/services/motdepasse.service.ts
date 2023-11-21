@@ -1,16 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { Env } from '../env';
+import { environments } from 'src/env.iroments';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MotdepasseService {
-
-  constructor(private http: HttpClient) { }
-  private url =environment.backendUrl;
-  private  requestResetPwd = environment.requestResetPwd
-  private  resetPwd  = environment.resetPwd
+  private env :Env 
+  constructor(private http: HttpClient ) { 
+    this.env =environments as Env
+    this.url =this.env.backendUrl;
+    this.requestResetPwd = this.env.requestResetPwd
+    this.resetPwd  = this.env.resetPwd
+  
+  
+    
+  }
+  private url 
+  private  requestResetPwd 
+  private  resetPwd  
 
 
   
@@ -24,7 +33,7 @@ export class MotdepasseService {
 
   // function signup api call
 recuperationMdp(email: string){
-  return this.http.post(this.url + this.resetPwd,{
+  return this.http.post(this.url + this.recuperationMdp,{
     "email": email
   });
 }

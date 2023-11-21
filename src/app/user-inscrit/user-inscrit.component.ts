@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators,AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NgForm } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { roles } from 'src/environments/environment';
+import { Env } from '../env';
+import { environments } from 'src/env.iroments';
 
 
 
@@ -26,11 +25,7 @@ interface LoginResponse {
   styleUrls: ['./user-inscrit.component.css']
 })
 export class UserInscritComponent {
-  // public login : ;
-  // confirmpass: any;
-  // constructor(){
-  //   this.login = new LoginModel();
-  // }
+
 
   userForm = new FormGroup({
 
@@ -61,7 +56,7 @@ export class UserInscritComponent {
       'username' : this.userForm.value.username ,
       'email' : this.userForm.value.email ,
       'password' : this.userForm.value.password ,
-      'role' : 'DEV' ,
+      'role' : this.env.roles.userRole ,
     }
 
     this.userService.signup(user).subscribe(
@@ -88,14 +83,14 @@ export class UserInscritComponent {
     const user = {
       'username': this.userFormlogin.value.username,
       'password': this.userFormlogin.value.password,
-      'role': roles.userRole    };
+         };
   
     this.userService.loginUser(user).subscribe(
     (res: any) => {
       const loginResponse: LoginResponse = res as LoginResponse;
      
       
-      if (!loginResponse.roles.includes(roles.user)) {
+      if (!loginResponse.roles.includes(this.env.roles.user)) {
         this.toastr.error("vous n'êtes pas un developpeur.  essayez de se connecter en tant qu'une entreprise ", 'erreur');
       } else {
         this.router.navigate(['/user/profile/create']);
@@ -111,9 +106,11 @@ export class UserInscritComponent {
 
   }
   
+  private env : Env
 
   constructor(private roote : ActivatedRoute,private userService: UserService ,private toastr : ToastrService, private router: Router){
     this.roote.paramMap.subscribe(params =>{this.inscrit=params.get('type')})
+    this.env = environments as Env 
   }
 
   inscrit:any;

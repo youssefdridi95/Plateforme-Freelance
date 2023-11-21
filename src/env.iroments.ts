@@ -1,6 +1,6 @@
-import { Env } from "src/app/env";
 
-export const environment= {
+
+export const environments= {
  
     backendUrl : "http://localhost:9090" ,
     usersSignup :"/auth/signup",
