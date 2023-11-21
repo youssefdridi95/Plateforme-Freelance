@@ -17,8 +17,7 @@ canActivate(
   next: ActivatedRouteSnapshot,
   state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (!sessionStorage.getItem('user')){
-         this.toastr.success('not loggedin','user')
-   
+        
          return true;
    
   } else {

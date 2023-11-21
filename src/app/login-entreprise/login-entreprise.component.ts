@@ -95,16 +95,20 @@ if (this.isMush && this.isPro)
       'password' : this.signupForm.value.password ,
       'role' : roles.entRoleAdmin ,
     }
+    console.log(entreprise);
   
     this.entrepriseService.signup(entreprise).subscribe(
       res=>{
       
+  console.log(res);
         
         this.toastr.success('a été crée avec succés','compte')
         this.navigateToPage('/entreprise/connexion/login', 1500)
   
       },
       err=>{
+  console.log(err);
+
         console.log(err);
   
     this.toastr.error(err.error.message,'erreur')
@@ -123,10 +127,12 @@ if (this.isMush && this.isPro)
       'username': this.loginForm.value.username,
       'password': this.loginForm.value.password,
     };
+  console.log(entreprise);
   
     this.entrepriseService.login(entreprise).subscribe(
       (res: any) => {
         const loginResponse: LoginResponse = res as LoginResponse;
+  console.log(res);
       
         if (!loginResponse.roles.includes(roles.entAdmin)  || !loginResponse.roles.includes(roles.entEditor)  ||!loginResponse.roles.includes(roles.entEmployee)  ||!loginResponse.roles.includes(roles.entRecruter) ) {
           this.toastr.error("vous n'êtes pas une entreprise.  essayez de se connecter en tant qu'un developpeur", 'erreur');
@@ -137,6 +143,8 @@ if (this.isMush && this.isPro)
         }
       },
       err => {
+  console.log(err);
+
         this.toastr.error(err.error.message, 'erreur');
       }
     );
