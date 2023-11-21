@@ -1,0 +1,27 @@
+<!-- add-post.component.html -->
+
+<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="competence">Competence:</label>
+      <input type="text" id="competence" formControlName="competence" />
+    </div>
+  
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description"></textarea>
+    </div>
+  
+    <div>
+      <label for="file">Upload File (Image/Video):</label>
+      <input type="file" id="file" formControlName="file" />
+    </div>
+  
+    <div>
+      <label for="tags">Tags:</label>
+      <input type="text" id="tags" formControlName="tags" />
+      <!-- You can customize the tags input with additional functionality -->
+    </div>
+  
+    <button type="submit">Submit</button>
+  </form>
+  

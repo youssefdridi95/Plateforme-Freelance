@@ -15,6 +15,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { RecupMDPComponent } from './recup-mdp/recup-mdp.component';
 import { AuthGuard } from './guard/auth-gard.guard';
 import { loggedinGuard } from './guard/loggedin.guard';
+import { AddPostComponent } from './add-post/add-post.component';
 
 const routes: Routes = [
   {path:"",component :RoleComponent },
@@ -41,6 +42,8 @@ const routes: Routes = [
   {path: "user/form" , component : UserFormComponent , canActivate: [AuthGuard]},
 
   {path: "user/profile/create" , component : UserFormComponent},
+  {path: "post" , component : AddPostComponent},
+
 
 ];
 

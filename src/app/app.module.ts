@@ -30,6 +30,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { ProfComponent } from './prof/prof.component';
 import { AuthGuard } from './guard/auth-gard.guard';
 import { loggedinGuard } from './guard/loggedin.guard';
+import { AddPostComponent } from './add-post/add-post.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { loggedinGuard } from './guard/loggedin.guard';
     RoleComponent,
     RecupMDPComponent,
     UserFormComponent,
-    ProfComponent
+    ProfComponent,
+    AddPostComponent
     
   ],
   imports: [
