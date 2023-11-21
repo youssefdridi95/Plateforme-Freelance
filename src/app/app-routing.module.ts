@@ -16,31 +16,31 @@ import { RecupMDPComponent } from './recup-mdp/recup-mdp.component';
 import { AuthGuard } from './guard/auth-gard.guard';
 import { loggedinGuard } from './guard/loggedin.guard';
 import { AddPostComponent } from './add-post/add-post.component';
-
+import { HomeComponent } from './home/home.component';
+import { AccueilComponent } from './accueil/accueil.component';
 const routes: Routes = [
-  {path:"",component :RoleComponent },
+
 
   {path : "user/connexion/:type" , component : UserInscritComponent ,canActivate:[loggedinGuard]},
-  {path:"profil/entreprise",component :ProfilEntrepriseComponent , canActivate: [AuthGuard]},
 
+
+  {path:"",component :HomeComponent },
+  {path:"accueil",component :AccueilComponent },
+  {path : "user/connexion/:type" , component : UserInscritComponent },
+  {path:"profil/entreprise",component :ProfilEntrepriseComponent , canActivate: [AuthGuard]},
   {path:"entreprise/profil",component :ProfilEntrepriseComponent, canActivate: [AuthGuard]},
 
   {path:"entreprise/connexion/:type",component :LoginEntrepriseComponent,canActivate:[loggedinGuard] },
   {path:"entreprise/creation",component :CreationEntrepriseComponent , canActivate: [AuthGuard]},
-
   {path:"changeMdp/:role/:reset",component :RecupMDPComponent},
-
-
   {path:"mdp",component :MdpComponent},
   {path:"role",component :RoleComponent ,canActivate:[loggedinGuard] },
   {path:"cv/creer",component :CvBuilderComponent , canActivate: [AuthGuard] },
   {path:":id/cv/edit",component :CvUpdateComponent , canActivate: [AuthGuard] },
   {path:"cv/afficher",component :CvPreviewComponent , canActivate: [AuthGuard]},
-
-  {path: "user/profil", component : ProfilComponent },
-  {path: "user/compte", component : UserCompteComponent },
+  {path: "user/profil", component : ProfilComponent , canActivate: [AuthGuard]},
+  {path: "user/compte", component : UserCompteComponent , canActivate: [AuthGuard]},
   {path: "user/form" , component : UserFormComponent , canActivate: [AuthGuard]},
-
   {path: "user/profile/create" , component : UserFormComponent},
   {path: "post" , component : AddPostComponent},
 

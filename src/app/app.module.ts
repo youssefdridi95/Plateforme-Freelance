@@ -31,6 +31,7 @@ import { ProfComponent } from './prof/prof.component';
 import { AuthGuard } from './guard/auth-gard.guard';
 import { loggedinGuard } from './guard/loggedin.guard';
 import { AddPostComponent } from './add-post/add-post.component';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,8 @@ import { AddPostComponent } from './add-post/add-post.component';
     RecupMDPComponent,
     UserFormComponent,
     ProfComponent,
-    AddPostComponent
+    AddPostComponent,
+    HomeComponent
     
   ],
   imports: [

@@ -16,6 +16,6 @@ shouldShowNavbar(): boolean {
     this.router.url === '/entreprise/connexion/login'||  
     this.router.url === '/entreprise/connexion/signup'|| 
     this.router.url === '/mdp'|| 
-    this.router.url === '/');
+    this.router.url === '/role');
 }
 }

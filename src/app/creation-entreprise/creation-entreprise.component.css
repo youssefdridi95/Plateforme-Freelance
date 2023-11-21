@@ -32,9 +32,14 @@
     padding: 0.9375rem 1.25rem;
     border-radius: 1.25rem;
     font-size: 0.7rem;
-    
+    color: rgb(80, 80, 80);
+
     box-shadow: #cff0ff 0rem 0.625rem 0.625rem -0.3125rem;
     border-inline: 0.125rem solid transparent;
+  }
+  .pp{
+    
+    color: rgba(80, 80, 80, 0.6);
   }
   .text-danger {
     color:rgb(228, 26, 26);
@@ -135,7 +140,7 @@
     border: none;
     transition: all 0.2s ease-in-out;
   }
-  
+
   .form .signup-button:hover {
     transform: scale(1.03);
     box-shadow: rgba(133, 189, 215, 0.8784313725) 0rem 1.4375rem 0.625rem -1.25rem;
