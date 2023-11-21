@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,12 @@ import { Injectable } from '@angular/core';
 export class MotdepasseService {
 
   constructor(private http: HttpClient) { }
-  private url ="http://192.168.195.26:9090";
+  private url =environment.backendUrl;
+  private  requestResetPwd = environment.requestResetPwd
+  private  resetPwd  = environment.resetPwd
+
+
+  
   
 
 
@@ -18,12 +24,12 @@ export class MotdepasseService {
 
   // function signup api call
 recuperationMdp(email: string){
-  return this.http.post(this.url + '/auth/sendEmail',{
+  return this.http.post(this.url + this.resetPwd,{
     "email": email
   });
 }
 changeMdp(reset:string ,password: string){
-  return this.http.put(this.url + '/auth/setPassword',{
+  return this.http.put(this.url + this.resetPwd,{
     "newPassword": password,
     "reset":reset
   });

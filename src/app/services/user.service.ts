@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,9 @@ import { Injectable } from '@angular/core';
 export class UserService {
 
   constructor(private http: HttpClient) { }
-  private url ="http://192.168.195.26:9090";
-  
+  private url =environment.backendUrl;
+  private  usersSignup = environment.usersSignup
+  private  usersSignin  = environment.usersSignin
 
 
   
@@ -18,10 +20,10 @@ export class UserService {
 
   // function signup api call
 signup(user: any){
-  return this.http.post(this.url + '/auth/signup',user);
+  return this.http.post(this.url + this.usersSignup,user);
 }
 loginUser(user: any){
-  return this.http.post(this.url + '/auth/signin', user);
+  return this.http.post(this.url + this.usersSignin, user);
 }
 
 

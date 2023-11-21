@@ -33,3 +33,39 @@ main {
     align-items: center;
     justify-content: center;
 }
+
+
+/* styles.css */
+
+/* Define the styles for the scrollbar */
+::-webkit-scrollbar {
+    width: 5px; /* width of the scrollbar */
+
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb {
+    background: #007CF8;
+  }
+  
+  /* Handle on active state */
+  ::-webkit-scrollbar-thumb:active {
+    background:  #007CF8;
+   
+  }
+  
+  /* Define the styles for the track (the area where the scrollbar runs) */
+  ::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+  
+  /* Define the styles for the corner (where vertical and horizontal scrollbars meet) */
+  ::-webkit-scrollbar-corner {
+    background: #ef00f7;
+  }
+  
+  /* Define the styles for the scrollbar button (arrow buttons for the scrollbar) */
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+  

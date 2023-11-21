@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { roles } from 'src/environments/environment';
 
 
 
@@ -87,15 +88,14 @@ export class UserInscritComponent {
     const user = {
       'username': this.userFormlogin.value.username,
       'password': this.userFormlogin.value.password,
-      'role': 'DEV',
-    };
+      'role': roles.userRole    };
   
     this.userService.loginUser(user).subscribe(
     (res: any) => {
       const loginResponse: LoginResponse = res as LoginResponse;
      
       
-      if (!loginResponse.roles.includes(" ")) {
+      if (!loginResponse.roles.includes(roles.user)) {
         this.toastr.error("vous n'êtes pas un developpeur.  essayez de se connecter en tant qu'une entreprise ", 'erreur');
       } else {
         this.router.navigate(['/user/profile/create']);

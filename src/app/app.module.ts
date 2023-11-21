@@ -29,6 +29,7 @@ import { RecupMDPComponent } from './recup-mdp/recup-mdp.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { ProfComponent } from './prof/prof.component';
 import { AuthGuard } from './guard/auth-gard.guard';
+import { loggedinGuard } from './guard/loggedin.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +75,7 @@ import { AuthGuard } from './guard/auth-gard.guard';
     }), // ToastrModule added
     
   ],
-  providers: [ AuthGuard],
+  providers: [ AuthGuard,loggedinGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

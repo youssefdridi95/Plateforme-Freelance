@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EntrepriseService } from '../services/entreprise.service';
 import { ToastrService } from 'ngx-toastr';
+import { roles } from 'src/environments/environment';
 
 
 
@@ -69,7 +70,7 @@ export class LoginEntrepriseComponent {
     // List of allowed domains
     const allowedDomains = ["gmail", "outlook", "yahoo", "mail", "protonmail", "aol", "yandex", "gmx", "hotmail", "icloud"];
 
-   console.log(allowedDomains.includes(domain));
+
    
    return !allowedDomains.includes(domain);
 }
@@ -92,7 +93,7 @@ if (this.isMush && this.isPro)
       'username' : this.signupForm.value.username ,
       'email' : this.signupForm.value.email ,
       'password' : this.signupForm.value.password ,
-      'role' : 'entreprise' ,
+      'role' : roles.entRoleAdmin ,
     }
   
     this.entrepriseService.signup(entreprise).subscribe(
@@ -106,7 +107,7 @@ if (this.isMush && this.isPro)
       err=>{
         console.log(err);
   
-    this.toastr.error(err.error.message,'compte')
+    this.toastr.error(err.error.message,'erreur')
   
       }
     )}
@@ -127,7 +128,7 @@ if (this.isMush && this.isPro)
       (res: any) => {
         const loginResponse: LoginResponse = res as LoginResponse;
       
-        if (!loginResponse.roles.includes("ROLE_ENTREPRISE")) {
+        if (!loginResponse.roles.includes(roles.entAdmin)  || !loginResponse.roles.includes(roles.entEditor)  ||!loginResponse.roles.includes(roles.entEmployee)  ||!loginResponse.roles.includes(roles.entRecruter) ) {
           this.toastr.error("vous n'êtes pas une entreprise.  essayez de se connecter en tant qu'un developpeur", 'erreur');
         } else {
           this.toastr.success('Connexion réussie', 'Compte');
@@ -136,7 +137,7 @@ if (this.isMush && this.isPro)
         }
       },
       err => {
-        this.toastr.error(err.error.message, 'Compte');
+        this.toastr.error(err.error.message, 'erreur');
       }
     );
   }

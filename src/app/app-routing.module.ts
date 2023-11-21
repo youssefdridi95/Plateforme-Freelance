@@ -14,23 +14,24 @@ import { RoleComponent } from './role/role.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { RecupMDPComponent } from './recup-mdp/recup-mdp.component';
 import { AuthGuard } from './guard/auth-gard.guard';
+import { loggedinGuard } from './guard/loggedin.guard';
 
 const routes: Routes = [
   {path:"",component :RoleComponent },
 
-  {path : "user/connexion/:type" , component : UserInscritComponent },
+  {path : "user/connexion/:type" , component : UserInscritComponent ,canActivate:[loggedinGuard]},
   {path:"profil/entreprise",component :ProfilEntrepriseComponent , canActivate: [AuthGuard]},
 
   {path:"entreprise/profil",component :ProfilEntrepriseComponent, canActivate: [AuthGuard]},
 
-  {path:"entreprise/connexion/:type",component :LoginEntrepriseComponent },
+  {path:"entreprise/connexion/:type",component :LoginEntrepriseComponent,canActivate:[loggedinGuard] },
   {path:"entreprise/creation",component :CreationEntrepriseComponent , canActivate: [AuthGuard]},
 
   {path:"changeMdp/:role/:reset",component :RecupMDPComponent},
 
 
   {path:"mdp",component :MdpComponent},
-  {path:"role",component :RoleComponent },
+  {path:"role",component :RoleComponent ,canActivate:[loggedinGuard] },
   {path:"cv/creer",component :CvBuilderComponent , canActivate: [AuthGuard] },
   {path:":id/cv/edit",component :CvUpdateComponent , canActivate: [AuthGuard] },
   {path:"cv/afficher",component :CvPreviewComponent , canActivate: [AuthGuard]},
