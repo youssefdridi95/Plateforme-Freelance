@@ -3,7 +3,7 @@ import { HttpClient,HttpHeaders, HttpErrorResponse } from '@angular/common/http'
 import { Observable ,throwError} from 'rxjs';
 import { catchError,map } from 'rxjs/operators';
 import { Env } from '../env';
-import { environments } from 'src/env.iroments';
+import { environments } from 'src/enviroments';
 const AUTH_TOKEN = 'user';
 
 @Injectable({

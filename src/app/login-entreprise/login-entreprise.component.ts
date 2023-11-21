@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EntrepriseService } from '../services/entreprise.service';
 import { ToastrService } from 'ngx-toastr';
 import { Env } from '../env';
-import { environments } from 'src/env.iroments';
+import { environments } from 'src/enviroments';
 
 
 

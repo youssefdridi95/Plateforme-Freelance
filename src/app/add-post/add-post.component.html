@@ -2,13 +2,13 @@
 
 <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
     <div>
-      <label for="competence">Competence:</label>
-      <input type="text" id="competence" formControlName="competence" />
+      <label for="competence"></label>
+      <input type="text" id="competence" formControlName="competence" placeholder="Compétence"/>
     </div>
   
     <div>
-      <label for="description">Description:</label>
-      <textarea id="description" formControlName="description"></textarea>
+ 
+      <textarea id="description" formControlName="description" placeholder="Description"></textarea>
     </div>
   
     <div>
@@ -18,9 +18,37 @@
   
     <div>
       <label for="tags">Tags:</label>
-      <input type="text" id="tags" formControlName="tags" />
-      <!-- You can customize the tags input with additional functionality -->
+      <div formArrayName="tags">
+            <ng-container *ngFor="let tag of getControls(); let i = index" [formGroupName]="i">
+
+                <input type="text" required formControlName="name" class="input-field" />
+              
+                <div class="actions">
+                    <button type="button" (click)="removeField( i);" class="remove-button">
+                      <i class="fa-regular fa-trash-can"></i>  
+                    </button>
+                    <button type="button" (click)="addField( );" class="add-button"
+                      *ngIf="i===getControls.length-1">
+                     <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   expérience
+                    </button>
+                  </div>
+                </ng-container>
+                <div class="actions">
+        
+                  <button type="button" (click)="addField();" class="add-button"
+                    *ngIf="getControls.length==0 ">
+                   <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   expérience
+                  </button>
+            </div>
+
+      </div >
+   
+      
     </div>
+
+        
+       
+     
   
     <button type="submit">Submit</button>
   </form>

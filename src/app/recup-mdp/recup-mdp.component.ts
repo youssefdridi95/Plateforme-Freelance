@@ -37,7 +37,7 @@ if (this.isMush )
       
         
         this.toastr.success('a été changé avec succés','Mot de passe')
-        if(this.role==='dev')
+        if(this.role==='talent')
          this.navigateToPage('/user/connexion/signin', 1500)
         else
           this.navigateToPage('/entreprise/connexion/login', 1500)
