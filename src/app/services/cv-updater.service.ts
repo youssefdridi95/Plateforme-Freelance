@@ -86,9 +86,9 @@ export class CvUpdaterService {
      
       titre : new FormControl (cert.titre,[Validators.required]),
       dateObtentien : new FormControl (cert.dateObtentien,[Validators.required]),
-      image : new FormControl (null,[Validators.required]),
-      imageSrc : new FormControl (cert.imageSrc,[Validators.required]),
-      imageFile : new FormControl (null,[Validators.required]),
+      image : new FormControl (null),
+      imageSrc : new FormControl (cert.imageSrc),
+      imageFile : new FormControl (null),
       
     })
   }

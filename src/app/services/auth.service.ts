@@ -9,7 +9,7 @@ export class AuthService {
 
   login() {
     if (sessionStorage.getItem('user'))
-    this.isAuthenticated = true;
+       this.isAuthenticated = true;
   }
 
   logout() {
