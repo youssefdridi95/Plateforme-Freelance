@@ -13,18 +13,14 @@ select {
   resize: none;
 }
 
-td.contact {
-  width: 25%;
-  margin: 0rem;
-}
 
-td.post {
-  width: 60%;
-}
 
 ul {
   position: relative;
   left: -20px;
+  /* height: 200px; */
+  height:90%;
+  overflow: auto
 }
 
 ul {
@@ -84,12 +80,35 @@ h3.title {
   width: 100%;
   margin: auto;
   padding:0rem 3rem;
+  height: 54rem;
+  /* position: sticky; */
+  /* overflow: hidden; */
+
+}
+td.contact {
+  width: 25%;
+  margin: 0rem;
+  position: sticky;
+  top: 0;
+}
+
+td.post {
+  width: 60%;
+  height: 4rem;
+  margin: 0rem;
 
 }
 .filter{
-  text-align: left;
-}
+  width: 75%;
+  height: 20rem;
+  margin: 0rem;
+  /* position: sticky; */
+  top: 0;
 
+}
+/* div.test{
+  height: 10rem;
+} */
 .container table {
   border-spacing: 10px;
   /* Ajoutez de l'espace entre les cellules */
