@@ -41,7 +41,7 @@
 
         </div>
         <br>
-        <div >
+        <div>
           <p>Compétence Principale : </p>
 
         </div>
@@ -74,71 +74,19 @@
         <!-- <td class="post" rowspan="2" style="max-height: 100px;overflow: auto;"> -->
         <h3 class="title"> Publication</h3>
         <ul style="overflow: auto;">
-          <!-- <div class="test">gggg</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">gggg</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-          <div class="test">azzzz</div>
-        <div class="test">gggg</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">gggg</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div>
-        <div class="test">azzzz</div> -->
-          <article class="publication" st >
-            <!--  Send post  -->
 
+          <article class="publication">
+            <!--  Send post  -->
+            <app-add-post [post]="post" *ngIf="post==true"></app-add-post>
             <!--  Publications  -->
-            <div class="content-publication wrap shadow" >
+
+
+            <div class="postuler">
+              <button class="postuler" (click)="post=!post" *ngIf="post==false"><i class="fa-solid fa-pencil"></i>
+                Post
+              </button>
+            </div>
+            <div class="content-publication wrap shadow">
               <div class="heading flex-center" style="">
 
                 <div class="name flex-center" style="text-align: left;">
@@ -146,61 +94,64 @@
                   <h3 style="text-align: left;">Jhon doe</h3>
                 </div>
                 <p class="date" style="text-align: left;">1 min</p>
-              <div class="public" style="text-align: right;">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat.</p>
+                <div class="public" style="text-align: right;">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.</p>
 
+                </div>
+                <div class="fav" style="text-align: center;">
+                  <button class="like">Like</button>
+                  <button class="comment">Comments</button>
+                </div>
               </div>
-              <div class="fav" style="text-align: center;">
-                <button class="like">Like</button>
-                <button class="comment">Comments</button>
-              </div>
-       </div>
 
             </div>
-            <div class="content-publication wrap shadow" >
-              <div class="heading flex-center" >
+            <div class="content-publication wrap shadow">
+              <div class="heading flex-center">
 
                 <div class="name flex-center" style="text-align: left;">
                   <img src="/assets/was.png">
                   <h3 style="text-align: left;">Jhon doe</h3>
                 </div>
                 <p class="date" style="text-align: left;">1 min</p>
-              <div class="public" style="text-align: right;">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat.</p>
+                <div class="public" style="text-align: right;">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.</p>
 
+                </div>
+                <div class="fav" style="text-align: center;">
+                  <button class="like">Like</button>
+                  <button class="comment">Comments</button>
+                </div>
               </div>
-              <div class="fav" style="text-align: center;">
-                <button class="like">Like</button>
-                <button class="comment">Comments</button>
-              </div>
-       </div>
-            </div>  
-               <div class="content-publication wrap shadow" >
-              <div class="heading flex-center" >
+            </div>
+            <div class="content-publication wrap shadow">
+              <div class="heading flex-center">
 
                 <div class="name flex-center" style="text-align: left;">
                   <img src="/assets/was.png">
                   <h3 style="text-align: left;">Jhon doe</h3>
                 </div>
                 <p class="date" style="text-align: left;">1 min</p>
-              <div class="public" style="text-align: right;">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat.</p>
+                <div class="public" style="text-align: right;">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.</p>
 
+                </div>
+                <div class="fav" style="text-align: center;">
+                  <button class="like">Like</button>
+                  <button class="comment">Comments</button>
+                </div>
               </div>
-              <div class="fav" style="text-align: center;">
-                <button class="like">Like</button>
-                <button class="comment">Comments</button>
-              </div>
-       </div>
 
             </div>
-       
+
           </article>
         </ul>
 

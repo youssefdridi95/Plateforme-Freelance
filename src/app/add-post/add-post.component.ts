@@ -1,6 +1,6 @@
 // add-post.component.ts
 
-import { Component } from '@angular/core';
+import { Component ,Input } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -9,6 +9,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
   styleUrls: ['./add-post.component.css']
 })
 export class AddPostComponent   {
+  @Input() post: boolean = false; // Recevoir la propriété post du composant parent
+
   postForm: FormGroup 
 
   selectedFiles: File[] = [];
@@ -92,6 +94,7 @@ getControls() {
   onSubmit() {
     // Handle form submission logic here
     console.log(this.postForm.value);
+    
   }
 }
 
