@@ -18,6 +18,7 @@ import { loggedinGuard } from './guard/loggedin.guard';
 import { AddPostComponent } from './add-post/add-post.component';
 import { HomeComponent } from './home/home.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { talentGuard } from './guard/user_guard';
 const routes: Routes = [
 
 
@@ -38,8 +39,8 @@ const routes: Routes = [
   {path:"cv/creer",component :CvBuilderComponent , canActivate: [AuthGuard] },
   {path:":id/cv/edit",component :CvUpdateComponent , canActivate: [AuthGuard] },
   {path:"cv/afficher",component :CvPreviewComponent , canActivate: [AuthGuard]},
-  {path: "user/profil", component : ProfilComponent , canActivate: [AuthGuard]},
-  {path: "user/compte", component : UserCompteComponent , canActivate: [AuthGuard]},
+  {path: "user/profil", component : ProfilComponent , canActivate: [AuthGuard,talentGuard]},
+  {path: "user/compte", component : UserCompteComponent , canActivate: [AuthGuard,talentGuard]},
   {path: "user/form" , component : UserFormComponent , canActivate: [AuthGuard]},
   {path: "user/profile/create" , component : UserFormComponent},
   {path: "post" , component : AddPostComponent},

@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent {
+  email: string = '';
+
+  ngOnInit() {
+    // Récupérer l'utilisateur depuis la session
+    const userString = sessionStorage.getItem('user');
+    if (userString) {
+      const user = JSON.parse(userString);
+      this.email = user.email;
+    }
+  }
 
 }
