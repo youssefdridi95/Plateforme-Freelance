@@ -63,9 +63,9 @@ export class UserInscritComponent {
       res=>{
         console.log(res);
         
-        this.router.navigate(['/user/connexion/signin']);
-
-        this.toastr.success('a été crée avec succés','compte')
+        this.router.navigate(['/verif/email/'+user.role+'/'+user.email]);
+        
+        this.toastr.success('a été crée avec succés ,merci de verifier votre email pour l\'activer' ,'compte')
 
       },
       err=>{
