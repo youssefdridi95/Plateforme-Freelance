@@ -32,6 +32,7 @@ import { AuthGuard } from './guard/auth-gard.guard';
 import { loggedinGuard } from './guard/loggedin.guard';
 import { AddPostComponent } from './add-post/add-post.component';
 import { HomeComponent } from './home/home.component';
+import { talentGuard } from './guard/user_guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,7 +80,7 @@ import { HomeComponent } from './home/home.component';
     }), // ToastrModule added
     
   ],
-  providers: [ AuthGuard,loggedinGuard],
+  providers: [ AuthGuard,loggedinGuard,talentGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
