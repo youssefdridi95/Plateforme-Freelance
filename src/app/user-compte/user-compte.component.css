@@ -387,7 +387,13 @@ button  {
 .post-send button:active {
   transform: scale(.95);
 } */
-
+.postuler button{
+  width: 20%;
+  font-size: 1rem;
+margin: auto;
+margin-bottom: 1rem;
+background-color: #57707D;
+}
 .content-publication {
   width: 100%;
   background: white;

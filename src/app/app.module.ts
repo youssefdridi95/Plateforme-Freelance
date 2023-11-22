@@ -34,6 +34,7 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { HomeComponent } from './home/home.component';
 import { talentGuard } from './guard/user_guard';
 import { VerifEmailComponent } from './verif-email/verif-email.component';
+import { UserCompteComponent } from './user-compte/user-compte.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +56,9 @@ import { VerifEmailComponent } from './verif-email/verif-email.component';
     ProfComponent,
     AddPostComponent,
     HomeComponent,
-    VerifEmailComponent
+    VerifEmailComponent,
+    UserCompteComponent,
+
     
   ],
   imports: [
