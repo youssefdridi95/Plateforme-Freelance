@@ -1,65 +1,201 @@
 /* add-post.component.css */
 
-form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
+.addPost {
+    max-width: 25rem;
+    width: 95%;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #ffffff;
     border: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 0.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
   }
   
-  div {
+  .addPost div {
     margin-bottom: 15px;
   }
   
-  label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
-  }
+
   
-  input,
-  textarea,
-  button {
+  .tag {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 5px;
+  }
+
+
+  .addPost
+  input,.addPost
+  textarea{
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 0.5rem;
+
     border: 1px solid #ddd;
     border-radius: 5px;
     box-sizing: border-box;
+    resize: none;
   }
+
+
   
-  button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
+  .addPost
+  input:focus,.addPost
+  textarea:focus{
+    outline: none;
+    border-color: #007CF8;
   }
-  
-  .actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+  .addPost
+  textarea{
+    height: 8rem;
   }
+
+  .addPost h4 {
+    font-size: 0.9rem;
+    color: #007CF8;
+    padding-bottom:1rem ;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .addPost label {
+    font-size: 0.9rem;
+    color: #007CF8;
+  }
+
+
   
   .remove-button,
   .add-button {
-    background-color: #3b5998;
-    color: white;
+    background-color: transparent;
+    color: gray;
     border: none;
     border-radius: 3px;
-    padding: 5px 10px;
+    font-size: 1.2rem;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 5%;
+    height: 5%;
+    border-radius:50% ;
   }
   
-  .remove-button i,
-  .add-button i {
-    margin-right: 5px;
+
+
+  .remove-button:hover{
+  color: red;
+
+  }
+  .add-button:disabled,  .remove-button:disabled{
+    text-decoration: line-through;
+  color: rgba(170, 170, 170, 0.281);
+  cursor: not-allowed;
+    }
+
+  .add-button:enabled:hover{
+    color: #007CF8;
+  
+    }
+
+  .tagInput{
+    width: 85% !important;
+    height: 2rem;
+    margin: 0;
+
+  }
+
+  .submit{
+    width: 100%;
+    margin-top: 1rem;
+    background-color: #007CF8 ;
+    border: 1px solid transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 0.2rem;
+    color: white;
+    cursor: pointer;
+  }
+
+  .submit:hover{
+   
+    background-color: white ;
+    border: 1px solid #007CF8;
+    color: #007CF8;
+    cursor: pointer;
+    transition: all .5s;
+    font-weight: bold;
+  }
+
+  .selectedFile{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 0px 0px 5px 0px rgb(0, 0, 0);
+  }
+
+  .selectedFileContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1rem;
+    margin: 1rem 0;
+    gap: 5px;
+    max-height: 300px;
+    overflow: auto;
+    border: 1px dashed #007CF8;
+  }
+
+  .selectedFileContainer > div{
+    max-width: 150px;
+    width: 100%; 
+    max-height: 200px;
+    position: relative;
+  
+  }
+
+.remove-file{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+ background-color: whitesmoke;
+ padding: 5px;
+  color: red;
+  border: none;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 5px;
+ 
+  border-radius:50% ;
+}
+  .file-input-container {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    top: 1rem;
+    right: 1rem;
+  }
+  
+  .file-input-container label {
+  font-size: 1.5rem;
+    color: gray;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .file-input-container label:hover {
+    color: #007CF8;
+  }
+
+  
+  /* Style the file input to be hidden */
+  input[type="file"] {
+    display: none;
   }
   

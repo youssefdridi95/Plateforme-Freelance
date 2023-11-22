@@ -1,55 +1,73 @@
 <!-- add-post.component.html -->
 
-<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="addPost">
+  <h4>
+    postuler quleque chose : 
+  </h4>
     <div>
       <label for="competence"></label>
-      <input type="text" id="competence" formControlName="competence" placeholder="Compétence"/>
+      <input type="text" id="competence" formControlName="competence" placeholder="Compétence..."/>
     </div>
   
     <div>
  
-      <textarea id="description" formControlName="description" placeholder="Description"></textarea>
+      <textarea id="description" formControlName="description" placeholder="Description...."></textarea>
     </div>
   
     <div>
-      <label for="file">Upload File (Image/Video):</label>
-      <input type="file" id="file" formControlName="file" />
+      <div class="file-input-container">
+        <label for="files">
+          <i class="fa-solid fa-camera"></i>
+        </label>
+        <input formArrayName="file" type="file" id="files" multiple (change)="detectFiles($event)" accept="image/*,video/*">
+      </div>
+  
+      
     </div>
   
+  
     <div>
-      <label for="tags">Tags:</label>
+      <label for="tags">Mots clés:</label>
       <div formArrayName="tags">
-            <ng-container *ngFor="let tag of getControls(); let i = index" [formGroupName]="i">
+            <div class="tag" *ngFor="let tag of getControls(); let i = index" [formGroupName]="i">
 
-                <input type="text" required formControlName="name" class="input-field" />
-              
-                <div class="actions">
-                    <button type="button" (click)="removeField( i);" class="remove-button">
+                     <input type="text" required formControlName="name" class="input-field tagInput" />
+                     <button type="button"  class="remove-button" disabled *ngIf="i===0">
                       <i class="fa-regular fa-trash-can"></i>  
                     </button>
-                    <button type="button" (click)="addField( );" class="add-button"
-                      *ngIf="i===getControls.length-1">
-                     <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   expérience
+              
+                    <button type="button" (click)="removeField( i);" class="remove-button" *ngIf="i!==0">
+                      <i class="fa-regular fa-trash-can"></i>  
                     </button>
-                  </div>
-                </ng-container>
-                <div class="actions">
-        
-                  <button type="button" (click)="addField();" class="add-button"
-                    *ngIf="getControls.length==0 ">
-                   <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>   expérience
-                  </button>
-            </div>
 
-      </div >
-   
+                    <button type="button" class="add-button" disabled *ngIf="i<getControls().length-1">
+                      <i class="fa-solid fa-circle-plus"></i>  
+                     </button>
+                    <button type="button" (click)="addField( );" class="add-button" *ngIf="i===getControls().length-1">
+                     <i class="fa-solid fa-circle-plus"></i>  
+                    </button>
+
+            </div>
+             
+     </div>
+
       
     </div>
 
-        
+    <div  *ngIf="getPhotos().controls.length!==0" class="selectedFileContainer" >
+      <div formArrayName="file"  *ngFor="let photo of getPhotos().controls; let i = index;"  >
+   
+            <img [src]="photo.get('url')?.value" class="card-img-top" alt="Image Preview" [formGroupName]="i" class="selectedFile" *ngIf="isImage(photo.get('url')?.value)">
+            <video [src]="photo.get('url')?.value" controls [formGroupName]="i" class="selectedFile" *ngIf="isVideo(photo.get('url')?.value)"></video>
+            <button type="button" (click)="removefile( i);" class="remove-file" >
+              <i class="fa-regular fa-trash-can"></i>  
+            </button>
+
+      </div>
+  </div>
        
      
   
-    <button type="submit">Submit</button>
+    <button class="submit" type="submit">Postuler</button>
   </form>
   

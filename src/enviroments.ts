@@ -7,7 +7,10 @@ export const environments= {
     usersSignin :"/auth/signin",
     requestResetPwd : '/auth/sendEmail' ,
     resetPwd : '/auth/setPassword' , 
+  
+  
     roles : {
+      
     userRole : "talent" , // used in the signup (the role sent to the backend )
     user : "ROLE_TALENT" , //  (the role receied from the backend )
 
