@@ -10,8 +10,18 @@ import { SharedService } from '../shared.service';
 })
 
 export class UserCompteComponent {
+  post = false;
+
 
   constructor(private router: Router, private sharedService: SharedService) {}
+  arrowUp: boolean = false;
+
+  // ... autres méthodes
+
+  toggleArrow() {
+    this.arrowUp = !this.arrowUp;
+    this.post=!this.post
+  }
 
   navigateToCvCreer(link: String) {
     
@@ -20,7 +30,6 @@ export class UserCompteComponent {
   }
   username: string = '';
   email: string = '';
-  post = false;
   ngOnInit() {
 
     // Récupérer le nom d'utilisateur et l'e-mail depuis le sessionStorage

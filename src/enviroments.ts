@@ -9,6 +9,10 @@ export const environments= {
     resetPwd : '/auth/setPassword' , 
     verifcompte : '/auth/verifCompte',
     regenerateOtp : '/auth/regenerateOtp',
+    userProfil : "",
+
+
+
     roles : {
       
     userRole : "talent" , // used in the signup (the role sent to the backend )
