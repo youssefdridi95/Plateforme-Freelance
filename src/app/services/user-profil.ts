@@ -6,7 +6,7 @@ import { environments } from 'src/enviroments';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserProfil {
 
   private env :Env 
 
@@ -22,8 +22,8 @@ export class UserService {
    private  userProfil 
 
 // function userProfiladd  api call 
-userProfiladd(user: any){
-    return this.http.post(this.url + this.userProfil,user);
+   userProfiladd(userProfil: any){
+    return this.http.post(this.url + this.userProfil,userProfil);
   }
 
 

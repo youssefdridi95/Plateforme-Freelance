@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { UserProfil } from '../services/user-profil';
 
 @Component({
   selector: 'app-user-form',
@@ -18,6 +20,7 @@ export class UserFormComponent {
 
     // Ajoutez d'autres champs ici
   });
+  constructor(private toastr: ToastrService, private userProfilService: UserProfil) {}
 
   ngOnInit() {
     // Récupérer l'utilisateur depuis la session
@@ -26,17 +29,28 @@ export class UserFormComponent {
       const user = JSON.parse(userString);
       this.email = user.email;
     }
+    
   }
 
   userProfiladd() {
-    const userProfil={
-      'nom   ' : this.userProfil.value.firstName,
-      'lastName' : this.userProfil.value.lastName,
-      'phoneNumber' : this.userProfil.value.phoneNumber,
-      'adress' :  this.userProfil.value.address,
-
-    }
-    // Ajoutez votre logique de traitement ici
-    console.log('Formulaire soumis avec succès', this.userProfil.value);
+    const userProfil = {
+      'nom': this.userProfil.value.firstName,
+      'lastName': this.userProfil.value.lastName,
+      'phoneNumber': this.userProfil.value.phoneNumber,
+      'address': this.userProfil.value.address,
+    };
+    
+    
+    this.userProfilService.userProfiladd(userProfil).subscribe(
+      res => {
+        console.log(res);
+        // Ajoutez ici d'autres actions en cas de succès
+      },
+      err => {
+        console.log(err);
+        // Ajoutez ici d'autres actions en cas d'erreur, comme l'affichage d'un message d'erreur avec Toastr
+        this.toastr.error(err.error.message, 'Connexion');
+      }
+    );
   }
 }
