@@ -22,8 +22,8 @@ canActivate(
    
   } else {
     this.toastr.error('already loggedin','user')
-  
-    return this.router.createUrlTree(['/']);
+    
+    return this.router.createUrlTree(['/user/compte']);
   }
 }
 }

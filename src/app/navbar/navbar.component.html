@@ -15,7 +15,7 @@
 <div class="btn">
 
     <div class="dropdown">
-        <button class="dropdown-button" (click)="toggleDropdown()">
+        <button class="dropdown-button" (click)="toggleDropdown()" *ngIf="showBtn()">
           Connexion <i class="fa-solid fa-chevron-down"></i>
         </button>
         <div class="dropdown-content" *ngIf="isDropdownOpen">
