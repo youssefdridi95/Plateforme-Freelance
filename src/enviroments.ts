@@ -3,14 +3,26 @@
 export const environments= {
  
     backendUrl : "http://192.168.195.26:9090" ,
+    
     usersSignup :"/auth/signup",
     usersSignin :"/auth/signin",
+   
     requestResetPwd : '/auth/forgot/sendEmail' ,
     resetPwd : '/auth/setPassword' , 
+   
     verifcompte : '/auth/verifCompte',
     regenerateOtp : '/auth/regenerateOtp',
-    roles : {
-      
+   
+    addPost  : '' ,
+    editPost  : '' ,
+    deletePost  : '' ,
+    getUserPost : '' ,
+    getSkillPost : '' ,
+   
+   
+   
+   
+    roles : {  
     userRole : "talent" , // used in the signup (the role sent to the backend )
     user : "ROLE_TALENT" , //  (the role receied from the backend )
     

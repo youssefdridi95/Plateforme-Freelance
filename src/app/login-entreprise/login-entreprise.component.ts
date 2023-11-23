@@ -124,19 +124,20 @@ if (this.isMush && this.isPro)
       'username': this.loginForm.value.username,
       'password': this.loginForm.value.password,
     };
-  console.log(entreprise);
   
     this.entrepriseService.login(entreprise).subscribe(
       (res: any) => {
         const loginResponse: LoginResponse = res as LoginResponse;
   console.log(res);
+      console.log(res);
       
-        if (!loginResponse.roles.includes(this.env.roles.entAdmin)  || !loginResponse.roles.includes(this.env.roles.entEditor)  ||!loginResponse.roles.includes(this.env.roles.entEmployee)  ||!loginResponse.roles.includes(this.env.roles.entRecruter) ) {
-          this.toastr.error("vous n'êtes pas une entreprise.  essayez de se connecter en tant qu'un developpeur", 'erreur');
-        } else {
+        if (loginResponse.roles.includes(this.env.roles.entAdmin)  || loginResponse.roles.includes(this.env.roles.entEditor)  ||loginResponse.roles.includes(this.env.roles.entEmployee)  ||loginResponse.roles.includes(this.env.roles.entRecruter) ) {
           this.toastr.success('Connexion réussie', 'Compte');
           sessionStorage.setItem('user', JSON.stringify(res));
           this.navigateToPage('/entreprise/creation', 1500);
+        } else {
+          
+          this.toastr.error("vous n'êtes pas une entreprise.  essayez de se connecter en tant qu'un developpeur", 'erreur');
         }
       },
       err => {

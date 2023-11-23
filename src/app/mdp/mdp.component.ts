@@ -28,15 +28,13 @@ export class MdpComponent {
  
     this.mail.recuperationMdp(this.emailForm.value.email).subscribe(
       res => {
+
         this.toastr.success('merci de verifiez votre email pour reinitialiser votre mot de passe', 'email');
  
-        
-
-
       },
       err => {
-        console.log(err)
-        this.toastr.error(err.error.message, 'erreur');
+        console.log(err.error.message)
+     this.toastr.error(err.error.message, 'erreur');
       }
     );
   }

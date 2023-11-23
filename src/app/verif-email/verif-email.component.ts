@@ -61,9 +61,9 @@ export class VerifEmailComponent {
       res=>{
         console.log(res);
         if (this.role === this.env.roles.userRole)
-             this.router.navigate(['/entreprise/connexion/login']);
-        else  if (this.role === this.env.roles.entRoleAdmin)
-             this.router.navigate(['/user/connexion/signin']);
+        this.router.navigate(['/user/connexion/signin']);
+      else  if (this.role === this.env.roles.entRoleAdmin)
+      this.router.navigate(['/entreprise/connexion/login']);
         else 
         this.router.navigate(['/role']);
 

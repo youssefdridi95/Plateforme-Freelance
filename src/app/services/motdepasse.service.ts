@@ -33,7 +33,7 @@ export class MotdepasseService {
 
   // function signup api call
 recuperationMdp(email: string){
-  return this.http.post(this.url + this.recuperationMdp,{
+  return this.http.post(this.url + this.requestResetPwd,{
     "email": email
   });
 }
