@@ -22,7 +22,12 @@ export const environments= {
    
    
    
-    roles : {  
+    userProfil : "",
+
+
+
+    roles : {
+      
     userRole : "talent" , // used in the signup (the role sent to the backend )
     user : "ROLE_TALENT" , //  (the role receied from the backend )
     
@@ -38,4 +43,4 @@ export const environments= {
     entEditorRole : 'editor' ,
     entEmployeeRole :'employee' ,
 }
-}; 
+}

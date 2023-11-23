@@ -42,7 +42,7 @@ const routes: Routes = [
   {path:":id/cv/edit",component :CvUpdateComponent , canActivate: [AuthGuard] },
   {path:"cv/afficher",component :CvPreviewComponent , canActivate: [AuthGuard]},
   {path: "user/profil", component : ProfilComponent , canActivate: [AuthGuard,talentGuard]},
-  {path: "user/compte", component : UserCompteComponent , canActivate: [AuthGuard,talentGuard]},
+  {path: "user/compte", component : UserCompteComponent },
   {path: "user/form" , component : UserFormComponent , canActivate: [AuthGuard]},
   {path: "user/profile/create" , component : UserFormComponent},
   {path: "post/add" , component : AddPostComponent},
