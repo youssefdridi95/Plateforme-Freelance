@@ -1,74 +1,157 @@
+<!--ICON-->
+<!-- <link rel="shortcut icon" href="/DevanagariBrahmi/logo.png" /> -->
+
+<!--META TAGS-->
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="author" content="Team Bboysdreamsfell" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="" />
+<meta property="og:site_name" content="Profiler Name || Krishivalahs" />
+
+<!--EXTERNAL CSS-->
+
 <div class="container">
   <table>
     <tr>
-      <td>
+
+      <td class="contact">
+        <div class="title">Profil Entreprise</div>
+
         <section>
-          <label for="fileToUpload">
-            <i class="fa fa-camera"></i>
-            <input type="file" id="fileToUpload" style="visibility: hidden" accept="image/*"
-              name="fileToUpload"
-              onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" />
-          </label>
-          <img src="/assets/logo.png" id="blah" alt="Avatar" />
+       
+          <img src="/assets/userf.png" id="blah" alt="Avatar" />
         </section>
+        <br>
 
-        <h1>UMANLINK</h1>
-        <h3>Services informatiques et conseils en informatique</h3>
-        <br />
+        
+        <div class="contact_card">
+          <br>
+          <b>Nom entreprise :</b><br> {{email}} <br>
+          <b>Domaime :</b><br> {{email}} <br>
+          <b>E-mail professionnel :</b><br> {{email}} <br>
+          <b>Pays :</b><br> {{email}} <br>
+          <b>Site web :</b><br> {{email}} <br>
+          <b>Secteur d'activite :</b><br> {{email}} <br>
+          <b>Effectif :</b><br> {{email}} <br>
+
+           
+         
+        <div class="button">
+          <button class="edit" (click)="navigateToCvCreer('')">
+            Ajouter employers
+          </button>
+          <button class="edit" (click)="navigateToCvCreer('')">
+            Modifier profil
+          </button>
+        </div>
+
+        </div>
+       
       </td>
-      <td>
-        <ul>
-          <li>
-            <div>
-              <b>Nom entreprise</b>
-              <i class="fa fa-edit" id="edit1" (click)="focusOn('nom')"></i>
-            </div>
-            <input type="text" name="fname" id="fname" maxlength="100" [value]="entreprise.nom" required #nomInput disabled />
-          </li>
-          <li>
-            <div>
-              <b>E-mail professionnel</b>
-            </div>
-            <input type="email" name="email" id="email" maxlength="150" [value]="entreprise.email" required #emailInput disabled />
-          </li>
-          <li>
-            <div>
-              <b>Adresse</b>
-              <i class="fa fa-edit" id="edit2" (click)="focusOn('adresse')"></i>
-            </div>
-            <input type="tel" name="mobile" id="mobile" maxlength="10" [value]="entreprise.adresse" required #adresseInput disabled />
-          </li>
-          <li>
-            <div>
-              <b>Numéro de téléphone</b>
-              <i class="fa fa-edit" id="edit3" (click)="focusOn('telephone')"></i>
-            </div>
-            <input type="text" name="address" id="address" maxlength="250" [value]="entreprise.telephone" required #telephoneInput disabled />
-          </li>
-          <li>
-            <div>
-              <b>Site web</b>
-              <i class="fa fa-edit" id="edit4" (click)="focusOn('site-web')"></i>
-            </div>
-            <input type="text" name="site-web" id="site-web" maxlength="250" [value]="entreprise.siteWeb" required #siteWebInput disabled />
-          </li>
-          <li>
-            <div>
-              <b>Fondée en</b>
-              <i class="fa fa-edit" id="edit5" (click)="focusOn('fondee-en')"></i>
-            </div>
-            <input type="text" name="fondee-en" id="fondee-en" maxlength="250" [value]="entreprise.fondeeEn" required #fondeeEnInput  disabled/>
-          </li>
+      <td class="post" rowspan="2">
 
-          <li>
-            <button class="login-button" *ngIf="isClicked"  (click)="updateEnt()">Modifier</button>
-          </li>
+        <ul style="overflow: auto;">
+
+          <article class="publication">
+          
+            <div class="postuler">
+
+            </div>
+            <app-add-post  *ngIf="post==true"></app-add-post>
+            
+
+            <div *ngIf="post==false" class="content-publication wrap shadow">
+              <div class="heading flex-center">
+                <div class="name flex-cente">
+                  <img class="post" src="/assets/userf.png">
+                  <div class="text-container">
+                    <input class="input-post" (click)="post=!post" type="text" readonly placeholder="Quoi de neuf , ">
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            
+         
+            <div class="content-publication wrap shadow">
+              <div class="heading flex-center" style="">
+
+                <div class="name flex-center" style="text-align: left;">
+                  <img src="/assets/userf.png">
+                  <h3 style="text-align: left;">Jhon doe</h3>
+                </div>
+                <p class="date" style="text-align: left;">1 min</p>
+                <div class="public" style="text-align: right;">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.</p>
+
+                </div>
+                <div class="fav" style="text-align: center;">
+                  <button class="like">Like</button>
+                  <button class="comment">Comments</button>
+                </div>
+              </div>
+
+            </div>
+            <div class="content-publication wrap shadow">
+              <div class="heading flex-center">
+
+                <div class="name flex-center" style="text-align: left;">
+                  <img src="/assets/userf.png">
+                  <h3 style="text-align: left;">Jhon doe</h3>
+                </div>
+                <p class="date" style="text-align: left;">1 min</p>
+                <div class="public" style="text-align: right;">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.</p>
+
+                </div>
+                <div class="fav" style="text-align: center;">
+                  <button class="like">Like</button>
+                  <button class="comment">Comments</button>
+                </div>
+              </div>
+            </div>
+            <div class="content-publication wrap shadow">
+              <div class="heading flex-center">
+
+                <div class="name flex-center" style="text-align: left;">
+                  <img src="/assets/userf.png">
+                  <h3 style="text-align: left;">Jhon doe</h3>
+                </div>
+                <p class="date" style="text-align: left;">1 min</p>
+                <div class="public" style="text-align: right;">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat.</p>
+
+                </div>
+                <div class="fav" style="text-align: center;">
+                  <button class="like">Like</button>
+                  <button class="comment">Comments</button>
+                </div>
+              </div>
+
+            </div>
+
+          </article>
         </ul>
-        
-        
+
       </td>
     </tr>
+  
+
   </table>
+
 </div>
 
 <!--JAVASCRIPT-->

@@ -1,11 +1,4 @@
-header {
-  background: url("/../assets/login.jpeg") no-repeat;
-  background-position: right;
-  background-size: 30%;
-  width: 100%;
-  min-height: 75vh;
-background-color: white;
-}
+
 
 .container {
   max-width: 27rem;
