@@ -80,9 +80,9 @@ header .header-content {
   margin: 0 auto;
   margin-top: 3rem;
   text-align:left;
-  font-weight: 900;
+  font-weight: 600;
   letter-spacing: 2.5px;
-  background-image: linear-gradient(55deg,#126dc7, #04203b);
+  background-image: linear-gradient(20deg,#0d4b85,#55a2f0);
   background-size: 100%;
   background-repeat: repeat;
   background-clip: text;
@@ -94,7 +94,7 @@ header .header-content {
 
 }
 .header-content h1  span{ 
-  font-size: 2rem;
+  font-size: 2.5rem;
   
   font-weight: 900;
   letter-spacing: 2.5px;
@@ -114,6 +114,8 @@ header .header-content {
   letter-spacing: 3px;
  font-weight: normal;
 padding-left: 1rem;
+font-weight: 100;
+
 }
 
 
@@ -122,23 +124,25 @@ padding-left: 1rem;
  
  .signup-button {
    font-weight: bold;
-   border:0.8px solid  #3596f8;
-   color: white;
+   border:0.8px solid  #0d4b85;
+   color: #0d4b85;
    padding: 1rem 2rem;  
-   border-radius: 2rem;
+   border-radius: 1.2rem;
+   border-color:#0d4b85 ;
    box-shadow: rgba(232, 235, 236, 0.878) 0rem 1.25rem 0.625rem -0.9375rem;
-   background-color: #007CF8;
+   background-color: white;
    transition: all 0.2s ease-in-out;
    text-decoration: none;
    text-align: center !important;
    justify-self: center;
    margin:1rem ;
+  font-size: 1rem;
 }
 
 
  .signup-button:hover {
   transform: scale(1.03);
-  box-shadow: rgba(133, 189, 215, 0.8784313725) 0rem 1.4375rem 0.625rem -1.25rem;
+  box-shadow: rgba(37, 48, 53, 0.878)75rem 0.625rem -1.25rem;
 }
 
  .signup-button:active {

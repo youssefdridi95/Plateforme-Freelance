@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   name: string = '';
-  values = ['Talent', 'Developers', 'Coders', 'Entreprise', 'EVERYONE'];
+  values = ['Talent', 'Entreprise'];
 
   ngOnInit() {
     // Set an initial name
@@ -16,7 +16,7 @@ export class HomeComponent {
     // Change the name every 5 seconds
     setInterval(() => {
       this.changeName();
-    }, 3000);
+    }, 1000);
   }
 
   changeName() {

@@ -1,3 +1,11 @@
+header {
+  background: url("/../assets/mdp.jpeg") no-repeat;
+  background-position: top right;
+  background-size: 30%;
+  width: 100%;
+  min-height: 75vh;
+background-color: white;
+}
 .container {
   max-width: 27.4rem;
   width: 95%;

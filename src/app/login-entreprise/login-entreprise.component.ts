@@ -32,8 +32,7 @@ export class LoginEntrepriseComponent {
   env : Env = environments as Env
   constructor(private formBuilder:FormBuilder, private route: ActivatedRoute,private toastr : ToastrService,private  entrepriseService : EntrepriseService,private router: Router ) { 
   this.route.paramMap.subscribe(params => { this.display= params.get('type') ;}) ;
-    
-    console.log(this.env);
+
     
   }
 

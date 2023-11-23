@@ -32,5 +32,18 @@ export class NavbarComponent {
          this.router.url === '/entreprise/connexion/signup'|| 
          this.router.url === '/mdp'|| 
          this.router.url === '/role');
-     }    
+     }   
+     
+     
+     showBtn (): boolean {
+      // Check if the current route is not '/login/entreprise'
+      return this.router.url === '/'  
+       
+     }   
+     isDropdownOpen = false;
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
 }
