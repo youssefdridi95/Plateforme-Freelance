@@ -1,4 +1,6 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component} from '@angular/core';
+import { SharedService } from '../shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profil-entreprise',
@@ -6,72 +8,33 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   styleUrls: ['./profil-entreprise.component.css']
 })
 export class ProfilEntrepriseComponent {
- 
-  // Use ViewChild to get references to the input fields
-  @ViewChild('nomInput') nomInput!: ElementRef;
-  @ViewChild('emailInput') emailInput!: ElementRef;
-  @ViewChild('adresseInput') adresseInput!: ElementRef;
-  @ViewChild('telephoneInput') telephoneInput!: ElementRef;
-  @ViewChild('siteWebInput') siteWebInput!: ElementRef;
-  @ViewChild('fondeeEnInput') fondeeEnInput!: ElementRef;
-  entreprise = {
-    nom : '' ,
-    adresse : '' ,
-    telephone : '' ,
-    siteWeb : '' ,
-    fondeeEn : '' ,
-    email : "" ,
-  }
-   
-  isClicked =false
-  // Function to focus on the input field
-  focusOn(inputName: string) {
-    switch (inputName) {
-      case 'nom':
-        this.nomInput.nativeElement.disabled = false;
-        this.nomInput.nativeElement.focus();
-        break;
-      case 'adresse':
-        this.adresseInput.nativeElement.disabled = false;
-        this.adresseInput.nativeElement.focus();
-        break;
-      case 'telephone':
-        this.telephoneInput.nativeElement.disabled = false;
-        this.telephoneInput.nativeElement.focus();
-        break;
-      case 'site-web':
-        this.siteWebInput.nativeElement.disabled = false;
-        this.siteWebInput.nativeElement.focus();
-        break;
-      case 'fondee-en':
-        this.fondeeEnInput.nativeElement.disabled = false;
-        this.fondeeEnInput.nativeElement.focus();
-        break;
-      default:
-        // Handle invalid inputName or provide appropriate error handling
-        break;
-    }
+  post = false;
 
-    if(!this.isClicked) this.isClicked =true
 
+  constructor(private router: Router, private sharedService: SharedService) {}
+  arrowUp: boolean = false;
+
+  // ... autres méthodes
+
+  toggleArrow() {
+    this.arrowUp = !this.arrowUp;
+    this.post=!this.post
   }
 
-  updateEnt(){
-    this.entreprise = {
-      nom : this.nomInput.nativeElement.value ,
-      adresse : this.adresseInput.nativeElement.value ,
-      telephone : this.telephoneInput.nativeElement.value ,
-      siteWeb : this.siteWebInput.nativeElement.value ,
-      fondeeEn : this.fondeeEnInput.nativeElement.value ,
-      email : this.emailInput.nativeElement.value ,
-    }
-
-    console.log(  this.entreprise)
+  navigateToCvCreer(link: String) {
+    
+    this.router.navigate([link]);
 
   }
+  username: string = '';
+  email: string = '';
+  ngOnInit() {
 
-  ngOnInit (): void{
-   const entreprise1 = JSON.parse( sessionStorage.getItem("user")!)
-   this.entreprise.email=entreprise1.email
-  }
-}
+    // Récupérer le nom d'utilisateur et l'e-mail depuis le sessionStorage
+    const storedUsername = sessionStorage.getItem('username');
+    const storedEmail = sessionStorage.getItem('useremail');
+  
+    // Assurez-vous que la valeur n'est pas null avant de l'assigner
+    this.username = storedUsername ?JSON.parse (storedUsername) : '';
+    this.email = storedEmail ? JSON.parse (storedEmail) : '';
+  } }
