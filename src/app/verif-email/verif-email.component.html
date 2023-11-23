@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="heading">Activation du compte</div>
+      <form action="" class="form" [formGroup]="otpForm" (submit)="verifCompte()">
+        
+        <input required="" class="input" type="number"  formControlName="otp"  placeholder="entrer le code OTP recu par email...">
+        <br><br>
+        <input class="login-button" type="submit" value="Verifier code" >
+  <br>
+    <input class="signup-button"  value="Regénérer OTP code"  (click)="regenerateOTPCode()"   >
+      </form>
+  
+  </div>

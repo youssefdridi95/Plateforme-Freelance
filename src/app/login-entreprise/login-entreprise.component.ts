@@ -32,7 +32,6 @@ export class LoginEntrepriseComponent {
   env : Env = environments as Env
   constructor(private formBuilder:FormBuilder, private route: ActivatedRoute,private toastr : ToastrService,private  entrepriseService : EntrepriseService,private router: Router ) { 
   this.route.paramMap.subscribe(params => { this.display= params.get('type') ;}) ;
-
     
   }
 
@@ -106,24 +105,18 @@ if (this.isMush && this.isPro)
       
   console.log(res);
         
-        this.toastr.success('a été crée avec succés','compte')
-        this.navigateToPage('/entreprise/connexion/login', 1500)
-  
+  this.router.navigate(['/verif/email/'+entreprise.role+'/'+entreprise.email]);
+        
+  this.toastr.success('a été crée avec succés ,merci de verifier votre email pour l\'activer' ,'compte')
+
       },
       err=>{
-  console.log(err);
-
-        console.log(err);
-  
+    console.log(err);
     this.toastr.error(err.error.message,'erreur')
-  
       }
     )}
     else
     this.toastr.error("Valider votre formulaire",'')
-
-
-
   }
   login() {
     

@@ -19,6 +19,7 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { HomeComponent } from './home/home.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { talentGuard } from './guard/user_guard';
+import { VerifEmailComponent } from './verif-email/verif-email.component';
 const routes: Routes = [
 
 
@@ -44,7 +45,7 @@ const routes: Routes = [
   {path: "user/form" , component : UserFormComponent , canActivate: [AuthGuard]},
   {path: "user/profile/create" , component : UserFormComponent},
   {path: "post" , component : AddPostComponent},
-
+  {path: "verif/email/:role/:email" , component : VerifEmailComponent},
 
 ];
 
