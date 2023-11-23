@@ -1,0 +1,52 @@
+<!-- add-post.component.html -->
+
+<form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="addPost">
+    <h4>
+      postuler quleque chose : 
+    </h4>
+      <div>
+        <label for="competence"></label>
+        <input type="text" id="competence" formControlName="competence" placeholder="Compétence..."/>
+      </div>
+    
+      <div>
+   
+        <textarea id="description" formControlName="description" placeholder="Description...."></textarea>
+      </div>
+    
+    
+    
+      <div>
+        <label for="tags">Mots clés:</label>
+        <div formArrayName="tags">
+              <div class="tag" *ngFor="let tag of getControls(); let i = index" [formGroupName]="i">
+  
+                       <input type="text" required formControlName="name" class="input-field tagInput" />
+                       <button type="button"  class="remove-button" disabled *ngIf="i===0">
+                        <i class="fa-regular fa-trash-can"></i>  
+                      </button>
+                
+                      <button type="button" (click)="removeField( i);" class="remove-button" *ngIf="i!==0">
+                        <i class="fa-regular fa-trash-can"></i>  
+                      </button>
+  
+                      <button type="button" class="add-button" disabled *ngIf="i<getControls().length-1">
+                        <i class="fa-solid fa-circle-plus"></i>  
+                       </button>
+                      <button type="button" (click)="addField( );" class="add-button" *ngIf="i===getControls().length-1">
+                       <i class="fa-solid fa-circle-plus"></i>  
+                      </button>
+  
+              </div>
+               
+       </div>
+  
+        
+      </div>
+  
+    
+       
+    
+      <button class="submit" type="submit" >Postuler</button>
+    </form>
+    

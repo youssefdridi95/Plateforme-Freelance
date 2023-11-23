@@ -5,9 +5,14 @@ export interface Env {
     usersSignin :string,
     requestResetPwd : string,
     resetPwd : string , 
-    regenerateOtp : string
-    verifcompte : string
-   
+    regenerateOtp : string ,
+    verifcompte : string ,
+    
+    addPost  : string ,
+    editPost  : string ,
+    deletePost  : string ,
+    getUserPost : string ,
+    getSkillPost : string ,
    
     roles : {
     userRole : string , // used in the signup (the role sent to the backend )
