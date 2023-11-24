@@ -13,11 +13,7 @@ export class EditPostComponent implements OnInit {
   post = {
     'cometence' : 'java' ,
     'description' : 'tatatatatatatatatatatatatatat' ,
-     'tags' : [
-      {"name" : "hello"},
-      {"name" :"worrld "} , 
-      {"name":'lalalalalalalalala'}
-    ]
+     'tags' : 'Sunt elit aut proi///Commodo itaque commo///Sint a…exc///Tempora dolor rem qu///Est modi esse verita'
   }
 
   constructor(private formBuilder: FormBuilder) {
@@ -45,9 +41,9 @@ export class EditPostComponent implements OnInit {
     const tagsArray = this.postForm.get('tags') as FormArray;
     tagsArray.clear(); // Clear existing tags
 
-    this.post['tags'].forEach(tag => {
+    this.post['tags'].split('///').forEach(tag => {
       tagsArray.push(this.formBuilder.group({
-        name: tag['name']
+        name: tag
       }));
     });
   }
@@ -85,24 +81,26 @@ getControls() {
     formData.append('description', this.postForm.value.description);
   
     // Assuming tags is an array of tag objects
-    const tags = this.postForm.value.tags;
-    for (let i = 0; i < tags.length; i++) {
-      formData.append('tags', tags[i].name);
-    }
+
+    
+    const tags = this.postForm.value.tags.map((tag: { name: string }) => tag.name).join('///');
+    
+     formData.append('tags', tags);
+    
+   
+    const formDataObject: any = {};
+    formData.forEach((value, key) => {
+      if (!formDataObject[key]) {
+        formDataObject[key] = value;
+      } else {
+        if (!Array.isArray(formDataObject[key])) {
+          formDataObject[key] = [formDataObject[key]];
+        }
+        formDataObject[key].push(value);
+      }
+    });
   
-    // const formDataObject: any = {};
-    // formData.forEach((value, key) => {
-    //   if (!formDataObject[key]) {
-    //     formDataObject[key] = value;
-    //   } else {
-    //     if (!Array.isArray(formDataObject[key])) {
-    //       formDataObject[key] = [formDataObject[key]];
-    //     }
-    //     formDataObject[key].push(value);
-    //   }
-    // });
-  
-    // // Log the converted object
-    // console.log(formDataObject);
+    // Log the converted object
+    console.log(formDataObject);
   }
 }

@@ -1,7 +1,9 @@
 // add-post.component.ts
 
 import { Component ,Input } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-add-post',
@@ -15,11 +17,14 @@ export class AddPostComponent   {
 
   selectedFiles: File[] = [];
   selectedFilesUrls: (string | null)[] = [];
+
+  totalFileSizeExeeded : boolean =false
+   totalSize=0
   constructor(private formBuilder: FormBuilder) {
     this.postForm = this.formBuilder.group({
       competence: ['', Validators.required],
-      description: [''],
-      file: this.formBuilder.array([]),
+      description: ['',Validators.maxLength(500)],
+      file: this.formBuilder.array([]), // 10MB limit
       tags: this.formBuilder.array([
         this.formBuilder.group({
           name: ['', Validators.required]
@@ -28,6 +33,20 @@ export class AddPostComponent   {
     });
   }
   
+ totalFileSizeValidator(maxTotalSize: number): boolean {
+    const files = this.postForm.get('file')?.value 
+    
+
+    if (files) {
+       this.totalSize = files.reduce((sum:number, file:any) => sum + file.file.size, 0);
+    }
+    
+    return  this.totalSize> maxTotalSize;
+    
+
+  };
+
+
 // We will create multiple form controls inside defined form controls photos.
 createItem(data:any): FormGroup {
   return this.formBuilder.group(data);
@@ -41,6 +60,7 @@ getPhotos() {
 
 detectFiles(event:any) {
   let files = event.target.files;
+
   if (files) {
     let control = <FormArray> this.postForm.controls['file'] ;
       for (let file of files) {
@@ -54,10 +74,16 @@ detectFiles(event:any) {
               }));
           }
           reader.readAsDataURL(file);
+          this.totalSize+=file.size
       }
   }
 
+
+  this.totalFileSizeExeeded=  this.totalSize > 10*1024*1024;
   
+  
+
+
 }
 
 isImage(url: string | null): boolean {
@@ -89,11 +115,15 @@ getControls() {
         let control = <FormArray> this.postForm.controls['file'] ;
 
     control.removeAt(index);
+
+    this.totalFileSizeExeeded=this.totalFileSizeValidator(10*1024*1024)
   }
 
   onSubmit() {
    
-  
+  this.totalFileSizeExeeded =this.totalFileSizeValidator(1*1024*1024)
+
+
     const formData = new FormData();
   
     formData.append('competence', this.postForm.value.competence);
@@ -105,11 +135,10 @@ getControls() {
       formData.append('file', files[i]);
     }
   
-    // Assuming tags is an array of tag objects
-    const tags = this.postForm.value.tags;
-    for (let i = 0; i < tags.length; i++) {
-      formData.append('tags', tags[i].name);
-    }
+    const tags = this.postForm.value.tags.map((tag: { name: string }) => tag.name).join('///');
+    
+     formData.append('tags', tags);
+    
   
     // const formDataObject: any = {};
     // formData.forEach((value, key) => {

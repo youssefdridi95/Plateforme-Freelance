@@ -45,10 +45,16 @@ const routes: Routes = [
   {path: "user/compte", component : UserCompteComponent },
   {path: "user/form" , component : UserFormComponent , canActivate: [AuthGuard]},
   {path: "user/profile/create" , component : UserFormComponent},
-  {path: "post/add" , component : AddPostComponent},
-  {path: "post/edit" , component : EditPostComponent},
-
   {path: "verif/email/:role/:email" , component : VerifEmailComponent},
+
+  {
+    path: 'post',
+ // this is the component with the <router-outlet> in the template
+    children: [
+      {path: "add" , component : AddPostComponent},
+      {path: "edit" , component : EditPostComponent},
+    ]
+  },
 
 ];
 
