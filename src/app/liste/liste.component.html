@@ -7,51 +7,72 @@
 		<!-- Responsive Table Header Section -->
 		<thead class="responsive-table__head">
 			<tr class="responsive-table__row">
-				<th class="responsive-table__head__title responsive-table__head__title--name">Nom <i class="fa-solid fa-arrow-up"></i>
-				</th>
+				<th class="responsive-table__head__title responsive-table__head__title--name">Nom </th>
 				<th class="responsive-table__head__title responsive-table__head__title--types">Email</th>
 				<th class="responsive-table__head__title responsive-table__head__title--update">Role</th>
 				<th class="responsive-table__head__title responsive-table__head__title--country">Action</th>
+                
 			</tr>
 		</thead>
 		<!-- Responsive Table Body Section -->
 		<tbody class="responsive-table__body">
 			<tr class="responsive-table__row">
 				<td class="responsive-table__body__text responsive-table__body__text--name">
-					
-					Developer Zahid
+              <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxivAs4UknzmDfLBXGMxQkayiZDhR2ftB4jcIV7LEnIEStiUyMygioZnbLXCAND-I_xWQpVp0jv-dv9NVNbuKn4sNpXYtLIJk2-IOdWQNpC2Ldapnljifu0pnQqAWU848Ja4lT9ugQex-nwECEh3a96GXwiRXlnGEE6FFF_tKm66IGe3fzmLaVIoNL/s1600/img_avatar.png">
+
+                 <div class="path">
+
+                  </div>
+					Developer
 				</td>
-				<td class="responsive-table__body__text responsive-table__body__text--types">Attendee, F1</td>
-				<td class="responsive-table__body__text responsive-table__body__text--update">Jul 17, 2021, 01:14 PM</td>
-				<td class="responsive-table__body__text responsive-table__body__text--country">Bangladesh</td>
+				<td class="responsive-table__body__text responsive-table__body__text--types"></td>
+				<td class="responsive-table__body__text responsive-table__body__text--update"></td>
+                <td class="responsive-table__body__text responsive-table__body__text--country"><button class="btn-info">Supprimer</button></td>
+
 			</tr>
 			<tr class="responsive-table__row">
 				<td class="responsive-table__body__text responsive-table__body__text--name">
-					
+					<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxivAs4UknzmDfLBXGMxQkayiZDhR2ftB4jcIV7LEnIEStiUyMygioZnbLXCAND-I_xWQpVp0jv-dv9NVNbuKn4sNpXYtLIJk2-IOdWQNpC2Ldapnljifu0pnQqAWU848Ja4lT9ugQex-nwECEh3a96GXwiRXlnGEE6FFF_tKm66IGe3fzmLaVIoNL/s1600/img_avatar.png">
+
+        <div class="path">
+
+        </div>
 					John Doe
 				</td>
-				<td class="responsive-table__body__text responsive-table__body__text--types">Attendee, F5</td>
-				<td class="responsive-table__body__text responsive-table__body__text--update">Apr 24, 2021, 11:36 AM</td>
-				<td class="responsive-table__body__text responsive-table__body__text--country">USA</td>
+				<td class="responsive-table__body__text responsive-table__body__text--types"></td>
+				<td class="responsive-table__body__text responsive-table__body__text--update"></td>
+                <td class="responsive-table__body__text responsive-table__body__text--country"><button class="btn-info">Supprimer</button></td>
+
+
 			</tr>
 			<tr class="responsive-table__row">
 				<td class="responsive-table__body__text responsive-table__body__text--name">
-					
-					Ryan Guill
-				</td>
-				<td class="responsive-table__body__text responsive-table__body__text--types">Attendee, MSR</td>
-				<td class="responsive-table__body__text responsive-table__body__text--update">Aug 30, 2021, 05:54 PM</td>
-				<td class="responsive-table__body__text responsive-table__body__text--country">Canada</td>
+					<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxivAs4UknzmDfLBXGMxQkayiZDhR2ftB4jcIV7LEnIEStiUyMygioZnbLXCAND-I_xWQpVp0jv-dv9NVNbuKn4sNpXYtLIJk2-IOdWQNpC2Ldapnljifu0pnQqAWU848Ja4lT9ugQex-nwECEh3a96GXwiRXlnGEE6FFF_tKm66IGe3fzmLaVIoNL/s1600/img_avatar.png">
+                <div class="path">
+
+                   </div>Ryan Guill</td>
+				<td class="responsive-table__body__text responsive-table__body__text--types"></td>
+				<td class="responsive-table__body__text responsive-table__body__text--update"></td>
+                <td class="responsive-table__body__text responsive-table__body__text--country"><button class="btn-info">Supprimer</button></td>
+
+
 			</tr>
-			<tr class="responsive-table__row">
-				<td class="responsive-table__body__text responsive-table__body__text--name">
-					
-					Dan Broughan
-				</td>
-                <td class="responsive-table__body__text responsive-table__body__text--types">Attendee, Instructor, MSR</td>
-				<td class="responsive-table__body__text responsive-table__body__text--update">Dec 15, 2021, 08:25 AM</td>
-				<td class="responsive-table__body__text responsive-table__body__text--country">US</td>
-            			</tr>
+            <tr class="responsive-table__row">
+                
+                  <td>
+                    <input type="text" name="nom" id="nom" maxlength="250" required #nomInput />
+                  </td>
+                  <td>
+                    <input type="text" name="email" id="email" maxlength="250" required #emailInput />
+                </td>
+                  <td>
+                    <input type="text" name="role" id="role" maxlength="250" required #emailInput />
+                  </td>
+                  <td>
+                  <button class="btn" (click)="focusOn('nom')">Ajouter</button>
+                </td>
+              </tr>
+              
 		</tbody>
 	</table>
 </div>
