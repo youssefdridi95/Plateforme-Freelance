@@ -19,7 +19,7 @@
     <!-- <tr style="height: 200px;overflow: auto"> -->
     <tr>
 
-      <td [ngClass]="{'blur': post}" class="contact" >
+      <td [ngClass]="{'blur': post}" class="contact"  >
         <section>
           <!-- <label for="fileToUpload">
             <i class="fa fa-camera"></i>
@@ -55,6 +55,7 @@
         <div>
           <p>Expérience :</p>
 
+    
 
         </div>
         <br>
@@ -69,7 +70,7 @@
 
         </div>
       </td>
-      <td class="post"  rowspan="2">
+      <td class="post" [class.grey-background]="post" rowspan="2">
 
         <!-- <td class="post" rowspan="2" style="max-height: 100px;overflow: auto;"> -->
         <h3 class="title"> Publication</h3>
@@ -89,7 +90,7 @@
 
               </button> -->
             </div>
-            <app-add-post  *ngIf="post==true"></app-add-post>
+            <app-add-post [post]="post" *ngIf="post==true"></app-add-post>
             <!--  Publications  -->
 
             <div *ngIf="post==false" class="content-publication wrap shadow">
@@ -97,7 +98,7 @@
                 <div class="name flex-cente">
                   <img class="post" src="/assets/was.png">
                   <div class="text-container">
-                    <input class="input-post" (click)="post=!post" type="text" readonly placeholder="Quoi de neuf , ">
+                    <input class="input-post" (click)="closePost()" type="text" readonly placeholder="Quoi de neuf , ">
                   </div>
                 </div>
                 <!-- Reste du contenu -->
@@ -105,7 +106,7 @@
             </div>
             
          
-            <div [ngClass]="{'blur': post}"  class="content-publication wrap shadow">
+            <div [ngClass]="{'blur': post}" [ngClass]="{'blocked': post || isTagPopupOpen}"  class="content-publication wrap shadow">
               <div class="heading flex-center" style="">
 
                 <div class="name flex-center" style="text-align: left;">
@@ -177,7 +178,7 @@
       </td>
     </tr>
     <tr>
-      <td [ngClass]="{'blur': post}">
+      <td [ngClass]="{'blur': post}" [ngClass]="{'blocked': post || isTagPopupOpen}" [class.scrollable-container]="!post" [class.non-scrollable-container]="post">
         <br>
         <!-- <h1>Fedi Mriri</h1>
         <h3>Full Stack developper</h3>
