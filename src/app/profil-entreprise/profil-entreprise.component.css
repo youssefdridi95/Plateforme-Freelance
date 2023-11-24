@@ -349,12 +349,12 @@ button {
   
 .input-post {
   width: 90% !important;
-  background: rgb(212, 210, 210) !important;  /* Couleur rouge */
+  background: rgb(250, 246, 246)!important;  /* Couleur rouge */
   border: none;
   padding: 0.8rem;
   border-radius: 1.2rem;
   margin: 1rem 0;
-  box-shadow: #b7babbc7 0px 10px 10px -5px;
+  box-shadow: #cacdcec7 0px 10px 10px -5px;
 
 }
 
@@ -460,7 +460,7 @@ button {
 .content-publication .fav .comment {
   padding: 7px 16px;
   font-size: 16px;
-  background: #57707D;
+  background: #007CF8;
   border: none;
   color: #fff;
   cursor: pointer;
@@ -469,9 +469,7 @@ button {
   width: 45%;
 }
 
-.content-publication .fav .like {
- 
-}
+
 
 .content-publication .fav .like:active,
 .content-publication .fav .comment:active {
