@@ -34,7 +34,7 @@ const routes: Routes = [
   {path:"",component :HomeComponent },
   {path:"accueil",component :AccueilComponent },
   {path : "user/connexion/:type" , component : UserInscritComponent },
-  {path:"profil/entreprise",component :ProfilEntrepriseComponent , canActivate: [AuthGuard]},
+  {path:"profil/entreprise",component :ProfilEntrepriseComponent },
   {path:"entreprise/profil",component :ProfilEntrepriseComponent},
 
   {path:"entreprise/connexion/:type",component :LoginEntrepriseComponent,canActivate:[loggedinGuard] },
