@@ -21,11 +21,15 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { talentGuard } from './guard/user_guard';
 import { VerifEmailComponent } from './verif-email/verif-email.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
+import { ListeEmpComponent } from './liste-emp/liste-emp.component';
+import { ListeComponent } from './liste/liste.component';
 const routes: Routes = [
 
 
   {path : "user/connexion/:type" , component : UserInscritComponent ,canActivate:[loggedinGuard]},
 
+  {path:"entreprise/listee",component :ListeEmpComponent },
+  {path:"entreprise/liste",component :ListeComponent },
 
   {path:"",component :HomeComponent },
   {path:"accueil",component :AccueilComponent },

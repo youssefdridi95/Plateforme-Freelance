@@ -36,6 +36,8 @@ import { talentGuard } from './guard/user_guard';
 import { VerifEmailComponent } from './verif-email/verif-email.component';
 import { UserCompteComponent } from './user-compte/user-compte.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
+import { ListeEmpComponent } from './liste-emp/liste-emp.component';
+import { ListeComponent } from './liste/liste.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +62,8 @@ import { EditPostComponent } from './edit-post/edit-post.component';
     VerifEmailComponent,
     UserCompteComponent,
     EditPostComponent,
+    ListeEmpComponent,
+    ListeComponent,
 
     
   ],

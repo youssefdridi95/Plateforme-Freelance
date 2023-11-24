@@ -278,3 +278,10 @@ display: initial;    }
 .dropdown:hover .dropdown-content {
   display: block;
 }
+.fa-regular {
+  margin-right: 10px;
+}
+
+.fa-bell, .fa-user {
+  cursor: pointer;
+}
