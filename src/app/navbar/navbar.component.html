@@ -36,13 +36,14 @@
             </div>
         <i class="fa-regular fa-bell"></i>
                  <i class="fa-regular fa-user"></i>
+                 <div class="menu" (click)="showNavItems()" >
+                  <i class="fa-solid fa-bars" *ngIf="!isMenuOpen"></i>
+                  <i class="fa-solid fa-xmark" *ngIf="isMenuOpen"></i>
+              </div>
                 </div>
 
             </div>
   
-    <div class="menu" (click)="showNavItems()" >
-        <i class="fa-solid fa-bars" *ngIf="!isMenuOpen"></i>
-        <i class="fa-solid fa-xmark" *ngIf="isMenuOpen"></i>
-    </div>
+   
 </nav>
 

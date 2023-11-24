@@ -173,22 +173,26 @@
   border-radius:50% ;
 }
   .file-input-container {
-    position: absolute;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    top: 1rem;
-    right: 1rem;
+    justify-content: center;
+    border : 1px solid #ddd ;
+    padding: 0.5rem ;
+    border-radius:5px ;
+    position: relative;
+  
   }
   
   .file-input-container label {
-  font-size: 1.5rem;
-    color: gray;
+    width: 100%;
+    font-size: 1rem;
+    color: #007CF8;
     border-radius: 0.2rem;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
   }
   .file-input-container label:hover {
     color: #007CF8;
@@ -197,6 +201,17 @@
   
   /* Style the file input to be hidden */
   input[type="file"] {
-    display: none;
+    display: inline;
+    position: absolute;
+    left :0;
+    opacity: 0;
   }
-  
+  .error {
+    width: 100% ;
+    border: none;
+    color :red ;
+    font-size: .7rem;
+    margin: 0.5rem 0;
+    padding: 0 10px;
+    text-align: right;
+  }
