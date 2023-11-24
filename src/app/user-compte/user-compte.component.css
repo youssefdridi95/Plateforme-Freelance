@@ -38,6 +38,15 @@ li {
   flex-direction: column;
   text-align: left;
 }
+/* user-compte.component.css */
+
+.scrollable-container {
+  overflow-y: auto; /* Active le défilement vertical si le contenu est trop grand */
+}
+
+.non-scrollable-container {
+  overflow: hidden; /* Désactive le défilement */
+}
 
 .contact p {
   color: #007CF8;
@@ -65,6 +74,12 @@ h3.title {
   cursor: pointer;
 }
 
+.blocked {
+  pointer-events: none; /* Empêche les événements de pointer sur les éléments */
+  opacity: 0.5; /* Ajoute une opacité pour indiquer qu'ils sont désactivés */
+}
+
+/* Ajoutez d'autres styles selon vos besoins */
 
 
 @media (max-width: 820px) {
