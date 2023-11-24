@@ -60,7 +60,7 @@
         </div>
         <br>
         <div class="button">
-          <button class="edit" (click)="navigateToCvCreer('/15/cv/edit')">
+          <button class="edit" (click)="navigateToCvCreer('/15/cv/edit')" >
             <h3>Modifier cv</h3>
           </button>
           <button class="read" (click)="navigateToCvCreer('cv/afficher')">
@@ -90,7 +90,7 @@
 
               </button> -->
             </div>
-            <div *ngIf="post==false" class="post-container">
+            <div *ngIf="post==true" class="post-container">
               <div class="add-post-container">
                 <button (click)="post=!post"> <i class="fa-solid fa-xmark"></i>
                 </button>
@@ -130,7 +130,7 @@
 
                 </div>
                 <div class="fav" style="text-align: center;">
-                  <button class="like">Like</button>
+                  <button class="like" >Like</button>
                   <button class="comment">Comments</button>
                 </div>
               </div>

@@ -55,7 +55,8 @@ li {
   font-weight: bold;
 }
 .blur {
-  filter: blur(5px); /* ajustez la valeur selon vos préférences */
+  filter: blur(5px); 
+  /* ajustez la valeur selon vos préférences */
 }
 
 h3.title {
@@ -103,8 +104,8 @@ padding: 0.4rem;
 }
 
 .add-post-container button :hover{
-  background-color: rgb(105, 99, 99);
-  border-radius: 50%;
+  /* background-color: rgb(105, 99, 99); */
+  /* border-radius: 50%; */
 /* width: 3rem;
 height: 3rem; */
 
