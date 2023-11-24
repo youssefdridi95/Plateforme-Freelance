@@ -135,11 +135,10 @@ getControls() {
       formData.append('file', files[i]);
     }
   
-    // Assuming tags is an array of tag objects
-    const tags = this.postForm.value.tags;
-    for (let i = 0; i < tags.length; i++) {
-      formData.append('tags', tags[i].name);
-    }
+    const tags = this.postForm.value.tags.map((tag: { name: string }) => tag.name).join('///');
+    
+     formData.append('tags', tags);
+    
   
     // const formDataObject: any = {};
     // formData.forEach((value, key) => {

@@ -1,52 +1,63 @@
 <!-- add-post.component.html -->
 
 <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="addPost">
-    <h4>
-      postuler quleque chose : 
-    </h4>
-      <div>
-        <label for="competence"></label>
-        <input type="text" id="competence" formControlName="competence" placeholder="Compétence..."/>
-      </div>
-    
-      <div>
+  <h4>
+    postuler quleque chose : 
+  </h4>
+    <div>
+      <input type="text" id="competence" formControlName="competence" placeholder="Compétence..." required/>
+    </div>
+    <div *ngIf="postForm.get('competence')!.invalid && postForm.get('competence')!.touched" class="error">
+      <p>
+        <i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"></i> ce champ est obligatoir !
+        <br>
+      </p>
+    </div>
+    <div>
+ 
+      <textarea id="description" formControlName="description" placeholder="Description...."></textarea>
+    </div>
+    <div *ngIf="postForm.get('description')!.invalid && postForm.get('description')!.touched" class="error">
+      <p>
+        <i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"></i> le maximum de caractères est 500.
+        <br>
+      </p>
+    </div>
    
-        <textarea id="description" formControlName="description" placeholder="Description...."></textarea>
-      </div>
-    
-    
-    
-      <div>
-        <label for="tags">Mots clés:</label>
-        <div formArrayName="tags">
-              <div class="tag" *ngFor="let tag of getControls(); let i = index" [formGroupName]="i">
   
-                       <input type="text" required formControlName="name" class="input-field tagInput" />
-                       <button type="button"  class="remove-button" disabled *ngIf="i===0">
-                        <i class="fa-regular fa-trash-can"></i>  
-                      </button>
-                
-                      <button type="button" (click)="removeField( i);" class="remove-button" *ngIf="i!==0">
-                        <i class="fa-regular fa-trash-can"></i>  
-                      </button>
   
-                      <button type="button" class="add-button" disabled *ngIf="i<getControls().length-1">
-                        <i class="fa-solid fa-circle-plus"></i>  
-                       </button>
-                      <button type="button" (click)="addField( );" class="add-button" *ngIf="i===getControls().length-1">
-                       <i class="fa-solid fa-circle-plus"></i>  
-                      </button>
+    <div>
+
+      <div formArrayName="tags">
+            <div class="tag" *ngFor="let tag of getControls(); let i = index" [formGroupName]="i">
+
+                     <input type="text" required formControlName="name" class="input-field tagInput" placeholder="Mot clé..." />
+                     <button type="button"  class="remove-button" disabled *ngIf="i===0">
+                      <i class="fa-regular fa-trash-can"></i>  
+                    </button>
+              
+                    <button type="button" (click)="removeField( i);" class="remove-button" *ngIf="i!==0">
+                      <i class="fa-regular fa-trash-can"></i>  
+                    </button>
+
+                    <button type="button" class="add-button" disabled *ngIf="i<getControls().length-1">
+                      <i class="fa-solid fa-circle-plus"></i>  
+                     </button>
+                    <button type="button" (click)="addField( );" class="add-button" *ngIf="i===getControls().length-1">
+                     <i class="fa-solid fa-circle-plus"></i>  
+                    </button>
+
+            </div>
+             
+     </div>
+
+      
+    </div>
+ 
+
+
+     
   
-              </div>
-               
-       </div>
+    <button class="submit" type="submit" >Postuler</button>
+  </form>
   
-        
-      </div>
-  
-    
-       
-    
-      <button class="submit" type="submit" >Postuler</button>
-    </form>
-    
