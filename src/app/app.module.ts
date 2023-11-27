@@ -38,6 +38,8 @@ import { UserCompteComponent } from './user-compte/user-compte.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { ListeEmpComponent } from './liste-emp/liste-emp.component';
 import { ListeComponent } from './liste/liste.component';
+import { AccessDenied403Component } from './access-denied403/access-denied403.component';
+import { NotFound404Component } from './not-found404/not-found404.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +66,8 @@ import { ListeComponent } from './liste/liste.component';
     EditPostComponent,
     ListeEmpComponent,
     ListeComponent,
+    AccessDenied403Component,
+    NotFound404Component,
 
     
   ],

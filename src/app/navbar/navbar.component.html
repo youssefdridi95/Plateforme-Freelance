@@ -44,10 +44,10 @@
       </div>
       <i class="fa-regular fa-bell"></i>
       <i class="fa-regular fa-user" (click)="toggleDropdown()"></i>
-      <div class="menu" (click)="showNavItems()">
+      <!-- <div class="menu" (click)="showNavItems()">
         <i class="fa-solid fa-bars" *ngIf="!isMenuOpen"></i>
         <i class="fa-solid fa-xmark" *ngIf="isMenuOpen"></i>
-      </div>
+      </div> -->
 
       <div class="dropdown-content" *ngIf="isDropdownOpen">
         <a [routerLink]="['/entreprise/connexion/login']">Paramètres</a>

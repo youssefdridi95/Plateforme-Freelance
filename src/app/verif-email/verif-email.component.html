@@ -2,7 +2,7 @@
     <div class="heading">Activation du compte</div>
       <form action="" class="form" [formGroup]="otpForm" (submit)="verifCompte()">
         
-        <input required="" class="input" type="number"  formControlName="otp"  placeholder="entrer le code OTP recu par email...">
+        <input required="" class="input" type="text"  formControlName="otp"  placeholder="entrer le code OTP recu par email...">
         <br><br>
         <input class="login-button" type="submit" value="Verifier code" >
   <br>

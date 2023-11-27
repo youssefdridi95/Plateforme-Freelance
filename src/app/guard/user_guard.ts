@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Env } from '../env';
 import { environments } from 'src/enviroments';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ import { environments } from 'src/enviroments';
 export class talentGuard implements CanActivate {
     private env : Env
 
-  constructor(private authService: AuthService, private router: Router) {  this.env = environments as Env 
+  constructor(private authService: AuthService, private router: Router,private toastr : ToastrService) {  
+    this.env = environments as Env 
   }
 
   canActivate(
@@ -26,8 +28,10 @@ export class talentGuard implements CanActivate {
     const roles = user.roles;
 
     if (!roles.includes(this.env.roles.user)) {
-      alert('You need to be a talent to access this page.');
-      this.authService.navigate(['/']);
+      this.toastr.error("vous n'avez pas les droits pour accéder à cette page ",'stop')
+
+    return this.router.createUrlTree(['access/denied/404']);
+
       return false;
     }
 

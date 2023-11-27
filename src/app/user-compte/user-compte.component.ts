@@ -10,14 +10,10 @@ import { SharedService } from '../shared.service';
 })
 
 export class UserCompteComponent {
-  post = false;
-
 
   constructor(private router: Router, private sharedService: SharedService ) {}
-  arrowUp: boolean = false;
+ 
 
-  // ... autres méthodes
-  
   navigateToCvCreer(link: String) {
     
     this.router.navigate([link]);
