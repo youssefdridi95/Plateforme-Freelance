@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 import { WidthCheckService } from '../services/width-check.service';
 import { Router } from '@angular/router';
 
@@ -9,14 +9,30 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
 
-  constructor(private widhtChecker :WidthCheckService,private router: Router ){
+  constructor(private widhtChecker :WidthCheckService,private router: Router ,private elementRef: ElementRef ){
+        this.widhtChecker.width=this.checkScreenWidth()
+        this.navItemsDisplay=this.widhtChecker.width < 900 ? "none" : "flex"
+
   }
+
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.widhtChecker.width = this.checkScreenWidth();
+    this.navItemsDisplay=this.widhtChecker.width < 900 ? "none" : "flex"
+  }
+  checkScreenWidth() {
+    const screenWidth = this.elementRef.nativeElement.ownerDocument.defaultView.innerWidth;
+   return screenWidth
+    // You can perform any logic based on the screen width here
+  }
+
     logoUrl="background-image:url('./../../assets/logo.png');"
 
     isMenuOpen=false
   
     
-    navItemsDisplay=this.widhtChecker.width < 700 ? "none" : "flex"
+    navItemsDisplay:any
     showNavItems(){
     
       this.isMenuOpen=!this.isMenuOpen
