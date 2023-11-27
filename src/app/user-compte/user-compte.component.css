@@ -459,12 +459,86 @@ align-items: center;
 margin: 0.5rem 0.2rem 0.5rem 0.5rem;
 padding-bottom: 0rem;
 } */
-  
+
+.popup-1-wrap input {
+  display: none;
+}
+
+.popup-1-trigger {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.popup-1-overlay {
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.5s, transform 0s 0.5s;
+  transform: scale(0);
+}
+
+.popup-1-wrap input:checked ~ .popup-1-overlay {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.5s;
+}
+
+.popup-1-content {
+  position: relative;
+  align-self: center;
+  width: 70%;
+  max-width: 800px;
+  padding: 30px 30px 15px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 8px;
+  line-height: 1.4em;
+  transition: 0.5s;
+}
+
+.popup-1-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: #95979c;
+  font-weight: 900;
+  font-size: 30px;
+  padding: 5px 15px;
+  /*cursor: pointer;*/
+}
+
+
+.popup-1-open {
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  /*cursor: pointer; */
+  transition: .3s ease;
+}
+/*
+.popup-1-open:hover{
+    background:#000;
+    color:#fff;
+    transition: .3s ease;
+}
+*/
+
 .input-post {
   width: 90% !important;
   background: rgb(212, 210, 210) !important;  /* Couleur rouge */
   border: none;
-  padding: 0.8rem;
+  padding: 0.5rem;
   border-radius: 1.2rem;
   margin: 1rem 0;
   box-shadow: #b7babbc7 0px 10px 10px -5px;

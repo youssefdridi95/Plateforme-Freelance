@@ -74,6 +74,18 @@
 
         <!-- <td class="post" rowspan="2" style="max-height: 100px;overflow: auto;"> -->
         <h3 class="title"> Publication</h3>
+        <div class="popup-1-wrap">
+          <input id="popup-1-coupon" type="checkbox">
+            <div class="popup-1-overlay">
+                <label for="popup-1-coupon" class="popup-1-trigger"></label>
+                  <div class="popup-1-content">
+                    <label for="popup-1-coupon" class="popup-1-close">×</label>
+                    <app-add-post ></app-add-post>
+                  </div>
+            </div>
+        </div>
+        <div>
+        </div>
         <ul style="overflow: auto;">
 
           <article class="publication">
@@ -99,20 +111,21 @@
               </div>
             </div>
             
-            <!--  Publications  -->
+            <!--  Publications  --><label for="popup-1-coupon"  class="popup-1-open">
+            <div class="content-publication wrap shadow">   
 
-            <div *ngIf="post==false" class="content-publication wrap shadow">
               <div class="heading flex-center">
-                <div class="name flex-cente">
-                  <img class="post" src="/assets/was.png">
-                  <div class="text-container">
-                    <input class="input-post" (click)="closePost()" type="text" readonly placeholder="Quoi de neuf , ">
+                  <div class="name flex-cente">
+                      <img class="post" src="/assets/was.png">
+                      <div class="text-container">
+                          <div  class="input-post" >Quoi de neuf</div>
+
+                      </div>
                   </div>
-                </div>
-                <!-- Reste du contenu -->
+                  <!-- Reste du contenu -->
               </div>
-            </div>
-            
+          </div>
+        </label>
          
             <div [ngClass]="{'blur': post}" [ngClass]="{'blocked': post || isTagPopupOpen}"  class="content-publication wrap shadow">
               <div class="heading flex-center" style="">
@@ -131,7 +144,7 @@
                 </div>
                 <div class="fav" style="text-align: center;">
                   <button class="like" >Like</button>
-                  <button class="comment">Comments</button>
+                  <!-- <button class="comment">Comments</button> -->
                 </div>
               </div>
 
@@ -153,7 +166,7 @@
                 </div>
                 <div class="fav" style="text-align: center;">
                   <button class="like">Like</button>
-                  <button class="comment">Comments</button>
+                  <!-- <button class="comment">Comments</button> -->
                 </div>
               </div>
             </div>
@@ -174,7 +187,7 @@
                 </div>
                 <div class="fav" style="text-align: center;">
                   <button class="like">Like</button>
-                  <button class="comment">Comments</button>
+                  <!-- <button class="comment">Comments</button> -->
                 </div>
               </div>
 
