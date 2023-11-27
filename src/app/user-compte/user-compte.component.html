@@ -19,7 +19,7 @@
     <!-- <tr style="height: 200px;overflow: auto"> -->
     <tr>
 
-      <td [ngClass]="{'blur': post}" class="contact"  >
+      <td  class="contact"  >
         <section>
           <!-- <label for="fileToUpload">
             <i class="fa fa-camera"></i>
@@ -102,12 +102,12 @@
 
               </button> -->
             </div>
-            <div *ngIf="post==true" class="post-container">
+            <div  class="post-container">
               <div class="add-post-container">
-                <button (click)="post=!post"> <i class="fa-solid fa-xmark"></i>
+                <button > <i class="fa-solid fa-xmark"></i>
                 </button>
 
-                <app-add-post [post]="post"></app-add-post>
+                <app-add-post ></app-add-post>
               </div>
             </div>
             
@@ -127,8 +127,8 @@
           </div>
         </label>
          
-            <div [ngClass]="{'blur': post}" [ngClass]="{'blocked': post || isTagPopupOpen}"  class="content-publication wrap shadow">
-              <div class="heading flex-center" style="">
+            <div  class="content-publication wrap shadow">
+              <div class="heading flex-center" >
 
                 <div class="name flex-center" style="text-align: left;">
                   <img src="/assets/was.png">
@@ -149,7 +149,7 @@
               </div>
 
             </div>
-            <div [ngClass]="{'blur': post}" class="content-publication wrap shadow">
+            <div  class="content-publication wrap shadow">
               <div class="heading flex-center">
 
                 <div class="name flex-center" style="text-align: left;">
@@ -199,7 +199,7 @@
       </td>
     </tr>
     <tr>
-      <td [ngClass]="{'blur': post}" [ngClass]="{'blocked': post || isTagPopupOpen}" [class.scrollable-container]="!post" [class.non-scrollable-container]="post">
+      <td>
         <br>
         <!-- <h1>Fedi Mriri</h1>
         <h3>Full Stack developper</h3>
