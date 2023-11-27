@@ -17,7 +17,7 @@ nav.nav{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 30%;
+  gap: 2rem;
   height: 2rem;
   font-size:1rem ;
   font-weight: 800;
@@ -36,7 +36,7 @@ nav.nav{
 
 }
 .logo{
-  width: 10%;
+  width: 20%;
   max-width: 10rem;
   background-size: cover;
   border-radius: 0.5rem;
@@ -80,7 +80,7 @@ nav.nav{
   color: #007CF8;
 transition: all 0.3s;
 }
-@media screen and (max-width: 1077px) {
+ @media screen and (max-width: 900px) {
   .menu{
 display: initial;    }
   .nav-items{
@@ -125,7 +125,7 @@ display: initial;    }
   width: 30% !important;
   max-width: 30% !important;
 }
-}
+} 
 .input-container {
   position: relative;
   display: flex;
@@ -180,31 +180,12 @@ display: initial;    }
 }
 
 
- .signup-button {
-  display: block;
-  font-weight: bold;
-  border:0.8px solid  white;
-  color: #007CF8;
-  padding: 1rem 2rem;
-  border-radius: 2rem;
-  background-color: white;
-  font-weight:bold;
-  font-size: 1rem;
-
-
-}
-
-
-
-
- 
-
  .login-button {
-  display: block;
+ 
   font-weight: bold;
   background: #034f9b;
   color:white;
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
   border-radius: 1.2rem;
   transition: all 0.2s ease-in-out;
   font-size: 0.9rem;
@@ -225,7 +206,7 @@ display: initial;    }
 .btn{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 0.5rem 0.7rem;
   gap: 0.5rem;
 
@@ -238,17 +219,21 @@ display: initial;    }
 
 .dropdown {
   position: relative;
-  display: inline-block;
+
 }
 
 .dropdown-button {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-right: 1rem;
   font-weight: bold;
   border:0.8px solid  white;
   color: #007CF8;
-  padding: 1rem 2rem;
+ 
   border-radius: 2rem;
-  background-color: white;
+  background-color: transparent;
   font-weight:bold;
   font-size: 1rem;
   cursor: pointer;

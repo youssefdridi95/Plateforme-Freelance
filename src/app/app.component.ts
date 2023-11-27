@@ -1,7 +1,4 @@
-import { Component, ElementRef, ViewChild, } from '@angular/core';
-import { WidthCheckService } from './services/width-check.service';
-import { Router, RouterOutlet } from '@angular/router';
-
+import { Component, ElementRef, HostListener, ViewChild, } from '@angular/core';
 
           @Component({
   selector: 'app-root',
@@ -9,15 +6,8 @@ import { Router, RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private elementRef: ElementRef, private widhtChecker :WidthCheckService){
-    this.widhtChecker.width=this.checkScreenWidth()
+  constructor(){
   }
-
-  checkScreenWidth() {
-    const screenWidth = this.elementRef.nativeElement.ownerDocument.defaultView.innerWidth;
-   return screenWidth
-    // You can perform any logic based on the screen width here
-  }
-
+ 
   title = 'app';
 }
