@@ -17,26 +17,7 @@ export class UserCompteComponent {
   arrowUp: boolean = false;
 
   // ... autres méthodes
-  isTagPopupOpen = false; // Assurez-vous de définir cette variable en conséquence
-
-  // ... autres méthodes
-
-  openTagPopup() {
-    this.isTagPopupOpen = true;
-  }
-
-  closeTagPopup() {
-    this.isTagPopupOpen = false;
-  }
-
-  closePost() {
-    this.post =! this.post;
-  }
-  toggleArrow() {
-    this.arrowUp = !this.arrowUp;
-    this.post=!this.post
-  }
-
+  
   navigateToCvCreer(link: String) {
     
     this.router.navigate([link]);

@@ -1,88 +1,102 @@
-
-  .container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .container .card {
-    width: 11rem;
-    margin: 20px;
-    padding: 20px 15px;
-    background: white ;
-    border-radius: 1rem;
-    border:1px solid #034f9b;
-    box-shadow: -6px -6px 20px rgba(255, 255, 255, 0.6), 6px 6px 20px rgba(0, 0, 0, 0.1);
-    height: 15.2rem;
-  }
-  .container .card:hover {
-    box-shadow: inset -3px -3px 20px rgb(255, 255, 255), inset 6px 6px 20px rgba(0, 0, 0, 0.05);
-  }
-  .container .card .imgBx {
-    position: relative;
-    text-align: center;
-  }
-  .container .card .imgBx img {
-    max-width: 41%;
-    border-radius:100%;
-  border:0.1rem solid #ccc;
-  }
-  .container .card .contentBx {
-    position: relative;
-    margin-top: 20px;
-    text-align: center;
-  }
-  .container .card .contentBx h2 {
-    color: #034f9b;
-    font-weight: 700;
-    font-size: 1.4em;
-    letter-spacing: 0.4px;
-  }
-  .container .card .contentBx p {
-    color: #034f9b;
-  }
-  .container .card .contentBx a {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 15px;
-    border-radius: 0.5rem;
-    color: #fff;
-    text-decoration: none;
-    border:1px solid #fff;
-    font-size: 0.7rem;
-    box-shadow: -2px -2px 10px rgba(255, 255, 255, 0.6), 2px 2px 10px rgba(0, 0, 0, 0.1);
-  }
- 
-  .container .card:hover .imgBx,
-  .container .card:hover .contentBx {
-    transform: scale(0.98);
-  }
-  i{
-    display: flex;
-    justify-content: end;
-    color: #fff;
-    
-  }
-  a{
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 15px;
-    border-radius: 0.5rem;
-    color: #034f9b;
-    text-decoration: none;
-    border-color:#034f9b !important;
-    font-size: 0.7rem;
-    background-color:white;
-  }
-  .text p{ color: #034f9b;
-    font-weight: bold;
+.container {
+  position: relative;
   display: flex;
-justify-content: center;
-font-size: 2rem;
-font-weight: 900;
-
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
-    span{
-      color: #034f9b;
-    }
+
+.container .card {
+  width: 42%; /* Utiliser un pourcentage pour la largeur */
+  max-width: 200px; /* Ajouter une largeur maximale pour éviter des cartes trop étirées */
+  margin: 20px;
+  padding: 20px 15px;
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid #034f9b;
+  box-shadow: -6px -6px 20px rgba(255, 255, 255, 0.6), 6px 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.container .card:hover {
+  box-shadow: inset -3px -3px 20px rgb(255, 255, 255), inset 6px 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.container .card .imgBx {
+  position: relative;
+  text-align: center;
+}
+
+.container .card .imgBx img {
+  width: 60%; /* Faire en sorte que l'image occupe 100% de la largeur du conteneur */
+  max-width: 100%;
+  border-radius: 50%;
+  border: 0.1rem solid #ccc;
+}
+
+.container .card .contentBx {
+  position: relative;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.container .card .contentBx h2 {
+  color: #034f9b;
+  font-weight: 700;
+  font-size: 1.4em;
+  letter-spacing: 0.4px;
+}
+
+.container .card .contentBx p {
+  color: #034f9b;
+}
+
+.container .card .contentBx a {
+  display: inline-flex; /* Utiliser flexbox */
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center;   padding: 10px 20px;
+  margin: 0.3rem;
+  margin-top: 15px;
+  border-radius: 0.5rem;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #fff;
+  font-size: 80%;
+  width: 40%;
+  box-shadow: -2px -2px 10px rgba(255, 255, 255, 0.6), 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container .card:hover .imgBx,
+.container .card:hover .contentBx {
+  transform: scale(0.98);
+}
+
+i {
+  display: flex;
+  justify-content: end;
+  color: #fff;
+}
+
+a {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 15px;
+  border-radius: 0.5rem;
+  color: #034f9b;
+  text-decoration: none;
+  border-color: #034f9b !important;
+  font-size: 0.7rem;
+  background-color: white;
+}
+
+.text p {
+  color: #034f9b;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+span {
+  color: #034f9b;
+}
