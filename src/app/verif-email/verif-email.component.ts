@@ -35,7 +35,7 @@ export class VerifEmailComponent {
   ngOnInit (): void {
   this.otpForm = this.formBuilder.group({
 
-    otp:['',[Validators.required,Validators.minLength(6) ,Validators.maxLength(6)]],
+    otp:['',[Validators.required]],
   }
   
    )}
@@ -54,7 +54,7 @@ export class VerifEmailComponent {
   verifCompte() {
     const compte= {
       'email' : this.email ,
-      'otp' : this.otpForm.value.otp ,
+      'codeVerifMail' : this.otpForm.value.otp ,
     }
 
     this.service.verif(compte).subscribe(

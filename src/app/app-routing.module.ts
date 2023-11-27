@@ -23,6 +23,8 @@ import { VerifEmailComponent } from './verif-email/verif-email.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { ListeEmpComponent } from './liste-emp/liste-emp.component';
 import { ListeComponent } from './liste/liste.component';
+import { AccessDenied403Component } from './access-denied403/access-denied403.component';
+import { NotFound404Component } from './not-found404/not-found404.component';
 const routes: Routes = [
 
 
@@ -50,6 +52,8 @@ const routes: Routes = [
   {path: "user/form" , component : UserFormComponent , canActivate: [AuthGuard]},
   {path: "user/profile/create" , component : UserFormComponent},
   {path: "verif/email/:role/:email" , component : VerifEmailComponent},
+  {path: "access/denied/404" , component : AccessDenied403Component},
+  {path: "**" , component : NotFound404Component},
 
   {
     path: 'post',
