@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { environments } from 'src/enviroments';
+// Corrected import path
 import { Env } from '../env';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EntrepriseService } from '../services/entreprise.service';
 import { ToastrService } from 'ngx-toastr';
+import { environments } from 'src/enviroments';
 
 @Component({
   selector: 'app-add-user',
@@ -12,109 +13,73 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent {
-  signupForm !:FormGroup
-  env : Env = environments as Env
-  constructor(private formBuilder:FormBuilder, private route: ActivatedRoute,private toastr : ToastrService,private  entrepriseService : EntrepriseService,private router: Router ) { 
-  } 
-    
-  
+  userenForm!: FormGroup;
+  env: Env = environments as Env;
 
-  ngOnInit (): void {
-  this.signupForm = this.formBuilder.group({
-    username : ['', [Validators.required,Validators.minLength(4)]],
-    email:['',[Validators.minLength(5),Validators.required]],
-    password:['',[Validators.required,Validators.minLength(6)]],
-    confirmPwd:['',[Validators.required,Validators.minLength(6)]],
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private toastr: ToastrService,
+    private entrepriseService: EntrepriseService,
+    private router: Router
+  ) { }
+
+  ngOnInit(): void {
+    this.userenForm = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPwd: ['', [Validators.required, Validators.minLength(6)]],
+    });
   }
-  
-   )
 
-} 
-  
-  isMush=true
-  isPro=true
-  validateEmail(email: string): boolean {
-    // Extracting the domain from the email address
-    const emailParts = email.split('@');
-    if (emailParts.length !== 2) {
-        // Invalid email format
-        return false;
-    }
+  isMush = true;
 
-    const domainWithDot = emailParts[1];
-    const firstDotIndex = domainWithDot.indexOf('.');
+  add() {
+    this.route.params.subscribe(params => {
+      const role = params['role'];
+      const email = params['email'];
+      const idEntreprise = params['idEntreprise'];
+      console.log(email);
 
-    if (firstDotIndex === -1) {
-        // No dot found in the domain, consider the whole domain
-        return false;
-    }
+      // Additional logic related to route parameters can be added here
+    
 
-    const domain = domainWithDot.substring(0, firstDotIndex).toLowerCase();
-
-    // List of allowed domains
-    const allowedDomains = ["gmail", "outlook", "yahoo", "mail", "protonmail", "aol", "yandex", "gmx", "hotmail", "icloud"];
-
-
-   
-   return !allowedDomains.includes(domain);
-}
-
-
-  inscrire() {
-    if (this.signupForm.get('password')!.value === this.signupForm.get('confirmPwd')!.value) {
-      this.isMush =true
+    if (this.userenForm.get('password')!.value === this.userenForm.get('confirmPwd')!.value) {
+      this.isMush = true;
     } else {
       this.isMush = false;
     }
+  
+    if (this.isMush) {
+      const userEntreprise = {
+        'username': this.userenForm.value.username,
+        'password': this.userenForm.value.password,
+        "idEntreprise": idEntreprise,
+        "email": email,
+        "role": role
+      };
+      console.log(userEntreprise);
 
-    if (this.validateEmail(this.signupForm.get('email')!.value)) {
-      this.isPro =true
+      this.entrepriseService.add(userEntreprise).subscribe(
+        res => {
+          console.log(res);
+          this.router.navigate(['/entreprise/connexion/login']);
+          this.toastr.success('a été créé avec succès', 'compte');
+        },
+        err => {
+          console.log(err);
+          this.toastr.error(err.error.message, 'erreur');
+        }
+      );
     } else {
-      this.isPro = false;
+      this.toastr.error('Valider votre formulaire', '');
     }
-if (this.isMush && this.isPro)
-    {const entreprise= {
-      'username' : this.signupForm.value.username ,
-      'email' : this.signupForm.value.email ,
-      'password' : this.signupForm.value.password ,
-      'role' : this.env.roles.entRoleAdmin ,
-    }
-    console.log(entreprise);
-  
-    this.entrepriseService.signup(entreprise).subscribe(
-      res=>{
-      
-  console.log(res);
-        
-  this.router.navigate(['/verif/email/'+entreprise.role+'/'+entreprise.email]);
-        
-  this.toastr.success('a été crée avec succés ,merci de verifier votre email pour l\'activer' ,'compte')
-
-      },
-      err=>{
-    console.log(err);
-    this.toastr.error(err.error.message,'erreur')
-      }
-    )}
-    else
-    this.toastr.error("Valider votre formulaire",'')
+  });
   }
- 
-  
-  
-  
- 
-  navigateToPage(root: string, time:number=0) {
-    // Adjust route paths based on the values passed in the HTML
 
-
-    // Add a delay of 1000 milliseconds (1 second)
+  navigateToPage(root: string, time: number = 0) {
     setTimeout(() => {
       this.router.navigate([root]);
     }, time);
   }
- 
 }
-
-
-

@@ -32,7 +32,7 @@ const routes: Routes = [
 
   {path : "user/connexion/:type" , component : UserInscritComponent ,canActivate:[loggedinGuard]},
   {path:"section",component :SectionComponent },
-  {path:"adduser",component :AddUserComponent },
+  {path:"CreerCompteEmployee/:email/:idEntreprise/:role",component :AddUserComponent },
 
   {path:"entreprise/listee",component :ListeEmpComponent },
   {path:"entreprise/liste",component :ListeComponent },
@@ -44,7 +44,7 @@ const routes: Routes = [
   {path:"entreprise/profil",component :ProfilEntrepriseComponent},
 
   {path:"entreprise/connexion/:type",component :LoginEntrepriseComponent,canActivate:[loggedinGuard] },
-  {path:"entreprise/creation",component :CreationEntrepriseComponent , canActivate: [AuthGuard]},
+  {path:"entreprise/creation",component :CreationEntrepriseComponent},
   {path:"changeMdp/:role/:reset",component :RecupMDPComponent},
   {path:"mdp",component :MdpComponent},
   {path:"role",component :RoleComponent ,canActivate:[loggedinGuard] },
@@ -52,7 +52,7 @@ const routes: Routes = [
   {path:"cv/edit",component :CvUpdateComponent , canActivate: [AuthGuard] },
   {path:"cv/afficher",component :CvPreviewComponent , canActivate: [AuthGuard]},
   {path: "user/profil", component : ProfilComponent , canActivate: [AuthGuard,talentGuard]},
-  {path: "user/compte", component : UserCompteComponent },
+  {path: "user/compte", component : UserCompteComponent, canActivate: [AuthGuard,talentGuard] },
   {path: "user/form" , component : UserFormComponent , canActivate: [AuthGuard]},
   {path: "user/profile/create" , component : UserFormComponent},
   {path: "verif/email/:role/:email" , component : VerifEmailComponent},

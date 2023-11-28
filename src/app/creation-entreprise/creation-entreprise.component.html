@@ -1,41 +1,24 @@
 
 <div class="container">
     <div class="heading">Profil Entreprise</div>
-      <form [formGroup]="signupForm" class="form">
+      <form [formGroup]="signupForm" (ngSubmit)="creation()"  class="form">
 
-        
+        <input type="file" formControlName="file" id="file" (change)="onFileSelected($event)">
       
-          <input type="text"  class="input" formControlName="nom" id="Nom_entreprise" placeholder="Nom entreprise*" />
+          <input type="text"  class="input" formControlName="title" id="title" placeholder="Nom entreprise*" />
 
           <div
-            *ngIf=" signupForm.controls['nom'].invalid &&(signupForm.controls['nom'].dirty ||signupForm.controls['nom'].touched) "class="text-danger">
-            <div *ngIf="signupForm.controls['nom'].errors?.['minlength']">
-             Nom entreprise min len 3
+            *ngIf=" signupForm.controls['title'].invalid &&(signupForm.controls['title'].dirty ||signupForm.controls['title'].touched) "class="text-danger">
+            <div *ngIf="signupForm.controls['title'].errors?.['minlength']">
+             nom entreprise min len 3
             </div>
 
-            <div *ngIf="signupForm.controls['nom'].errors?.['required']" >
+            <div *ngIf="signupForm.controls['title'].errors?.['required']" >
               Nom entreprise Req *
             </div>
           </div>
-        
-       
-          <input type="text" class="input"  formControlName="siteweb" placeholder="Site Web*" />
 
-          <div
-            *ngIf=" signupForm.controls['siteweb'].invalid &&(signupForm.controls['siteweb'].dirty ||signupForm.controls['siteweb'].touched) "class="text-danger">
-            <div *ngIf="signupForm.controls['siteweb'].errors?.['minlength']">
-              Site Web min 5
-            </div>
-
-            <div *ngIf="signupForm.controls['siteweb'].errors?.['required']" >
-              Site Web Req *
-            </div>
-          </div>
-
-     
-
-          
-          <select class="input pp"  formControlName="secteurActivite" id="secteurActivite">
+          <select class="input pp"  formControlName="activity" id="activity">
             <option value=""  disabled selected>Secteur d'activité*</option>
             <option value="sector1">Technologie de l'Information (TI) </option>
             <option value="sector2">Santé et Sciences de la Vie </option>
@@ -49,15 +32,15 @@
             <option value="sector10">Divertissement et Médias </option>
           </select>
       
-          <div *ngIf="signupForm.controls['secteurActivite'].invalid && 
-                     (signupForm.controls['secteurActivite'].dirty || 
-                     signupForm.controls['secteurActivite'].touched)" class="text-danger">
-            <div *ngIf="signupForm.controls['secteurActivite'].errors?.['required']">
+          <div *ngIf="signupForm.controls['activity'].invalid && 
+                     (signupForm.controls['activity'].dirty || 
+                     signupForm.controls['activity'].touched)" class="text-danger">
+            <div *ngIf="signupForm.controls['activity'].errors?.['required']">
               Secteur d'activité Req *
             </div>
           </div >
 <div class="division">
-          <input type="text" class="input"  formControlName="adresse"  placeholder="Pays*" />
+          <input type="text" class="input"  formControlName="adresse"  placeholder="adresse*" />
 
           <div
             *ngIf=" signupForm.controls['adresse'].invalid &&(signupForm.controls['adresse'].dirty ||signupForm.controls['adresse'].touched) "class="text-danger">
@@ -69,56 +52,22 @@
               Pays Req *
             </div>
           </div>
-          <input type="text" class="input"  formControlName="code_postal"  placeholder="Code Postal*" />
+          <input type="text" class="input"  formControlName="timezone"  placeholder="timezone*" />
 
           <div
-            *ngIf=" signupForm.controls['code_postal'].invalid &&(signupForm.controls['code_postal'].dirty ||signupForm.controls['code_postal'].touched) "class="text-danger">
-            <div *ngIf="signupForm.controls['code_postal'].errors?.['minlength']">
-              Code postal min 4
+            *ngIf=" signupForm.controls['timezone'].invalid &&(signupForm.controls['timezone'].dirty ||signupForm.controls['timezone'].touched) "class="text-danger">
+            <div *ngIf="signupForm.controls['timezone'].errors?.['minlength']">
+              timezone min 4
             </div>
 
-            <div *ngIf="signupForm.controls['code_postal'].errors?.['required']" >
-              Code postal Req *
+            <div *ngIf="signupForm.controls['timezone'].errors?.['required']" >
+              timezone Req *
             </div>
           </div>
         </div>
-          <input type="text" class="input"  formControlName="num_tel"  id="num_tel" placeholder="Numero telephone*" />
+      
 
-          <div
-            *ngIf=" signupForm.controls['num_tel'].invalid &&(signupForm.controls['num_tel'].dirty ||signupForm.controls['num_tel'].touched) "class="text-danger">
-            <div *ngIf="signupForm.controls['num_tel'].errors?.['minlength']">
-              Numero telephone min 6
-            </div>
-
-            <div *ngIf="signupForm.controls['num_tel'].errors?.['required']" >
-              Numero telephone Req *
-            </div>
-          </div>
-        
-         
-    
-            <select class="input"  formControlName="effectif" id="effectif">
-              <option value="" disabled selected>
-                Avec combien de freelancers travaillez-vous ?*</option>
-              <option value="sector1">0-10</option>
-              <option value="sector2">10-50</option>
-              <option value="sector2">50-100 freelancers</option>
-              <option value="sector2">100-200 freelancers</option>
-              <option value="sector2">200-1000 freelancers</option>
-              <option value="sector2">1000+ freelancers</option>
-        
-            </select>
-        
-            <div *ngIf="signupForm.controls['effectif'].invalid && 
-                       (signupForm.controls['effectif'].dirty || 
-                       signupForm.controls['effectif'].touched)" class="text-danger">
-              <div *ngIf="signupForm.controls['effectif'].errors?.['required']">
-                Effectif Req *
-              </div>
-            </div>
-          
-
-        <input class="login-button" type="submit" value="Sauvegarder" [routerLink]="['/entreprise/profil']">
+        <input class="login-button" type="submit" value="Sauvegarder" >
       </form>
 </div>
 
