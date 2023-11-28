@@ -23,7 +23,9 @@ export class ListeComponent {
   )
   }
 
-
+  isFormValid(): boolean {
+    return this.userForm.valid;
+  }
  
  user = {
     nom : '' ,

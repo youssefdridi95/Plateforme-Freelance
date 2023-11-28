@@ -1,157 +1,128 @@
 header {
   background: url("/../assets/bghome.png") no-repeat;
-  background-size: 52.5%;
+  background-size: 63.9%;
   width: 100%;
-  min-height: 75vh;
+  min-height: 95vh;
   background-position: center right;
-  background-color: white;
+  background-color: white !important;
 }
-
 
 @media screen and (max-width: 500px) {
   header {
-  
     min-height: 75vh;
-  background-size: cover;
-
-
+    background-size: cover;
   }
 
-
   header .header-content {
- 
     min-height: 75vh;
-  
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 3rem;
     flex-direction: column;
     font-size: 0.9rem;
-  background-position: center !important;
-   
-}
-.header-content h1{
-  font-size: 1rem;
- font-weight: 700 !important;
-  text-align:center !important;
- 
-}
+    background-position: center !important;
+  }
+  .header-content h1 {
+    font-size: 1rem;
+    font-weight: 700 !important;
+    text-align: center !important;
+  }
 
+  .header-content span {
+    font-size: 1rem;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    padding-left: 0;
+  }
 
-.header-content span{
-  font-size: 1rem;
-  font-weight: 600;
-  width: 100%;
-  text-align: center;
-  padding-left: 0;
-}
-
-
-
-
- 
- .signup-button {
-   text-align: center !important;
-   margin: 0 auto !important;
-  
-}
+  .signup-button {
+    text-align: center !important;
+    margin: 0 auto !important;
+  }
 }
 header .header-content {
- 
-    max-width: 50rem;
-    padding: 2rem;
-    width: 100%;
-    min-height: 55vh;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 2rem;
-    flex-direction: column;
-    font-size: 16px;
-    font-weight: 900;
-    padding: 1rem;
-   
+  max-width: 50rem;
+  padding: 2rem;
+  width: 100%;
+  min-height: 75vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-direction: column;
+  font-size: 16px;
+  font-weight: 900;
+  padding: 1rem;
 }
-.header-content h1{
+.header-content h1 {
   font-size: 2rem;
   width: 100%;
 
   text-wrap: balance;
-  padding:  1rem;
+  padding: 1rem;
   margin: 0 auto;
   margin-top: 3rem;
-  text-align:left;
+  text-align: left;
   font-weight: 600;
   letter-spacing: 2.5px;
-  background-image: linear-gradient(20deg,#0d4b85,#55a2f0);
+  background-image: linear-gradient(80deg, #0d4b85, #0d4b85);
   background-size: 100%;
   background-repeat: repeat;
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; 
+  -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
   text-transform: uppercase;
-
 }
-.header-content h1  span{ 
+.header-content h1 span {
   font-size: 2.5rem;
-  
+
   font-weight: 900;
   letter-spacing: 2.5px;
-  background-image: linear-gradient(55deg,#007CF8,#007CF8 );
+  background-image: linear-gradient(55deg, #007cf8, #007cf8);
   background-size: 100%;
   background-repeat: repeat;
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; 
+  -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
   text-transform: uppercase;
 }
 
-.header-content span{
+.header-content span {
   font-size: 1rem;
   letter-spacing: 3px;
- font-weight: normal;
-padding-left: 1rem;
-font-weight: 100;
-
+  font-weight: normal;
+  padding-left: 1rem;
+  font-weight: 100;
 }
 
-
-
-
- 
- .signup-button {
-   font-weight: bold;
-   border:0.8px solid  #0d4b85;
-   color: #0d4b85;
-   padding: 1rem 2rem;  
-   border-radius: 1.2rem;
-   border-color:#0d4b85 ;
-   box-shadow: rgba(232, 235, 236, 0.878) 0rem 1.25rem 0.625rem -0.9375rem;
-   background-color: white;
-   transition: all 0.2s ease-in-out;
-   text-decoration: none;
-   text-align: center !important;
-   justify-self: center;
-   margin:1rem ;
+.signup-button {
+  font-weight: bold;
+  border: 0.8px solid #0d4b85;
+  color: #0d4b85;
+  padding: 1rem 2rem;
+  border-radius: 1.2rem;
+  border-color: #0d4b85;
+  box-shadow: rgba(232, 235, 236, 0.878) 0rem 1.25rem 0.625rem -0.9375rem;
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  text-align: center !important;
+  justify-self: center;
+  margin: 1rem;
   font-size: 1rem;
 }
 
-
- .signup-button:hover {
+.signup-button:hover {
   transform: scale(1.03);
-  box-shadow: rgba(37, 48, 53, 0.878)75rem 0.625rem -1.25rem;
+  box-shadow: rgba(37, 48, 53, 0.878) 75rem 0.625rem -1.25rem;
 }
 
- .signup-button:active {
+.signup-button:active {
   transform: scale(0.95);
   box-shadow: rgba(133, 189, 215, 0.8784313725) 0rem 0.9375rem 0.625rem -0.625rem;
 }
-
-
-
- 
-

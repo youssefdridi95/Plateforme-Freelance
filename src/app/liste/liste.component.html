@@ -106,16 +106,32 @@
         <td class="responsive-table__body__text responsive-table__body__text--name">
           <form [formGroup]="userForm">
             <input type="text" name="nom" id="nom" formControlName="nom" />
-          </form>
+            <div *ngIf="   userForm.controls['nom'].touched " class="text-danger" >
+              <span *ngIf="userForm.controls['nom'].errors?.['required']">
+                ce champ est obligatoire! <br>
+              </span>
+              <span *ngIf="userForm.controls['nom'].errors?.['minlength']">
+                la longueur minimal est 6.
+              </span>
+            </div>
+            </form>
         </td>
         <td class="responsive-table__body__text responsive-table__body__text--types">
           <form [formGroup]="userForm">
-            <input type="text" name="email" id="email" formControlName="email" />
+          <input type="text" name="email" id="email" formControlName="email" />
+            <div *ngIf="   userForm.controls['email'].touched " class="text-danger" >
+              <span *ngIf="userForm.controls['email'].errors?.['required']">
+                ce champ est obligatoire! <br>
+              </span>
+              <span *ngIf="userForm.controls['email'].errors?.['minlength']">
+                la longueur minimal est 6.
+              </span>
+          </div>
           </form>
         </td>
         <td class="responsive-table__body__text responsive-table__body__text--types">
-          <form [formGroup]="userForm">
-            <select class="input pp" name="role" id="role" formControlName="role">
+          <form [formGroup]="userForm"> 
+          <select class="input pp" name="role" id="role" formControlName="role">
               <option value="" disabled selected>Role*</option>
               <option value="Recruteur RH">Recruteur RH</option>
               <option value="Editeur">Editeur</option>
@@ -124,7 +140,7 @@
         </td>
         <td class="responsive-table__body__text responsive-table__body__text--types">
           <form [formGroup]="userForm">
-            <button class="btn" (click)="add()">Ajouter</button>
+            <button class="btn" [disabled]="!isFormValid()" (click)="add()">Ajouter</button>
           </form>
         </td>
       </tr>

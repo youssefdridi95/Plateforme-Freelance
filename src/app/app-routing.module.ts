@@ -25,10 +25,14 @@ import { ListeEmpComponent } from './liste-emp/liste-emp.component';
 import { ListeComponent } from './liste/liste.component';
 import { AccessDenied403Component } from './access-denied403/access-denied403.component';
 import { NotFound404Component } from './not-found404/not-found404.component';
+import { SectionComponent } from './section/section.component';
+import { AddUserComponent } from './add-user/add-user.component';
 const routes: Routes = [
 
 
   {path : "user/connexion/:type" , component : UserInscritComponent ,canActivate:[loggedinGuard]},
+  {path:"section",component :SectionComponent },
+  {path:"adduser",component :AddUserComponent },
 
   {path:"entreprise/listee",component :ListeEmpComponent },
   {path:"entreprise/liste",component :ListeComponent },

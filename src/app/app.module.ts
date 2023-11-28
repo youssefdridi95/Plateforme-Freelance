@@ -38,8 +38,14 @@ import { UserCompteComponent } from './user-compte/user-compte.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { ListeEmpComponent } from './liste-emp/liste-emp.component';
 import { ListeComponent } from './liste/liste.component';
+<<<<<<< HEAD
 import { AccessDenied403Component } from './access-denied403/access-denied403.component';
 import { NotFound404Component } from './not-found404/not-found404.component';
+=======
+import { SectionComponent } from './section/section.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { Section2Component } from './section2/section2.component';
+>>>>>>> amal
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,8 +72,14 @@ import { NotFound404Component } from './not-found404/not-found404.component';
     EditPostComponent,
     ListeEmpComponent,
     ListeComponent,
+<<<<<<< HEAD
     AccessDenied403Component,
     NotFound404Component,
+=======
+    SectionComponent,
+    AddUserComponent,
+    Section2Component,
+>>>>>>> amal
 
     
   ],
