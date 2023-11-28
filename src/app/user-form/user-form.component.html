@@ -5,22 +5,29 @@
 <div class="container">  </div>
 
     <form [formGroup]="userProfil" (ngSubmit)="userProfiladd()" action="">
-        <input class="input" type="text" id="firstName" formControlName="firstName"  placeholder="Prénom">
-  
-        <input class="input" type="text" id="lastName" formControlName="lastName" placeholder="Nom" required>
+   <input type="file" formControlName="file" id="file" (change)="onFileSelected($event)">
+      <input class="input" type="text" id="firstName" formControlName="prenom"  placeholder="Prenom">
+      
+
+        <input class="input" type="text" id="lastName" formControlName="nom" placeholder="Nom" required>
         <!-- <input class="input" type="email" id="email" name="email" [(ngModel)]="email" disabled> -->
 
-        <input class="input" type="tel" id="phoneNumber" placeholder="Téléphone" formControlName="phoneNumber" required>
-        <input class="input" type="text" placeholder="Addresse" id="address" formControlName="address" required>
-        <!-- <label for="dob">Date de naissance</label> -->
+        <select class="input" id="address" formControlName="timezone" required>
+          <option value="Afghanistan">Afghanistan</option>
+          <option value="Albania">Albania</option>
+          <option value="Algeria">Algeria</option>
+          <!-- Ajoutez d'autres pays ici -->
+        </select>
+             <!-- <label for="dob">Date de naissance</label> -->
         <div>
         </div>
-        <input class="input" type="date" id="dob" placeholder="Date de naissance" formControlName="dob" required>
+        <!-- <input class="input" type="text" formControlName="mainSkill" placeholder="compétence" > -->
+        <!-- <input class="input" type="date" id="dob" placeholder="Date de naissance" formControlName="dob" required> -->
         <!-- <label for="genre">Genre :</label> -->
-        <select id="genre" formControlName="genre" aria-placeholder="dff">
+        <!-- <select id="genre" formControlName="genre" aria-placeholder="dff">
           <option value="homme">Homme</option>
           <option value="femme">Femme</option>
-        </select>
+        </select> -->
       
         <!-- <p>Genre sélectionné : {{ genre }}</p> -->
       

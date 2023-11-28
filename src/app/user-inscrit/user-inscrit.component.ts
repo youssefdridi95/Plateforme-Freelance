@@ -80,33 +80,50 @@ export class UserInscritComponent {
     )
 
   }
+  ngOnInit() {
+    // Vérifie si l'utilisateur est déjà connecté
+    const userString = sessionStorage.getItem('user');
+    if (userString) {
+      const user = JSON.parse(userString);
+      // Redirige vers la page user/compte si déjà connecté
+      this.router.navigate(['/user/compte']);
+    }
+  }
 
   loginUser() {
     const user = {
       'username': this.userFormlogin.value.username,
       'password': this.userFormlogin.value.password,
-         };
+    };
   
     this.userService.loginUser(user).subscribe(
-    (res: any) => {
-      const loginResponse: LoginResponse = res as LoginResponse;
-     
-      
-      if (!loginResponse.roles.includes(this.env.roles.user)) {
-        this.toastr.error("vous n'êtes pas un developpeur.  essayez de se connecter en tant qu'une entreprise ", 'erreur');
-      } else {
-        this.router.navigate(['/user/profile/create']);
-        this.toastr.success('Connexion réussie', 'Compte');
-        sessionStorage.setItem('user', JSON.stringify(res));
-      }
-    },
-    err => {
-      this.toastr.error(err.error.message, 'Compte');
-    }
-  );
+      (res: any) => {
+        const loginResponse: LoginResponse = res as LoginResponse;
   
-
+        if (!loginResponse.roles.includes(this.env.roles.user)) {
+          this.toastr.error("vous n'êtes pas un développeur. Essayez de vous connecter en tant qu'une entreprise", 'erreur');
+        } else {
+          // Redirige vers la page appropriée en fonction de la première connexion
+          const isFirstLogin = sessionStorage.getItem('isFirstLogin') !== 'false';
+          if (isFirstLogin) {
+            this.router.navigate(['/user/profile/create']);
+            sessionStorage.setItem('isFirstLogin', 'false');  // Ajoutez cette ligne
+          } else {
+            this.router.navigate(['/user/compte']);
+          }
+  
+          this.toastr.success('Connexion réussie', 'Compte');
+          sessionStorage.setItem('user', JSON.stringify(res));
+          sessionStorage.setItem('email', JSON.stringify(loginResponse.email));
+          sessionStorage.setItem('username', JSON.stringify(loginResponse.username));
+        }
+      },
+      err => {
+        this.toastr.error(err.error.message, 'Compte');
+      }
+    );
   }
+  
   
   private env : Env
 

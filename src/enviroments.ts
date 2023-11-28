@@ -2,8 +2,8 @@
 
 export const environments= {
  
-    backendUrl : "http://192.168.195.26:9090" ,
-   // backendUrl : "http://localhost:9090" ,
+    // backendUrl : "http://192.168.195.29:9090" ,
+   backendUrl : "http://localhost:9090" ,
     
     usersSignup :"/auth/signup",
     usersSignin :"/auth/signin",
@@ -23,9 +23,9 @@ export const environments= {
    
    
    
-    userProfil : "",
+    userCreateProfil : '/api/umanlink/profiles/individuals/create-profile-perso',
 
-
+    getUserProfil : '/api/umanlink/user/info/profile',
 
     roles : {
       
