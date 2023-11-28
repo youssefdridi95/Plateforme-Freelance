@@ -13,7 +13,9 @@ export interface Env {
     deletePost  : string ,
     getUserPost : string ,
     getSkillPost : string ,
-   
+    addmploye:string,
+    addemp:string,
+    employer:string,
     roles : {
     userRole : string , // used in the signup (the role sent to the backend )
     user : string , //  (the role receied from the backend )
@@ -22,12 +24,12 @@ export interface Env {
     entAdmin : string,
     entRecruter : string,
     entEditor : string ,
-    entEmployee : string ,
+    
 
  //  (the role receied from the backend )
     entRoleAdmin: string,
     entRecruterRole : string,
     entEditorRole : string,
-    entEmployeeRole :string ,
+    
 }
 }

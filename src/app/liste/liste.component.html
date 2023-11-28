@@ -1,6 +1,4 @@
-<!-- /* Please ❤ this if you like it! 😊 */ -->
 
-<!-- Page wrapper/Container Section -->
 <div class="container">
   <!-- Responsive Table Section -->
   <table class="responsive-table">
@@ -34,7 +32,7 @@
     </thead>
     <!-- Responsive Table Body Section -->
     <tbody class="responsive-table__body">
-      <tr class="responsive-table__row">
+      <!-- <tr class="responsive-table__row">
         <td
           class="responsive-table__body__text responsive-table__body__text--name"
         >
@@ -56,31 +54,23 @@
         >
           <button class="btn-info">Supprimer</button>
         </td>
+      </tr> -->
+      <tr *ngFor="let user of users" class="responsive-table__row">
+          <td class="responsive-table__body__text responsive-table__body__text--name">
+            {{ user.username }}
+          </td>
+          <td class="responsive-table__body__text responsive-table__body__text--types">
+            {{ user.email }}
+          </td>
+          <td class="responsive-table__body__text responsive-table__body__text--update">
+            {{ user.roles[0].name }}
+          </td>
+          <td class="responsive-table__body__text responsive-table__body__text--country">
+            <button class="btn-info" >Supprimer</button>
+          </td>
+     
       </tr>
-      <tr class="responsive-table__row">
-        <td
-          class="responsive-table__body__text responsive-table__body__text--name"
-        >
-          <img
-            src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxivAs4UknzmDfLBXGMxQkayiZDhR2ftB4jcIV7LEnIEStiUyMygioZnbLXCAND-I_xWQpVp0jv-dv9NVNbuKn4sNpXYtLIJk2-IOdWQNpC2Ldapnljifu0pnQqAWU848Ja4lT9ugQex-nwECEh3a96GXwiRXlnGEE6FFF_tKm66IGe3fzmLaVIoNL/s1600/img_avatar.png"
-          />
-
-          <div class="path"></div>
-          John Doe
-        </td>
-        <td
-          class="responsive-table__body__text responsive-table__body__text--types"
-        >ahmed@gmail.com</td>
-        <td
-          class="responsive-table__body__text responsive-table__body__text--update"
-        >Editor</td>
-        <td
-          class="responsive-table__body__text responsive-table__body__text--country"
-        >
-          <button class="btn-info">Supprimer</button>
-        </td>
-      </tr>
-      <tr class="responsive-table__row">
+      <!-- <tr class="responsive-table__row">
         <td
           class="responsive-table__body__text responsive-table__body__text--name"
         >
@@ -101,20 +91,11 @@
         >
           <button class="btn-info">Supprimer</button>
         </td>
-      </tr>
+      </tr> -->
 	  <tr class="responsive-table__row">
         <td class="responsive-table__body__text responsive-table__body__text--name">
-          <form [formGroup]="userForm">
-            <input type="text" name="nom" id="nom" formControlName="nom" />
-            <div *ngIf="   userForm.controls['nom'].touched " class="text-danger" >
-              <span *ngIf="userForm.controls['nom'].errors?.['required']">
-                ce champ est obligatoire! <br>
-              </span>
-              <span *ngIf="userForm.controls['nom'].errors?.['minlength']">
-                la longueur minimal est 6.
-              </span>
-            </div>
-            </form>
+        
+         
         </td>
         <td class="responsive-table__body__text responsive-table__body__text--types">
           <form [formGroup]="userForm">
@@ -133,8 +114,8 @@
           <form [formGroup]="userForm"> 
           <select class="input pp" name="role" id="role" formControlName="role">
               <option value="" disabled selected>Role*</option>
-              <option value="Recruteur RH">Recruteur RH</option>
-              <option value="Editeur">Editeur</option>
+              <option value="recruter">Recruteur RH</option>
+              <option value="editor">Editeur</option>
             </select>
           </form>
         </td>

@@ -16,11 +16,8 @@ shouldShowNavbar(): boolean {
     this.router.url === '/entreprise/connexion/login'||  
     this.router.url === '/entreprise/connexion/signup'|| 
     this.router.url === '/mdp'|| 
-<<<<<<< HEAD
     this.router.url === '/access/denied/404'|| 
-=======
-    this.router.url === '/adduser'|| 
->>>>>>> amal
+    this.router.url === '/CreerCompteEmployee'|| 
     this.router.url === '/role');
 }
 }

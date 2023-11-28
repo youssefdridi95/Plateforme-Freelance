@@ -49,7 +49,7 @@ export class NavbarComponent {
     this.router.url === '/access/denied/404'|| 
     this.router.url === '/mdp'|| 
          this.router.url === '/mdp'||
-         this.router.url === '/adduser'|| 
+         this.router.url === '/CreerCompteEmployee/:email/:idEntreprise/:role'|| 
 
          this.router.url === '/role');
      }   
