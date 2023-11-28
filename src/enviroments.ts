@@ -28,6 +28,7 @@ export const environments= {
     addmploye : "/api/umanlink/gestion-entreprise/inviteEmployee" ,
     addemp :"/api/umanlink/gestion-entreprise/addEmployee",
     employer :"/api/umanlink/gestion-entreprise/getByEntreprise",
+    entreprise:"/api/umanlink/profiles/entreprises/create-profile-entreprise",
     roles : {
       
     userRole : "talent" , // used in the signup (the role sent to the backend )
@@ -35,9 +36,9 @@ export const environments= {
     
     //  (the role receied from the backend )
     entAdmin : 'ROLE_ENTREPRISE',
-    entRecruter : 'recruter',
-    entEditor : 'editor' ,
- 
+    entRecruter : 'ROLE_RECRUTER',
+    entEditor : 'ROLE_EDITOR' ,
+    entEmployee : 'ROLE_EMPLOYEE' ,
     // used in the add (the role sent to the backend )
     entRoleAdmin: 'entreprise',
     entRecruterRole : 'recruter',
