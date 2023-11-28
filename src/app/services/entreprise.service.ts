@@ -23,6 +23,7 @@ export class EntrepriseService {
     this.addemploye = this.env.addmploye
     this.addemp = this.env.addemp
     this.employer = this.env.employer
+    this.entreprise = this.env.entreprise
    }
    private url 
    private  userSignup 
@@ -30,6 +31,7 @@ export class EntrepriseService {
    private  addemploye 
    private addemp
    private employer
+   private entreprise
 
   
 
@@ -53,4 +55,10 @@ getByEntreprise(id: any){
 params = params.append('id', id);
   return this.http.get(this.url + this.employer,{params});
 }
+
+creationEntreprise(data: any,params:any){
+ 
+  return this.http.post(this.url + this.entreprise,data,{params});
+}
+
 }
