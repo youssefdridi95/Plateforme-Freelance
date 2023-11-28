@@ -26,6 +26,9 @@ export const environments= {
     userProfil : "",
 
     cvBuild : "/api/umanlink/resumes/create-resume",
+    userCreateProfil : '/api/umanlink/profiles/individuals/create-profile-perso',
+
+    getUserProfil : '/api/umanlink/user/info/profile',
 
     roles : {
       

@@ -1,7 +1,8 @@
 import { Component, NgModule } from '@angular/core';
 import { Router } from '@angular/router';
-import { AddPostComponent } from '../add-post/add-post.component';
-import { SharedService } from '../shared.service';
+import { HttpParams } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { UserProfil } from '../services/user-profil';
 
 @Component({
   selector: 'app-user-compte',
@@ -11,8 +12,8 @@ import { SharedService } from '../shared.service';
 
 export class UserCompteComponent {
 
-  constructor(private router: Router, private sharedService: SharedService ) {}
- 
+  constructor(private toastr: ToastrService, private userProfilService: UserProfil,private router: Router) {
+  }
 
   navigateToCvCreer(link: String) {
     
@@ -21,14 +22,41 @@ export class UserCompteComponent {
   }
   username: string = '';
   email: string = '';
+  userId = '';
   ngOnInit() {
-
     // Récupérer le nom d'utilisateur et l'e-mail depuis le sessionStorage
     const storedUsername = sessionStorage.getItem('username');
-    const storedEmail = sessionStorage.getItem('useremail');
+    const storedEmail = sessionStorage.getItem('email'); // Changez de 'useremail' à 'email'
   
     // Assurez-vous que la valeur n'est pas null avant de l'assigner
-    this.username = storedUsername ?JSON.parse (storedUsername) : '';
-    this.email = storedEmail ? JSON.parse (storedEmail) : '';
+    this.username = storedUsername ? JSON.parse(storedUsername) : '';
+    this.email = storedEmail ? JSON.parse(storedEmail) : '';
   }
-}
+  getProfil(){
+    let params = new HttpParams()
+
+  .set('userId', JSON.parse(sessionStorage.getItem('user')!).id);
+
+
+
+  
+
+
+      this.userProfilService.getProfil(params).subscribe(
+        res => {
+          console.log('reussite',res);
+          this.toastr.success('reussite')
+          sessionStorage.setItem('profil', JSON.stringify(res));
+
+          // Ajoutez ici d'autres actions en cas de succès
+        },
+        err => {
+          console.log('failed',err);
+          this.toastr.error(err.error.message,'failed')
+
+          // Ajoutez ici d'autres actions en cas d'erreur, comme l'affichage d'un message d'erreur avec Toastr
+          // this.toastr.error(err.error.message, 'Connexion');
+
+        }
+      );  }
+    }

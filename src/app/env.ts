@@ -7,7 +7,6 @@ export interface Env {
     resetPwd : string , 
     regenerateOtp : string ,
     verifcompte : string ,
-    
     addPost  : string ,
     editPost  : string ,
     deletePost  : string ,
@@ -17,6 +16,10 @@ export interface Env {
 
 
     cvBuild : string ,
+
+    userCreateProfil : string,
+    getUserProfil : string
+
 
     roles : {
     userRole : string , // used in the signup (the role sent to the backend )
