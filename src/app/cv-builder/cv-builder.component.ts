@@ -156,26 +156,129 @@ if(control.length == 0)
 }
 
   buildCv(){
-    const experiences =this.cv.cvForm.get('experience')
-    const certifications =this.cv.cvForm.get('certification')
-    const formations =this.cv.cvForm.get('formation')
-    const competences =this.cv.cvForm.get('competence')
-   
-      
-      try {
-        this.cvApi.addExperiences(experiences)
-        this.cvApi.addFormations(formations)
-        this.cvApi.addCertifications(certifications)
-        this.cvApi.addCompetences(competences)
-
-        this.toastr.success(' crée avec succés', 'CV');
-      } catch (error) {
-        this.toastr.error('erreur lors de la création', ' CV');
-      }
-     
-     console.log(this.cv.cvForm)
-    //this.route.navigate(['/cv/afficher'])
+    interface CvJSON {
     
+      experiences: {
+        company: any;
+        position: any;
+        localisation: any;
+        employementType: any;
+
+        debut: any;
+        fin: any;
+      }[];
+      formations: {
+        school: any;
+        degree: any;
+        date: any;
+      }[];
+      certifications: {
+        titre: any;
+        date: any;
+        link: any;
+      }[];
+      competences: {
+          type :any
+          title: any;
+          niveau: any;
+        }[];
+      };
+    
+    
+    let cvJSON: CvJSON = {
+   
+      "experiences" :[],
+      "certifications" :[],
+      "formations" :[],
+      "competences" :[],  
+    };
+    
+    const experiences = this.cv.cvForm.value.experience ;
+    const certifications = this.cv.cvForm.value.certification;
+    const formations = this.cv.cvForm.value.formation;
+    const competences = this.cv.cvForm.value.competence;
+    
+    experiences.forEach((exp : any) => {
+      let expJSON = {
+        "company": exp.societe,
+        "debut": exp.debut,
+        "fin": exp.fin,
+        "localisation": exp.localisation,
+        "employementType": "freelance",
+
+        "position": exp.post
+      };
+      
+      cvJSON.experiences.push(expJSON);
+    });
+
+    certifications.forEach((cert : any) => {
+      let certJSON =  {
+        "titre": cert.titre,
+        "date": cert.dateObtentien,
+        "link": cert.image
+      }
+      
+      cvJSON.certifications.push(certJSON);
+    });
+
+    formations.forEach((form : any) => {
+      let formJSON =  {
+        "school": form.institut,
+        "degree": form.diploma,
+        "date": form.dateObtentien
+      }
+      
+      cvJSON.formations.push(formJSON);
+    });
+
+    let compPrincJSON =  {
+      "type": "COMPETANCE_TECH_PRINCIPALE" ,
+      "title": competences.principale.nom,
+      "niveau": competences.principale.niveau
+    }
+    
+    cvJSON.competences.push(compPrincJSON);
+    competences.secondaire.forEach((comp : any) => {
+      let compJSON =  {
+        "type": "COMPETENCE_TECH_SECONDAIRE",
+        "title": comp.nom,
+        "niveau": comp.niveau
+      }
+      
+      cvJSON.competences.push(compJSON);
+    });
+
+    competences.langue.forEach((comp : any) => {
+      let compJSON =  {
+        "type": "COMPETENCE_LANG",
+        "title": comp.nom,
+        "niveau": comp.niveau
+      }
+      
+      cvJSON.competences.push(compJSON);
+    });
+    
+
+    console.log(cvJSON);
+    
+
+    this.cvApi.build(cvJSON).subscribe(
+      res=>{
+      
+  console.log(res);
+        
+        
+  this.toastr.success('a été crée avec succés ','CV')
+
+      },
+      err=>{
+    console.log(err);
+    this.toastr.error(err.error.message,'erreur')
+      }
+    )}
+
+
   }
 
-}
+

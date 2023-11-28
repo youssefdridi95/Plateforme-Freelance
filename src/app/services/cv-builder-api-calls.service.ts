@@ -1,15 +1,43 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
+import { Env } from '../env';
+import { environments } from 'src/enviroments';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CvBuilderApiCallsService {
 
+private env:Env =environments as Env
 
- url =''
-  constructor(private http:HttpClient) {}
+private  url =''
+private cvBuild =''
+  constructor(private http:HttpClient) {
+    this.url=this.env.backendUrl
+    this.cvBuild=this.env.cvBuild
+  }
+
+
+
+ build(cv:any){
+console.log(cv);
+
+  const params = new HttpParams()
+  .set('profileId', '6565f56441d5ad66fc6258cba')
+
+// Make the API call with parameters
+
+const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+  return this.http.post(this.url  + this.cvBuild  ,cv,{params,headers});
+
+ }
+
+
+
+
+
 
 
   getCvSection(id:any,cvSection:string) {

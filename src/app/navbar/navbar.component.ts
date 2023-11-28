@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
 import { WidthCheckService } from '../services/width-check.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
 
-  constructor(private widhtChecker :WidthCheckService,private router: Router ,private elementRef: ElementRef ){
+  constructor(private widhtChecker :WidthCheckService,private router: Router ,private elementRef: ElementRef ,private auth:AuthService){
         this.widhtChecker.width=this.checkScreenWidth()
         this.navItemsDisplay=this.widhtChecker.width < 900 ? "none" : "flex"
 
@@ -65,5 +66,11 @@ export class NavbarComponent {
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
+
+logout(){
+this.auth.logout() ;
+this.router.navigate(['/'])
+
+}
 
 }

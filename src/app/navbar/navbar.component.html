@@ -17,7 +17,7 @@
       <button class="dropdown-button" (click)="toggleDropdown()" *ngIf="showBtn()">
         Connexion <i class="fa-solid fa-chevron-down"></i>
       </button>
-      <div class="dropdown-content" *ngIf="isDropdownOpen">
+      <div class="dropdown-content" *ngIf="isDropdownOpen && showBtn()">
         <!-- Dropdown items go here -->
         <a [routerLink]="['/user/connexion/signin']">Freelancer</a>
         <a [routerLink]="['/entreprise/connexion/login']">Entreprise</a>
@@ -44,14 +44,11 @@
       </div>
       <i class="fa-regular fa-bell"></i>
       <i class="fa-regular fa-user" (click)="toggleDropdown()"></i>
-      <!-- <div class="menu" (click)="showNavItems()">
-        <i class="fa-solid fa-bars" *ngIf="!isMenuOpen"></i>
-        <i class="fa-solid fa-xmark" *ngIf="isMenuOpen"></i>
-      </div> -->
+    
 
-      <div class="dropdown-content" *ngIf="isDropdownOpen">
+      <div class="dropdown-content2" *ngIf="isDropdownOpen">
         <a [routerLink]="['/entreprise/connexion/login']">Paramètres</a>
-        <a [routerLink]="['/user/connexion/signin']">Déconnexion</a>
+        <a (click)="logout()" >Déconnexion</a>
       </div>
 
     </div>
