@@ -1,0 +1,66 @@
+ 
+<div class="container" >
+    <div class="heading">Creation compte </div>
+   
+    <form [formGroup]="signupForm" class="form">
+      <input type="text"  class="input" formControlName="username" id="username" placeholder="Nom utilisateur*" />
+      <div *ngIf="   signupForm.controls['username'].touched " class="text-danger" >
+        <span *ngIf="signupForm.controls['username'].errors?.['required']">
+          ce champ est obligatoire! <br>
+        </span>
+        <span *ngIf="signupForm.controls['username'].errors?.['minlength']">
+          la longueur minimal est 6.
+        </span>
+    
+     
+      </div>
+         <input type="email" class="input" formControlName="email"  placeholder="E-mail professionnel*"/>
+          <div *ngIf="   signupForm.controls['email'].touched " class="text-danger" >
+            <span *ngIf="signupForm.controls['email'].errors?.['required']">
+              ce champ est obligatoire! <br>
+            </span>
+            <span *ngIf="!isPro">
+              E-mail non professionnel
+            </span>
+        
+         
+          </div>
+       
+       
+          <input type="password" class="input" formControlName="password" placeholder="Mot de passe*"/>
+       
+          <div *ngIf="   signupForm.controls['password'].touched " class="text-danger" >
+            <span *ngIf="signupForm.controls['password'].errors?.['required']">
+              ce champ est obligatoire! <br>
+            </span>
+            <span *ngIf="signupForm.controls['password'].errors?.['minlength']">
+              la longueur minimal est 6.
+            </span>
+  
+         
+          </div>
+   
+   
+      <input type="password" class="input" formControlName="confirmPwd"placeholder="Confirm Mot de passe*"  />
+      <div  class="text-danger" *ngIf="   signupForm.controls['password'].touched">
+        <span *ngIf="isMush===false ">
+          Confirmer le mot de passe! <br>
+        </span>
+        <span *ngIf="signupForm.controls['confirmPwd'].errors?.['required']">
+          ce champ est obligatoire! <br>
+        </span>
+        <span *ngIf="signupForm.controls['confirmPwd'].errors?.['minlength']">
+          la longueur minimal est 6.
+        </span>
+  
+    </div>
+  
+   
+   
+   
+      <input class=" signup-button" type="submit" value="Poursuivre" (click)="inscrire()" >
+   
+   
+      </form>
+   
+  </div>

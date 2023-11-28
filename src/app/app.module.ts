@@ -38,6 +38,9 @@ import { UserCompteComponent } from './user-compte/user-compte.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { ListeEmpComponent } from './liste-emp/liste-emp.component';
 import { ListeComponent } from './liste/liste.component';
+import { SectionComponent } from './section/section.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { Section2Component } from './section2/section2.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +67,9 @@ import { ListeComponent } from './liste/liste.component';
     EditPostComponent,
     ListeEmpComponent,
     ListeComponent,
+    SectionComponent,
+    AddUserComponent,
+    Section2Component,
 
     
   ],

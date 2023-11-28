@@ -46,7 +46,9 @@ export class NavbarComponent {
          this.router.url === '/user/connexion/signup'  ||  
          this.router.url === '/entreprise/connexion/login'||  
          this.router.url === '/entreprise/connexion/signup'|| 
-         this.router.url === '/mdp'|| 
+         this.router.url === '/mdp'||
+         this.router.url === '/adduser'|| 
+
          this.router.url === '/role');
      }   
      
