@@ -1,7 +1,10 @@
 // add-post.component.ts
 
-import { Component ,Input } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { HttpParams } from '@angular/common/http';
+import { Component , } from '@angular/core';
+import {  FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { PostService } from '../services/post.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -11,7 +14,7 @@ import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Valida
   styleUrls: ['./add-post.component.css']
 })
 export class AddPostComponent   {
-  @Input() post: boolean = false; // Recevoir la propriété post du composant parent
+ 
 
   postForm: FormGroup 
 
@@ -20,7 +23,7 @@ export class AddPostComponent   {
 
   totalFileSizeExeeded : boolean =false
    totalSize=0
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,private postService:PostService,private toastr: ToastrService ) {
     this.postForm = this.formBuilder.group({
       competence: ['', Validators.required],
       description: ['',Validators.maxLength(500)],
@@ -122,37 +125,52 @@ getControls() {
   onSubmit() {
    
   this.totalFileSizeExeeded =this.totalFileSizeValidator(1*1024*1024)
-
-
+  const params = new HttpParams()
+  .set('userId',JSON.parse(sessionStorage.getItem('user')!).id)
+  .set('title',this.postForm.value.competence)
+  .set('desc',this.postForm.value.description)
+  .set('category ',this.postForm.value.description)
+  .set('type',JSON.parse(sessionStorage.getItem('user')!).roles[0])
+  .set('tags',this.postForm.value.tags.map((tag: { name: string }) => tag.name).join('///'))
+   
     const formData = new FormData();
   
-    formData.append('competence', this.postForm.value.competence);
-    formData.append('description', this.postForm.value.description);
-  
-    // Assuming files is an array of File objects
     const files: FileList = this.postForm.get('file')!.value;
     for (let i = 0; i < files.length; i++) {
-      formData.append('file', files[i]);
+      formData.append('files', files[i]);
     }
   
-    const tags = this.postForm.value.tags.map((tag: { name: string }) => tag.name).join('///');
-    
-     formData.append('tags', tags);
-    
+
+    this.postService.add(formData,params).subscribe(
+      res=>{
+      
+  console.log(res);
+        
+        
+  this.toastr.success('a été publié avec success ','Post')
+
+      },
+      err=>{
+    console.log(err);
+    this.toastr.error(err.error.message,'erreur')
+      }
+    )
+
+    const formDataObject: any = {};
+    formData.forEach((value, key) => {
+      if (!formDataObject[key]) {
+        formDataObject[key] = value;
+      } else {
+        if (!Array.isArray(formDataObject[key])) {
+          formDataObject[key] = [formDataObject[key]];
+        }
+        formDataObject[key].push(value);
+      }
+    });
   
-    // const formDataObject: any = {};
-    // formData.forEach((value, key) => {
-    //   if (!formDataObject[key]) {
-    //     formDataObject[key] = value;
-    //   } else {
-    //     if (!Array.isArray(formDataObject[key])) {
-    //       formDataObject[key] = [formDataObject[key]];
-    //     }
-    //     formDataObject[key].push(value);
-    //   }
-    // });
-  
-    // // Log the converted object
-    // console.log(formDataObject);
+    // Log the converted object
+    console.log(formDataObject);
+
+
   }
 }

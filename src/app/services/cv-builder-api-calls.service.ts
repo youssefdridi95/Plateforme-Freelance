@@ -24,7 +24,7 @@ private cvBuild =''
 console.log(cv);
 
   const params = new HttpParams()
-  .set('profileId', '6565f56441d5ad66fc6258cba')
+  .set('profileId', '6565c6c2b699e545cad68025')
 
 // Make the API call with parameters
 
@@ -46,16 +46,7 @@ const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 }
 
 
-  addExperiences(experiences :FormArray){
-
-      for (let i = 0; i < experiences.length; i++) {
-          this.http.post(this.url + '',experiences.at(i).value).subscribe({
-            next: (v) => console.log(v),
-            error: (e) => console.error(e),
-            complete: () => console.info('complete') 
-        })
-        }
-  }
+ 
 
 
   editExperiences(id:any ,experiences :FormArray){
@@ -70,17 +61,7 @@ const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 }
 
 
-  addFormations(formations :FormArray){
 
-    for (let i = 0; i < formations.length; i++) {
-        this.http.post(this.url + '',formations.at(i).value).subscribe({
-          next: (v) => console.log(v),
-          error: (e) => console.error(e),
-          complete: () => console.info('complete') 
-      })
-       
-      }
-}
 
 
 editFormations(id:any ,formations :FormArray){
@@ -95,24 +76,7 @@ editFormations(id:any ,formations :FormArray){
     }
 }
 
-addCertifications(certifications :FormArray){
 
-  for (let i = 0; i < certifications.length; i++) {
-      let data= new FormData();
-
-
-      data.append('image',certifications.at(i).value['image'])
-      data.append('imageFile',certifications.at(i).value['imageFile'])
-      data.append('dateObtentien',certifications.at(i).value['dateObtentien'])
-      data.append('titre',certifications.at(i).value['titre'])
-      this.http.post(this.url + '',data).subscribe({
-        next: (v) => console.log(v),
-        error: (e) => console.error(e),
-        complete: () => console.info('complete') 
-    })
-     
-    }
-}
 
 editCertifications(id:any ,certifications :FormArray){
 
@@ -137,29 +101,7 @@ editCertifications(id:any ,certifications :FormArray){
     }
 }
 
-addCompetences(competences: FormGroup) {
-  // Assuming competences is the main FormGroup
-  const principaleFormGroup = competences.get('competence.principale') as FormGroup;
-  const secondaireFormArray = competences.get('competence.secondaire') as FormArray;
 
-  // Post data for 'principale'
-  this.http.post(this.url, principaleFormGroup.value)
-    .subscribe({
-      next: (v) => console.log(v),
-      error: (e) => console.error(e),
-      complete: () => console.info('complete')
-    });
-
-  // Post data for each control in 'secondaire' FormArray
-  for (let i = 0; i < secondaireFormArray.length; i++) {
-    this.http.post(this.url, secondaireFormArray.at(i).value)
-      .subscribe({
-        next: (v) => console.log(v),
-        error: (e) => console.error(e),
-        complete: () => console.info('complete')
-      });
-  }
-}
 
 
 

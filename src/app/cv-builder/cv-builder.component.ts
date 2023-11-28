@@ -233,7 +233,7 @@ if(control.length == 0)
     });
 
     let compPrincJSON =  {
-      "type": "COMPETANCE_TECH_PRINCIPALE" ,
+      "type": "COMPETANCE_TECH" ,
       "title": competences.principale.nom,
       "niveau": competences.principale.niveau
     }
@@ -241,7 +241,7 @@ if(control.length == 0)
     cvJSON.competences.push(compPrincJSON);
     competences.secondaire.forEach((comp : any) => {
       let compJSON =  {
-        "type": "COMPETENCE_TECH_SECONDAIRE",
+        "type": "COMPETENCE_TECH",
         "title": comp.nom,
         "niveau": comp.niveau
       }

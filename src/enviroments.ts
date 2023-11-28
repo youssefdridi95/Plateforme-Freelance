@@ -2,7 +2,7 @@
 
 export const environments= {
  
-    backendUrl : "http://192.168.195.29:9090" ,
+    backendUrl : "http://192.168.195.26:9090" ,
    //backendUrl : "http://localhost:9090" ,
     
     usersSignup :"/auth/signup",
@@ -14,7 +14,7 @@ export const environments= {
     verifcompte : '/auth/verifCompte',
     regenerateOtp : '/auth/regenerateOtp',
    
-    addPost  : '' ,
+    addPost  : '/api/umanlink/postes/create-post' ,
     editPost  : '' ,
     deletePost  : '' ,
     getUserPost : '' ,
