@@ -18,6 +18,7 @@ shouldShowNavbar(): boolean {
     this.router.url === '/mdp'|| 
     this.router.url === '/access/denied/404'|| 
     this.router.url === '/adduser'|| 
+    this.router.url === '/CreerCompteEmployee'|| 
     this.router.url === '/role');
 }
 }

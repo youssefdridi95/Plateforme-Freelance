@@ -32,7 +32,7 @@ const routes: Routes = [
 
   {path : "user/connexion/:type" , component : UserInscritComponent ,canActivate:[loggedinGuard]},
   {path:"section",component :SectionComponent },
-  {path:"adduser",component :AddUserComponent },
+  {path:"CreerCompteEmployee/:email/:idEntreprise/:role",component :AddUserComponent },
 
   {path:"entreprise/listee",component :ListeEmpComponent },
   {path:"entreprise/liste",component :ListeComponent },
@@ -44,7 +44,7 @@ const routes: Routes = [
   {path:"entreprise/profil",component :ProfilEntrepriseComponent},
 
   {path:"entreprise/connexion/:type",component :LoginEntrepriseComponent,canActivate:[loggedinGuard] },
-  {path:"entreprise/creation",component :CreationEntrepriseComponent , canActivate: [AuthGuard]},
+  {path:"entreprise/creation",component :CreationEntrepriseComponent},
   {path:"changeMdp/:role/:reset",component :RecupMDPComponent},
   {path:"mdp",component :MdpComponent},
   {path:"role",component :RoleComponent ,canActivate:[loggedinGuard] },
