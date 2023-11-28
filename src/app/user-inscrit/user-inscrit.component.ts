@@ -71,10 +71,10 @@ export class UserInscritComponent {
 
       },
       err=>{
-        console.log(err);
+        console.log(err.error);
 
     // console.log('Formulaire soumis avec error', this.userForm.value);
-    this.toastr.error(err.error.message, 'Connexion')
+    this.toastr.error(err.error.message[0], 'Connexion')
 
       }
     )
@@ -89,6 +89,8 @@ export class UserInscritComponent {
   
     this.userService.loginUser(user).subscribe(
     (res: any) => {
+      console.log(res);
+      
       const loginResponse: LoginResponse = res as LoginResponse;
      
       
@@ -101,7 +103,9 @@ export class UserInscritComponent {
       }
     },
     err => {
-      this.toastr.error(err.error.message, 'Compte');
+      console.log(err);
+
+      this.toastr.error(err.error.message, 'erreur');
     }
   );
   

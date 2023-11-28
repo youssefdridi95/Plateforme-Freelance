@@ -24,16 +24,16 @@ export class MdpComponent {
   
    )}
    requestPassworChange () {
- console.log(this.emailForm);
  
     this.mail.recuperationMdp(this.emailForm.value.email).subscribe(
       res => {
+        console.log(res);
 
         this.toastr.success('merci de verifiez votre email pour reinitialiser votre mot de passe', 'email');
  
       },
       err => {
-        console.log(err.error.message)
+        console.log(err)
      this.toastr.error(err.error.message, 'erreur');
       }
     );

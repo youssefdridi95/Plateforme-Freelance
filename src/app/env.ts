@@ -14,6 +14,10 @@ export interface Env {
     getUserPost : string ,
     getSkillPost : string ,
    
+
+
+    cvBuild : string ,
+
     roles : {
     userRole : string , // used in the signup (the role sent to the backend )
     user : string , //  (the role receied from the backend )
