@@ -1,8 +1,10 @@
 import { Component, NgModule } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpParams } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { UserProfil } from '../services/user-profil';
+import { map, catchError, of } from 'rxjs';
+import { PostService } from '../services/post.service';
 
 @Component({
   selector: 'app-user-compte',
@@ -12,7 +14,9 @@ import { UserProfil } from '../services/user-profil';
 
 export class UserCompteComponent {
 
-  constructor(private toastr: ToastrService, private userProfilService: UserProfil,private router: Router) {
+  constructor(private toastr: ToastrService, private userProfilService: UserProfil,private router: Router, private roote: ActivatedRoute, private postService : PostService) {
+    this.roote.paramMap.subscribe(params =>{this.userId=params.get('id')})
+
   }
 
   navigateToCvCreer(link: String) {
@@ -22,32 +26,38 @@ export class UserCompteComponent {
   }
   username: string = '';
   email: string = '';
-  userId = '';
+  userId : any;
+  profil : any;
   ngOnInit() {
     // Récupérer le nom d'utilisateur et l'e-mail depuis le sessionStorage
     const storedUsername = sessionStorage.getItem('username');
     const storedEmail = sessionStorage.getItem('email'); // Changez de 'useremail' à 'email'
   
     // Assurez-vous que la valeur n'est pas null avant de l'assigner
-    this.username = storedUsername ? JSON.parse(storedUsername) : '';
-    this.email = storedEmail ? JSON.parse(storedEmail) : '';
+    this.username =   JSON.parse(sessionStorage.getItem('user')!).username
+
+    this.email =   JSON.parse(sessionStorage.getItem('user')!).email
+
+
+this.getProfil();
+this.getPost(this.userId); 
   }
   getProfil(){
     let params = new HttpParams()
 
-  .set('userId', JSON.parse(sessionStorage.getItem('user')!).id);
-
-
-
-  
+  .set('userId', this.userId);
 
 
       this.userProfilService.getProfil(params).subscribe(
         res => {
           console.log('reussite',res);
           this.toastr.success('reussite')
-          sessionStorage.setItem('profil', JSON.stringify(res));
-
+        if(this.userId== JSON.parse(sessionStorage.getItem('user')!).id){
+          this.profil= JSON.parse(sessionStorage.getItem('profil')!)
+        }
+else{
+  this.profil=res;
+}
           // Ajoutez ici d'autres actions en cas de succès
         },
         err => {
@@ -59,4 +69,23 @@ export class UserCompteComponent {
 
         }
       );  }
+      getPost(userId: any) {
+        this.postService.getUserPosts(userId).subscribe(
+          res => {
+            console.log('reussite des posts', res);
+            // Faites quelque chose avec les posts récupérés, par exemple, assignez-les à une variable de composant
+            // this.posts = res;
+          },
+          err => {
+            console.log('failed to get posts', err);
+      
+            // Vérifiez si err.error et err.error.message existent avant d'y accéder
+      
+          }
+        );
+      }
+      
+      
+      
     }
+   

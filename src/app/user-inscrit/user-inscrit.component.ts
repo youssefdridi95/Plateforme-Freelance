@@ -5,6 +5,9 @@ import { UserService } from '../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Env } from '../env';
 import { environments } from 'src/enviroments';
+import { HttpParams } from '@angular/common/http';
+import { UserProfil } from '../services/user-profil';
+import { Observable, map, catchError, of } from 'rxjs';
 
 
 
@@ -89,7 +92,25 @@ export class UserInscritComponent {
       this.router.navigate(['/user/compte']);
     }
   }
-
+  getProfil(userId: any): Observable<boolean> {
+    let params = new HttpParams().set('userId', userId);
+  
+    return this.userProfilService.getProfil(params).pipe(
+      map((res: any) => {
+        console.log('reussite', res);
+        sessionStorage.setItem('profil', JSON.stringify(res));
+        
+        return true;
+      }),
+      catchError((err: any) => {
+        console.log('failed', err);
+        // Handle error actions here
+        // e.g., this.toastr.error(err.error.message, 'Connexion');
+        return of(false);
+      })
+    );
+  }
+  
   loginUser() {
     const user = {
       'username': this.userFormlogin.value.username,
@@ -103,19 +124,21 @@ export class UserInscritComponent {
         if (!loginResponse.roles.includes(this.env.roles.user)) {
           this.toastr.error("vous n'êtes pas un développeur. Essayez de vous connecter en tant qu'une entreprise", 'erreur');
         } else {
-          // Redirige vers la page appropriée en fonction de la première connexion
-          const isFirstLogin = sessionStorage.getItem('isFirstLogin') !== 'false';
-          if (isFirstLogin) {
-            this.router.navigate(['/user/profile/create']);
-            sessionStorage.setItem('isFirstLogin', 'false');  // Ajoutez cette ligne
-          } else {
-            this.router.navigate(['/user/compte']);
-          }
-  
-          this.toastr.success('Connexion réussie', 'Compte');
-          sessionStorage.setItem('user', JSON.stringify(res));
-          sessionStorage.setItem('email', JSON.stringify(loginResponse.email));
-          sessionStorage.setItem('username', JSON.stringify(loginResponse.username));
+          this.getProfil(loginResponse.id).subscribe(
+            (profileResult: boolean) => {
+              if (profileResult === false) {
+                this.router.navigate(['/user/profile/create']);
+              } else {
+                this.router.navigate(['/user/compte', loginResponse.id]);
+              }
+              this.toastr.success('Connexion réussie', 'Compte');
+              sessionStorage.setItem('user', JSON.stringify(res));
+            },
+            (profileError) => {
+              console.error('Error getting profile:', profileError);
+              // Handle profile error if needed
+            }
+          );
         }
       },
       err => {
@@ -125,9 +148,10 @@ export class UserInscritComponent {
   }
   
   
+  
   private env : Env
 
-  constructor(private roote : ActivatedRoute,private userService: UserService ,private toastr : ToastrService, private router: Router){
+  constructor(private roote : ActivatedRoute,private userService: UserService ,private toastr : ToastrService, private router: Router, private userProfilService: UserProfil){
     this.roote.paramMap.subscribe(params =>{this.inscrit=params.get('type')})
     this.env = environments as Env 
   }
