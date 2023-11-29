@@ -2,8 +2,8 @@
 
 export const environments= {
  
-    backendUrl : "http://192.168.195.26:9090" ,
-   //backendUrl : "http://localhost:9090" ,
+//    backendUrl : "http://192.168.195.29:9090" ,
+   backendUrl : "http://localhost:9090" ,
     
     usersSignup :"/auth/signup",
     usersSignin :"/auth/signin",
@@ -17,7 +17,7 @@ export const environments= {
     addPost  : '/api/umanlink/postes/create-post' ,
     editPost  : '' ,
     deletePost  : '' ,
-    getUserPost : '' ,
+    getUserPost : '/api/umanlink/postes/all/by-user' ,
     getSkillPost : '' ,
    
    
@@ -28,7 +28,7 @@ export const environments= {
     cvBuild : "/api/umanlink/resumes/create-resume",
     userCreateProfil : '/api/umanlink/profiles/individuals/create-profile-perso',
 
-    getUserProfil : '/api/umanlink/user/info/profile',
+    getUserProfil : '/api/umanlink/profiles/individuals/get-one/by-user',
 
     addmploye : "/api/umanlink/gestion-entreprise/inviteEmployee" ,
     addemp :"/api/umanlink/gestion-entreprise/addEmployee",

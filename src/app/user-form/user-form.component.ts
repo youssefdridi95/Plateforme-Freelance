@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { UserProfil } from '../services/user-profil';
 import * as isoCountries from 'i18n-iso-countries';
 import { HttpParams } from '@angular/common/http';
+import { Router } from '@angular/router';
+// import { profile } from 'console';
 
 @Component({
   selector: 'app-user-form',
@@ -29,7 +31,7 @@ export class UserFormComponent {
 
   });
 
-  constructor(private toastr: ToastrService, private userProfilService: UserProfil) {
+  constructor(private toastr: ToastrService, private userProfilService: UserProfil, private router: Router) {
 
   }
 
@@ -111,6 +113,8 @@ export class UserFormComponent {
         res => {
           console.log('reussite',res);
           this.toastr.success('reussite')
+              sessionStorage.setItem('profil' , JSON.stringify(res));
+              this.router.navigate(['/cv/creer']);
 
           // Ajoutez ici d'autres actions en cas de succès
         },

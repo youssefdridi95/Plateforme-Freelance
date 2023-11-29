@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Env } from '../env';
 import { environments } from 'src/enviroments';
@@ -41,8 +41,11 @@ delete(data: any){
   return this.http.post(this.url + this.deletePost,data);
 }
 
-getUserPosts(data: any){
-  return this.http.post(this.url + this.getUserPost,data);
+getUserPosts(data: any , ){
+  let params = new HttpParams().set('userId', data)
+
+  return this.http.get(this.url + this.getUserPost,{params});
+
 }
 
 
