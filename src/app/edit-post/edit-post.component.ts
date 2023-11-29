@@ -1,5 +1,6 @@
 import { Component ,OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-post',
@@ -15,8 +16,11 @@ export class EditPostComponent implements OnInit {
     'description' : 'tatatatatatatatatatatatatatat' ,
      'tags' : 'Sunt elit aut proi///Commodo itaque commo///Sint a…exc///Tempora dolor rem qu///Est modi esse verita'
   }
-
-  constructor(private formBuilder: FormBuilder) {
+private id : string | null = ''
+  constructor(private formBuilder: FormBuilder,private root : ActivatedRoute) {
+    this.root.paramMap.subscribe(params =>{this.id=params.get('type')})
+    console.log(this.id);
+    
     this.postForm = this.formBuilder.group({
       competence: ['', Validators.required],
       description: [''],
