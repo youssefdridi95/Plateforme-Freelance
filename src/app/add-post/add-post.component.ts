@@ -26,6 +26,7 @@ export class AddPostComponent   {
   constructor(private formBuilder: FormBuilder,private postService:PostService,private toastr: ToastrService ) {
     this.postForm = this.formBuilder.group({
       competence: ['', Validators.required],
+      category: ['', Validators.required],
       description: ['',Validators.maxLength(500)],
       file: this.formBuilder.array([]), // 10MB limit
       tags: this.formBuilder.array([
@@ -124,20 +125,22 @@ getControls() {
 
   onSubmit() {
    
-  this.totalFileSizeExeeded =this.totalFileSizeValidator(1*1024*1024)
+  this.totalFileSizeExeeded =this.totalFileSizeValidator(10*1024*1024)
   const params = new HttpParams()
   .set('userId',JSON.parse(sessionStorage.getItem('user')!).id)
   .set('title',this.postForm.value.competence)
   .set('desc',this.postForm.value.description)
-  .set('category ',this.postForm.value.description)
-  .set('type',JSON.parse(sessionStorage.getItem('user')!).roles[0])
-  .set('tags',this.postForm.value.tags.map((tag: { name: string }) => tag.name).join('///'))
+  .set('category',this.postForm.value.category)
+  .set('type',JSON.parse(sessionStorage.getItem('user')!).roles[0].split('_')[1])
+ // .set('tags',this.postForm.value.tags.map((tag: { name: string }) => tag.name).join('///'))
    
     const formData = new FormData();
   
-    const files: FileList = this.postForm.get('file')!.value;
+    const files: any = this.postForm.get('file')!.value;
     for (let i = 0; i < files.length; i++) {
-      formData.append('files', files[i]);
+      
+      formData.append('files', files[i]['file']);
+      
     }
   
 
@@ -156,20 +159,19 @@ getControls() {
       }
     )
 
-    const formDataObject: any = {};
-    formData.forEach((value, key) => {
-      if (!formDataObject[key]) {
-        formDataObject[key] = value;
-      } else {
-        if (!Array.isArray(formDataObject[key])) {
-          formDataObject[key] = [formDataObject[key]];
-        }
-        formDataObject[key].push(value);
-      }
-    });
+    // const formDataObject: any = {};
+    // formData.forEach((value, key) => {
+    //   if (!formDataObject[key]) {
+    //     formDataObject[key] = value;
+    //   } else {
+    //     if (!Array.isArray(formDataObject[key])) {
+    //       formDataObject[key] = [formDataObject[key]];
+    //     }
+    //     formDataObject[key].push(value);
+    //   }
+    // });
   
     // Log the converted object
-    console.log(formDataObject);
 
 
   }

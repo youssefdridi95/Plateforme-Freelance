@@ -13,6 +13,16 @@
         <br>
       </p>
     </div>
+
+    <div>
+      <input type="text" id="category" formControlName="category" placeholder="Category..." required/>
+    </div>
+    <div *ngIf="postForm.get('category')!.invalid && postForm.get('category')!.touched" class="error">
+      <p>
+        <i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"></i> ce champ est obligatoir !
+        <br>
+      </p>
+    </div>
     <div>
  
       <textarea id="description" formControlName="description" placeholder="Description...."></textarea>

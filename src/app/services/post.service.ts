@@ -31,6 +31,7 @@ export class PostService {
 
   // function signup api call
 add(data:any ,params: any){
+  
   return this.http.post(this.url + this.addPost,data,{params});
 }
 
