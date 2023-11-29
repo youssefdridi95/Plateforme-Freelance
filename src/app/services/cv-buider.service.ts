@@ -41,6 +41,7 @@ export class CvBuiderService {
     return new FormGroup({
     societe : new FormControl ("",[Validators.required]),
     post : new FormControl ("",[Validators.required]),
+    employementType : new FormControl ("",[Validators.required]),
     localisation : new FormControl ("",[Validators.required]),
     debut : new FormControl ("",[Validators.required]),
     fin : new FormControl ("")

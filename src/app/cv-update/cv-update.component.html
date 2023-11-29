@@ -143,6 +143,15 @@
               <i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"></i> ce champ est obligatoir ! <br>
             </p>
           </div>
+          
+          <label for="employementType">Type d'emploi:</label>
+          <input type="text" required formControlName="employementType" class="input-field" />
+          <div *ngIf="experienceControl.get('employementType').invalid && experienceControl.get('employementType').touched" class="error">
+            <p>
+              <i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"></i> ce champ est obligatoir ! <br>
+            </p>
+          </div>
+
           <label for="localisation">Localisation:</label>
           <input type="text" required formControlName="localisation" class="input-field" />
           <div *ngIf="experienceControl.get('localisation').invalid && experienceControl.get('localisation').touched"

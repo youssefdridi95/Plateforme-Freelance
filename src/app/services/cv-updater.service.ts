@@ -67,6 +67,7 @@ export class CvUpdaterService {
     return new FormGroup({
     societe : new FormControl (exp.societe,[Validators.required]),
     post : new FormControl (exp.post,[Validators.required]),
+    employementType : new FormControl ("",[Validators.required]),
     localisation : new FormControl (exp.localisation,[Validators.required]),
     debut : new FormControl (exp.debut,[Validators.required]),
     fin : new FormControl (exp.fin)

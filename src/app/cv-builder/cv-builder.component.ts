@@ -163,7 +163,6 @@ if(control.length == 0)
         position: any;
         localisation: any;
         employementType: any;
-
         debut: any;
         fin: any;
       }[];
@@ -204,7 +203,7 @@ if(control.length == 0)
         "debut": exp.debut,
         "fin": exp.fin,
         "localisation": exp.localisation,
-        "employementType": "freelance",
+        "employementType": exp.employementType,
 
         "position": exp.post
       };
