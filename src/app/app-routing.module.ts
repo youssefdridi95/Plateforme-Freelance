@@ -64,7 +64,7 @@ const routes: Routes = [
  // this is the component with the <router-outlet> in the template
     children: [
       {path: "add" , component : AddPostComponent},
-      {path: "edit" , component : EditPostComponent},
+      {path: "edit/:idPost" , component : EditPostComponent},
     ]
   },
 
