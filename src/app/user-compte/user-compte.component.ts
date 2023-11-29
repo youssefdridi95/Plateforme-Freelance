@@ -24,24 +24,28 @@ export class UserCompteComponent {
     this.router.navigate([link]);
 
   }
+  
   username: string = '';
   email: string = '';
   userId : any;
   profil : any;
+  posts: any;
+
   ngOnInit() {
     // Récupérer le nom d'utilisateur et l'e-mail depuis le sessionStorage
     const storedUsername = sessionStorage.getItem('username');
     const storedEmail = sessionStorage.getItem('email'); // Changez de 'useremail' à 'email'
-  
+
     // Assurez-vous que la valeur n'est pas null avant de l'assigner
     this.username =   JSON.parse(sessionStorage.getItem('user')!).username
 
     this.email =   JSON.parse(sessionStorage.getItem('user')!).email
 
-
 this.getProfil();
+console.log(this.profil);
 this.getPost(this.userId); 
   }
+
   getProfil(){
     let params = new HttpParams()
 
@@ -72,9 +76,12 @@ else{
       getPost(userId: any) {
         this.postService.getUserPosts(userId).subscribe(
           res => {
+            this.posts=res;
             console.log('reussite des posts', res);
             // Faites quelque chose avec les posts récupérés, par exemple, assignez-les à une variable de composant
             // this.posts = res;
+            sessionStorage.setItem('posts', JSON.stringify(res))
+
           },
           err => {
             console.log('failed to get posts', err);

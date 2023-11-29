@@ -73,19 +73,18 @@
         
         
 
-        <div class="content-publication wrap shadow">
+        <div  *ngFor="let posts of posts.content " class="content-publication wrap shadow">
           <div class="heading flex-center">
 
             <div class="name flex-center" style="text-align: left;">
               <img src="/assets/was.png">
-              <h3 style="text-align: left;">Jhon doe</h3>
+              <h3 style="text-align: left;">{{profil.anonyme}}</h3>
             </div>
-            <p class="date" style="text-align: left;">1 min</p>
+            <p class="date" style="text-align: left;">{{posts.date}}</p>
+            <img [src]="posts.file" alt="Image">
+
             <div class="public" style="text-align: right;">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat.</p>
+              <p>{{posts.desc}}.</p>
 
             </div>
             <div class="fav" >
@@ -94,49 +93,7 @@
             </div>
           </div>
         </div>
-        <div class="content-publication wrap shadow">
-          <div class="heading flex-center">
-
-            <div class="name flex-center" style="text-align: left;">
-              <img src="/assets/was.png">
-              <h3 style="text-align: left;">Jhon doe</h3>
-            </div>
-            <p class="date" style="text-align: left;">1 min</p>
-            <div class="public" style="text-align: right;">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat.</p>
-
-            </div>
-            <div class="fav" style="text-align: center;">
-              <button class="like">Like</button>
-              <button class="comment">dislike</button>
-            </div>
-          </div>
-        </div>
-        <div class="content-publication wrap shadow">
-          <div class="heading flex-center">
-
-            <div class="name flex-center" style="text-align: left;">
-              <img src="/assets/was.png">
-              <h3 style="text-align: left;">Jhon doe</h3>
-            </div>
-            <p class="date" style="text-align: left;">1 min</p>
-            <div class="public" style="text-align: right;">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                labore
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat.</p>
-
-            </div>
-            <div class="fav" style="text-align: center;">
-              <button class="like">Like</button>
-              <button class="comment">dislike</button>
-            </div>
-          </div>
-
-        </div>
+        
 
       </article>
 

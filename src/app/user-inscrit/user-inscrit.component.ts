@@ -99,7 +99,7 @@ export class UserInscritComponent {
       map((res: any) => {
         console.log('reussite', res);
         sessionStorage.setItem('profil', JSON.stringify(res));
-        
+
         return true;
       }),
       catchError((err: any) => {
