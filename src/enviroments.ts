@@ -2,13 +2,8 @@
 
 export const environments= {
  
-<<<<<<< HEAD
-    // backendUrl : "http://192.168.195.29:9090" ,
-   backendUrl : "http://localhost:9090" ,
-=======
     backendUrl : "http://localhost:9090" ,
    //backendUrl : "http://localhost:9090" ,
->>>>>>> amal
     
     usersSignup :"/auth/signup",
     usersSignin :"/auth/signin",
