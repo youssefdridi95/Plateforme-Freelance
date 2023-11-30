@@ -2,8 +2,8 @@
 
 export const environments= {
  
-    backendUrl : "http://localhost:9090" ,
-   //backendUrl : "http://localhost:9090" ,
+    // backendUrl : "http://localhost:9090" ,
+   backendUrl : "http://192.168.195.29:9090" ,
     
     usersSignup :"/auth/signup",
     usersSignin :"/auth/signin",
@@ -32,7 +32,7 @@ export const environments= {
    
     //  (the role receied from the backend )
    
-
+    editPost: '',
     addPost: '/api/umanlink/postes/create-post',
     deletePost: '/api/umanlink/postes/delete-one-by-id',
     getUserPost: '/api/umanlink/postes/all/by-user',

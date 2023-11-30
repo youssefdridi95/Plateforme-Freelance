@@ -269,6 +269,7 @@ h3.title {
 .content-publication {
   width: 100%; /* Assurez-vous que la carte occupe 100% de la largeur disponible */
   /* Autres styles... */
+  position: relative;
 }
 
 .text-container {
@@ -373,6 +374,17 @@ h3.title {
   font-family: fontAwesome;
   margin-right: 10px;
 }
+.delete {
+  background-color: white;
+  position :absolute;
+  color: red;
+  right: 0;
+  top: 0;
+  width: 2rem;
+  font-size: 1.3rem;
+}
+
+
 
 .content-publication  .comment:before {
   content: '\f165'; /* Code Unicode pour l'icône dislike dans Font Awesome */

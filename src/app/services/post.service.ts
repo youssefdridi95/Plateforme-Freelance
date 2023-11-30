@@ -46,7 +46,7 @@ edit(data: any){
 // }
 delete(postId : string): Observable<any> {
   let params = new HttpParams();
-  params = params.append('postId ', postId );
+  params = params.append('postId', postId );
   return this.http.delete(this.url+this.deletePost,{params});
 }
 

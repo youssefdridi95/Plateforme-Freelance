@@ -6,12 +6,12 @@
   
     <!-- <img src="/assets/was.png" id="blah" alt="Avatar" /> -->
 <!-- user-compte.component.html -->
-<img [src]="profilImage" id="blah" alt="Avatar" />
+<img src="/assets/was.png" id="blah" alt="Avatar" />
 
     <div class="contact_card">
-      <span> <i class="fa-solid fa-phone"></i> : </span><br><br>
-      <span> <i class="fa-solid fa-envelope"></i> : {{email}} </span><br><br>
-      <span><i class="fa-solid fa-location-dot"></i> :</span>
+      <!-- <span> <i class="fa-solid fa-phone"></i> : </span><br><br> -->
+      <span> <i class="fa-solid fa-envelope"></i> : {{email}}  </span><br><br>
+      <span><i class="fa-solid fa-location-dot"></i> : {{profil.timezone}} </span>
     </div>
     <div>
       <p>Compétence Principale : </p>
@@ -36,8 +36,8 @@
   </div>
     <div class="filter">
       <input type="radio" id="huey" name="drone" value="huey" /> Tri par date la plus <label
-        for="huey">Huey</label><br><br>
-      <input type="radio" id="huey" name="drone" value="huey" /> Tri par date la plus <label for="huey">Huey</label>
+        for="huey"></label><br><br>
+      <input type="radio" id="huey" name="drone" value="huey" /> Tri par date la plus <label for="huey"></label>
     </div>
 
   </div>
@@ -76,7 +76,7 @@
         
 
         <div  *ngFor="let post of posts.content " class="content-publication wrap shadow">
-          <button (click)="deletePost(post.id)">supprimer</button>
+          <button class="delete " (click)="deletePost(post.id)"><i class="fa-regular fa-trash-can"></i></button>
 
           <div class="heading flex-center">
             <div class="name flex-center" style="text-align: left;">
@@ -86,7 +86,7 @@
             <p class="date" style="text-align: left;">{{post.date}}</p>
             <div *ngFor="let file of post.files">
 
-              <img src="https://placehold.co/600x400" width="30%" alt="Image">
+              <img src="https://placehold.co/600x400" style="width: 150px;height: 100px;" alt="Image">
 
 
               <!-- {{file.fileDownloadUri}} -->

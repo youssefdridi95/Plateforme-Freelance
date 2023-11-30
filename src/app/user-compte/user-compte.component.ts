@@ -22,7 +22,7 @@ export class UserCompteComponent {
     this.getPost(this.userId);
 
 
-    const storedUsername = sessionStorage.getItem('username');
+    const storedUsername = sessionStorage.getItem('user');
     if (storedUsername) {
       const user = JSON.parse(storedUsername);
       this.email = user.email;
@@ -123,6 +123,8 @@ export class UserCompteComponent {
   }
   deletePost(postId: string) {
     if (confirm('Are you sure you want to delete this post?')) {
+      console.log(postId);
+      
       this.postService.delete(postId).subscribe(
         (res) => {
           console.log(res);
