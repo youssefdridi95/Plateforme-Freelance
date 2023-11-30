@@ -5,6 +5,8 @@ import { EntrepriseService } from '../services/entreprise.service';
 import { ToastrService } from 'ngx-toastr';
 import { Env } from '../env';
 import { environments } from 'src/enviroments';
+import { Observable ,of} from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 
 
@@ -17,6 +19,7 @@ interface LoginResponse {
   email: string;
   roles: string[];
   msg: string;
+  idEntreprise:string;
 }
 
 
@@ -30,7 +33,7 @@ export class LoginEntrepriseComponent {
   display :any;
   signupForm !:FormGroup
   env : Env = environments as Env
-  constructor(private formBuilder:FormBuilder, private route: ActivatedRoute,private toastr : ToastrService,private  entrepriseService : EntrepriseService,private router: Router ) { 
+  constructor(private formBuilder:FormBuilder,  private enterpriseService: EntrepriseService, private route: ActivatedRoute,private toastr : ToastrService,private  entrepriseService : EntrepriseService,private router: Router ) { 
   this.route.paramMap.subscribe(params => { this.display= params.get('type') ;}) ;
     
   }
@@ -118,6 +121,27 @@ if (this.isMush && this.isPro)
     else
     this.toastr.error("Valider votre formulaire",'')
   }
+
+  getEntrepriseById(idEntreprise: string):Observable<boolean> {
+
+ 
+    return this.enterpriseService.getEntrepriseByid(idEntreprise).pipe(
+      map((res: any) => {
+        console.log('reussite', res);
+        sessionStorage.setItem('profil', JSON.stringify(res));
+       
+        return true;
+      }),
+      catchError((err: any) => {
+        console.log('failed', err);
+        // Handle error actions here
+        // e.g., this.toastr.error(err.error.message, 'Connexion');
+        return of(false);
+      })
+    );
+  }
+
+
   login() {
     
     const entreprise = {
@@ -128,13 +152,39 @@ if (this.isMush && this.isPro)
     this.entrepriseService.login(entreprise).subscribe(
       (res: any) => {
         const loginResponse: LoginResponse = res as LoginResponse;
-  console.log(res);
-      console.log(res);
+
       
         if (loginResponse.roles.includes(this.env.roles.entAdmin)  || loginResponse.roles.includes(this.env.roles.entEditor)  ||loginResponse.roles.includes(this.env.roles.entRecruter) ) {
           this.toastr.success('Connexion réussie', 'Compte');
           sessionStorage.setItem('user', JSON.stringify(res));
-          this.navigateToPage('/entreprise/creation', 1500);
+          let id 
+         if(loginResponse.roles.includes(this.env.roles.entAdmin) ) 
+          id =loginResponse.id
+         else 
+          id =loginResponse.idEntreprise
+
+          this.enterpriseService.getEntrepriseByid(id).subscribe(
+            (res: any) => {
+              console.log('reussite', res);
+              sessionStorage.setItem('profil', JSON.stringify(res));
+              this.router.navigate(['/entreprise/profil',loginResponse.id])
+
+            },
+          (err: any) => {
+              console.log('failed', err);
+              this.navigateToPage('/entreprise/creation', 1500);
+
+            }
+          );
+
+        //  if(this.getEntrepriseById(id))
+   
+        //       this.router.navigate(['/entreprise/profil',loginResponse.id])
+             
+        //  else
+        //       this.navigateToPage('/entreprise/creation', 1500);
+          
+    
         } else {
           
           this.toastr.error("vous n'êtes pas une entreprise.  essayez de se connecter en tant qu'un developpeur", 'erreur');
@@ -148,12 +198,7 @@ if (this.isMush && this.isPro)
     );
   }
   
- 
   navigateToPage(root: string, time:number=0) {
-    // Adjust route paths based on the values passed in the HTML
-
-
-    // Add a delay of 1000 milliseconds (1 second)
     setTimeout(() => {
       this.router.navigate([root]);
     }, time);

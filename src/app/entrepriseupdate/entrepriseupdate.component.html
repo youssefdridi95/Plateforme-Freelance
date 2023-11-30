@@ -1,19 +1,19 @@
 
 <div class="container">
-    <div class="heading">Profil Entreprise</div>
-      <form [formGroup]="signupForm" (ngSubmit)="creation()"  class="form">
+    <div class="heading">Modifier Profil Entreprise</div>
+      <form formGroup="updateForm" (ngSubmit)="update()"  class="form">
 
         <input type="file" formControlName="file" id="file" (change)="onFileSelected($event)">
       
           <input type="text"  class="input" formControlName="title" id="title" placeholder="Nom entreprise*" />
 
           <div
-            *ngIf=" signupForm.controls['title'].invalid &&(signupForm.controls['title'].dirty ||signupForm.controls['title'].touched) "class="text-danger">
-            <div *ngIf="signupForm.controls['title'].errors?.['minlength']">
+            *ngIf=" updateForm.controls['title'].invalid &&(updateForm.controls['title'].dirty ||updateForm.controls['title'].touched) "class="text-danger">
+            <div *ngIf="updateForm.controls['title'].errors?.['minlength']">
              nom entreprise min len 3
             </div>
 
-            <div *ngIf="signupForm.controls['title'].errors?.['required']" >
+            <div *ngIf="updateForm.controls['title'].errors?.['required']" >
               Nom entreprise Req *
             </div>
           </div>
@@ -32,10 +32,10 @@
             <option value="Divertissement et Médias ">Divertissement et Médias </option>
           </select>
       
-          <div *ngIf="signupForm.controls['activity'].invalid && 
-                     (signupForm.controls['activity'].dirty || 
-                     signupForm.controls['activity'].touched)" class="text-danger">
-            <div *ngIf="signupForm.controls['activity'].errors?.['required']">
+          <div *ngIf="updateForm.controls['activity'].invalid && 
+                     (updateForm.controls['activity'].dirty || 
+                     updateForm.controls['activity'].touched)" class="text-danger">
+            <div *ngIf="updateForm.controls['activity'].errors?.['required']">
               Secteur d'activité Req *
             </div>
           </div >
@@ -43,16 +43,16 @@
           <input type="text" class="input"  formControlName="adresse"  placeholder="adresse*" />
 
           <div
-            *ngIf=" signupForm.controls['adresse'].invalid &&(signupForm.controls['adresse'].dirty ||signupForm.controls['adresse'].touched) "class="text-danger">
-            <div *ngIf="signupForm.controls['adresse'].errors?.['minlength']">
+            *ngIf=" updateForm.controls['adresse'].invalid &&(updateForm.controls['adresse'].dirty ||updateForm.controls['adresse'].touched) "class="text-danger">
+            <div *ngIf="updateForm.controls['adresse'].errors?.['minlength']">
               Pays min 5
             </div>
 
-            <div *ngIf="signupForm.controls['adresse'].errors?.['required']" >
+            <div *ngIf="updateForm.controls['adresse'].errors?.['required']" >
               Pays Req *
             </div>
           </div>
-          <div *ngIf="signupForm.controls['timezone'].errors?.['required']" >
+          <div *ngIf="updateForm.controls['timezone'].errors?.['required']" >
             Nom entreprise Req *
           </div>
         </div>
@@ -83,7 +83,7 @@
         
       
 
-        <input class="login-button" type="submit" value="Sauvegarder" >
+        <input class="login-button" type="submit" value="Modifier" >
       </form>
 </div>
 

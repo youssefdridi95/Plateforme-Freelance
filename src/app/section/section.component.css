@@ -1,17 +1,8 @@
 
- .header-c {
-  background: url("/../assets/q.png") no-repeat;
-  background-size: 59.5%;
-  width: 100%;
-  min-height: 75vh;
-  background-position: center right;
-  background-color: white;
-  display: flex;
-  align-items: center;
-}
+
 
 .imgt{
-  background: url("/../assets/T.png") no-repeat;
+  background: url("/../assets/TEE.png") no-repeat;
   display: flex;
   justify-content: center;
   background-size: 100%;
@@ -131,7 +122,7 @@
 
 .carousel__item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   position: absolute;
   width: 100%;
   padding: 0 12px;
@@ -170,7 +161,9 @@
 .carousel__item:nth-child(7) {
   animation-delay: calc(3s * 5);
 }
-
+.carousel__item:nth-child(8) {
+  animation-delay: calc(3s * 6);
+}
 
 .carousel__item:last-child {
   animation-delay: calc(-3s * 2);
@@ -206,7 +199,10 @@ background-image: url('../../assets/devops.png');
 background-image: url('../../assets/cyber.png');
 }
 
-
+.carousel__item:nth-child(8) .carousel__item-head {
+  background-image: url('../../assets/ML.png');
+  }
+  
 
 .carousel__item:last-child  .carousel__item-head{
   background-image: url('../../assets/Block.png');
@@ -227,7 +223,10 @@ background-image: url('../../assets/cyber.png');
   background-position: center;
   background-size:70%;
   background-repeat: no-repeat;
-  border-color: #034f9b;
+  
+  
+  border: 2px solid  #034f9b;
+
 
 }
 
@@ -246,7 +245,7 @@ background-image: url('../../assets/cyber.png');
   padding: 16px 20px 16px 70px;
   height: 7rem;
   display: flex;
-  border: #034f9b;
+  border: 2px solid  #034f9b;
   box-sizing: 2rem;
  display: flex;
  flex-direction: column;
@@ -260,17 +259,20 @@ background-image: url('../../assets/cyber.png');
   border-radius: 0.5rem;
   color:white ;
   font-size: x-small;
+  
  
 }
 .title {
   text-transform: uppercase;
-  font-size: 16px;
-  font-weight: 900;
+  font-size: 25px;
+  font-weight: 700;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
+  color:#034f9b ;
+
   
 }
 

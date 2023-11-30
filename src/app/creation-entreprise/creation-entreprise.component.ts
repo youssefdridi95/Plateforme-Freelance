@@ -62,22 +62,17 @@ export class CreationEntrepriseComponent {
   
 
 
-      this.enterpriseService.creationEntreprise(formData,params).subscribe(
-        res => {
-          console.log('reussite',res);
-          this.toastr.success('reussite')
-          this.router.navigate(['/entreprise/profil']);
-
-          // Ajoutez ici d'autres actions en cas de succès
+      this.enterpriseService.creationEntreprise(formData, params).subscribe(
+        (res) => {
+          console.log('reussite', res);
+          this.toastr.success('reussite');
+          this.router.navigate(['/entreprise/profil/:id']);
         },
-        err => {
-          console.log('failed',err);
-          this.toastr.error(err.error.message,'failed')
-
-          // Ajoutez ici d'autres actions en cas d'erreur, comme l'affichage d'un message d'erreur avec Toastr
-          // this.toastr.error(err.error.message, 'Connexion');
-
+        (err) => {
+          console.log('failed', err);
+          this.toastr.error(err.error.message, 'failed');
         }
-      );  }
+      );
+    }
     }
   

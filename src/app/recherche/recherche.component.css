@@ -1,0 +1,66 @@
+
+
+.imgt{
+    background: url("/../assets/TT.png") no-repeat;
+    display: flex;
+    background-position: center ;
+    background-size: 65%;
+    width: 100%;
+    min-height:85vh;
+    background-color: white;
+    
+  }
+  
+  *
+  {
+    font-family: poppins;
+    outline: none;
+    border: none;
+    font-size: 18px;
+  }
+  
+  .center
+  {
+    position: absolute;
+    top: 15%;
+    left: 53.2%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    
+      }
+  .center input[type=text]
+  {
+    width: 350px;
+    height: 45px;
+
+    padding-left: 20px;
+    color:black;
+    background-color: #c5d7ff;
+  }
+  .center input[type=text]:hover::placeholder {
+    color: black;
+    /* Change this to the desired color using a valid CSS color value */
+  }
+  .center input[type=text]:placeholder {
+    color: black;
+    /* Change this to the desired color using a valid CSS color value */
+  }
+   
+  .center input[type=text]:hover {
+    border: 1px solid #034f9b ;
+    color: black;
+    }
+  .center select
+  {
+    padding-left: 10px;
+    border-right: 10px solid #c5d7ff;
+    background: #c5d7ff;
+  }
+  
+  .center button
+  {
+    width: 150px;
+    background: #034f9b;
+    color: #fff;
+    cursor: pointer;
+  }

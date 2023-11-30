@@ -24,6 +24,9 @@ export class EntrepriseService {
     this.addemp = this.env.addemp
     this.employer = this.env.employer
     this.entreprise = this.env.entreprise
+    this.profilEntreprise = this.env.profilEntreprise
+    this.delete = this.env.delete
+
    }
    private url 
    private  userSignup 
@@ -32,8 +35,8 @@ export class EntrepriseService {
    private addemp
    private employer
    private entreprise
-
-  
+   private profilEntreprise
+   private delete
 
   
 signup(entreprise: any){
@@ -50,9 +53,9 @@ addUser(data: any){
 add(data: any){
   return this.http.post(this.url + this.addemp,data);
 }
-getByEntreprise(id: any){
+getByEntreprise(id: any){   
   let params = new HttpParams();
-params = params.append('id', id);
+  params = params.append('id', id);
   return this.http.get(this.url + this.employer,{params});
 }
 
@@ -60,5 +63,14 @@ creationEntreprise(data: any,params:any){
  
   return this.http.post(this.url + this.entreprise,data,{params});
 }
-
+getEntrepriseByid(id: any){
+  let params = new HttpParams();
+params = params.append('userId', id);
+  return this.http.get(this.url + this.profilEntreprise,{params});
+}
+deleteUser(userId: string): Observable<any> {
+  let params = new HttpParams();
+  params = params.append('id', userId);
+  return this.http.delete(this.url+this.delete,{params});
+}
 }
