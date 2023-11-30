@@ -28,6 +28,7 @@ import { NotFound404Component } from './not-found404/not-found404.component';
 import { SectionComponent } from './section/section.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { RechercheComponent } from './recherche/recherche.component';
+import { EntrepriseupdateComponent } from './entrepriseupdate/entrepriseupdate.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
   {path:"entreprise/listee",component :ListeEmpComponent },
   {path:"entreprise/liste",component :ListeComponent , canActivate: [AuthGuard]},
 
+  {path:"entreprise/update",component :EntrepriseupdateComponent },
   {path:"",component :HomeComponent },
   {path:"accueil",component :AccueilComponent },
   {path : "user/connexion/:type" , component : UserInscritComponent },
