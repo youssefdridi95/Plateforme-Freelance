@@ -1,6 +1,9 @@
 import { Component} from '@angular/core';
 import { SharedService } from '../shared.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { EntrepriseService } from '../services/entreprise.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-profil-entreprise',
@@ -9,17 +12,32 @@ import { Router } from '@angular/router';
 })
 export class ProfilEntrepriseComponent {
   post = false;
-
-
-  constructor(private router: Router, private sharedService: SharedService) {}
+  // posts: any;
   arrowUp: boolean = false;
+  entreprise:any;
+  emailpro = JSON.parse(sessionStorage.getItem('user')!).email;
+  nom = JSON.parse(sessionStorage.getItem('profil')!).profileHeadline;
+
+  idEntreprise :any 
+  constructor(
+    private enterpriseService: EntrepriseService,
+    private route: ActivatedRoute,
+    private toastr: ToastrService,private router: Router) {
+      this.route.params.subscribe(params => {
+        this.idEntreprise = params['id'];
+      this.getEntrepriseById( this.idEntreprise)
+       
+      });
+     
+    }
+  
+  ngOnInit (): void{
+    console.log(this.entreprise);
+
+
+}
 
   // ... autres méthodes
-
-  toggleArrow() {
-    this.arrowUp = !this.arrowUp;
-    this.post=!this.post
-  }
 
   navigateToCvCreer(link: String) {
     
@@ -28,13 +46,17 @@ export class ProfilEntrepriseComponent {
   }
   username: string = '';
   email: string = '';
-  ngOnInit() {
+  getEntrepriseById(idEntreprise: string) {
+    this.enterpriseService.getEntrepriseByid(idEntreprise).subscribe(
+      (data: any) => {
+          this.entreprise = data; 
+        
+ // Assuming the API returns an array of users
+      },
+      error => {
+        console.error('Error fetching entreprises:', error);
+      }
+    );
+  }
 
-    // Récupérer le nom d'utilisateur et l'e-mail depuis le sessionStorage
-    const storedUsername = sessionStorage.getItem('username');
-    const storedEmail = sessionStorage.getItem('useremail');
-  
-    // Assurez-vous que la valeur n'est pas null avant de l'assigner
-    this.username = storedUsername ?JSON.parse (storedUsername) : '';
-    this.email = storedEmail ? JSON.parse (storedEmail) : '';
-  } }
+}

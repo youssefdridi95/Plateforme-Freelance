@@ -25,6 +25,8 @@ export interface Env {
     addemp:string,
     employer:string,
     entreprise:string;
+    profilEntreprise:string;
+    delete:string;
     roles : {
     userRole : string , // used in the signup (the role sent to the backend )
     user : string , //  (the role receied from the backend )
