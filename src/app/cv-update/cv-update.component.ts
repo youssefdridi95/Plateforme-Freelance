@@ -297,7 +297,7 @@ if(control.length == 0)
       
   console.log(res);
         
-       // this.route.navigate(['/cv/afficher'])
+        this.route.navigate(['/cv/afficher'])
          this.toastr.success('a été modifié avec succés ','CV')
 
       },
