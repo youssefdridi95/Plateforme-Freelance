@@ -43,6 +43,7 @@ import { NotFound404Component } from './not-found404/not-found404.component';
 import { SectionComponent } from './section/section.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { Section2Component } from './section2/section2.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,6 +75,7 @@ import { Section2Component } from './section2/section2.component';
     SectionComponent,
     AddUserComponent,
     Section2Component,
+   
 
     
   ],

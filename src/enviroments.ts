@@ -2,7 +2,7 @@
 
 export const environments= {
  
-    backendUrl : "http://192.168.195.26:9090" ,
+    backendUrl : "http://localhost:9090" ,
    //backendUrl : "http://localhost:9090" ,
     
     usersSignup :"/auth/signup",
@@ -21,8 +21,6 @@ export const environments= {
     getSkillPost : '' ,
    
    
-   
-   
     userProfil : "",
 
     cvBuild : "/api/umanlink/resumes/create-resume",
@@ -34,6 +32,8 @@ export const environments= {
     addemp :"/api/umanlink/gestion-entreprise/addEmployee",
     employer :"/api/umanlink/gestion-entreprise/getByEntreprise",
     entreprise:"/api/umanlink/profiles/entreprises/create-profile-entreprise",
+    profilEntreprise:"/api/umanlink/profiles/entreprises/get-one/by-user",
+    delete:"/api/umanlink/gestion-entreprise/deleteEmployee",
     roles : {
       
     userRole : "talent" , // used in the signup (the role sent to the backend )

@@ -27,21 +27,25 @@ import { AccessDenied403Component } from './access-denied403/access-denied403.co
 import { NotFound404Component } from './not-found404/not-found404.component';
 import { SectionComponent } from './section/section.component';
 import { AddUserComponent } from './add-user/add-user.component';
+import { RechercheComponent } from './recherche/recherche.component';
+
+
 const routes: Routes = [
 
 
   {path : "user/connexion/:type" , component : UserInscritComponent ,canActivate:[loggedinGuard]},
   {path:"section",component :SectionComponent },
   {path:"CreerCompteEmployee/:email/:idEntreprise/:role",component :AddUserComponent },
+  {path:"recherche",component :RechercheComponent },
 
   {path:"entreprise/listee",component :ListeEmpComponent },
-  {path:"entreprise/liste",component :ListeComponent },
+  {path:"entreprise/liste",component :ListeComponent , canActivate: [AuthGuard]},
 
   {path:"",component :HomeComponent },
   {path:"accueil",component :AccueilComponent },
   {path : "user/connexion/:type" , component : UserInscritComponent },
   {path:"profil/entreprise",component :ProfilEntrepriseComponent },
-  {path:"entreprise/profil",component :ProfilEntrepriseComponent},
+  {path:"entreprise/profil/:id",component :ProfilEntrepriseComponent},
 
   {path:"entreprise/connexion/:type",component :LoginEntrepriseComponent,canActivate:[loggedinGuard] },
   {path:"entreprise/creation",component :CreationEntrepriseComponent},
@@ -58,6 +62,9 @@ const routes: Routes = [
   {path: "verif/email/:role/:email" , component : VerifEmailComponent},
   {path: "access/denied/404" , component : AccessDenied403Component},
   {path: "**" , component : NotFound404Component},
+  
+
+ 
 
   {
     path: 'post',

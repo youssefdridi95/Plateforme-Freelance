@@ -80,7 +80,21 @@ export class ListeComponent implements OnInit {
   }
   
 
-  delete() {
-    // Implement your delete functionality if needed
-  }
+  delete(userId: string) {
+    if (confirm('Are you sure you want to delete this user?')) {
+        this.enterpriseService.deleteUser(userId).subscribe(
+            () => {
+                this.toastr.success('User deleted successfully', 'Success');
+                // After deleting the user, refresh the user list
+                const idEntreprise = JSON.parse(sessionStorage.getItem('user')!).id;
+                this.getUsersByEntreprise(idEntreprise);
+            },
+            (err) => {
+                console.log(err);
+                this.toastr.error('Error deleting user', 'Error');
+            }
+        );
+    }
+}
+
 }
