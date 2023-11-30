@@ -1,7 +1,7 @@
 
 
 .imgt{
-    background: url("/../assets/TT.png") no-repeat;
+    background: url("/../assets/tt.png") no-repeat;
     display: flex;
     background-position: center ;
     background-size: 65%;
@@ -26,10 +26,10 @@
     left: 53.2%;
     transform: translate(-50%, -50%);
     display: flex;
-    
+   
       }
   .center input[type=text]
-  {
+  {border-radius:25px 0px 0px 25px; 
     width: 350px;
     height: 45px;
 
@@ -58,7 +58,7 @@
   }
   
   .center button
-  {
+  {border-radius:0px 25px 25px 0px; 
     width: 150px;
     background: #034f9b;
     color: #fff;

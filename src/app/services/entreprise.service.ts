@@ -26,7 +26,7 @@ export class EntrepriseService {
     this.entreprise = this.env.entreprise
     this.profilEntreprise = this.env.profilEntreprise
     this.delete = this.env.delete
-
+    this.update = this.env.update
    }
    private url 
    private  userSignup 
@@ -37,7 +37,7 @@ export class EntrepriseService {
    private entreprise
    private profilEntreprise
    private delete
-
+  private update
   
 signup(entreprise: any){
   return this.http.post(this.url  + this.userSignup,entreprise);
@@ -72,5 +72,10 @@ deleteUser(userId: string): Observable<any> {
   let params = new HttpParams();
   params = params.append('id', userId);
   return this.http.delete(this.url+this.delete,{params});
+}
+updateEntreprise(data: any,userId: string): Observable<any> {
+  let params = new HttpParams();
+  params = params.append('id', userId);
+  return this.http.post(this.url+this.update,data,{params});
 }
 }

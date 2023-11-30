@@ -23,8 +23,12 @@ export interface Env {
     entreprise:string;
     profilEntreprise:string;
     delete:string;
+<<<<<<< HEAD
     getFilePost : string,
 
+=======
+    update:string;
+>>>>>>> amal
     roles : {
     userRole : string , // used in the signup (the role sent to the backend )
     user : string , //  (the role receied from the backend )

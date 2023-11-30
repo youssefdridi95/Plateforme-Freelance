@@ -66,7 +66,7 @@ export class CreationEntrepriseComponent {
         (res) => {
           console.log('reussite', res);
           this.toastr.success('reussite');
-          this.router.navigate(['/entreprise/profil/:id']);
+          this.router.navigate(['/entreprise/profil/']);
         },
         (err) => {
           console.log('failed', err);
