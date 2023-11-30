@@ -4,7 +4,9 @@
     <div class="userInfo">
 
   
-    <img src="/assets/was.png" id="blah" alt="Avatar" />
+    <!-- <img src="/assets/was.png" id="blah" alt="Avatar" /> -->
+<!-- user-compte.component.html -->
+<img [src]="profilImage" id="blah" alt="Avatar" />
 
     <div class="contact_card">
       <span> <i class="fa-solid fa-phone"></i> : </span><br><br>
@@ -73,18 +75,27 @@
         
         
 
-        <div  *ngFor="let posts of posts.content " class="content-publication wrap shadow">
-          <div class="heading flex-center">
+        <div  *ngFor="let post of posts.content " class="content-publication wrap shadow">
+          <button (click)="deletePost(post.id)">supprimer</button>
 
+          <div class="heading flex-center">
             <div class="name flex-center" style="text-align: left;">
-              <img src="/assets/was.png">
-              <h3 style="text-align: left;">{{profil.anonyme}}</h3>
+              <img src="/assets/was.png " alt="User Image">
+              <!-- <h3 style="text-align: left;">{{profil.anonyme}}</h3> -->
             </div>
-            <p class="date" style="text-align: left;">{{posts.date}}</p>
-            <img [src]="posts.file" alt="Image">
+            <p class="date" style="text-align: left;">{{post.date}}</p>
+            <div *ngFor="let file of post.files">
+
+              <img src="https://placehold.co/600x400" width="30%" alt="Image">
+
+
+              <!-- {{file.fileDownloadUri}} -->
+              <!-- {{file.fileName}} -->
+
+            </div>
 
             <div class="public" style="text-align: right;">
-              <p>{{posts.desc}}.</p>
+              <p>{{post.desc}}.</p>
 
             </div>
             <div class="fav" >
@@ -92,7 +103,7 @@
               <button class="comment">dislike</button>
             </div>
           </div>
-        </div>
+        </div> 
         
 
       </article>
