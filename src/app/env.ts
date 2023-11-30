@@ -12,23 +12,18 @@ export interface Env {
     deletePost  : string ,
     getUserPost : string ,
     getSkillPost : string ,
-   
-
-
     cvBuild : string ,
-
     userCreateProfil : string,
     getUserProfil : string
-
-
     addmploye:string,
     addemp:string,
     employer:string,
     entreprise:string;
+    getFilePost : string,
+
     roles : {
     userRole : string , // used in the signup (the role sent to the backend )
     user : string , //  (the role receied from the backend )
-
  // used in the add (the role sent to the backend )
     entAdmin : string,
     entRecruter : string,

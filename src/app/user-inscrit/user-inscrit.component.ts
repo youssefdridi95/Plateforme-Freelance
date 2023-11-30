@@ -83,6 +83,8 @@ export class UserInscritComponent {
     )
 
   }
+
+  
   ngOnInit() {
     // Vérifie si l'utilisateur est déjà connecté
     const userString = sessionStorage.getItem('user');

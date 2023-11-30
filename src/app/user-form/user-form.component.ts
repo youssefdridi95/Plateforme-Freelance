@@ -113,7 +113,7 @@ export class UserFormComponent {
         res => {
           console.log('reussite',res);
           this.toastr.success('reussite')
-              sessionStorage.setItem('profil' , JSON.stringify(res));
+              sessionStorage.setItem('profile' , JSON.stringify(res));
               this.router.navigate(['/cv/creer']);
 
           // Ajoutez ici d'autres actions en cas de succès
