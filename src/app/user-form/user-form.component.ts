@@ -113,8 +113,21 @@ export class UserFormComponent {
         res => {
           console.log('reussite',res);
           this.toastr.success('reussite')
+          const param = new HttpParams()
+          .set('userId',this.userId)
+          this.userProfilService.getProfil(param).subscribe(
+            (res)=>{
               sessionStorage.setItem('profil' , JSON.stringify(res));
               this.router.navigate(['/cv/creer']);
+            },
+            (err)=>{
+             console.log(err);
+             this.toastr.error(err.error.message,'failed')
+
+            }
+            
+          )
+             
 
           // Ajoutez ici d'autres actions en cas de succès
         },

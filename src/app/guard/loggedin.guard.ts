@@ -29,10 +29,10 @@ canActivate(
          JSON.parse(sessionStorage.getItem('user')!).roles.includes(this.env.roles.entRecruter || 
           JSON.parse(sessionStorage.getItem('user')!).roles.includes(this.env.roles.entEditor)) ) {
       
-            return this.router.createUrlTree(['/entreprise/profil']);
+            return this.router.createUrlTree(['/entreprise/profil',JSON.parse(sessionStorage.getItem('user')!).id]);
     }
    else if (JSON.parse(sessionStorage.getItem('user')!).roles.includes(this.env.roles.user)  ) {
-          return this.router.createUrlTree(['/user/compte']);
+          return this.router.createUrlTree(['/user/compte',JSON.parse(sessionStorage.getItem('user')!).id]);
 }
     else 
     sessionStorage.removeItem('user')

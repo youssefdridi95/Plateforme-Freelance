@@ -4,11 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http'
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatDialogModule } from '@angular/material/dialog';
+
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { UserInscritComponent } from './user-inscrit/user-inscrit.component';
@@ -42,7 +38,8 @@ import { AccessDenied403Component } from './access-denied403/access-denied403.co
 import { NotFound404Component } from './not-found404/not-found404.component';
 import { SectionComponent } from './section/section.component';
 import { AddUserComponent } from './add-user/add-user.component';
-import { Section2Component } from './section2/section2.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +70,6 @@ import { Section2Component } from './section2/section2.component';
     NotFound404Component,
     SectionComponent,
     AddUserComponent,
-    Section2Component,
 
     
   ],
@@ -85,14 +81,9 @@ import { Section2Component } from './section2/section2.component';
     ReactiveFormsModule,
     HttpClientModule, 
     BrowserAnimationsModule,
-    MatIconModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDialogModule,
-    CommonModule,
 
+    CommonModule,
+    NgSelectModule,
      // required animations module
     ToastrModule.forRoot({
       timeOut: 5000,

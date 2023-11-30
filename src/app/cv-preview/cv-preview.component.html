@@ -36,9 +36,9 @@
                             <div class="resume__section-title"><i class="fa fa-briefcase"></i>
                                 <h2>Expériences professionnelles</h2>
                             </div>
-                            <div class="xp-item"  *ngFor="let exp of this.cv.experience" >
-                                <div class="xp-job">{{exp.post}}
-                                    <span> {{exp.societe}}</span><br/><small>{{exp.localisation}}</small></div>
+                            <div class="xp-item"  *ngFor="let exp of this.cv.experiences" >
+                                <div class="xp-job">{{exp.postition}}
+                                    <span> {{exp.company}}</span><br/><small>{{exp.localisation}}</small></div>
                                 <div class="xp-date"> de {{exp.debut}}  à {{exp.fin}}</div>
                               
                             </div>
@@ -50,10 +50,10 @@
                             <div class="resume__section-title"><i class="fa-solid fa-graduation-cap"></i>
                                 <h2>Formations</h2>
                             </div>
-                            <div class="xp-item"  *ngFor="let exp of this.cv.formation" >
-                                <div class="xp-job">{{exp.diploma}}
-                                    <span> {{exp.institut}}</span></div>
-                                <div class="xp-date"> de {{exp.dateObtentien}}  </div>
+                            <div class="xp-item"  *ngFor="let exp of this.cv.formations" >
+                                <div class="xp-job">{{exp.degree}}
+                                    <span> {{exp.school}}</span></div>
+                                <div class="xp-date"> de {{exp.date}}  </div>
                                 
                             </div>
                           
@@ -64,9 +64,9 @@
                             <div class="resume__section-title"><i class="fa-solid fa-file-signature"></i>
                                 <h2>Certifications</h2>
                             </div>
-                            <div class="xp-item"  *ngFor="let exp of this.cv.certification" >
+                            <div class="xp-item"  *ngFor="let exp of this.cv.certifications" >
                                 <div class="xp-job">{{exp.titre}}</div>
-                                <div class="xp-date"> {{exp.dateObtentien}}</div>
+                                <div class="xp-date"> {{exp.date}}</div>
 
                             </div>
                           
@@ -81,15 +81,14 @@
                             </div>
                             <div class="resume__text">
                                 <div class="extra">
-                                    <div class="extra-info principale">{{this.cv.competence.principale.nom}}</div>
+                                    <div class="extra-info principale">{{this.cv.competences[0].nom}}</div>
                                     <div class="extra-details">
-                                        <div class="extra-details__progress" [style.width.]="skillLevels[this.cv.competence.principale.niveau]"></div>
+                                        <div class="extra-details__progress" [style.width.]="skillLevels[this.cv.competences[0].niveau]"></div>
 
                                     </div>
                                 </div>
-                                <div class="extra" *ngFor="let comp of this.cv.competence.secondaire">
-                                   
-                                    <div class="extra-info" *ngIf="comp.type==='secondaire'">{{comp.nom}}</div>
+                                <div class="extra" *ngFor="let comp of this.cv.competences" >
+                                    <div class="extra-info" *ngIf="comp.type=='COMPETENCE_TECH'" >{{comp.title}}</div>
                                     <div class="extra-details">
                                         <div class="extra-details__progress" [style.width.]="skillLevels[comp.niveau]"></div>
 
@@ -105,9 +104,9 @@
                                 <h2>Languages</h2>
                             </div>
                             <div class="resume__text" >
-                            <div class="extra" *ngFor="let comp of this.cv.competence.secondaire" >
+                            <div class="extra" *ngFor="let comp of this.cv.competences" >
 
-                                <div class="extra-info" *ngIf="comp.type==='langue'">{{comp.nom}} <small>({{comp.niveau}})</small></div>
+                                <div class="extra-info" *ngIf="comp.type=='COMPETENCE_LANG'">{{comp.title}} <small>({{comp.niveau}})</small></div>
                                 
                             </div>
                            

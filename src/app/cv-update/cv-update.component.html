@@ -293,11 +293,8 @@
             </p>
           </div>
 
-          <input type="file" required formControlName="image" accept="image/*" (change)="cv.onFileChange($event,i)"
+          <input type="text" required formControlName="link" 
             class="input-field" />
-          <img [src]="certificationControl.get('imageSrc').value" *ngIf="certificationControl.get('imageSrc').value"
-            class="certifImage">
-
           <div class="actions">
             <button type="button" (click)="cv.removeField('certification', i);" class="remove-button">
               <i class="fa-regular fa-trash-can"></i> Supprimer 
@@ -399,7 +396,7 @@
         invalides ! <br>
       </p>
     </div>
-    <button (click)="updateCv()" class="build-cv-button" [disabled]="cv.cvForm.invalid">Confirmer</button>
+    <button (click)="updateCv()" class="build-cv-button" >Confirmer</button>
 
   </form>
 

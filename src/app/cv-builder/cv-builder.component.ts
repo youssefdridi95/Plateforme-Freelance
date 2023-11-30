@@ -4,6 +4,7 @@ import { CvBuilderApiCallsService } from '../services/cv-builder-api-calls.servi
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { FormArray } from '@angular/forms';
+import { skills } from 'src/skills';
 @Component({
   selector: 'app-cv-builder',
   templateUrl: './cv-builder.component.html',
@@ -12,113 +13,10 @@ import { FormArray } from '@angular/forms';
 export class CvBuilderComponent {
 
 
-   devSkills = [
-    'Python',
-    'JavaScript',
-    'React',
-    'Node.js',
-    'Java',
-    'Spring Framework',
-    'Ruby',
-    'Ruby on Rails',
-    'HTML',
-    'CSS',
-    'SQL',
-    'MongoDB',
-    'Docker',
-    'Kubernetes',
-    'AWS',
-    'Azure',
-    'CI/CD',
-    'Git',
-    'Agile Methodologies',
-    'Data Structures',
-    'Algorithms',
-    'Front-End Development',
-    'Back-End Development',
-    'Mobile App Development',
-    'Machine Learning',
-    'DevOps',
-    'Cybersecurity',
-    'UI/UX Design',
-    'Test-Driven Development',
-    'Version Control',
-    'Continuous Integration',
-    'Scrum',
-    'C++',
-    'C#',
-    'PHP',
-    'Swift',
-    'Objective-C',
-    'Android Development',
-    'iOS Development',
-    'Angular',
-    'Vue.js',
-    'TypeScript',
-    'Rust',
-    'Go',
-    'ASP.NET',
-    'Unity',
-    'TensorFlow',
-    'PyTorch',
-    'Blockchain',
-    'GraphQL',
-    'R',
-    'Shell Scripting',
-    'React Native',
-    'Redux',
-    'Jenkins',
-    'Vue.js',
-    'Vue Router',
-    'Webpack',
-    'GraphQL',
-    'PostgreSQL',
-    'NoSQL Databases',
-    'Django',
-    'Flask',
-    'PHP Laravel',
-    'WordPress Development',
-    'Magento',
-    'Joomla',
-    'Elixir',
-    'Scala',
-    'Hadoop',
-    'Spark',
-    'Hive',
-    'Elasticsearch',
-    'Redis',
-    'Express.js',
-    'Meteor.js',
-    'Knockout.js',
-    'Sass',
-    'LESS',
-    'WebSockets',
-    'Socket.io',
-    'GraphQL',
-    'Apollo Server',
-    'Redux Saga',
-    'MobX',
-    'Nginx',
-    'Apache',
-    'RESTful APIs',
-    'Microservices Architecture',
-    'D3.js',
-    'Three.js',
-    'MapReduce',
-    'Kafka',
-    'AWS Lambda',
-    'Google Cloud Functions',
-    'Firebase',
-    'OAuth',
-    'JSON Web Tokens',
-    'OAuth2',
-    'WebRTC',
-    'Augmented Reality (AR)',
-    'Virtual Reality (VR)',
-    'Internet of Things (IoT)',
-  ];
+
+  devSkills = skills
   
- constructor(public cv:CvBuiderService ,private cvApi :CvBuilderApiCallsService ,private toastr: ToastrService ,private route:Router){
+ constructor(public cv:CvBuiderService ,private cvApi :CvBuilderApiCallsService ,private toastr: ToastrService ,private route:Router ){
  }
        
 // In your component class
@@ -232,12 +130,12 @@ if(control.length == 0)
     });
 
     let compPrincJSON =  {
-      "type": "COMPETANCE_TECH" ,
+      "type": "COMPETENCE_TECH" ,
       "title": competences.principale.nom,
       "niveau": competences.principale.niveau
     }
-    
     cvJSON.competences.push(compPrincJSON);
+
     competences.secondaire.forEach((comp : any) => {
       let compJSON =  {
         "type": "COMPETENCE_TECH",
@@ -262,12 +160,13 @@ if(control.length == 0)
     console.log(cvJSON);
     
 
-    this.cvApi.build(cvJSON).subscribe(
+    this.cvApi.build(cvJSON,JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
       res=>{
       
   console.log(res);
         
-        
+     this.route.navigate(['/cv/afficher'])
+    
   this.toastr.success('a été crée avec succés ','CV')
 
       },

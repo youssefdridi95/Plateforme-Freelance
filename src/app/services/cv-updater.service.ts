@@ -28,18 +28,30 @@ export class CvUpdaterService {
 
 
   createCvForm(cv: any) {
-    const experiences = cv.experience || [];
-    const formations = cv.formation || [];
-    const competences = cv.competence || { principale: {}, secondaire: [] };
-    const certifications = cv.certification || [];
+    const experiences = cv.experiences || [];
+    const formations = cv.formations || [];
+    const competences = cv.competences ;
+    const certifications = cv.certifications || [];
+    interface Competence {
+      id: string;
+      type: string;
+      title: string;
+      niveau: string;
+      timestamp: string;
+  }
+
+    let originalCompetences: Competence[] =competences
+
+    const competenceFirstList: Competence= originalCompetences[0];
+  
+     originalCompetences.shift();
+    const competenceLangList: Competence[] = originalCompetences.filter(competence => competence.type === "COMPETENCE_LANG");
+      const competenceTechList: Competence[] = originalCompetences.filter(competence => competence.type === "COMPETENCE_TECH");
+      
   
 
-  
-    const competencesSecondArray = competences.secondaire || [];
-    const languesArray = competences.langue || [];
-
-    const competenceSecondControls = competencesSecondArray.map((item: any) => this.competence(item));
-    const langueControls = languesArray.map((item: any) => this.competence(item));
+    const competenceSecondControls = competenceTechList.map((item: any) => this.competence(item));
+    const langueControls = competenceLangList.map((item: any) => this.competence(item));
 
     const experienceControls = experiences.map((item: any) => this.experience(item));
     const formationControls = formations.map((item: any) => this.formation(item));
@@ -51,8 +63,9 @@ export class CvUpdaterService {
       certification: new FormArray(certificationControls),
       competence: new FormGroup({
         principale: new FormGroup({
-          nom: new FormControl(competences.principale.nom || "", [Validators.required]),
-          niveau: new FormControl(competences.principale.niveau || "", [Validators.required]),
+          nom: new FormControl(competenceFirstList.title || "", [Validators.required]),
+          niveau: new FormControl(competenceFirstList.niveau || "", [Validators.required]),
+          id: new FormControl(competenceFirstList.id || "", [Validators.required]),
         }),
         secondaire: new FormArray(competenceSecondControls),
        langue: new FormArray(langueControls),
@@ -63,40 +76,42 @@ export class CvUpdaterService {
     
   }
 
-  experience (exp:any={societe :'',post:'',localisation:'',debut :'',fin:''}){ 
+  experience (exp:any={company :'',position:'',localisation:'',debut :'',fin:'',employementType:'',id:''}){ 
     return new FormGroup({
-    societe : new FormControl (exp.societe,[Validators.required]),
-    post : new FormControl (exp.post,[Validators.required]),
-    employementType : new FormControl ("",[Validators.required]),
+    societe : new FormControl (exp.company,[Validators.required]),
+    post : new FormControl (exp.position,[Validators.required]),
+    employementType : new FormControl (exp.employementType,[Validators.required]),
     localisation : new FormControl (exp.localisation,[Validators.required]),
     debut : new FormControl (exp.debut,[Validators.required]),
-    fin : new FormControl (exp.fin)
+    fin : new FormControl (exp.fin),
+    id : new FormControl (exp.id)
   })
 }
 
-  formation(form:any={institut :'',diploma:'',dateObtentien :''}){ 
+  formation(form:any={school :'',degree:'',date :'',id:''}){ 
     return new FormGroup({
-    institut : new FormControl (form.institut,[Validators.required]),
-    diploma : new FormControl (form.diploma,[Validators.required]),
-    dateObtentien : new FormControl (form.dateObtentien,[Validators.required]),
+      institut : new FormControl (form.school,[Validators.required]),
+      id : new FormControl (form.id,[Validators.required]),
+    diploma : new FormControl (form.degree,[Validators.required]),
+    dateObtentien : new FormControl (form.date,[Validators.required]),
     
   })}
 
-  certification(cert:any={titre:'',dateObtentien :'',imageSrc:''}){ 
+  certification(cert:any={titre:'',date :'',link:'',id:''}){ 
     return new FormGroup({
      
       titre : new FormControl (cert.titre,[Validators.required]),
-      dateObtentien : new FormControl (cert.dateObtentien,[Validators.required]),
-      image : new FormControl (null),
-      imageSrc : new FormControl (cert.imageSrc),
-      imageFile : new FormControl (null),
-      
+      dateObtentien : new FormControl (cert.date,[Validators.required]),
+      link : new FormControl (cert.link,[Validators.required]),
+      id : new FormControl (cert.id,[Validators.required]),
+     
     })
   }
  
-    competence (comp:any={niveau:'',nom:''}){ 
+    competence (comp:any={niveau:'',title:'',id:''}){ 
       return new FormGroup({
-        nom : new FormControl (comp.nom,[Validators.required]),
+        id: new FormControl (comp.id,[Validators.required]),
+        nom : new FormControl (comp.title,[Validators.required]),
         niveau : new FormControl (comp.niveau,[Validators.required]),
       })
     }

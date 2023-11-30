@@ -3,7 +3,7 @@ import { CvBuiderService } from '../services/cv-buider.service';
 import { CvBuilderApiCallsService } from '../services/cv-builder-api-calls.service';
 import { ToastrService } from 'ngx-toastr';
 import { CvUpdaterService } from '../services/cv-updater.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { FormArray } from '@angular/forms';
 
 @Component({
@@ -122,108 +122,22 @@ export class CvUpdateComponent {
     'Virtual Reality (VR)',
     'Internet of Things (IoT)',
   ];
-  userID :any 
-  usercv:any ={
-    "experience": [
-      {
-        "societe": "Company 1",
-        "post": "Developer",
-        "localisation": "Paris",
-        "debut": "2022-01-01",
-        "fin": "2022-12-31"
-      },
-      {
-        "societe": "Company 2",
-        "post": "Developer",
-        "localisation": "Paris",
-        "debut": "2022-01-01",
-        "fin": "2022-12-31"
-      }
-    ],
-    "formation": [
-      {
-        "institut": "University of Paris",
-        "diploma": "Computer Science",
-        "dateObtentien": "2020-03-15",
-
-      }
-    ],
-    "certification": [
-      {
+  usercv:any 
+ constructor(public cv:CvUpdaterService ,private cvApi :CvBuilderApiCallsService ,private toastr: ToastrService, private route: Router){
+  this.cvApi.get(JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
+    (res)=>{
+   this.usercv=res
+      console.log('eeeeeeeeeeeeeeeeeeeeee',this.usercv);
       
-        "titre": "MCSA",
-        "dateObtentien": "2020-03-15",
-        "image": "image1.png",
-        "imageSrc": "",
-        "imageFile": null
-      }
-    ],
-    "competence": {
-      "principale": {
-        "nom": "JavaScript",
-        "niveau": "debutant"
-      },
-      "secondaire": [
-        {
-          
-          "nom": "Secondary Skill 1",
-          "niveau": "avance"
-        },
-        {
-          
-          "nom": "Secondary Skill 2",
-          "niveau": "intermediaire"
-        },
-        {
-          
-          "nom": "Secondary Skill 3",
-          "niveau": "intermediaire"
-        },
-        {
-          
-          "nom": "Secondary Skill 4",
-          "niveau": "intermediaire"
-        },
-        {
-          
-          "nom": "Secondary Skill 5",
-          "niveau": "intermediaire"
-        }
-      ],
-      "langue": [
-        {
-          
-          "nom": "langue 1",
-          "niveau": "NA"
-        },
-        {
-          
-          "nom": "langue 2",
-          "niveau": "A1"
-        },
-        {
-          
-          "nom": "langue 3",
-          "niveau": "A1"
-        },
-        {
-          
-          "nom": "langue 4",
-          "niveau": "A1"
-        },
-        {
-          
-          "nom": "langue 5",
-          "niveau": "A1"
-        }
-      ]
+  this.cv.createCvForm( res)
+  console.log('form',this.cv.cvForm);
+
+    },
+    (err)=>{
+      console.log(err);
+      
     }
-  }
-  
- constructor(public cv:CvUpdaterService ,private cvApi :CvBuilderApiCallsService ,private toastr: ToastrService, private route: ActivatedRoute){
-  
-  this.route.paramMap.subscribe(params => { this.userID= params.get('id') ;console.log(this.userID)}) ;
-  this.cv.createCvForm(this.usercv)
+  )
  }
        
 // In your component class
@@ -261,23 +175,137 @@ if(control.length == 0)
 }
 
   updateCv(){
-    const experiences =this.cv.cvForm.get('experience')
-    const certifications =this.cv.cvForm.get('certification')
-    const formations =this.cv.cvForm.get('formation')
-    const competences =this.cv.cvForm.get('competence')
 
-      try {
-        this.cvApi.editExperiences(this.userID,experiences)
-        this.cvApi.editFormations(this.userID,formations)
-        this.cvApi.editCertifications(this.userID,certifications)
-        this.cvApi.editCompetences(this.userID,competences)
+    interface CvJSON {
+    id : string
+      experiences: {
+        company: any;
+        id: any;
+        position: any;
+        localisation: any;
+        employementType: any;
+        debut: any;
+        fin: any;
+      }[];
+      formations: {
+        school: any;
+        id: any;
+        degree: any;
+        date: any;
+      }[];
+      certifications: {
+        titre: any;
+        id: any;
+        date: any;
+        link: any;
+      }[];
+      competences: {
+          type :any
+          title: any;
+        id: any;
+        niveau: any;
+        }[];
+      };
+    
+    
+      const experiences = this.cv.cvForm.value.experience ;
+      const certifications = this.cv.cvForm.value.certification;
+      const formations = this.cv.cvForm.value.formation;
+      const competences = this.cv.cvForm.value.competence;
+    let cvJSON: CvJSON = {
+      "id" : this.usercv.id ,
+      "experiences" :[],
+      "certifications" :[],
+      "formations" :[],
+      "competences" :[],  
+    };
 
-        this.toastr.success(' mis à jour avec succés', 'CV');
-      } catch (error) {
-        this.toastr.error('erreur prodiute lors de la modification', ' CV');
+       
+    experiences.forEach((exp : any) => {
+      
+      let expJSON = {
+        "company": exp.societe,
+        "id": exp.id,
+        "debut": exp.debut,
+        "fin": exp.fin,
+        "localisation": exp.localisation,
+        "employementType": exp.employementType,
+
+        "position": exp.post
+      };
+
+      
+      cvJSON.experiences.push(expJSON);
+    });
+
+    certifications.forEach((cert : any) => {
+      let certJSON =  {
+        "titre": cert.titre,
+        "id": cert.id,
+        "date": cert.dateObtentien,
+        "link": cert.link
       }
-     
-     console.log(this.cv.cvForm)
+      
+      cvJSON.certifications.push(certJSON);
+    });
+
+    formations.forEach((form : any) => {
+      let formJSON =  {
+        "school": form.institut,
+        "id": form.id,
+        "degree": form.diploma,
+        "date": form.dateObtentien
+      }
+      
+      cvJSON.formations.push(formJSON);
+    });
+
+    let compPrincJSON =  {
+      "type": "COMPETENCE_TECH" ,
+        "id": competences.principale.id,
+        "title": competences.principale.nom,
+      "niveau": competences.principale.niveau
+    }
+    cvJSON.competences.push(compPrincJSON);
+    
+    competences.secondaire.forEach((comp : any) => {
+      let compJSON =  {
+        "type": "COMPETENCE_TECH",
+        "title": comp.nom,
+        "id": comp.id,
+        "niveau": comp.niveau
+      }
+      
+      cvJSON.competences.push(compJSON);
+    });
+
+    competences.langue.forEach((comp : any) => {
+      let compJSON =  {
+        "type": "COMPETENCE_LANG",
+        "title": comp.nom,
+        "id": comp.id,
+
+        "niveau": comp.niveau
+      }
+      
+      cvJSON.competences.push(compJSON);
+    });
+    
+
+    this.cvApi.update(cvJSON).subscribe(
+      res=>{
+      
+  console.log(res);
+        
+       // this.route.navigate(['/cv/afficher'])
+         this.toastr.success('a été modifié avec succés ','CV')
+
+      },
+      err=>{
+    console.log(err);
+    this.toastr.error(err.error.message,'erreur')
+      }
+    )
     
   }
 

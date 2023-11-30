@@ -13,19 +13,23 @@ private env:Env =environments as Env
 
 private  url =''
 private cvBuild =''
+private getCv =''
+private cvupadte = ''
   constructor(private http:HttpClient) {
     this.url=this.env.backendUrl
+    this.getCv=this.env.getCv
     this.cvBuild=this.env.cvBuild
+    this.cvupadte=this.env.updateCv
   }
 
 
 
- build(cv:any){
+ build(cv:any,profilId:any){
 console.log(cv);
 
   const params = new HttpParams()
-  .set('profileId', '6565c6c2b699e545cad68025')
-
+  .set('profileId', profilId)
+console.log(profilId)
 // Make the API call with parameters
 
 const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -34,6 +38,25 @@ const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
  }
 
+
+ update(cv:any){
+  console.log('ccccccccccccccccccccccccccc',cv);
+
+    return this.http.post(this.url  + this.cvupadte  ,cv);
+  
+   }
+ get(profileId:any){
+
+  
+    const params = new HttpParams()
+    .set('profileId',profileId)
+  
+  // Make the API call with parameters
+  
+  
+    return this.http.get(this.url  + this.getCv ,{params});
+  
+   }
 
 
 

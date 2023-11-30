@@ -16,7 +16,8 @@ export interface Env {
 
 
     cvBuild : string ,
-
+      getCv : string,
+      updateCv : string
     userCreateProfil : string,
     getUserProfil : string
 
