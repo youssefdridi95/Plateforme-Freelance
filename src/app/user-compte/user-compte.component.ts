@@ -65,13 +65,16 @@ export class UserCompteComponent {
 
 
   getProfil() {
-    let params = new HttpParams().set('userId', this.userId);
+    let params = new HttpParams().set('userId', JSON.parse(sessionStorage.getItem('user')!).id);
 
     this.userProfilService.getProfil(params).subscribe(
       res => {
         // console.log('reussite', res);
         // this.toastr.success('reussite');
         if (this.userId == JSON.parse(sessionStorage.getItem('user')!).id) {
+        sessionStorage.setItem('profil',JSON.stringify(res));
+console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
+
           this.profil = JSON.parse(sessionStorage.getItem('profil')!);
           this.profilImage = this.profil.file.fileDownloadUri;  // Assurez-vous que le champ est correct
         } else {
@@ -131,6 +134,8 @@ export class UserCompteComponent {
 
           this.toastr.success('Post deleted successfully', 'Success');
           // After deleting the post, refresh the posts list
+          window.location.reload();
+
         },
         (err) => {
           console.log(err);

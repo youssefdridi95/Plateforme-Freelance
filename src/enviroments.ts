@@ -43,10 +43,11 @@ export const environments= {
     getSkillPost: '',
 
 
-    getFilePost: '/api/umanlink/postes/get-post-file',
+    getFilePost: '/api/umanlink/profiles/individuals/update-Talent',
 
 
     getUserProfil: '/api/umanlink/profiles/individuals/get-one/by-user',
+    editUserProfil: '/api/umanlink/profiles/individuals/update-Talent',
 
     roles: {
 

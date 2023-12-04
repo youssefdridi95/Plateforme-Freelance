@@ -29,6 +29,7 @@ import { SectionComponent } from './section/section.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { RechercheComponent } from './recherche/recherche.component';
 import { EntrepriseupdateComponent } from './entrepriseupdate/entrepriseupdate.component';
+import { UserUpdateComponent } from './user-update/user-update.component';
 
 
 const routes: Routes = [
@@ -63,8 +64,9 @@ const routes: Routes = [
   {path: "user/profile/create" , component : UserFormComponent},
   {path: "verif/email/:role/:email" , component : VerifEmailComponent},
   {path: "access/denied/404" , component : AccessDenied403Component},
+  {path: "user/update", component :UserUpdateComponent},
+
   {path: "**" , component : NotFound404Component},
-  
 
  
 

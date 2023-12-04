@@ -96,7 +96,7 @@
   border-radius: 1rem;
 width: 100%;
 padding: 1rem 0 !important;
-
+position: relative;
 }
 
 .filter{
@@ -367,7 +367,11 @@ h3.title {
 .content-publication  .like {
   margin-right: 10px;
 }
+.edit{
+  position: absolute;
+  right: 1rem;
 
+}
 
 .content-publication  .like:before {
   content: '\f164  ';

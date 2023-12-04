@@ -1,9 +1,10 @@
 <div class="container">
 
   <div class="contact">
-    <div class="userInfo">
 
-  
+    <div class="userInfo">
+      <i class="fas fa-edit edit" [routerLink]="['/user/update']" ></i>
+
     <!-- <img src="/assets/was.png" id="blah" alt="Avatar" /> -->
 <!-- user-compte.component.html -->
 <img src="/assets/was.png" id="blah" alt="Avatar" />
@@ -24,7 +25,7 @@
     </div>
 
     <div class="button">
-      <button class="edit" (click)="navigateToCvCreer('/15/cv/edit')">
+      <button class="edit" (click)="navigateToCvCreer('/cv/edit')">
         <h3>Modifier cv</h3>
       </button>
       <button class="read" (click)="navigateToCvCreer('cv/afficher')">
@@ -74,7 +75,7 @@
         <!--  Publications  -->
         
         
-
+<ng-container *ngIf="posts">
         <div  *ngFor="let post of posts.content " class="content-publication wrap shadow">
           <button class="delete" (click)="deletePost(post.id)"><i class="fa-regular fa-trash-can"></i></button>
 
@@ -104,7 +105,7 @@
             </div>
           </div>
         </div> 
-        
+      </ng-container>
 
       </article>
 

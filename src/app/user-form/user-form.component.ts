@@ -97,14 +97,8 @@ export class UserFormComponent {
 
 
       const formData = new FormData();
-  // {  formData.append('userId', userProfil.userId);
-
-  //   {  formData.append('Prenom', userProfil.prenom);
-  //     formData.append('nom', userProfil.nom);
-  //     formData.append('tel', userProfil.tel);
-  //     formData.append('timezone', userProfil.timezone);
+ 
       formData.append('file', this.selectedFile);
-      // formData.append('mainSkill', userProfil.mainSkill);
 
   
 
