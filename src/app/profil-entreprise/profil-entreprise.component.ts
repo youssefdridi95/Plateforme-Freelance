@@ -69,8 +69,7 @@ export class ProfilEntrepriseComponent {
       res => {
         this.posts = res;
         console.log('reussite des posts', res);
-        // Faites quelque chose avec les posts récupérés, par exemple, assignez-les à une variable de composant
-        // this.posts = res;
+     
         sessionStorage.setItem('posts', JSON.stringify(res))
 
       },
@@ -84,7 +83,7 @@ export class ProfilEntrepriseComponent {
     );
   }
   deletePost(postId: string) {
-    if (confirm('Are you sure you want to delete this post?')) {
+    if (confirm('Es-tu sur de vouloir supprimer cette publication?')) {
       console.log(postId);
       
       this.postService.delete(postId).subscribe(
@@ -92,12 +91,12 @@ export class ProfilEntrepriseComponent {
           console.log(res);
           location.reload();
 
-          this.toastr.success('Post deleted successfully', 'Success');
+          this.toastr.success('Publication supprimé avec succès', 'Success');
           // After deleting the post, refresh the posts list
         },
         (err) => {
           console.log(err);
-          this.toastr.error('Error deleting post', 'Error');
+          this.toastr.error('Erreur lors de la suppression de la publication', 'Error');
         }
       );
     }
