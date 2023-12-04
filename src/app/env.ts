@@ -18,6 +18,8 @@ export interface Env {
       updateMainSkill : string ,
     userCreateProfil : string,
     getUserProfil : string
+    editUserProfil : string, 
+
     addmploye:string,
     addemp:string,
     employer:string,

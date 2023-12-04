@@ -1,0 +1,28 @@
+
+
+<div class="form-container">
+    <div class="heading">  modifier profil de l'utilisateur </div>
+<div class="container">  </div>
+
+    <form [formGroup]="edituser"   >
+   <!-- <input type="file" formControlName="file" id="file" (change)="onFileSelected($event)"> -->
+      <input class="input" type="text" id="firstName" formControlName="prenom"  placeholder="Prenom" [value]="profil.prenom">
+      
+
+        <input class="input" type="text" id="lastName" formControlName="nom" placeholder="Nom" required>
+        <!-- <input class="input" type="email" id="email" name="email" [(ngModel)]="email" disabled>  -->
+
+        <select class="input" id="address" formControlName="timezone" required>
+          <option value="Afghanistan">Afghanistan</option>
+          <option value="Albania">Albania</option>
+          <option value="Algeria">Algeria</option>
+        </select> 
+        <div>
+        </div>
+    
+      
+        <button (click)="edituserProfile()"   >Submit</button>
+
+    </form>
+  </div>
+
