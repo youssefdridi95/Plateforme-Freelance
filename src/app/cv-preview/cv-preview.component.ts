@@ -21,7 +21,6 @@ export class CvPreviewComponent {
    this.cv=res
       console.log('get of the cv',this.cv);
 
-console.log ('ffff',this.cv.competences)
     },
     (err)=>{
       console.log(err);

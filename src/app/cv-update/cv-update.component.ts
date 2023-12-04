@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { CvBuiderService } from '../services/cv-buider.service';
 import { CvBuilderApiCallsService } from '../services/cv-builder-api-calls.service';
 import { ToastrService } from 'ngx-toastr';
 import { CvUpdaterService } from '../services/cv-updater.service';
-import { ActivatedRoute, Route, Router } from '@angular/router';
 import { FormArray } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cv-update',
@@ -291,14 +290,27 @@ if(control.length == 0)
       cvJSON.competences.push(compJSON);
     });
     
+    this.cvApi.updateMain(competences.principale.nom,JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
+      res=>{
+      
+  console.log(res);
+        
+    
+  this.toastr.success('a été modifiée avec succés ','Compétence Principale')
 
+      },
+      err=>{
+    console.log(err);
+   // this.toastr.error(err.error.message,'erreur')
+      }
+    )
     this.cvApi.update(cvJSON).subscribe(
       res=>{
       
   console.log(res);
         
-        this.route.navigate(['/cv/afficher'])
-         this.toastr.success('a été modifié avec succés ','CV')
+  this.route.navigate(['/user/compte',JSON.parse(sessionStorage.getItem('user')!).id])
+  this.toastr.success('a été modifié avec succés ','CV')
 
       },
       err=>{

@@ -15,11 +15,13 @@ private  url =''
 private cvBuild =''
 private getCv =''
 private cvupadte = ''
+private updateMainSkill = ''
   constructor(private http:HttpClient) {
     this.url=this.env.backendUrl
     this.getCv=this.env.getCv
     this.cvBuild=this.env.cvBuild
     this.cvupadte=this.env.updateCv
+    this.updateMainSkill=this.env.updateMainSkill
   }
 
 
@@ -38,9 +40,22 @@ const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
  }
 
+ updateMain(skillName: any, profilId: any) {
+
+  const params = new HttpParams()
+    .set('id', profilId)
+    .set('newMainSkill', skillName); // Remove the extra space in 'newMainSkill'
+
+  // Make the API call with parameters
+  console.log(params);
+
+  // Use object literal syntax for options instead of passing params and headers separately
+  const options = { params };
+
+  return this.http.put(`${this.url}${this.updateMainSkill}`,{} ,{params});
+}
 
  update(cv:any){
-  console.log('ccccccccccccccccccccccccccc',cv);
 
     return this.http.post(this.url  + this.cvupadte  ,cv);
   

@@ -1,4 +1,4 @@
-<main id="cvBuilder">
+<main id="cvBuilder" *ngIf="cv.cvForm">
   <div>
     <h2>Création  CV </h2>
   </div>
@@ -396,7 +396,8 @@
         invalides ! <br>
       </p>
     </div>
-    <button (click)="updateCv()" class="build-cv-button" >Confirmer</button>
+    <button (click)="updateCv()" class="build-cv-button" disabled *ngIf="cv.cvForm.invalid===true">Confirmer</button>
+    <button (click)="updateCv()" class="build-cv-button"  *ngIf="cv.cvForm.invalid===false">Confirmer</button>
 
   </form>
 

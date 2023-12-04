@@ -2,7 +2,7 @@
 
 export const environments= {
  
-    // backendUrl : "http://localhost:9090" ,
+   // backendUrl : "http://localhost:9090" ,
    backendUrl : "http://192.168.195.29:9090" ,
     
     usersSignup :"/auth/signup",
@@ -22,6 +22,7 @@ export const environments= {
     cvBuild : "/api/umanlink/resumes/create-resume",
     getCv : "/api/umanlink/profiles/individuals/get-resume",
     updateCv : '/api/umanlink/resumes/update-resume',
+    updateMainSkill : '/api/umanlink/profiles/individuals/update-mainskill',
     userCreateProfil : '/api/umanlink/profiles/individuals/create-profile-perso',
 
 
