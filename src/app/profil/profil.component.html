@@ -27,7 +27,7 @@
         </div>
 
         <div class="field">
-          <p class="mail">Email</p>
+          <p class="mail">Email </p>
           <span>   
                    <button class="edit-button" (click)="toggleButtonAndEdit('email')"><i class="fa-solid fa-pen-to-square"></i></button>
 
@@ -81,7 +81,7 @@
   </form>
     <div class="button-group">
       <button class="cancel-button"  (click)="popup =! popup">Annuler</button>
-      <button [disabled]="!form.valid" type="submit" class="save-button">Enregistrer</button>
+      <button [disabled]="!form.valid"  (click)="editPassword ()" type="submit" class="save-button">Enregistrer</button>
     </div>
   </div>
   <button *ngIf="button==true"> name</button>

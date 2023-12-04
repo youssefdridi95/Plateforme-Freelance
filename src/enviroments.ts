@@ -48,7 +48,7 @@ export const environments= {
 
     getUserProfil: '/api/umanlink/profiles/individuals/get-one/by-user',
     editUserProfil: '/api/umanlink/profiles/individuals/update-Talent',
-
+     updatepassword: '/auth/updatePassword',
     roles: {
 
         userRole: "talent", // used in the signup (the role sent to the backend )

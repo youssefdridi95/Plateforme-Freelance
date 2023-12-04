@@ -1,6 +1,10 @@
 // import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { UserProfil } from '../services/user-profil';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-profil',
@@ -8,11 +12,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profil.component.css']
 })
 export class ProfilComponent {
+  profil: any
+
   form!: FormGroup;
 
-  constructor() {
+  constructor(private toastr : ToastrService, private router: Router, private userProfilService: UserProfil) {
+    const userString = sessionStorage.getItem('profil');
+  console.log(this.profil);
+  
+
     this.form = new FormGroup(
       {
+        // email: new FormControl(this.profil.prenom, [Validators.required]),
+
         new_password: new FormControl('', [Validators.required]),
         confirm_password: new FormControl('', [Validators.required]),
       },
@@ -35,12 +47,11 @@ export class ProfilComponent {
 
   ngOnInit() {
     // Récupérer le nom d'utilisateur et l'e-mail depuis le sessionStorage
-    const storedUsername = sessionStorage.getItem('username');
-    const storedEmail = sessionStorage.getItem('email');
+
 
     // Assurez-vous que la valeur n'est pas null avant de l'assigner
-    this.username = storedUsername ?JSON.parse (storedUsername) : '';
-    this.email = storedEmail ? JSON.parse(storedEmail) : '';
+    this.email = JSON.parse ( sessionStorage.getItem('user')!).email ;
+    this.username =  JSON.parse ( sessionStorage.getItem('user')!).username ;
 
   }
   
@@ -79,5 +90,40 @@ export class ProfilComponent {
   toggleButton(): void {
     this.button = !this.button;
   }
+
+  editPassword (){
+
+    if (this.form.valid) {
+      let params = new HttpParams()
+      .set('username',this.username)
+      .set('newPassword', this.form.value.new_password);
+
+  //     const form = {
+  // 'username ' : this.username,
+  //     'newPassword' : this.form.value.new_password ,
+  //     // 'prenom' : this.form.value.confirm_password ,
+  //     // 'timezone' : this.form.value.timezone ,
+  //   }
   
+    this.userProfilService.editpassword(params).subscribe(
+
+      res=>{
+        console.log(res);
+        
+        // this.router.navigate(['/user/compte/',this.profil.id]);
+        
+        this.toastr.success('modification avec succes')
+  
+      },
+      err=>{
+        console.log(err);
+        this.toastr.error(err.error.message[0], 'erreur de modification')
+  
+    // console.log('Formulaire soumis avec error', this.userForm.value);
+    // this.toastr.error(err.error.message[0], 'Connexion')
+  
+      }
+    )}
+  
+  }
 }

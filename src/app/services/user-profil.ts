@@ -17,6 +17,8 @@ export class UserProfil {
     this.userCreateProfil = this.env.userCreateProfil
     this.getUserProfil = this.env.getUserProfil
      this.editUser = this.env.editUserProfil
+     this.updatepssword = this.env.updatepassword
+
    }
   
 
@@ -25,7 +27,7 @@ export class UserProfil {
    private getUserProfil
 // function userProfiladd  api call 
    private editUser
-   
+   private updatepssword
    userProfiladd(formdata: any,params:any){
   //  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.url + this.userCreateProfil,formdata,{params});
@@ -37,6 +39,9 @@ export class UserProfil {
   
   editProfil(data: any){
     return this.http.put(this.url + this.editUser,data);
+  }
+  editpassword(params: any){
+    return this.http.put(this.url + this.updatepssword,{params});
   }
   
 
