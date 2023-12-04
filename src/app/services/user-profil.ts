@@ -16,6 +16,7 @@ export class UserProfil {
     this.url =this.env.backendUrl;
     this.userCreateProfil = this.env.userCreateProfil
     this.getUserProfil = this.env.getUserProfil
+     this.editUser = this.env.editUserProfil
    }
   
 
@@ -23,6 +24,8 @@ export class UserProfil {
    private  userCreateProfil 
    private getUserProfil
 // function userProfiladd  api call 
+   private editUser
+   
    userProfiladd(formdata: any,params:any){
   //  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.url + this.userCreateProfil,formdata,{params});
@@ -32,6 +35,9 @@ export class UserProfil {
     return this.http.get(this.url + this.getUserProfil,{params});
   }
   
+  editProfil(data: any){
+    return this.http.put(this.url + this.editUser,data);
+  }
   
 
 }

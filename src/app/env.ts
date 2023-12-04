@@ -17,6 +17,8 @@ export interface Env {
       updateCv : string
     userCreateProfil : string,
     getUserProfil : string
+    editUserProfil : string, 
+
     addmploye:string,
     addemp:string,
     employer:string,
@@ -24,7 +26,6 @@ export interface Env {
     profilEntreprise:string;
     delete:string;
     getFilePost : string,
-
     roles : {
     userRole : string , // used in the signup (the role sent to the backend )
     user : string , //  (the role receied from the backend )
