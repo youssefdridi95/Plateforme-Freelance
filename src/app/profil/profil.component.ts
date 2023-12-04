@@ -97,6 +97,7 @@ export class ProfilComponent {
       let params = new HttpParams()
       .set('username',this.username)
       .set('newPassword', this.form.value.new_password);
+console.log(params);
 
   //     const form = {
   // 'username ' : this.username,

@@ -58,7 +58,7 @@ const routes: Routes = [
   {path:"cv/creer",component :CvBuilderComponent },
   {path:"cv/edit",component :CvUpdateComponent , canActivate: [AuthGuard] },
   {path:"cv/afficher",component :CvPreviewComponent , canActivate: [AuthGuard]},
-  {path: "user/profil", component : ProfilComponent , canActivate: [AuthGuard,talentGuard]},
+  {path: "user/profil", component : ProfilComponent , canActivate: [AuthGuard]},
   {path: "user/compte/:id", component : UserCompteComponent, canActivate: [AuthGuard,talentGuard] },
   {path: "user/form" , component : UserFormComponent , canActivate: [AuthGuard]},
   {path: "user/profile/create" , component : UserFormComponent},

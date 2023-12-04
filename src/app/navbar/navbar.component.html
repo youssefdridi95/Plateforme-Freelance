@@ -48,14 +48,10 @@
       <i class="fa-regular fa-user" (click)="toggleDropdown()"></i>
     
       <div class="dropdown-content2" *ngIf="isDropdownOpen">
-<<<<<<< HEAD
-        <a [routerLink]="['/user/profil']">Paramètres</a>
-=======
         <a (click)="navigateToProfil()">Mon profil</a>
-        <a [routerLink]="['/entreprise/Paramètres']">Paramètres</a>
+        <a [routerLink]="['/user/profil']">Paramètres</a>
 
         <div class="dropdown-divider"></div>
->>>>>>> amal
         <a (click)="logout()" >Déconnexion</a>
       </div>
 
