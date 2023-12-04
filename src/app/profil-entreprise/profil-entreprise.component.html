@@ -38,286 +38,59 @@
        
       </div>
       <div class="post">
-
+        <div class="popup-1-wrap">
+          <input id="popup-1-coupon" type="checkbox">
+          <div class="popup-1-overlay">
+            <label for="popup-1-coupon" class="popup-1-trigger"></label>
+            <div class="popup-1-content">
+              <label for="popup-1-coupon" class="popup-1-close">×</label>
+              <app-add-post></app-add-post>
+            </div>
+          </div>
+        </div>
+    
+        
        
 
           <article class="publication">
           
-            <div class="postuler">
+            <label for="popup-1-coupon" class="popup-1-open">
+          
+              <img class="add" src="/assets/was.png">
+                <div class="input-post">Quoi de neuf</div>
 
-            </div>
-            <app-add-post  *ngIf="post==true"></app-add-post>
-            
+      </label>
 
-            <div *ngIf="post==false" class="content-publication wrap shadow">
-              <div class="heading flex-center">
-                <div class="name flex-cente">
-                  <img  src="/assets/userf.png">
-                  <div class="text-container">
-                    <input class="input-post" (click)="post=!post" type="text" readonly placeholder=" ">
-                  </div>
-                </div>
-                
-              </div>
-            </div>
-            
          
-            <div class="content-publication wrap shadow">
-              <div class="heading flex-center">
+      <div   *ngFor="let post of posts.content "  class="content-publication wrap shadow">
+        <button class="delete " (click)="deletePost(post.id)"><i class="fa-regular fa-trash-can"></i></button>
 
-                <div class="name flex-center" >
-                  <img src="/assets/userf.png">
-                  <h3 >Jhon doe</h3>
-                </div>
-                <p class="date" >1 min</p>
-                <div class="public" >
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.</p>
+        <div class="heading flex-center">
+          <div class="name flex-center" style="text-align: left;">
+            <img src="/assets/was.png " alt="User Image">
+            <!-- <h3 style="text-align: left;">{{profil.anonyme}}</h3> -->
+          </div>
+          <p class="date" style="text-align: left;">{{post.date}}</p>
+          <div >
 
-                </div>
-                <div class="fav" style="text-align: center;">
-                  <button class="like">J aime</button>
-                   
-                </div>
-              </div>
+            <img src="https://placehold.co/600x400" style="width: 150px;height: 100px;" alt="Image">
 
-            </div>
-            <div class="content-publication wrap shadow">
-              <div class="heading flex-center">
 
-                <div class="name flex-center" >
-                  <img src="/assets/userf.png">
-                  <h3 >Jhon doe</h3>
-                </div>
-                <p class="date" >1 min</p>
-                <div class="public" >
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.</p>
+            <!-- {{file.fileDownloadUri}} -->
+            <!-- {{file.fileName}} -->
 
-                </div>
-                <div class="fav" style="text-align: center;">
-                  <button class="like">J aime</button>
-                   
-                </div>
-              </div>
-            </div>
-            <div class="content-publication wrap shadow">
-              <div class="heading flex-center">
+          </div>
 
-                <div class="name flex-center" >
-                  <img src="/assets/userf.png">
-                  <h3 >Jhon doe</h3>
-                </div>
-                <p class="date" >1 min</p>
-                <div class="public" >
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.</p>
+          <div class="public" style="text-align: right;">
+            <p style="text-align: left;">{{post.desc}}.</p>
 
-                </div>
-                <div class="fav" style="text-align: center;">
-                  <button class="like">J aime</button>
-                   
-                </div>
-              </div>
-
-            </div>
-            <div class="content-publication wrap shadow">
-              <div class="heading flex-center">
-
-                <div class="name flex-center" >
-                  <img src="/assets/userf.png">
-                  <h3 >Jhon doe</h3>
-                </div>
-                <p class="date" >1 min</p>
-                <div class="public" >
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.</p>
-
-                </div>
-                <div class="fav" style="text-align: center;">
-                  <button class="like">J aime</button>
-                   
-                </div>
-              </div>
-
-            </div>  <div class="content-publication wrap shadow">
-              <div class="heading flex-center">
-
-                <div class="name flex-center" >
-                  <img src="/assets/userf.png">
-                  <h3 >Jhon doe</h3>
-                </div>
-                <p class="date" >1 min</p>
-                <div class="public" >
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.</p>
-
-                </div>
-                <div class="fav" style="text-align: center;">
-                  <button class="like">J aime</button>
-                   
-                </div>
-              </div>
-
-            </div>  <div class="content-publication wrap shadow">
-              <div class="heading flex-center">
-
-                <div class="name flex-center" >
-                  <img src="/assets/userf.png">
-                  <h3 >Jhon doe</h3>
-                </div>
-                <p class="date" >1 min</p>
-                <div class="public" >
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.</p>
-
-                </div>
-                <div class="fav" style="text-align: center;">
-                  <button class="like">J aime</button>
-                   
-                </div>
-              </div>
-
-            </div>  <div class="content-publication wrap shadow">
-              <div class="heading flex-center">
-
-                <div class="name flex-center" >
-                  <img src="/assets/userf.png">
-                  <h3 >Jhon doe</h3>
-                </div>
-                <p class="date" >1 min</p>
-                <div class="public" >
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.</p>
-
-                </div>
-                <div class="fav" style="text-align: center;">
-                  <button class="like">J aime</button>
-                   
-                </div>
-              </div>
-
-            </div>  <div class="content-publication wrap shadow">
-              <div class="heading flex-center">
-
-                <div class="name flex-center" >
-                  <img src="/assets/userf.png">
-                  <h3 >Jhon doe</h3>
-                </div>
-                <p class="date" >1 min</p>
-                <div class="public" >
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.</p>
-
-                </div>
-                <div class="fav" style="text-align: center;">
-                  <button class="like">J aime</button>
-                   
-                </div>
-              </div>
-
-            </div>  <div class="content-publication wrap shadow">
-              <div class="heading flex-center">
-
-                <div class="name flex-center" >
-                  <img src="/assets/userf.png">
-                  <h3 >Jhon doe</h3>
-                </div>
-                <p class="date" >1 min</p>
-                <div class="public" >
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.</p>
-
-                </div>
-                <div class="fav" style="text-align: center;">
-                  <button class="like">J aime</button>
-                   
-                </div>
-              </div>
-
-            </div>  <div class="content-publication wrap shadow">
-              <div class="heading flex-center">
-
-                <div class="name flex-center" >
-                  <img src="/assets/userf.png">
-                  <h3 >Jhon doe</h3>
-                </div>
-                <p class="date" >1 min</p>
-                <div class="public" >
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.</p>
-
-                </div>
-                <div class="fav" style="text-align: center;">
-                  <button class="like">J aime</button>
-                   
-                </div>
-              </div>
-
-            </div>  <div class="content-publication wrap shadow">
-              <div class="heading flex-center">
-
-                <div class="name flex-center" >
-                  <img src="/assets/userf.png">
-                  <h3 >Jhon doe</h3>
-                </div>
-                <p class="date" >1 min</p>
-                <div class="public" >
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.</p>
-
-                </div>
-                <div class="fav" style="text-align: center;">
-                  <button class="like">J aime</button>
-                   
-                </div>
-              </div>
-
-            </div>  <div class="content-publication wrap shadow">
-              <div class="heading flex-center">
-
-                <div class="name flex-center" >
-                  <img src="/assets/userf.png">
-                  <h3 >Jhon doe</h3>
-                </div>
-                <p class="date" >1 min</p>
-                <div class="public" >
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.</p>
-
-                </div>
-                <div class="fav" style="text-align: center;">
-                  <button class="like">J aime</button>
-                   
-                </div>
-              </div>
-
-            </div>
-
+          </div>
+          <div class="fav" >
+            <button class="like">Like</button>
+            <button class="comment">dislike</button>
+          </div>
+        </div>
+      </div> 
           </article>
        
 

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EntrepriseService } from '../services/entreprise.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { PostService } from '../services/post.service';
 
 @Component({
   selector: 'app-profil-entreprise',
@@ -11,10 +12,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./profil-entreprise.component.css']
 })
 export class ProfilEntrepriseComponent {
-  post = false;
   // posts: any;
   arrowUp: boolean = false;
   entreprise:any;
+  posts: any;
+
   emailpro = JSON.parse(sessionStorage.getItem('user')!).email;
   nom = JSON.parse(sessionStorage.getItem('profil')!).profileHeadline;
 
@@ -22,13 +24,17 @@ export class ProfilEntrepriseComponent {
   constructor(
     private enterpriseService: EntrepriseService,
     private route: ActivatedRoute,
-    private toastr: ToastrService,private router: Router) {
+    private toastr: ToastrService,private router: Router, private postService: PostService) {
       this.route.params.subscribe(params => {
         this.idEntreprise = params['id'];
+        this.getPost(this.idEntreprise);
+
       this.getEntrepriseById( this.idEntreprise)
-       
+      const storedUsername = sessionStorage.getItem('user');
+
       });
-     
+      const storedUsername = sessionStorage.getItem('user');
+
     }
   
   ngOnInit (): void{
@@ -58,5 +64,42 @@ export class ProfilEntrepriseComponent {
       }
     );
   }
+  getPost(userId: any) {
+    this.postService.getUserPosts(userId).subscribe(
+      res => {
+        this.posts = res;
+        console.log('reussite des posts', res);
+        // Faites quelque chose avec les posts récupérés, par exemple, assignez-les à une variable de composant
+        // this.posts = res;
+        sessionStorage.setItem('posts', JSON.stringify(res))
 
+      },
+      err => {
+        console.log('failed to get posts', err);
+        this.toastr.error('failed post')
+
+        // Vérifiez si err.error et err.error.message existent avant d'y accéder
+
+      }
+    );
+  }
+  deletePost(postId: string) {
+    if (confirm('Are you sure you want to delete this post?')) {
+      console.log(postId);
+      
+      this.postService.delete(postId).subscribe(
+        (res) => {
+          console.log(res);
+          location.reload();
+
+          this.toastr.success('Post deleted successfully', 'Success');
+          // After deleting the post, refresh the posts list
+        },
+        (err) => {
+          console.log(err);
+          this.toastr.error('Error deleting post', 'Error');
+        }
+      );
+    }
+  }
 }

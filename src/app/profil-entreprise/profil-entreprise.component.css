@@ -194,6 +194,7 @@ button {
 text-align: left;
 padding: 2rem;
 margin: 1rem 0;
+position: relative;
 }
 
 
@@ -328,7 +329,15 @@ margin: 0 auto;
   padding: 5px 15px;
   /*cursor: pointer;*/
 }
-
+button.delete {
+  background-color: white;
+  position :absolute;
+  color: red;
+  right: 0;
+  top: 0;
+  width: 2rem;
+  font-size: 1.3rem;
+}
 
 .popup-1-open {
  margin-top: 2rem;
