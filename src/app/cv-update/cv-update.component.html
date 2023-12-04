@@ -24,7 +24,11 @@
           <ng-container formGroupName="principale">
             <br>
             <label for="nom">Nom:</label>
-            <input type="text" id="nom" formControlName="nom" class="input-field" />
+            <ng-select [items]="devSkills" class="input-field"
+            bindLabel="name"
+            autofocus
+            formControlName="nom">
+ </ng-select>
             <div *ngIf="cv.cvForm.get('competence.principale').get('nom').invalid && cv.cvForm.get('competence.principale').get('nom').touched" class="error">
               <p>
                 <i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"></i> ce champ est obligatoir !
@@ -55,7 +59,11 @@
             [formGroupName]="i">
           
               <label for="nom">compétence {{i+1}} :</label>
-              <input type="text" required formControlName="nom" class="input-field" />
+              <ng-select [items]="devSkills" class="input-field"
+              bindLabel="name"
+              
+              formControlName="nom">
+   </ng-select>
               <div *ngIf="competenceControl.get('nom').invalid && competenceControl.get('nom').touched" class="error">
                 <p>
                   <i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"></i> ce champ est obligatoir !

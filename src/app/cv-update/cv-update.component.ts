@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CvUpdaterService } from '../services/cv-updater.service';
 import { FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
+import { skills } from 'src/skills';
 
 @Component({
   selector: 'app-cv-update',
@@ -16,111 +17,8 @@ import { Router } from '@angular/router';
 export class CvUpdateComponent {
 
 
-   devSkills = [
-    'Python',
-    'JavaScript',
-    'React',
-    'Node.js',
-    'Java',
-    'Spring Framework',
-    'Ruby',
-    'Ruby on Rails',
-    'HTML',
-    'CSS',
-    'SQL',
-    'MongoDB',
-    'Docker',
-    'Kubernetes',
-    'AWS',
-    'Azure',
-    'CI/CD',
-    'Git',
-    'Agile Methodologies',
-    'Data Structures',
-    'Algorithms',
-    'Front-End Development',
-    'Back-End Development',
-    'Mobile App Development',
-    'Machine Learning',
-    'DevOps',
-    'Cybersecurity',
-    'UI/UX Design',
-    'Test-Driven Development',
-    'Version Control',
-    'Continuous Integration',
-    'Scrum',
-    'C++',
-    'C#',
-    'PHP',
-    'Swift',
-    'Objective-C',
-    'Android Development',
-    'iOS Development',
-    'Angular',
-    'Vue.js',
-    'TypeScript',
-    'Rust',
-    'Go',
-    'ASP.NET',
-    'Unity',
-    'TensorFlow',
-    'PyTorch',
-    'Blockchain',
-    'GraphQL',
-    'R',
-    'Shell Scripting',
-    'React Native',
-    'Redux',
-    'Jenkins',
-    'Vue.js',
-    'Vue Router',
-    'Webpack',
-    'GraphQL',
-    'PostgreSQL',
-    'NoSQL Databases',
-    'Django',
-    'Flask',
-    'PHP Laravel',
-    'WordPress Development',
-    'Magento',
-    'Joomla',
-    'Elixir',
-    'Scala',
-    'Hadoop',
-    'Spark',
-    'Hive',
-    'Elasticsearch',
-    'Redis',
-    'Express.js',
-    'Meteor.js',
-    'Knockout.js',
-    'Sass',
-    'LESS',
-    'WebSockets',
-    'Socket.io',
-    'GraphQL',
-    'Apollo Server',
-    'Redux Saga',
-    'MobX',
-    'Nginx',
-    'Apache',
-    'RESTful APIs',
-    'Microservices Architecture',
-    'D3.js',
-    'Three.js',
-    'MapReduce',
-    'Kafka',
-    'AWS Lambda',
-    'Google Cloud Functions',
-    'Firebase',
-    'OAuth',
-    'JSON Web Tokens',
-    'OAuth2',
-    'WebRTC',
-    'Augmented Reality (AR)',
-    'Virtual Reality (VR)',
-    'Internet of Things (IoT)',
-  ];
+   devSkills = skills
+
   usercv:any 
  constructor(public cv:CvUpdaterService ,private cvApi :CvBuilderApiCallsService ,private toastr: ToastrService, private route: Router){
   this.cvApi.get(JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
@@ -304,6 +202,10 @@ if(control.length == 0)
    // this.toastr.error(err.error.message,'erreur')
       }
     )
+
+
+    console.log('nabaath',cvJSON);
+    
     this.cvApi.update(cvJSON).subscribe(
       res=>{
       
@@ -315,9 +217,7 @@ if(control.length == 0)
       },
       err=>{
     console.log(err);
-    this.toastr.error(err.error.message,'erreur')
-      }
-    )
+    this.toastr.error(err.error.message)
     
   }
 
