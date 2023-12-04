@@ -151,28 +151,25 @@ getControls() {
         
         
   this.toastr.success('a été publié avec success ','Post')
-
+  this.postForm = this.formBuilder.group({
+    competence: ['', Validators.required],
+    category: ['', Validators.required],
+    description: ['',Validators.maxLength(500)],
+    file: this.formBuilder.array([]), // 10MB limit
+    tags: this.formBuilder.array([
+      this.formBuilder.group({
+        name: ['', Validators.required]
+      })
+    ])
+  });
+  this.totalFileSizeExeeded=false
+  this.totalSize=0
       },
       err=>{
     console.log(err);
     this.toastr.error(err.error.message,'erreur')
       }
     )
-
-    // const formDataObject: any = {};
-    // formData.forEach((value, key) => {
-    //   if (!formDataObject[key]) {
-    //     formDataObject[key] = value;
-    //   } else {
-    //     if (!Array.isArray(formDataObject[key])) {
-    //       formDataObject[key] = [formDataObject[key]];
-    //     }
-    //     formDataObject[key].push(value);
-    //   }
-    // });
-  
-    // Log the converted object
-
 
   }
 }

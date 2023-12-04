@@ -80,8 +80,8 @@
     </div>
   </form>
     <div class="button-group">
+      <button [disabled]="!form.valid"  (click)="editPassword()"  class="save-button">Enregistrer</button>
       <button class="cancel-button"  (click)="popup =! popup">Annuler</button>
-      <button [disabled]="!form.valid"  (click)="editPassword ()" type="submit" class="save-button">Enregistrer</button>
     </div>
   </div>
   <button *ngIf="button==true"> name</button>

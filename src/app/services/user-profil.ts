@@ -41,7 +41,7 @@ export class UserProfil {
     return this.http.put(this.url + this.editUser,data);
   }
   editpassword(params: any){
-    return this.http.put(this.url + this.updatepssword,{params});
+    return this.http.put(this.url + this.updatepssword,{},{params});
   }
   
 

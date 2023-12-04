@@ -94,7 +94,7 @@ export class ProfilComponent {
   editPassword (){
 
     if (this.form.valid) {
-      let params = new HttpParams()
+      const params = new HttpParams()
       .set('username',this.username)
       .set('newPassword', this.form.value.new_password);
 console.log(params);
@@ -110,7 +110,7 @@ console.log(params);
 
       res=>{
         console.log(res);
-        
+        this.popup=false
         // this.router.navigate(['/user/compte/',this.profil.id]);
         
         this.toastr.success('modification avec succes')
