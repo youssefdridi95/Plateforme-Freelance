@@ -43,18 +43,20 @@ edituserProfile(){
     const userProfil = {
       'id': this.profil.id as string,
 
-    'nom' : this.edituser.value.prenom ,
-    'prenom' : this.edituser.value.nom ,
+    'nom' : this.edituser.value.nom ,
+    'prenom' : this.edituser.value.prenom ,
     'timezone' : this.edituser.value.timezone ,
   }
 
   this.userProfilService.editProfil(userProfil).subscribe(
     res=>{
       console.log(res);
-      
-      this.router.navigate(['/user/compte/',this.profil.id]);
-      
       this.toastr.success('modification avec succes')
+      console.log(this.profil.user);
+        setTimeout(()=>{
+          this.router.navigate(['/user/compte/',this.profil.user]);
+
+        },2000)
 
     },
     err=>{
