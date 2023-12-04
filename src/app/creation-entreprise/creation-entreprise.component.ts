@@ -18,7 +18,8 @@ export class CreationEntrepriseComponent {
     private formBuilder: FormBuilder,
     private enterpriseService: EntrepriseService,
     private route: ActivatedRoute,
-    private toastr: ToastrService,private router: Router
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit (): void{
@@ -65,7 +66,7 @@ export class CreationEntrepriseComponent {
       this.enterpriseService.creationEntreprise(formData, params).subscribe(
         (res) => {
           console.log('reussite', res);
-          this.toastr.success('reussite');
+          this.toastr.success('Creation reussite');
           this.router.navigate(['/entreprise/profil/']);
         },
         (err) => {

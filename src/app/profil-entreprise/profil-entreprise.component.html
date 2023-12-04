@@ -4,7 +4,7 @@
 
 <!--EXTERNAL CSS-->
 
-<div class="container">
+<div class="container"*ngIf="entreprise">
 
 
       <div class="contact">
@@ -29,7 +29,7 @@
           <button class="edit" (click)="navigateToCvCreer('/entreprise/liste')">
             Ajouter employers
           </button>
-          <button class="edit" (click)="navigateToCvCreer('')">
+          <button class="edit" (click)="navigateToCvCreer('/entreprise/update')">
             Modifier profil
           </button>
         </div>
@@ -57,7 +57,7 @@
             <label for="popup-1-coupon" class="popup-1-open">
           
               <img class="add" src="/assets/was.png">
-                <div class="input-post">Quoi de neuf</div>
+                <div class="input-post">postuler quelque chose...</div>
 
       </label>
 

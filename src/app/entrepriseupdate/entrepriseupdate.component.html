@@ -1,9 +1,9 @@
 
 <div class="container">
     <div class="heading">Modifier Profil Entreprise</div>
-      <form formGroup="updateForm" (ngSubmit)="update()"  class="form">
+      <form [formGroup]="updateForm" (ngSubmit)="update()"  class="form">
 
-        <input type="file" formControlName="file" id="file" (change)="onFileSelected($event)">
+        
       
           <input type="text"  class="input" formControlName="title" id="title" placeholder="Nom entreprise*" />
 
