@@ -41,6 +41,7 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { Section2Component } from './section2/section2.component';
 import { EntrepriseupdateComponent } from './entrepriseupdate/entrepriseupdate.component';
+import { RechercheComponent } from './recherche/recherche.component';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { EntrepriseupdateComponent } from './entrepriseupdate/entrepriseupdate.c
     NotFound404Component,
     SectionComponent,
     AddUserComponent,
-
+    EntrepriseupdateComponent,
+    RechercheComponent
    
 
     

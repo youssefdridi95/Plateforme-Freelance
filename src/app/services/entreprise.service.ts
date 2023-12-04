@@ -73,9 +73,7 @@ deleteUser(userId: string): Observable<any> {
   params = params.append('id', userId);
   return this.http.delete(this.url+this.delete,{params});
 }
-updateEntreprise(data: any,userId: string): Observable<any> {
-  let params = new HttpParams();
-  params = params.append('id', userId);
-  return this.http.post(this.url+this.update,data,{params});
+updateEntreprise(data:any) {
+  return this.http.put(this.url + this.update,data);
 }
 }

@@ -35,6 +35,11 @@ nav.nav{
   transition: all 0.2s;
 
 }
+.dropdown-divider {
+  height: 1px;
+  margin: 0.5rem 0;
+  background-color: #ccc; /* Adjust the color as needed */
+}
 .logo{
   width: 20%;
   max-width: 10rem;

@@ -73,4 +73,13 @@ this.router.navigate(['/'])
 
 }
 
+
+
+navigateToProfil(){
+  if(JSON.parse(sessionStorage.getItem('user')!).roles[0]==='ROLE_TALENT')
+         this.router.navigate(['/user/compte',JSON.parse(sessionStorage.getItem('user')!).id])
+        else
+        this.router.navigate(['/entreprise/profil',JSON.parse(sessionStorage.getItem('user')!).id])
+
+}
 }
