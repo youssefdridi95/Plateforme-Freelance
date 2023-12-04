@@ -91,7 +91,7 @@ export class CvUpdaterService {
   formation(form:any={school :'',degree:'',date :'',id:''}){ 
     return new FormGroup({
       institut : new FormControl (form.school,[Validators.required]),
-      id : new FormControl (form.id,[Validators.required]),
+      id : new FormControl (form.id),
     diploma : new FormControl (form.degree,[Validators.required]),
     dateObtentien : new FormControl (form.date,[Validators.required]),
     
@@ -103,14 +103,14 @@ export class CvUpdaterService {
       titre : new FormControl (cert.titre,[Validators.required]),
       dateObtentien : new FormControl (cert.date,[Validators.required]),
       link : new FormControl (cert.link,[Validators.required]),
-      id : new FormControl (cert.id,[Validators.required]),
+      id : new FormControl (cert.id),
      
     })
   }
  
     competence (comp:any={niveau:'',title:'',id:''}){ 
       return new FormGroup({
-        id: new FormControl (comp.id,[Validators.required]),
+        id: new FormControl (comp.id),
         nom : new FormControl (comp.title,[Validators.required]),
         niveau : new FormControl (comp.niveau,[Validators.required]),
       })

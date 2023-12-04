@@ -149,7 +149,6 @@
     display:flex ;
     gap: 1rem;
     flex-wrap: wrap;
-    justify-content: center;
   }
   .resume .extra {
     margin-bottom: 2em;

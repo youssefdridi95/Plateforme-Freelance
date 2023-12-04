@@ -156,8 +156,20 @@ if(control.length == 0)
       cvJSON.competences.push(compJSON);
     });
     
+    this.cvApi.updateMain(competences.principale.nom,JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
+      res=>{
+      
+  console.log(res);
+        
+    
+  this.toastr.success('a été crée avec succés ','Compétence Principale')
 
-    console.log(cvJSON);
+      },
+      err=>{
+    console.log(err);
+   // this.toastr.error(err.error.message,'erreur')
+      }
+    )
     
 
     this.cvApi.build(cvJSON,JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
@@ -165,7 +177,7 @@ if(control.length == 0)
       
   console.log(res);
         
-     this.route.navigate(['/cv/afficher'])
+     this.route.navigate(['/user/compte',JSON.parse(sessionStorage.getItem('user')!).id])
     
   this.toastr.success('a été crée avec succés ','CV')
 
@@ -174,7 +186,9 @@ if(control.length == 0)
     console.log(err);
     this.toastr.error(err.error.message,'erreur')
       }
-    )}
+    )
+  
+  }
 
 
   }

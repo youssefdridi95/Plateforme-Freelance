@@ -1,6 +1,6 @@
 
 <div class="cv">
-    <div class="sheet">
+    <div class="sheet" *ngIf="cv">
         <div class="two-column resume">
             <section class="resume__section resume__header">
                 <div class="resume__photo">
@@ -39,7 +39,7 @@
                             <div class="xp-item"  *ngFor="let exp of this.cv.experiences" >
                                 <div class="xp-job">{{exp.postition}}
                                     <span> {{exp.company}}</span><br/><small>{{exp.localisation}}</small></div>
-                                <div class="xp-date"> de {{exp.debut}}  à {{exp.fin}}</div>
+                                <div class="xp-date"> de {{exp.debut | date : 'shortDate'}} <ng-container *ngIf="exp.fin"> à {{exp.fin | date : 'shortDate'}}</ng-container></div>
                               
                             </div>
                           
@@ -53,7 +53,7 @@
                             <div class="xp-item"  *ngFor="let exp of this.cv.formations" >
                                 <div class="xp-job">{{exp.degree}}
                                     <span> {{exp.school}}</span></div>
-                                <div class="xp-date"> de {{exp.date}}  </div>
+                                <div class="xp-date"> obtenu le  {{exp.date | date : 'shortDate'}}  </div>
                                 
                             </div>
                           
@@ -66,7 +66,7 @@
                             </div>
                             <div class="xp-item"  *ngFor="let exp of this.cv.certifications" >
                                 <div class="xp-job">{{exp.titre}}</div>
-                                <div class="xp-date"> {{exp.date}}</div>
+                                <div class="xp-date">obtenu le  {{exp.date | date : 'shortDate' }}</div>
 
                             </div>
                           

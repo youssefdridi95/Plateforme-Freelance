@@ -23,7 +23,7 @@ canActivate(
          return true;
    
   } else  {
-    this.toastr.error('already loggedin','user')
+    this.toastr.info('already loggedin','user')
 
     if (JSON.parse(sessionStorage.getItem('user')!).roles.includes(this.env.roles.entAdmin) ||
          JSON.parse(sessionStorage.getItem('user')!).roles.includes(this.env.roles.entRecruter || 

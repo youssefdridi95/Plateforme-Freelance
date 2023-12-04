@@ -22,6 +22,7 @@ export const environments= {
     cvBuild : "/api/umanlink/resumes/create-resume",
     getCv : "/api/umanlink/profiles/individuals/get-resume",
     updateCv : '/api/umanlink/resumes/update-resume',
+    updateMainSkill : '/api/umanlink/profiles/individuals/update-mainskill',
     userCreateProfil : '/api/umanlink/profiles/individuals/create-profile-perso',
 
 
