@@ -157,7 +157,8 @@ if (this.isMush && this.isPro)
         if (loginResponse.roles.includes(this.env.roles.entAdmin)  || loginResponse.roles.includes(this.env.roles.entEditor)  ||loginResponse.roles.includes(this.env.roles.entRecruter) ) {
           this.toastr.success('Connexion réussie', 'Compte');
           sessionStorage.setItem('user', JSON.stringify(res));
-          let id 
+         
+          var id:any;
          if(loginResponse.roles.includes(this.env.roles.entAdmin) ) 
           id =loginResponse.id
          else 
@@ -167,7 +168,7 @@ if (this.isMush && this.isPro)
             (res: any) => {
               console.log('reussite', res);
               sessionStorage.setItem('profil', JSON.stringify(res));
-              this.router.navigate(['/entreprise/profil',loginResponse.id])
+              this.router.navigate(['/entreprise/profil',id])
 
             },
           (err: any) => {

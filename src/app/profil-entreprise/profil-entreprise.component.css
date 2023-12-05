@@ -59,6 +59,7 @@
   border-radius: 1rem;
   position: sticky;
   top: 4rem;
+  border:1px solid grey;
 
 }
 .contact::-webkit-scrollbar{
@@ -188,16 +189,18 @@ button {
   width: 95%;
   background: white;
   border-radius: 10px;
-  /* Add this line for border-radius */
   -webkit-box-shadow: 0px 0px 14px -4px #00000060; 
   box-shadow: 0px 0px 14px -4px #00000060;
 text-align: left;
 padding: 2rem;
 margin: 1rem 0;
 position: relative;
+transition: background-color 0.3s;
 }
 
-
+.content-publication:hover{
+ background-color: #eef3f8;
+}
 
 .content-publication .heading .name img {
   width: 50px;
@@ -317,6 +320,7 @@ margin: 0 auto;
   border-radius: 8px;
   line-height: 1.4em;
   transition: 0.5s;
+ 
 }
 
 .popup-1-close {
@@ -332,11 +336,17 @@ margin: 0 auto;
 button.delete {
   background-color: white;
   position :absolute;
-  color: red;
+  color: #007CF8;
   right: 0;
   top: 0;
   width: 2rem;
   font-size: 1.3rem;
+}
+button.delete:hover {
+  background-color:#eef3f8;
+
+  color: red;
+ 
 }
 
 .popup-1-open {
@@ -353,6 +363,7 @@ button.delete {
   box-shadow: 0px 6px 16px -6px rgba(94, 92, 92, 0.5);
   margin-bottom: 1rem;
   padding: 2rem 1rem;
+  border:1px solid grey§;
 }
 
 .popup-1-open .add {
