@@ -1,20 +1,22 @@
 
 
 .imgt{
-    background: url("/../assets/trouver.png") no-repeat;
+    background-color: white;
+
     display: flex;
-    background-position: center ;
     background-size: 69%;
     width: 100%;
     min-height:90vh;
-    background-color: white;
-    
+    background: url("/../assets/trouver.png") no-repeat;
+    background-position: center ;
   }
 
   .center
   {
+
+
     position: absolute;
-    top: 13%;
+    top: 50%;
     left:50%;
     transform: translate(-50%, -50%);
     display: flex;

@@ -168,7 +168,7 @@ export class LoginEntrepriseComponent {
             (res: any) => {
               console.log('reussite', res);
               sessionStorage.setItem('profil', JSON.stringify(res));
-              this.router.navigate(['/entreprise/profil', id])
+              this.router.navigate(['/entreprise/profil',id])
 
             },
             (err: any) => {

@@ -8,10 +8,14 @@ import { Router } from '@angular/router';
 })
 export class RechercheComponent {
   skill: string = '';
-
+option :string = 'talent'
   constructor(private router: Router) {}
 
   rechercher() {
+     if(this.option==='talent')
     this.router.navigate(['/talents/list', this.skill]);
+  else
+  this.router.navigate(['/entreprise/feed', this.skill]);
+
   }
 }

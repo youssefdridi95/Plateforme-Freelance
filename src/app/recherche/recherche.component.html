@@ -1,13 +1,11 @@
 <div class="imgt">
-    <ul class="trust" style="display: flex; justify-content: space-evenly; align-items: center; background: #034f9b !important;">
       <div class="center">
         <input type="text" placeholder="Compétences..." [(ngModel)]="skill">
-        <select>
-          <option>TALENT</option>
-          <option>POSTS</option>
+        <select [(ngModel)]="option">
+          <option value="talent" >TALENT</option>
+          <option value="post">POSTS</option>
         </select>
-        <button [routerLink]="['/talents/list']" (click)="rechercher()">Rechercher</button>
+        <button  (click)="rechercher()">Rechercher</button>
       </div>
-    </ul>
   </div>
   

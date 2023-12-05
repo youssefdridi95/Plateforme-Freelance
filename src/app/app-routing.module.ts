@@ -31,6 +31,7 @@ import { RechercheComponent } from './recherche/recherche.component';
 import { EntrepriseupdateComponent } from './entrepriseupdate/entrepriseupdate.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 import { TalentFeedComponent } from './talent-feed/talent-feed.component';
+import { EntrepriseFeedComponent } from './entreprise-feed/entreprise-feed.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,7 @@ const routes: Routes = [
   {path:"recherche",component :RechercheComponent },
 
   {path:"talents/list/:skill",component :ListeEmpComponent },
+  {path:"entreprise/feed/:skill",component :EntrepriseFeedComponent },
   {path:"entreprise/liste",component :ListeComponent , canActivate: [AuthGuard]},
 
   {path:"entreprise/update",component :EntrepriseupdateComponent },

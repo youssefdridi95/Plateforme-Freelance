@@ -14,10 +14,10 @@
   <div class="btn">
 
     <div class="dropdown">
-      <button class="dropdown-button" (click)="toggleDropdown()" *ngIf="showBtn()">
+      <button class="dropdown-button" (mouseenter)="toggleDropdown()" *ngIf="showBtn()">
         Connexion <i class="fa-solid fa-chevron-down"></i>
       </button>
-      <div class="dropdown-content" *ngIf="isDropdownOpen && showBtn()">
+      <div class="dropdown-content"  (mouseleave)="toggleDropdown()" *ngIf="isDropdownOpen && showBtn()">
         <!-- Dropdown items go here -->
         <a [routerLink]="['/user/connexion/signin']">Talent</a>
         <div class="dropdown-divider"></div>
@@ -45,9 +45,9 @@
         </svg>
       </div>
       <i class="fa-regular fa-bell"></i>
-      <i class="fa-regular fa-user" (click)="toggleDropdown()"></i>
+      <i class="fa-regular fa-user" (mouseenter)="toggleDropdown()" ></i>
     
-      <div class="dropdown-content2" *ngIf="isDropdownOpen">
+      <div (mouseleave)="toggleDropdown()" class="dropdown-content2" *ngIf="isDropdownOpen">
         <a (click)="navigateToProfil()">Mon profil</a>
         <a [routerLink]="['/user/profil']">Paramètres</a>
 
