@@ -15,6 +15,14 @@ export class NavbarComponent {
         this.navItemsDisplay=this.widhtChecker.width < 900 ? "none" : "flex"
 
   }
+  @HostListener('document:click', ['$event'])
+  handleClick(event: Event) {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      // Click occurred outside the dropdown, close it
+      this.isDropdownOpen = false;
+    }
+  }
+
 
 
   @HostListener('window:resize', ['$event'])

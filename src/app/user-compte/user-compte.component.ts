@@ -33,7 +33,7 @@ export class UserCompteComponent {
   posts: any;
   profilImage: string = '';  // Ajoutez cette ligne dans votre classe
   test: any;
-
+  isMine=false
   // user-compte.component.ts
   userImage: string = '';  // Ajoutez cette ligne dans votre classe
 
@@ -73,8 +73,7 @@ export class UserCompteComponent {
         // this.toastr.success('reussite');
         if (this.userId == JSON.parse(sessionStorage.getItem('user')!).id) {
         sessionStorage.setItem('profil',JSON.stringify(res));
-console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
-
+        this.isMine=true
           this.profil = JSON.parse(sessionStorage.getItem('profil')!);
           this.profilImage = this.profil.file.fileDownloadUri;  // Assurez-vous que le champ est correct
         } else {

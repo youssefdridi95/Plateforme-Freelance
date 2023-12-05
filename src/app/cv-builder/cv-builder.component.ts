@@ -156,7 +156,7 @@ if(control.length == 0)
       cvJSON.competences.push(compJSON);
     });
     
-    this.cvApi.updateMain(competences.principale.nom,JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
+    this.cvApi.updateMain(competences.principale.nom.toUpperCase(),JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
       res=>{
       
   console.log(res);

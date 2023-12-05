@@ -19,17 +19,18 @@
         </label>
 
         <ng-container>
-            <div class="content-publication wrap shadow">
+            <div class="content-publication wrap shadow" *ngFor="let post of posts">
                 <div class="heading flex-center">
                     <div class="name flex-center" style="text-align: left;">
                         <img src="/assets/was.png" alt="User Image">
                     </div>
-                    <!-- <p class="date" style="text-align: left;">{{post?.date}}</p> -->
-                    <img src="https://placehold.co/600x400" style="width: 150px; height: 100px;" alt="Image">
+                     <p class="date" >{{ calculatePassedTime( post?.date)}}</p> 
+                     <div class="public" style="text-align: right;">
+                        <p>{{post?.desc}}.</p>
+                    </div>
+                    <img src="https://placehold.co/600x400" style="width: 150px; height: 100px;" alt="Image" *ngFor="let file of post.files">
                 </div>
-                <div class="public" style="text-align: right;">
-                    <!-- <p>{{post?.desc}}.</p> -->
-                </div>
+              
                 <div class="fav">
                     <button class="like">Like</button>
                     <button class="comment">dislike</button>

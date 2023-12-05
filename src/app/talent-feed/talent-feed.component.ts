@@ -41,11 +41,11 @@ this.getPost(this.mainskill);
               
             this.profil.getProfil(params).subscribe((profile)=>{
               post.user=profile
-              console.log('proffffff',post);
 
               postswithProfiles.push(post)
               
             })}
+            this.posts=postswithProfiles
         console.log('after for ', postswithProfiles);
       },
       err => {
@@ -69,6 +69,23 @@ this.getPost(this.mainskill);
     );
 
   }
+calculatePassedTime(date:any){
+  
+const  datet= new Date(date)
 
+// Get the current date and time
+const currentDate = new Date();
+
+// Calculate the time difference in milliseconds
+const timeDifference = currentDate.getTime() -datet.getTime();
+
+const seconds = Math.floor(timeDifference / 1000);
+const minutes = Math.floor(seconds / 60);
+const hours = Math.floor(minutes / 60);
+const days = Math.floor(hours / 24);
+
+return(` ${days} d, ${hours % 24} h, ${minutes % 60} min`);
+
+}
 }
 
