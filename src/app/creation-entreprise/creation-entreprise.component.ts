@@ -67,7 +67,13 @@ export class CreationEntrepriseComponent {
         (res) => {
           console.log('reussite', res);
           this.toastr.success('Creation reussite');
-          this.router.navigate(['/entreprise/profil/']);
+          var id:any;
+          if (JSON.parse(sessionStorage.getItem('user')!).roles.includes('ROLE_ENTREPRISE')) {
+            id = JSON.parse(sessionStorage.getItem('user')!).id
+          } else {
+            id = JSON.parse(sessionStorage.getItem('user')!).idEntreprise
+          }
+          this.router.navigate(['/entreprise/profil/',id]);
         },
         (err) => {
           console.log('failed', err);

@@ -9,10 +9,17 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-
+isTalent = 'both'
   constructor(private widhtChecker :WidthCheckService,private router: Router ,private elementRef: ElementRef ,private auth:AuthService){
         this.widhtChecker.width=this.checkScreenWidth()
         this.navItemsDisplay=this.widhtChecker.width < 900 ? "none" : "flex"
+if (JSON.parse(sessionStorage.getItem('user')!))
+    if (JSON.parse(sessionStorage.getItem('user')!).roles[0]==='ROLE_TALENT')
+    this.isTalent='talent'
+    else 
+    this.isTalent='ent'
+else
+this.isTalent='both'
 
   }
   @HostListener('document:click', ['$event'])
@@ -66,7 +73,7 @@ export class NavbarComponent {
      
      showBtn (): boolean {
       // Check if the current route is not '/login/entreprise'
-      return this.router.url === '/'  
+      return this.router.url === '/'  || this.router.url === '/recherche'
        
      }   
      isDropdownOpen = false;
