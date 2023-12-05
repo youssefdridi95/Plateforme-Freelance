@@ -73,7 +73,7 @@ this.isTalent='both'
      
      showBtn (): boolean {
       // Check if the current route is not '/login/entreprise'
-      return this.router.url === '/'  
+      return this.router.url === '/'  || this.router.url === '/recherche'
        
      }   
      isDropdownOpen = false;
