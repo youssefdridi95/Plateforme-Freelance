@@ -17,27 +17,7 @@ export class UserCompteComponent {
 
   constructor(private toastr: ToastrService, private userProfilService: UserProfil, private router: Router, private roote: ActivatedRoute, private postService: PostService) {
 
-    this.roote.paramMap.subscribe(params => { this.userId = params.get('id') })
-    this.getProfil();
-    this.getPost(this.userId);
-
-
-    const storedUsername = sessionStorage.getItem('user');
-    if (storedUsername) {
-      const user = JSON.parse(storedUsername);
-      this.email = user.email;
-      this.username = user.username;
-      this.userId = user.id;
-
-      // Récupérez le chemin de l'image de l'utilisateur depuis la session
-
-      this.profil = JSON.parse(sessionStorage.getItem('profil')!);
-      this.profilImage = this.profil.fileDownloadUri;
-
-
-      console.log('testing image', this.profil);
-
-    }
+    
   }
 
   navigateToCvCreer(link: String) {
@@ -59,7 +39,27 @@ export class UserCompteComponent {
 
   // Dans la méthode ngOnInit
   ngOnInit() {
+    this.roote.paramMap.subscribe(params => { this.userId = params.get('id') })
+    this.getProfil();
+    this.getPost(this.userId);
 
+
+    const storedUsername = sessionStorage.getItem('user');
+    if (storedUsername) {
+      const user = JSON.parse(storedUsername);
+      this.email = user.email;
+      this.username = user.username;
+      this.userId = user.id;
+
+      // Récupérez le chemin de l'image de l'utilisateur depuis la session
+
+      this.profil = JSON.parse(sessionStorage.getItem('profil')!);
+      this.profilImage = this.profil.fileDownloadUri;
+
+
+      console.log('testing image', this.profil);
+
+    }
 
   }
 

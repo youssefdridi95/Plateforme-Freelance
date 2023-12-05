@@ -82,7 +82,7 @@ export class CvUpdaterService {
     post : new FormControl (exp.position,[Validators.required]),
     employementType : new FormControl (exp.employementType,[Validators.required]),
     localisation : new FormControl (exp.localisation,[Validators.required]),
-    debut : new FormControl (exp.debut,[Validators.required]),
+    debut : new FormControl (exp.debut.split('T')[0],[Validators.required]),
     fin : new FormControl (exp.fin),
     id : new FormControl (exp.id)
   })

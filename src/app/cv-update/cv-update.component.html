@@ -169,7 +169,8 @@
             </p>
           </div>
           <label for="debut">Début:</label>
-          <input type="date" required formControlName="debut" class="input-field" />
+         
+          <input type="date"   required formControlName="debut" class="input-field" />
           <div *ngIf="experienceControl.get('debut').invalid && experienceControl.get('debut').touched" class="error">
             <p>
               <i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"></i> ce champ est obligatoir ! <br>
