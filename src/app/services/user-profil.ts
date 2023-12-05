@@ -46,7 +46,7 @@ export class UserProfil {
   }
   
   getUserBySkill(params: any){
-    return this.http.put(this.url + this.getUserSkill,{},{params});
+    return this.http.get(this.url + this.getUserSkill,{params});
   }
   
 }

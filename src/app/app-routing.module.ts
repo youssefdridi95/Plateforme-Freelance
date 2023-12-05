@@ -41,7 +41,7 @@ const routes: Routes = [
   {path:"CreerCompteEmployee/:email/:idEntreprise/:role",component :AddUserComponent },
   {path:"recherche",component :RechercheComponent },
 
-  {path:"talents/list",component :ListeEmpComponent },
+  {path:"talents/list/:skill",component :ListeEmpComponent },
   {path:"entreprise/liste",component :ListeComponent , canActivate: [AuthGuard]},
 
   {path:"entreprise/update",component :EntrepriseupdateComponent },
