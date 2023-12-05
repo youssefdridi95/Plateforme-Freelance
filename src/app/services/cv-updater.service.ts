@@ -83,7 +83,7 @@ export class CvUpdaterService {
     employementType : new FormControl (exp.employementType,[Validators.required]),
     localisation : new FormControl (exp.localisation,[Validators.required]),
     debut : new FormControl (exp.debut.split('T')[0],[Validators.required]),
-    fin : new FormControl (exp.fin),
+    fin : new FormControl (exp.fin.split('T')[0]),
     id : new FormControl (exp.id)
   })
 }
@@ -93,7 +93,7 @@ export class CvUpdaterService {
       institut : new FormControl (form.school,[Validators.required]),
       id : new FormControl (form.id),
     diploma : new FormControl (form.degree,[Validators.required]),
-    dateObtentien : new FormControl (form.date,[Validators.required]),
+    dateObtentien : new FormControl (form.date.split('T')[0],[Validators.required]),
     
   })}
 
@@ -101,7 +101,7 @@ export class CvUpdaterService {
     return new FormGroup({
      
       titre : new FormControl (cert.titre,[Validators.required]),
-      dateObtentien : new FormControl (cert.date,[Validators.required]),
+      dateObtentien : new FormControl (cert.date.split('T')[0],[Validators.required]),
       link : new FormControl (cert.link,[Validators.required]),
       id : new FormControl (cert.id),
      

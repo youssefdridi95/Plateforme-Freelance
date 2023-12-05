@@ -50,13 +50,20 @@ delete(postId : string): Observable<any> {
   return this.http.delete(this.url+this.deletePost,{params});
 }
 
+getPostsBySkill(skill: any  ){
+  console.log(skill);
+  
+  let params = new HttpParams().set('skill', skill)
+
+  return this.http.get(this.url + this.getSkillPost,{params});
+
+} 
 getUserPosts(data: any  ){
   let params = new HttpParams().set('userId', data)
 
   return this.http.get(this.url + this.getUserPost,{params});
 
-} 
-
+}
 getFile(URI: any): Observable<Blob> {
   const params = new HttpParams().set('fileDownloadUriReport', "/Postes/65675f9f74da756d91ababa0/2023-11-30/2023-11-30 101724 325Z/Untitled.png//");
   const headers = new HttpHeaders().set('Accept', 'image/png'); // Adjust content type based on your response
@@ -69,7 +76,5 @@ getFile(URI: any): Observable<Blob> {
 }
 
 
-getSkillsPosts(data: any){
-  return this.http.post(this.url + this.getSkillPost,data);
-}
+
 }

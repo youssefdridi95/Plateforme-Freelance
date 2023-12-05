@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 
 
 
+
 @Component({
   selector: 'app-add-post',
   templateUrl: './add-post.component.html',
@@ -128,7 +129,7 @@ getControls() {
   this.totalFileSizeExeeded =this.totalFileSizeValidator(10*1024*1024)
   const params = new HttpParams()
   .set('userId',JSON.parse(sessionStorage.getItem('user')!).id)
-  .set('title',this.postForm.value.competence)
+  .set('title',this.postForm.value.competence.toUpperCase())
   .set('desc',this.postForm.value.description)
   .set('category',this.postForm.value.category)
   .set('type',JSON.parse(sessionStorage.getItem('user')!).roles[0].split('_')[1])
