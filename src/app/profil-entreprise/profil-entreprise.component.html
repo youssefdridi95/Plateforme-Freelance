@@ -25,7 +25,7 @@
 
            
          
-        <div class="button">
+        <div class="button" *ngIf="role==='ROLE_ENTREPRISE'">
           <button class="edit" (click)="navigateToCvCreer('/entreprise/liste')">
             Ajouter employers
           </button>
@@ -54,7 +54,7 @@
 
           <article class="publication">
           
-            <label for="popup-1-coupon" class="popup-1-open">
+            <label for="popup-1-coupon" class="popup-1-open" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'">
           
               <img class="add" src="/assets/userf.png">
                 <div class="input-post">publier quelque chose...</div>

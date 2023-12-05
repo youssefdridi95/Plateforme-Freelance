@@ -3,7 +3,7 @@
     <h2>Mon Compte</h2>
 
     <div class="user-image">
-      <img [src]="url" alt="User Image" />
+      
       <label  *ngIf="popup == false" for="file" class="file-button"></label>
       <input  class="file-input" type="file" id="file" (change)="onFileChange($event)" />
     </div>

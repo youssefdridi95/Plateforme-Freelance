@@ -47,6 +47,8 @@ export class ListeComponent implements OnInit {
 
     if (this.userForm.valid) {
       const { email, role } = this.userForm.value;
+    console.log(role);
+    
       this.enterpriseService.addUser({
         "idEntreprise": userId,
         "email": email,
