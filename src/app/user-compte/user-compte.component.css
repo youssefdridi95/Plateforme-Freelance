@@ -309,20 +309,29 @@ h3.title {
   margin: auto;
   width: 90%;
 }
-
+.name{
+  display: flex;
+  align-items: center !important; 
+  justify-content: flex-start;
+  width: 100%;
+  gap: 1rem;
+}
 .content-publication .heading .name img {
-  width: 50px;
-  height: 50px;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
   border-radius: 50%;
-  margin-right: 10px;
+  margin: 0 !important;
 }
 
-.content-publication .heading .name h3 {
-  font-size: 20px;
+.content-publication .heading .name span {
+  font-size: 0.8rem;
+  padding-top: 0.5rem;
   color: #000;
-  font-weight: 100;
 }
-
+.date{
+  font-size: 0.7rem !important ;
+  margin-left: 1rem;
+}
 .content-publication .heading p {
   color: #818181;
   font-size: 15px;

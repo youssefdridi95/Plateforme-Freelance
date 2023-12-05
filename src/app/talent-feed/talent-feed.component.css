@@ -341,7 +341,9 @@
     font-size: 1.3rem;
   }
   
-  
+  .date{
+    font-size: 0.8rem;
+  }
   
   .content-publication  .comment:before {
     content: '\f165'; /* Code Unicode pour l'icône dislike dans Font Awesome */
