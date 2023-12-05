@@ -82,4 +82,7 @@ navigateToProfil(){
         this.router.navigate(['/entreprise/profil',JSON.parse(sessionStorage.getItem('user')!).id])
 
 }
+
+
+
 }

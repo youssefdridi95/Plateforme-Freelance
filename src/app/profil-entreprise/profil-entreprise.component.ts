@@ -18,6 +18,7 @@ export class ProfilEntrepriseComponent {
   posts: any;
 
   emailpro = JSON.parse(sessionStorage.getItem('user')!).email;
+  role = JSON.parse(sessionStorage.getItem('user')!).roles[0];
   nom = JSON.parse(sessionStorage.getItem('profil')!).profileHeadline;
 
   idEntreprise :any 
@@ -60,7 +61,7 @@ export class ProfilEntrepriseComponent {
  // Assuming the API returns an array of users
       },
       error => {
-        console.error('Error fetching entreprises:', error);
+        console.error('Erreur lors de la récupération des entreprises:', error);
       }
     );
   }
@@ -68,14 +69,14 @@ export class ProfilEntrepriseComponent {
     this.postService.getUserPosts(userId).subscribe(
       res => {
         this.posts = res;
-        console.log('reussite des posts', res);
+        console.log('reussite affichage des publications', res);
      
         sessionStorage.setItem('posts', JSON.stringify(res))
 
       },
       err => {
         console.log('failed to get posts', err);
-        this.toastr.error('failed post')
+        this.toastr.error('erreur affichage publication')
 
         // Vérifiez si err.error et err.error.message existent avant d'y accéder
 

@@ -5,6 +5,7 @@ import { Component , } from '@angular/core';
 import {  FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { PostService } from '../services/post.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 
@@ -23,7 +24,7 @@ export class AddPostComponent   {
 
   totalFileSizeExeeded : boolean =false
    totalSize=0
-  constructor(private formBuilder: FormBuilder,private postService:PostService,private toastr: ToastrService ) {
+  constructor(private formBuilder: FormBuilder,private postService:PostService,private toastr: ToastrService,private route :Router ) {
     this.postForm = this.formBuilder.group({
       competence: ['', Validators.required],
       category: ['', Validators.required],
@@ -149,7 +150,7 @@ getControls() {
       
   console.log(res);
         
-        
+    //    this.route.navigate(['/'])
   this.toastr.success('a été publié avec success ','Post')
 
       },

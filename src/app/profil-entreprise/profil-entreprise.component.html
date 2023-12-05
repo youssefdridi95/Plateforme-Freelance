@@ -25,7 +25,7 @@
 
            
          
-        <div class="button">
+        <div class="button" *ngIf="role==='ROLE_ENTREPRISE'">
           <button class="edit" (click)="navigateToCvCreer('/entreprise/liste')">
             Ajouter employers
           </button>
@@ -54,7 +54,7 @@
 
           <article class="publication">
           
-            <label for="popup-1-coupon" class="popup-1-open">
+            <label for="popup-1-coupon" class="popup-1-open" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'">
           
               <img class="add" src="/assets/userf.png">
                 <div class="input-post">publier quelque chose...</div>
@@ -63,7 +63,7 @@
 
          
       <div   *ngFor="let post of posts.content "  class="content-publication wrap shadow">
-        <button class="delete " (click)="deletePost(post.id)"><i class="fa-regular fa-trash-can"></i></button>
+        <button class="delete " (click)="deletePost(post.id)" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-trash-can" ></i></button>
 
         <div class="heading flex-center">
           <div class="name flex-center" style="text-align: left;">
