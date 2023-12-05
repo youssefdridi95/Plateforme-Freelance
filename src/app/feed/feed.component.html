@@ -1,0 +1,40 @@
+<div class="post">
+    <h3 class="title">Publication</h3>
+
+    <div class="popup-1-wrap">
+        <input id="popup-1-coupon" type="checkbox">
+        <div class="popup-1-overlay">
+            <label for="popup-1-coupon" class="popup-1-trigger"></label>
+            <div class="popup-1-content">
+                <label for="popup-1-coupon" class="popup-1-close">×</label>
+                <app-add-post></app-add-post>
+            </div>
+        </div>
+    </div>
+
+    <article class="publication">
+        <label for="popup-1-coupon" class="popup-1-open">
+            <img class="add" src="/assets/was.png">
+            <div class="input-post">Quoi de neuf</div>
+        </label>
+
+        <ng-container>
+            <div class="content-publication wrap shadow">
+                <div class="heading flex-center">
+                    <div class="name flex-center" style="text-align: left;">
+                        <img src="/assets/was.png" alt="User Image">
+                    </div>
+                    <!-- <p class="date" style="text-align: left;">{{post?.date}}</p> -->
+                    <img src="https://placehold.co/600x400" style="width: 150px; height: 100px;" alt="Image">
+                </div>
+                <div class="public" style="text-align: right;">
+                    <!-- <p>{{post?.desc}}.</p> -->
+                </div>
+                <div class="fav">
+                    <button class="like">Like</button>
+                    <button class="comment">dislike</button>
+                </div>
+            </div>
+        </ng-container>
+    </article>
+</div>

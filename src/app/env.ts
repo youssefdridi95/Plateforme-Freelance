@@ -20,6 +20,7 @@ export interface Env {
     getUserProfil : string
     editUserProfil : string, 
      updatepassword : string,
+     getUserSkill : string,
     addmploye:string,
     addemp:string,
     employer:string,

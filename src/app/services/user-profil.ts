@@ -18,13 +18,14 @@ export class UserProfil {
     this.getUserProfil = this.env.getUserProfil
      this.editUser = this.env.editUserProfil
      this.updatepssword = this.env.updatepassword
-
+     this.getUserSkill = this.env.getUserSkill
    }
   
 
    private url 
    private  userCreateProfil 
    private getUserProfil
+   private getUserSkill 
 // function userProfiladd  api call 
    private editUser
    private updatepssword
@@ -44,5 +45,8 @@ export class UserProfil {
     return this.http.put(this.url + this.updatepssword,{},{params});
   }
   
-
+  getUserBySkill(params: any){
+    return this.http.put(this.url + this.getUserSkill,{},{params});
+  }
+  
 }

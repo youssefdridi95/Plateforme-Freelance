@@ -43,6 +43,7 @@ import { Section2Component } from './section2/section2.component';
 import { EntrepriseupdateComponent } from './entrepriseupdate/entrepriseupdate.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 import { RechercheComponent } from './recherche/recherche.component';
+import { FeedComponent } from './feed/feed.component';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { RechercheComponent } from './recherche/recherche.component';
     AddUserComponent,
     UserUpdateComponent,
     EntrepriseupdateComponent,
-    RechercheComponent
+    RechercheComponent,
+    FeedComponent
    
 
     

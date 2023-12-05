@@ -14,7 +14,7 @@ export const environments= {
     verifcompte : '/auth/verifCompte',
     regenerateOtp : '/auth/regenerateOtp',
    
-  
+    getUserSkill: '/api/umanlink/profiles/individuals/all/by-skill',
    
    
     userProfil : "",
@@ -40,7 +40,7 @@ export const environments= {
     addPost: '/api/umanlink/postes/create-post',
     deletePost: '/api/umanlink/postes/delete-one-by-id',
     getUserPost: '/api/umanlink/postes/all/by-user',
-    getSkillPost: '',
+    getSkillPost: '/api/umanlink/postes/all/by-skill',
 
 
     getFilePost: '/api/umanlink/profiles/individuals/update-Talent',
