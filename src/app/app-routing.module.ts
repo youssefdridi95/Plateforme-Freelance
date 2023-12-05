@@ -39,41 +39,39 @@ const routes: Routes = [
 
   {path : "user/connexion/:type" , component : UserInscritComponent ,canActivate:[loggedinGuard]},
   {path:"section",component :SectionComponent },
-  {path:"CreerCompteEmployee/:email/:idEntreprise/:role",component :AddUserComponent },
-  {path:"recherche",component :RechercheComponent },
+  {path:"CreerCompteEmployee/:email/:idEntreprise/:role",component :AddUserComponent,canActivate: [AuthGuard] },
+  {path:"recherche",component :RechercheComponent ,canActivate: [AuthGuard] },
 
-  {path:"talents/list/:skill",component :ListeEmpComponent },
-  {path:"entreprise/feed/:skill",component :EntrepriseFeedComponent },
+  {path:"talents/list/:skill",component :ListeEmpComponent,canActivate: [AuthGuard] },
+  {path:"entreprise/feed/:skill",component :EntrepriseFeedComponent ,canActivate: [AuthGuard]},
   {path:"entreprise/liste",component :ListeComponent , canActivate: [AuthGuard]},
 
-  {path:"entreprise/update",component :EntrepriseupdateComponent },
-  {path:"",component :HomeComponent },
+  {path:"entreprise/update",component :EntrepriseupdateComponent ,canActivate: [AuthGuard]},
+  {path:"",component :HomeComponent ,canActivate:[loggedinGuard]},
   {path:"accueil",component :AccueilComponent },
-  {path : "user/connexion/:type" , component : UserInscritComponent },
-  {path:"profil/entreprise",component :ProfilEntrepriseComponent },
-  {path:"entreprise/profil/:id",component :ProfilEntrepriseComponent},
+  {path:"profil/entreprise",component :ProfilEntrepriseComponent,canActivate: [AuthGuard] },
+  {path:"entreprise/profil/:id",component :ProfilEntrepriseComponent,canActivate: [AuthGuard]},
 
   {path:"entreprise/connexion/:type",component :LoginEntrepriseComponent,canActivate:[loggedinGuard] },
-  {path:"entreprise/creation",component :CreationEntrepriseComponent},
+  {path:"entreprise/creation",component :CreationEntrepriseComponent,canActivate: [AuthGuard]},
   {path:"changeMdp/:role/:reset",component :RecupMDPComponent},
   {path:"mdp",component :MdpComponent},
   {path:"role",component :RoleComponent ,canActivate:[loggedinGuard] },
-  {path:"cv/creer",component :CvBuilderComponent },
+  {path:"cv/creer",component :CvBuilderComponent,canActivate: [AuthGuard] },
   {path:"cv/edit",component :CvUpdateComponent , canActivate: [AuthGuard] },
   {path:"cv/afficher",component :CvPreviewComponent , canActivate: [AuthGuard]},
   {path: "user/profil", component : ProfilComponent , canActivate: [AuthGuard]},
   {path: "user/compte/:id", component : UserCompteComponent, canActivate: [AuthGuard,talentGuard] },
   {path: "user/form" , component : UserFormComponent , canActivate: [AuthGuard]},
-  {path: "user/profile/create" , component : UserFormComponent},
-  {path: "verif/email/:role/:email" , component : VerifEmailComponent},
-  {path: "access/denied/404" , component : AccessDenied403Component},
-  {path: "user/update", component :UserUpdateComponent},
-
-
+  {path: "user/profile/create" , component : UserFormComponent,canActivate: [AuthGuard]},
+  {path: "verif/email/:role/:email" , component : VerifEmailComponent,canActivate: [AuthGuard]},
+  {path: "user/update", component :UserUpdateComponent,canActivate: [AuthGuard]},
+  
+  
  
 
   {
-    path: 'post',
+    path: 'post', canActivate: [AuthGuard] ,
  // this is the component with the <router-outlet> in the template
     children: [
       {path: "add" , component : AddPostComponent},
@@ -81,6 +79,7 @@ const routes: Routes = [
       {path: "feed" , component : TalentFeedComponent},
     ]
   },
+  {path: "access/denied/404" , component : AccessDenied403Component},
   {path: "**" , component : NotFound404Component},
 
 ];

@@ -25,12 +25,14 @@ canActivate(
   } else  {
     this.toastr.info('already loggedin','user')
 
-    if (JSON.parse(sessionStorage.getItem('user')!).roles.includes(this.env.roles.entAdmin) ||
-         JSON.parse(sessionStorage.getItem('user')!).roles.includes(this.env.roles.entRecruter || 
-          JSON.parse(sessionStorage.getItem('user')!).roles.includes(this.env.roles.entEditor)) ) {
+    if (JSON.parse(sessionStorage.getItem('user')!).roles.includes(this.env.roles.entAdmin) 
+         ) {
       
             return this.router.createUrlTree(['/entreprise/profil',JSON.parse(sessionStorage.getItem('user')!).id]);
-    }
+    }else if ( JSON.parse(sessionStorage.getItem('user')!).roles.includes(this.env.roles.entRecruter || 
+      JSON.parse(sessionStorage.getItem('user')!).roles.includes(this.env.roles.entEditor)))
+      return this.router.createUrlTree(['/entreprise/profil',JSON.parse(sessionStorage.getItem('user')!).idEntreprise]);
+
    else if (JSON.parse(sessionStorage.getItem('user')!).roles.includes(this.env.roles.user)  ) {
           return this.router.createUrlTree(['/user/compte',JSON.parse(sessionStorage.getItem('user')!).id]);
 }

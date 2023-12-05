@@ -99,7 +99,6 @@ import { EntrepriseFeedComponent } from './entreprise-feed/entreprise-feed.compo
     NgSelectModule,
      // required animations module
     ToastrModule.forRoot({
-      timeOut: 5000,
       positionClass: 'toast-top-center',
       closeButton : true
     }), // ToastrModule added
