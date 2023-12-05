@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recherche',
@@ -7,5 +7,11 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./recherche.component.css']
 })
 export class RechercheComponent {
+  skill: string = '';
 
+  constructor(private router: Router) {}
+
+  rechercher() {
+    this.router.navigate(['/talents/list', this.skill]);
+  }
 }
