@@ -21,6 +21,8 @@ export class UserUpdateComponent {
   ngOnInit() {
     // Récupérer l'utilisateur depuis la session
     const userString = sessionStorage.getItem('profil');
+    this.profil = JSON.parse(sessionStorage.getItem('profil')!);
+
     if (userString) {
        this.profil = JSON.parse(userString);
        this.edituser = new FormGroup({

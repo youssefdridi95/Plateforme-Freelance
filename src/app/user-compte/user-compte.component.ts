@@ -17,7 +17,10 @@ export class UserCompteComponent {
 
   constructor(private toastr: ToastrService, private userProfilService: UserProfil, private router: Router, private roote: ActivatedRoute, private postService: PostService) {
 
-    
+    this.roote.paramMap.subscribe(params => { this.userId = params.get('id') 
+    this.getProfil();
+    this.getPost(this.userId);
+  })
   }
 
   navigateToCvCreer(link: String) {
@@ -39,9 +42,8 @@ export class UserCompteComponent {
 
   // Dans la méthode ngOnInit
   ngOnInit() {
-    this.roote.paramMap.subscribe(params => { this.userId = params.get('id') })
-    this.getProfil();
-    this.getPost(this.userId);
+ 
+   
 
     const storedUserId = sessionStorage.getItem('user');
     if (storedUserId) {
@@ -65,13 +67,19 @@ export class UserCompteComponent {
   }
 
   getProfil() {
+    sessionStorage.removeItem('profil');
+
     let params = new HttpParams().set('userId', JSON.parse(sessionStorage.getItem('user')!).id);
 
     this.userProfilService.getProfil(params).subscribe(
       res => {
         // console.log('reussite', res);
         // this.toastr.success('reussite');
+        console.log(this.userId);
+
         if (this.userId == JSON.parse(sessionStorage.getItem('user')!).id) {
+console.log('tgegte');
+
         sessionStorage.setItem('profil',JSON.stringify(res));
         this.isMine=true
           this.profil = JSON.parse(sessionStorage.getItem('profil')!);
