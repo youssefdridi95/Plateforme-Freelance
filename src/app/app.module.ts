@@ -45,6 +45,10 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 import { RechercheComponent } from './recherche/recherche.component';
 import { TalentFeedComponent } from './talent-feed/talent-feed.component';
 import { EntrepriseFeedComponent } from './entreprise-feed/entreprise-feed.component';
+import { ChatsComponent } from './chats/chats.component';
+import { ChatsService } from './services/chats.service';
+import { rxStompServiceFactory } from './rx-stomp-service-factory';
+import { RxStompService } from './rx-stomp.service';
 
 
 @NgModule({
@@ -81,7 +85,8 @@ import { EntrepriseFeedComponent } from './entreprise-feed/entreprise-feed.compo
     EntrepriseupdateComponent,
     RechercheComponent,
     TalentFeedComponent,
-    EntrepriseFeedComponent
+    EntrepriseFeedComponent,
+    ChatsComponent
    
 
     
@@ -104,7 +109,10 @@ import { EntrepriseFeedComponent } from './entreprise-feed/entreprise-feed.compo
     }), // ToastrModule added
     
   ],
-  providers: [ AuthGuard,loggedinGuard,talentGuard],
+  providers: [ AuthGuard,loggedinGuard,talentGuard,  {
+    provide: RxStompService,
+    useFactory: rxStompServiceFactory,
+  },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

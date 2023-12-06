@@ -1,6 +1,13 @@
 
 export interface Env {
     backendUrl : string ,
+    webSocketBackendUrl : string ,
+    connectUser : string,
+    disConnectUser : string,
+
+    chatList : string,
+    username : string,
+
     usersSignup :string,
     usersSignin :string,
     requestResetPwd : string,

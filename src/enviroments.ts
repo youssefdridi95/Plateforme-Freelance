@@ -2,8 +2,16 @@
 
 export const environments= {
  
- // backendUrl : "http://localhost:9090" ,
-    backendUrl : "http://192.168.195.29:9090" ,
+    // backendUrl : "http://192.168.195.70:9090" ,
+    // webSocketBackendUrl : 'ws://192.168.165.70:9090/ws',
+
+    backendUrl : "http://localhost:9090" ,
+    webSocketBackendUrl : 'ws://localhost:9090/ws',
+    connectUser : '/user/connectUser/userId',
+    disConnectUser : '/user/disconnectUser/userId',
+    chatList : '/api/chats/get/userId/',
+    username : '/user/get/',
+
     
     usersSignup :"/auth/signup",
     usersSignin :"/auth/signin",
@@ -65,4 +73,8 @@ export const environments= {
         entEditorRole: 'editor',
         entEmployeeRole: 'employee',
     }
+
+
+
+
 }
