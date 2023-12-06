@@ -57,8 +57,11 @@ export class ProfilEntrepriseComponent {
     this.enterpriseService.getEntrepriseByid(idEntreprise).subscribe(
       (data: any) => {
           this.entreprise = data; 
+          if (idEntreprise == JSON.parse(sessionStorage.getItem('user')!).id ||
+          idEntreprise == JSON.parse(sessionStorage.getItem('user')!).idEntreprise ) {
+            sessionStorage.setItem('profil',JSON.stringify(data));
         
- // Assuming the API returns an array of users
+           }
       },
       error => {
         console.error('Erreur lors de la récupération des entreprises:', error);
