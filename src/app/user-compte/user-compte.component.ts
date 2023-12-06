@@ -43,13 +43,11 @@ export class UserCompteComponent {
     this.getProfil();
     this.getPost(this.userId);
 
-
-    const storedUsername = sessionStorage.getItem('user');
-    if (storedUsername) {
-      const user = JSON.parse(storedUsername);
-      this.email = user.email;
-      this.username = user.username;
-      this.userId = user.id;
+    const storedUserId = sessionStorage.getItem('user');
+    if (storedUserId) {
+      const storedUser = JSON.parse(storedUserId);
+      // Comparaison pour déterminer si le bouton doit être visible
+      // this.isMine = this.userId === storedUser.id;
 
       // Récupérez le chemin de l'image de l'utilisateur depuis la session
 
@@ -62,7 +60,9 @@ export class UserCompteComponent {
     }
 
   }
-
+  isButtonVisible(): boolean {
+    return this.isMine;
+  }
 
   getProfil() {
     let params = new HttpParams().set('userId', JSON.parse(sessionStorage.getItem('user')!).id);
@@ -91,11 +91,12 @@ export class UserCompteComponent {
   }
 
   getPost(userId: any) {
+    
     this.postService.getUserPosts(userId).subscribe(
       res => {
         this.posts = res;
         console.log('reussite des posts', res);
-        // this.toastr.success('post ')
+        this.toastr.success('post ')
         // Faites quelque chose avec les posts récupérés, par exemple, assignez-les à une variable de composant
         // this.posts = res;
         sessionStorage.setItem('posts', JSON.stringify(res))
@@ -143,6 +144,6 @@ export class UserCompteComponent {
       );
     }
   }
-  
+
 
 }

@@ -26,10 +26,10 @@ export class EntrepriseFeedComponent {
     
       skill:  any;
       posts: any 
-    
-    
+    profile: any
       ngOnInit() {
-        
+        this.profile = JSON.parse(sessionStorage.getItem('profil')!);
+
       }
     
     
