@@ -356,7 +356,7 @@ h3.title {
 .content-publication .public .img img {
   width: 100%;
 }
-
+.content-publication  .share,
 .content-publication  .like,
 .content-publication  .comment {
   /* padding: 7px 16px; */
@@ -371,10 +371,23 @@ h3.title {
   transition: all .1s;
 }
 .fav {
-   display: flex;}
+   display: flex;
+  }
 
-.content-publication  .like {
+.content-publication  .like   {
   margin-right: 10px;
+  font-size: 100%;
+
+}
+.content-publication  .comment   {
+  margin-right: 10px;
+  font-size: 100%;
+
+}
+.content-publication  .share   {
+  margin-right: 10px;
+  font-size: 100%;
+
 }
 .editProfil{
   position: absolute;
@@ -386,6 +399,12 @@ h3.title {
   content: '\f164  ';
   font-family: fontAwesome;
   margin-right: 10px;
+  font-size: 100%;
+}
+.content-publication .like:hover:before,
+.content-publication .comment:hover:before,
+.content-publication .share:hover:before {
+  transform: scale(2.1); /* Ajustez la valeur selon vos préférences, 1.1 agrandit légèrement l'icône */
 }
 .delete {
   background-color: white;
@@ -400,13 +419,22 @@ h3.title {
 
 
 .content-publication  .comment:before {
-  content: '\f165'; /* Code Unicode pour l'icône dislike dans Font Awesome */
+  content: '\f075'; /* Utilisez le code correspondant à votre icône de commentaire */
   font-family: fontAwesome;
   margin-right: 7px;
   box-shadow: 0px 6px 16px -6px rgba(94, 92, 92, 0.5);
+  font-size: 100%;
 
 }
 
+.content-publication  .share:before {
+  content: '\f1e0'; /* Code pour l'icône de partage dans Font Awesome */
+  font-family: fontAwesome;
+  margin-right: 7px;
+  box-shadow: 0px 6px 16px -6px rgba(94, 92, 92, 0.5);
+  font-size: 100%;
+
+}
 
 .content-publication p {
   font-size: 40px;
