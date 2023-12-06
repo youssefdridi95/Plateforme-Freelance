@@ -55,7 +55,7 @@ export class EntrepriseupdateComponent {
   "profileHeadline": this.updateForm.value.title,
   "activity": this.updateForm.value.activity,
   "timezone": this.updateForm.value.timezone,
-  "adresse": this.updateForm.value.title
+  "adresse": this.updateForm.value.adresse
 }
   
         this.enterpriseService.updateEntreprise(data).subscribe(
@@ -64,7 +64,7 @@ export class EntrepriseupdateComponent {
             this.toastr.success('Modification reussite');
             console.log(userId);
             
-            this.router.navigate(['/entreprise/profil',userId])
+            //this.router.navigate(['/entreprise/profil',userId])
           },
           (err) => {
             console.log('failed', err);

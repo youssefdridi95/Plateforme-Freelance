@@ -16,7 +16,10 @@ export class ProfilEntrepriseComponent {
   arrowUp: boolean = false;
   entreprise:any;
   posts: any;
-
+  post = {
+    date: '2023-12-06T12:42:31.039', // Mettez votre date ici
+    // Autres propriétés du post
+  };
   emailpro = JSON.parse(sessionStorage.getItem('user')!).email;
   role = JSON.parse(sessionStorage.getItem('user')!).roles[0];
   nom = JSON.parse(sessionStorage.getItem('profil')!).profileHeadline;
@@ -43,7 +46,11 @@ export class ProfilEntrepriseComponent {
 
 
 }
-
+formatDate(dateString: string): string {
+  const parts = dateString.split('T')[0].split('-');
+  const formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+  return formattedDate;
+}
   // ... autres méthodes
 
   navigateToCvCreer(link: String) {
@@ -102,4 +109,6 @@ export class ProfilEntrepriseComponent {
       );
     }
   }
+
+  
 }
