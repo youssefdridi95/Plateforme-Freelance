@@ -2,8 +2,8 @@
 
 export const environments= {
  
-  //  backendUrl : "http://localhost:9090" ,
-    backendUrl : "http://192.168.195.26:9090" ,
+   backendUrl : "http://localhost:9090" ,
+    // backendUrl : "http://192.168.195.29:9090" ,
     
     usersSignup :"/auth/signup",
     usersSignin :"/auth/signin",
@@ -43,7 +43,7 @@ export const environments= {
     getSkillPost: '/api/umanlink/postes/all/by-skill',
 
 
-    getFilePost: '/api/umanlink/profiles/individuals/update-Talent',
+    getFilePost: '/api/umanlink/postes/get-post-file',
 
 
     getUserProfil: '/api/umanlink/profiles/individuals/get-one/by-user',
