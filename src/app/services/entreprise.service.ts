@@ -74,6 +74,8 @@ deleteUser(userId: string): Observable<any> {
   return this.http.delete(this.url+this.delete,{params});
 }
 updateEntreprise(data:any) {
+  console.log(data);
+  
   return this.http.put(this.url + this.update,data);
 }
 }
