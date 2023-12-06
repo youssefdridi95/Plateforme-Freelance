@@ -16,7 +16,7 @@ export class ListeEmpComponent implements OnInit {
 skill : any
   constructor(private toastr: ToastrService, private userProfilService: UserProfil, private router: Router, private route: ActivatedRoute, private postService: PostService) {
     this.route.paramMap.subscribe(params => { 
-      this.skill= params.get('skill') ;
+      this.skill= params.get('skill')?.toUpperCase() ;
       
       
       }) ;

@@ -1,7 +1,7 @@
 // add-post.component.ts
 
 import { HttpParams } from '@angular/common/http';
-import { Component , } from '@angular/core';
+import { Component, EventEmitter, Output , } from '@angular/core';
 import {  FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { PostService } from '../services/post.service';
 import { ToastrService } from 'ngx-toastr';
@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-post.component.css']
 })
 export class AddPostComponent   {
- 
+
 
   postForm: FormGroup 
 
