@@ -52,6 +52,9 @@ edituserProfile(){
     res=>{
       console.log(res);
       this.toastr.success('modification avec succes')
+      // sessionStorage.removeItem('profil');
+      // sessionStorage.getItem('profil');
+
       console.log(this.profil.user);
         setTimeout(()=>{
           this.router.navigate(['/user/compte/',this.profil.user]);
