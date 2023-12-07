@@ -32,6 +32,7 @@ import { EntrepriseupdateComponent } from './entrepriseupdate/entrepriseupdate.c
 import { UserUpdateComponent } from './user-update/user-update.component';
 import { TalentFeedComponent } from './talent-feed/talent-feed.component';
 import { EntrepriseFeedComponent } from './entreprise-feed/entreprise-feed.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -66,7 +67,7 @@ const routes: Routes = [
   {path: "user/profile/create" , component : UserFormComponent,canActivate: [AuthGuard]},
   {path: "verif/email/:role/:email" , component : VerifEmailComponent,canActivate: [AuthGuard]},
   {path: "user/update", component :UserUpdateComponent,canActivate: [AuthGuard]},
-  
+  {path: "dashboard" , component : DashboardComponent},
   
  
 

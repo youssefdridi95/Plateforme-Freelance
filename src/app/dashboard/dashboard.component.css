@@ -1,0 +1,70 @@
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .col-lg-3 {
+    flex: 0 0 23%;
+    margin-bottom: 20px;
+    border-radius: 15px; /* Ajoutez cette ligne pour définir le border radius */
+  }
+  
+  .panel {
+    text-align: center;
+    border-radius: 15px; /* Ajoutez cette ligne pour définir le border radius */
+  }
+  
+  .panel-heading {
+    padding: 10px;
+  }
+  
+  .panel-footer {
+    padding: 10px;
+    border-radius: 15px; /* Ajoutez cette ligne pour définir le border radius */
+
+  }
+  
+  .panel-primary {
+    background-color: #3498db;
+  }
+  
+  .panel-green {
+    background-color: #2ce0d7;
+  }
+  
+  .panel-yellow {
+    background-color: gray;
+  }
+  
+  .panel-red {
+    background-color: #dbdbd4;
+  }
+  
+  .huge {
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+  
+  .panel-primary .panel-footer {
+    background-color: #2980b9;
+  }
+  
+  .panel-green .panel-footer {
+    background-color: #08afa7;
+  }
+  
+  .panel-yellow .panel-footer {
+    background-color: rgb(104, 97, 97);
+  }
+  
+  .panel-red .panel-footer {
+    background-color: #a8a8a5;
+  }
+  
+  .panel-footer span {
+    color: #fff;
+  }
+  

@@ -30,6 +30,7 @@ export interface Env {
     getFilePost : string,
     update:string,
     getPostFilter: string,
+    viewNumber: string,
     roles : {
     userRole : string , // used in the signup (the role sent to the backend )
     user : string , //  (the role receied from the backend )

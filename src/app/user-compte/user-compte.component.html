@@ -43,7 +43,12 @@
   </div>
   <div class="post">
 
-    <h3 class="title"> Publication</h3>
+    <div class="title-container">
+      <h3 (click)="pub = true" class="title" [class.underlined]="pub">Publication</h3>
+      <h3 (click)="pub = false" class="title" [class.underlined]="!pub">Dashboard</h3>
+    </div>
+    
+    
 
     <div class="popup-1-wrap">
       <input id="popup-1-coupon" type="checkbox">
@@ -60,14 +65,14 @@
 
 
 
-    <article class="publication">
+
+    <article *ngIf="pub===true" class="publication">
       <!--  Send post  -->
 
       <label  for="popup-1-coupon" class="popup-1-open">
 
         <img class="add" src="/assets/was.png">
         <div class="input-post">Quoi de neuf</div>
-
       </label>
 
 
@@ -75,7 +80,7 @@
       <!--  Publications  -->
 
 
-      <ng-container>
+      <ng-container *ngIf="posts.content">
         <div *ngFor="let post of posts.content " class="content-publication wrap shadow">
           <button  class="delete" (click)="deletePost(post.id)"><i
               class="fa-regular fa-trash-can"></i></button>
@@ -104,6 +109,14 @@
           </div>
         </div>
       </ng-container>
+
+    </article>
+
+
+    <article *ngIf="pub===false" class="publication">
+       <app-dashboard></app-dashboard>
+
+ 
 
     </article>
 

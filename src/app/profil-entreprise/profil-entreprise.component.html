@@ -63,32 +63,39 @@
 
          
       <div   *ngFor="let post of posts.content "  class="content-publication wrap shadow">
-        <button class="delete " (click)="deletePost(post.id)" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-trash-can" ></i></button>
 
-        <div class="heading flex-center">
-          <div class="name flex-center" style="text-align: left;">
+        <div class="heading">
+          <button class="delete" (click)="deletePost(post.id)" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-trash-can"></i></button>
+
+          <div class="name" >
+            
             <img src="/assets/userf.png " alt="User Image">
+            <p class="title" >{{ nom }}</p>
+        
             <!-- <h3 style="text-align: left;">{{profil.anonyme}}</h3> -->
           </div>
-          <p class="date" style="text-align: left;">{{post.date}}</p>
+
           <div >
-
-            <img src="https://placehold.co/600x400" style="width: 150px;height: 100px;" alt="Image">
-
-
+            <!-- <img src="https://placehold.co/600x400" style="width: 150px;height: 100px;" alt="Image"> -->
             <!-- {{file.fileDownloadUri}} -->
             <!-- {{file.fileName}} -->
-
           </div>
-
-          <div class="public" style="text-align: right;">
-            <p style="text-align: left;">{{post.desc}}.</p>
-
-          </div>
-          <div class="fav" >
-            <button class="like">J'aime</button>
+          <p class="date" style="text-align: right; "> {{ formatDate(post.date) }}</p>
+          
+          <div class="public" style="text-align: right;padding: 4%;padding-right: 10%;">
             
+            <p style="text-align: left;">{{post.desc}}.</p>
           </div>
+
+          <br>
+
+<div class="reaction">
+          <button class="like" (click)="deletePost(post.id)" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-heart"></i></button>
+          <button class="comment" (click)="deletePost(post.id)" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-comment"></i></button>
+          <button class="share" (click)="deletePost(post.id)" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-share-from-square"></i></button>
+
+
+        </div>
         </div>
       </div> 
           </article>

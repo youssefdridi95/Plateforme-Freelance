@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Env } from '../env';
 import { environments } from 'src/enviroments';
@@ -16,14 +16,14 @@ export class UserService {
     this.url =this.env.backendUrl;
     this.userSignup = this.env.usersSignup
     this.userSignin  = this.env.usersSignin
+    this.viewNumber = this.env.viewNumber
    }
   
 
    private url 
    private  userSignup 
    private  userSignin 
-
-
+  private viewNumber 
 
 
   // function signup api call
@@ -32,6 +32,16 @@ signup(user: any){
 }
 loginUser(user: any){
   return this.http.post(this.url + this.userSignin, user);
+}
+updateViewNbr(id  : any , idVisiteur : any  ){
+  
+  let params = new HttpParams()
+  .set('id', id)
+  .set('idVisiteur', idVisiteur )
+  console.log(params);
+
+ return this.http.put(this.url + this.viewNumber,{},{params});
+
 }
 
 

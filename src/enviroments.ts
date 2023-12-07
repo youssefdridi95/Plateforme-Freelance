@@ -2,9 +2,8 @@
 
 export const environments= {
  
+    backendUrl : "http://192.168.195.29:9090" ,
   //  backendUrl : "http://localhost:9090" ,
-    // backendUrl : "http://192.168.195.29:9090" ,
-   backendUrl : "http://localhost:9090" ,
     // backendUrl : "http://192.168.195.26:9090" ,
     
     usersSignup :"/auth/signup",
@@ -46,6 +45,7 @@ export const environments= {
 
     getPostFilter: '',
 
+    viewNumber:'/api/umanlink/profiles/individuals/update-Nombre De Vues',
     getFilePost: '/api/umanlink/postes/get-post-file',
 
 
