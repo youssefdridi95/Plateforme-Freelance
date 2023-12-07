@@ -1,8 +1,12 @@
 import { RxStompConfig } from '@stomp/rx-stomp';
+import { environments } from 'src/enviroments';
+import { Env } from './env';
+var env  =environments as Env 
+console.log(env.webSocketBackendUrl);
 
 export const myRxStompConfig: RxStompConfig = {
   // Which server?
-  brokerURL: 'ws://localhost:9090/ws',
+  brokerURL: env.webSocketBackendUrl,
 
   // Headers
   // Typical keys: login, passcode, host
@@ -19,7 +23,7 @@ export const myRxStompConfig: RxStompConfig = {
   // Wait in milliseconds before attempting auto reconnect
   // Set to 0 to disable
   // Typical value 500 (500 milli seconds)
-  reconnectDelay: 20000,
+  reconnectDelay: 5000,
 
   // Will log diagnostics on console
   // It can be quite verbose, not recommended in production

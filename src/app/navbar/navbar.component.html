@@ -44,7 +44,23 @@
           </g>
         </svg>
       </div>
-      <i class="fa-regular fa-bell"></i>
+      <i class="fa-regular fa-bell " (mouseenter)="toggleNotif()" *ngIf="notif.msgList.length==0"></i>
+      <i class="fa-regular fa-bell red" (mouseenter)="toggleNotif()" *ngIf="notif.msgList.length>0"></i>
+
+<div class="notificationWrapper">
+
+
+      <div class="notifications" *ngIf="isNotifOpen">
+     
+        <div class="notif" *ngFor="let message of notif.msgList">
+          <div class="name">John Doe</div>
+          <p>{{ message.replymessage }} - {{ message.time.split('T')[0] }}</p>
+          <div class="date">December 10, 2023</div>
+
+        </div>
+      </div>
+    </div>
+      <!-- <i class="fa-regular fa-bell" style="color :red" *ngIf=""></i> -->
       <i class="fa-regular fa-user" (mouseenter)="toggleDropdown()" ></i>
     
       <div (mouseleave)="toggleDropdown()" class="dropdown-content2" *ngIf="isDropdownOpen">

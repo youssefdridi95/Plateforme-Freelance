@@ -49,6 +49,7 @@ import { ChatsComponent } from './chats/chats.component';
 import { ChatsService } from './services/chats.service';
 import { rxStompServiceFactory } from './rx-stomp-service-factory';
 import { RxStompService } from './rx-stomp.service';
+import { NotificationMessageListService } from './notification-message-list.service';
 
 
 @NgModule({
@@ -109,7 +110,7 @@ import { RxStompService } from './rx-stomp.service';
     }), // ToastrModule added
     
   ],
-  providers: [ AuthGuard,loggedinGuard,talentGuard,  {
+  providers: [ AuthGuard,loggedinGuard,talentGuard,NotificationMessageListService, {
     provide: RxStompService,
     useFactory: rxStompServiceFactory,
   },],

@@ -41,7 +41,7 @@ const routes: Routes = [
   {path : "user/connexion/:type" , component : UserInscritComponent ,canActivate:[loggedinGuard]},
   {path:"section",component :SectionComponent },
   {path:"CreerCompteEmployee/:email/:idEntreprise/:role",component :AddUserComponent,canActivate: [AuthGuard] },
-  {path:"recherche",component :RechercheComponent ,canActivate: [AuthGuard] },
+  {path:"recherche",component :RechercheComponent },
 
   {path:"talents/list/:skill",component :ListeEmpComponent,canActivate: [AuthGuard] },
   {path:"entreprise/feed/:skill",component :EntrepriseFeedComponent ,canActivate: [AuthGuard]},
