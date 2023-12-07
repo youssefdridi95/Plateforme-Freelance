@@ -49,30 +49,59 @@
  
 }
 
-
 .contact {
-  width: 20%;
-  min-height: 98vh;
+  width: 25%;
+  min-height: 50vh;
   max-height: 100vh; 
    overflow: auto;
   padding: 1rem 0 !important;
   background: white;
   border-radius: 1rem;
   position: sticky;
-  top: 4rem;
-  border:1px solid grey;
+  top:4rem;
+  border:0.5px solid #034f9b;
+  -webkit-box-shadow: 0px 0px 14px -4px #00000060; 
+  box-shadow: 0px 0px 14px -4px #00000060;
+  transition: .3s;
+  cursor: pointer;
+
+}
+.contact:hover {
+  transition: .6s;
+  border:2px solid #007CF8;
+  -webkit-box-shadow: 0px 0px 14px -4px rgb(255, 255, 255); 
+  box-shadow: 0px 0px 14px -4px #ffffffab;
 
 }
 .contact::-webkit-scrollbar{
   display: none;
 }
-
+label:hover{
+  color:#034f9b;
+}
 .post {
-  width: 75%;
+  border:0.5px solid #034f9b;
+  -webkit-box-shadow: 0px 0px 14px -4px #00000060; 
+  box-shadow: 0px 0px 14px -4px #00000060;
+  transition: .3s;
+  cursor: pointer;
+  width: 62%;
   border-radius: 15px;
   color: #0a0a0a;
   padding: 2rem 1rem;
   background: white;
+  /* overflow:auto ;
+  max-height: 100vh; */
+}
+.post:hover {
+  -webkit-box-shadow: 0px 0px 14px -4px #ffffff; 
+  box-shadow: 0px 0px 14px -4px #030303;
+  transition: .3s;
+  cursor: pointer;
+  width: 62%;
+  border-radius: 15px;
+  color: #0a0a0a;
+  padding: 2rem 1rem;
   /* overflow:auto ;
   max-height: 100vh; */
 }
@@ -101,7 +130,7 @@
   
   
   .post {
-  width: 98%;
+  width: 80%;
   margin: 0 auto !important;
   overflow: none !important ;
   max-height: auto !important;
@@ -111,29 +140,45 @@
   
 }
 
+.textcard:hover{
+  transition: .6s;
+  cursor: pointer;
+  
+}
+.textcard .name{
+
+text-align: center;
+color: #007CF8 !important;
+font-size: 20px !important;
+font-weight: 800;
+text-transform: uppercase;
+transition: .3s;
 
 
-
-
-
+}
+.image{
+  display: flex;
+  justify-content: center;
+}
 
 .container div img {
   width: 70%;
   height: 10%;
   object-fit: contain;
   border-radius: 50%;
+
+ 
 }
 
 
 .contact_card {
-  width: 95%;
-  background-color: rgb(250, 246, 246); ;
+  width: 80%;
+  background-color: #fcfdff;
   border-radius: 10px;
   margin: 0 auto;
-  /* Ajoutez cette ligne pour centrer horizontalement */
   text-align: left;
-  padding: 1rem;
   font-size: 0.9rem;
+
 }
 
 
@@ -146,7 +191,7 @@ button {
   margin: 1rem;
   display: flex;
   justify-content: center;
-  color: white;
+  color:#eef3f8;
 }
 
 
@@ -171,10 +216,14 @@ button {
   flex-grow: 1;
 }
 
-
+span:hover{
+color:#007CF8;
+text-decoration: underline;
+}
 
 .postuler {
   background-color: red;
+  
 }
 
 .postuler button {
@@ -196,11 +245,12 @@ padding: 2rem;
 margin: 1rem 0;
 position: relative;
 transition: background-color 0.3s;
+background-color: #fcfdff;
 }
 
 .content-publication:hover{
 
- border: 2px solid #007CF8;
+ outline: 2px solid #034f9b;
 }
 
 .content-publication .heading .name img {
@@ -225,7 +275,7 @@ transition: background-color 0.3s;
 
 
 .content-publication .heading p {
-  color: #818181;
+  color: #000000;
   font-size: 15px;
 
   
@@ -234,7 +284,7 @@ transition: background-color 0.3s;
 .content-publication .public p {
   font-size: 0.9rem;
   line-height: 1.5;
-  color: #333;
+  color: #000000;
   letter-spacing: 1px;
 
 }
@@ -250,7 +300,6 @@ transition: background-color 0.3s;
   transition: .6s;
 }
 .title:hover{
-  border-bottom: 1px solid  #007CF8;
   color: #007CF8;
   transition: all 0.2s;
 
@@ -360,6 +409,11 @@ transition: background-color 0.3s;
   padding: 5px 15px;
   /*cursor: pointer;*/
 }
+.editProfil{
+  position: absolute;
+  right: 1rem;
+
+}
 button.delete {
   background-color: white;
   position :absolute;
@@ -373,12 +427,33 @@ button.delete {
   align-items: center;
 }
 button.delete:hover {
-  background-color:white;
+  background-color:#eef3f8;
 
   color: red;
  
 }
 
+.contact i{
+  color: #007CF8;
+  right: 0;
+  width: 5rem;
+  font-size: 1.2rem;
+  gap:1rem;
+  
+}
+.contact .button  {
+  background-color: #fcfdff;
+  color: #007CF8;
+  right: 0;
+ 
+  align-items: center;
+}
+button.like:hover {
+  background-color:#fcfdff;
+  color: #034f9b;
+  
+ 
+}
 .popup-1-open {
  margin-top: 0.5rem;
   display: flex;
@@ -386,8 +461,9 @@ button.delete:hover {
  
   /*cursor: pointer; */
   transition: .3s ease;
-  width: 100%;
-  background: white;
+  width: 95%;
+  border:0.7px solid #034f9b ;
+  background:#fcfdff;
   border-radius: 10px;
 
   box-shadow: 0px 15px 20px -15px rgba(143, 142, 142, 0.5);
@@ -414,7 +490,7 @@ button.delete:hover {
 }
 
 button.like {
-  background-color: white;
+  background-color: #fcfdff;
   color: #007CF8;
   right: 0;
   top: 0px;
@@ -425,14 +501,14 @@ button.like {
   align-items: center;
 }
 button.like:hover {
-  background-color:white;
+  background-color:#fcfdff;
 
   color: #034f9b;
   
  
 }
 button.comment {
-  background-color: white;
+  background-color: #fcfdff;
   color: #007CF8;
   right: 0;
   top: 0px;
@@ -443,12 +519,12 @@ button.comment {
   align-items: center;
 }
 button.comment:hover {
-  background-color:white;
+  background-color:#fcfdff;
   color: #034f9b;
  
 }
 button.share {
-  background-color: white;
+  background-color: #fcfdff;
   color: #007CF8;
   right: 0;
   top: 0px;
@@ -459,7 +535,7 @@ button.share {
   align-items: center;
 }
 button.share:hover {
-  background-color:white;
+  background-color:#fcfdff;
 
   color: #034f9b;
   

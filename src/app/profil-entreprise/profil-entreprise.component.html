@@ -8,30 +8,27 @@
 
 
       <div class="contact">
-        <div class="title">Profil Entreprise</div>
-
-       
-          <img src="/assets/userf.png" id="blah" alt="Avatar" />
-        <br>
-
-        
+    
+     
         <div class="contact_card"  >
-          <b>Nom entreprise :</b><br> {{ nom }} <br>
-          <b>E-mail professionnel :</b><br> {{ emailpro }} <br>
-          <b>adresse :</b><br>{{ entreprise.adresse }} <br>
-          <b>timezone :</b><br> {{ entreprise.timezone }} <br>
-          <b>Secteur d'activite :</b><br> {{ entreprise.activity }} <br>
+          <button class="like"  (click)="navigateToCvCreer('/entreprise/update')" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-solid fa-pencil editProfil"></i></button>
+         <div class="image">
+          <img src="/assets/userf.png"  id="blah" alt="Avatar" /></div>
+          <div class="textcard">
+            <div class="name">
+          <br> <label >{{ nom }} </label><br><br><br></div>
+          <b> <i class="fa-solid fa-envelope"></i> </b> <span>{{ emailpro }}</span> <br><br>
+          <b><i class="fa-solid fa-location-dot"></i> </b><span>{{ entreprise.adresse }}</span> <br><br>
+          <b><i class="fa-solid fa-briefcase"></i></b> <span>{{ entreprise.activity }}</span> <br><br>
           
-
+        </div>
            
          
         <div class="button" *ngIf="role==='ROLE_ENTREPRISE'">
           <button class="edit" (click)="navigateToCvCreer('/entreprise/liste')">
-            Ajouter employers
+            Liste employers <i class="fa-solid fa-users" style="color: white;"></i>
           </button>
-          <button class="edit" (click)="navigateToCvCreer('/entreprise/update')">
-            Modifier profil
-          </button>
+        
         </div>
 
         </div>
@@ -43,7 +40,7 @@
           <div class="popup-1-overlay">
             <label for="popup-1-coupon" class="popup-1-trigger"></label>
             <div class="popup-1-content">
-              <label for="popup-1-coupon" class="popup-1-close">×</label>
+              <label for="popup-1-coupon" class="popup-1-close" >×</label>
               <app-add-post></app-add-post>
             </div>
           </div>
@@ -70,7 +67,7 @@
           <div class="name" >
             
             <img src="/assets/userf.png " alt="User Image">
-            <p class="title" >{{ nom }}</p>
+            <p class="title" ><label>{{ nom }}</label></p>
         
             <!-- <h3 style="text-align: left;">{{profil.anonyme}}</h3> -->
           </div>
@@ -84,7 +81,7 @@
           
           <div class="public" style="text-align: right;padding: 4%;padding-right: 10%;">
             
-            <p style="text-align: left;">{{post.desc}}.</p>
+            <p style="text-align: left;size: 20px;">{{post.desc}}.</p>
           </div>
 
           <br>
