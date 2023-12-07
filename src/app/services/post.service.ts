@@ -20,6 +20,8 @@ export class PostService {
     this.getUserPost = this.env.getUserPost
     this.getSkillPost = this.env.getSkillPost
     this.getFilePost = this.env.getFilePost
+    this.getpostFilt = this.env.getPostFilter
+
    }
   
 
@@ -30,7 +32,7 @@ export class PostService {
    private getUserPost 
    private getSkillPost 
    private getFilePost 
-
+   private getpostFilt 
 
   // function signup api call
 add(data:any ,params: any){
@@ -75,6 +77,14 @@ getFile(URI: any): Observable<Blob> {
   });
 }
 
+getPostFilter(skill: any  ){
+  console.log(skill);
+  
+  let params = new HttpParams().set('skill', skill)
+
+  return this.http.get(this.url + this.getpostFilt,{params});
+
+} 
 
 
 }

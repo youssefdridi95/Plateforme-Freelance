@@ -3,7 +3,7 @@
   <div class="contact">
 
     <div class="userInfo">
-      <i class="fas fa-edit editProfil" [routerLink]="['/user/update']" ></i>
+      <i class="fas fa-edit editProfil" *ngIf="isButtonVisible()" [routerLink]="['/user/update']" ></i>
 
       <!-- <img src="/assets/was.png" id="blah" alt="Avatar" /> -->
       <!-- user-compte.component.html -->
@@ -25,10 +25,10 @@
       </div>
 
       <div class="button">
-        <button  class="edit" (click)="navigateToCvCreer('/cv/edit')">
+        <button *ngIf="isButtonVisible()" class="edit" (click)="navigateToCvCreer('/cv/edit')">
           <h3>Modifier cv</h3>
         </button>
-        <button  class="read" (click)="navigateToCvCreer('cv/afficher')">
+        <button *ngIf="isButtonVisible()" class="read" (click)="navigateToCvCreer('cv/afficher')">
           <h3>Afficher cv</h3>
         </button>
 
@@ -77,7 +77,7 @@
 
       <ng-container>
         <div *ngFor="let post of posts.content " class="content-publication wrap shadow">
-          <button *ngIf="isButtonVisible()" class="delete" (click)="deletePost(post.id)"><i
+          <button  class="delete" (click)="deletePost(post.id)"><i
               class="fa-regular fa-trash-can"></i></button>
 
           <div class="heading flex-center">
