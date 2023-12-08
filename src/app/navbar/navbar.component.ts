@@ -30,7 +30,7 @@ this.isTalent='both'
     }
   }
 
-
+  role = JSON.parse(sessionStorage.getItem('user')!).roles;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
@@ -89,7 +89,35 @@ this.router.navigate(['/'])
 
 }
 
+getUserRole(): string {
+  // Get roles from session storage
+  const roles = JSON.parse(sessionStorage.getItem('user')!).roles;
 
+  // Check the role and return a corresponding value
+  if (roles.includes('ROLE_TALENT')) {
+    return 'Freelance';
+  } else if (roles.includes('ROLE_ENTREPRISE')) {
+    return 'Admin';
+  } else if (roles.includes('ROLE_RECRUTER')) {
+    return 'Recruteur';
+  } else {
+    return 'Editeur';
+  }
+}
+
+getUserName(): any {
+  var nom:any
+  const roles = JSON.parse(sessionStorage.getItem('user')!).roles;
+
+  if (roles.includes('ROLE_TALENT')) {
+    nom = JSON.parse(sessionStorage.getItem('profil')!).anonyme;
+    return nom;
+  } else if ((roles.includes('ROLE_ENTREPRISE'))|| (roles.includes('ROLE_RECRUTER'))|| (roles.includes('ROLE_RECRUTER'))) { 
+    
+    nom = JSON.parse(sessionStorage.getItem('profil')!).profileHeadline;
+    return nom;
+  }
+}
 
 navigateToProfil(){
   if(JSON.parse(sessionStorage.getItem('user')!).roles[0]==='ROLE_TALENT')

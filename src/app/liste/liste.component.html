@@ -57,16 +57,17 @@
       </tr> -->
       <tr *ngFor="let user of users" class="responsive-table__row">
           <td class="responsive-table__body__text responsive-table__body__text--name">
+            <!-- <i class="fa-solid fa-user-tie" style="margin-right: 17%; "></i> -->
             {{ user.username }}
           </td>
           <td class="responsive-table__body__text responsive-table__body__text--types">
-            {{ user.email }}
+          {{ user.email }}
           </td>
           <td class="responsive-table__body__text responsive-table__body__text--update">
             {{ user.roles[0].name }}
           </td>
           <td class="responsive-table__body__text responsive-table__body__text--country">
-            <button class="btn-info" (click)="delete(user.id)" >Supprimer</button>
+            <button class="btn-info" (click)="delete(user.id)" >Supprimer  <i class="fa-solid fa-trash-can " style="margin-left: 7%; color:rgb(209, 55, 55);"></i></button>
           </td>
      
       </tr>
@@ -99,7 +100,7 @@
         </td>
         <td class="responsive-table__body__text responsive-table__body__text--types">
           <form [formGroup]="userForm">
-          <input type="text" name="email" id="email" formControlName="email" />
+          <input type="text" name="email" id="email" formControlName="email" placeholder="Email" />
             <div *ngIf="   userForm.controls['email'].touched " class="text-danger" >
               <span *ngIf="userForm.controls['email'].errors?.['required']">
                 ce champ est obligatoire! <br>
@@ -121,7 +122,7 @@
         </td>
         <td class="responsive-table__body__text responsive-table__body__text--types">
           <form [formGroup]="userForm">
-            <button class="btn" [disabled]="!isFormValid()" (click)="add()">Ajouter</button>
+          <button class="btn" [disabled]="!isFormValid()" (click)="add()">Ajouter <i class="fa-solid fa-user-plus" style="margin-left: 7%;"></i></button>
           </form>
         </td>
       </tr>

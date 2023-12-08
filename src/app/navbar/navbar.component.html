@@ -3,7 +3,13 @@
 
   <div class="nav-items" [style.display]="navItemsDisplay">
     <div class="nav-item"  [routerLink]="['/recherche']">Accueil</div>
-    <div class="nav-item"  [routerLink]="['/post/feed']">Feed </div>
+     <div class="nav-item"  [routerLink]="['/post/feed']">Posts </div>
+     <div class="nav-item"  [routerLink]="['/post']">Rapports </div>   
+
+     <div class="nav-item"  [routerLink]="['']">Messages</div>
+
+
+
 
 
   </div>
@@ -43,14 +49,32 @@
         </svg>
       </div>
       <i class="fa-regular fa-bell"></i>
-      <i class="fa-regular fa-user" (mouseenter)="toggleDropdown()" ></i>
-    
+     
+     
+      <div>
+        <ng-container *ngIf="getUserRole() === 'Admin'; else notAdmin">
+          <!-- Content to display if the user role is admin -->
+        
+          <img src="/assets/userf.png" style="width: 4rem; text-align: center;" id="blah" (mouseenter)="toggleDropdown()" />
+        </ng-container>
+        <ng-template #notAdmin>
+          <!-- Content to display if the user role is not admin -->
+          <img src="/assets/was.png" style="width: 4rem; text-align: center;"id="blah"  (mouseenter)="toggleDropdown()" />
+        </ng-template>
+      </div>
+      
       <div (mouseleave)="toggleDropdown()" class="dropdown-content2" *ngIf="isDropdownOpen">
-        <a (click)="navigateToProfil()">Mon profil</a>
-        <a [routerLink]="['/user/profil']">Paramètres</a>
+        
+       <div class="name"> {{getUserName()}}</div>
+       
+        
+       <div class="title">{{getUserRole()}}</div>
+        <div class="dropdown-divider"></div>
+        <a (click)="navigateToProfil()"><i class="fa-regular fa-user"style="font-size: 1rem ; margin-right: 1rem;"></i>Mon profil</a>
+        <a [routerLink]="['/user/profil']"><i class="fa-solid fa-gear" style="font-size: 1rem ; margin-right: 1rem;"></i>Paramètres du compte</a>
 
         <div class="dropdown-divider"></div>
-        <a (click)="logout()" >Déconnexion</a>
+        <a (click)="logout()" ><i class="fa-solid fa-arrow-right-from-bracket"style="font-size: 1rem ; margin-right: 1rem;"></i>Déconnexion</a>
       </div>
 
     </div>
