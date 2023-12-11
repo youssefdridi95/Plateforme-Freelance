@@ -1,8 +1,4 @@
 
-<!-- <link rel="shortcut icon" href="/DevanagariBrahmi/logo.png" /> -->
-
-
-<!--EXTERNAL CSS-->
 
 <div class="container"*ngIf="entreprise">
 
@@ -11,11 +7,11 @@
     
      
         <div class="contact_card"  >
-          <button class="like"  (click)="navigateToCvCreer('/entreprise/update')" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-solid fa-pencil editProfil"></i></button>
+        <i class="fa-solid fa-pencil editProfil"(click)="navigateToCvCreer('/entreprise/update')" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"></i>
          <div class="image">
           <img src="/assets/userf.png"  id="blah" alt="Avatar" /></div>
           <div class="textcard">
-            <div class="name">
+                                                                            <div class="name">
           <br> <label >{{ nom }} </label><br><br><br></div>
           <b> <i class="fa-solid fa-envelope"></i> </b> <span>{{ emailpro }}</span> <br><br>
           <b><i class="fa-solid fa-location-dot"></i> </b><span>{{ entreprise.adresse }}</span> <br><br>

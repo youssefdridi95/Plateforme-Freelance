@@ -61,7 +61,6 @@
   width: 25%;
   min-height: 50vh;
   max-height: 100vh; 
-   overflow: auto;
   padding: 1rem 0 !important;
   background: white;
   border-radius: 1rem;
@@ -419,7 +418,9 @@ background-color: #fcfdff;
 }
 .editProfil{
   position: absolute;
-  right: 1rem;
+  right: 1rem !important;
+  text-align: center;
+  width: 1rem !important;
 
 }
 button.delete {

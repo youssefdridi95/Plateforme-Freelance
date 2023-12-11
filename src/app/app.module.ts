@@ -45,7 +45,7 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 import { RechercheComponent } from './recherche/recherche.component';
 import { TalentFeedComponent } from './talent-feed/talent-feed.component';
 import { EntrepriseFeedComponent } from './entreprise-feed/entreprise-feed.component';
-
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -94,7 +94,7 @@ import { EntrepriseFeedComponent } from './entreprise-feed/entreprise-feed.compo
     ReactiveFormsModule,
     HttpClientModule, 
     BrowserAnimationsModule,
-
+    MatChipsModule,
     CommonModule,
     NgSelectModule,
      // required animations module

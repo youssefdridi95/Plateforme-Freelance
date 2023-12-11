@@ -1,46 +1,104 @@
-<div class="post">
-    <h3 class="title">Publication</h3>
 
-    <div class="popup-1-wrap">
-        <input id="popup-1-coupon" type="checkbox">
-        <div class="popup-1-overlay">
-            <label for="popup-1-coupon" class="popup-1-trigger"></label>
-            <div class="popup-1-content">
-                <label for="popup-1-coupon" class="popup-1-close">×</label>
-                <app-add-post></app-add-post>
-            </div>
+<!-- <link rel="shortcut icon" href="/DevanagariBrahmi/logo.png" /> -->
+
+
+<!--EXTERNAL CSS-->
+
+<div class="container" >
+
+
+  <div class="contact">
+
+ 
+    <div class="contact_card"  >
+      
+       <div class="image">
+        <img src="/assets/userf.png"  id="blah" alt="Avatar" /></div>
+        <div class="textcard">
+       <div class="name">
+        <br> <label >{{ nom }} </label></div>
+      
         </div>
+      </div>
+      <br>
+      <div class="contact_card"  >
+        <mat-chip-listbox aria-label="Filtrer selection">
+          <mat-chip-option>Date</mat-chip-option>
+         
+          <mat-chip-option color="accent" selected>pertinence</mat-chip-option>
+        </mat-chip-listbox>
+        
+      </div>
+      <br>
+      <div class="contact_card"  >
+      </div>
+  </div>
+
+  <div class="post">
+    <div class="popup-1-wrap">
+      <input id="popup-1-coupon" type="checkbox">
+      <div class="popup-1-overlay">
+        <label for="popup-1-coupon" class="popup-1-trigger"></label>
+        <div class="popup-1-content">
+          <label for="popup-1-coupon" class="popup-1-close" >×</label>
+          <app-add-post></app-add-post>
+        </div>
+      </div>
     </div>
 
-    <article class="publication">
-        <label for="popup-1-coupon" class="popup-1-open">
-            <img class="add" src="/assets/was.png">
-            <div class="input-post">Publier quelque chose .. </div>
-        </label>
+    
+   
 
-        <ng-container>
-            <div  *ngFor="let post of posts " class="content-publication wrap shadow">
+      <article class="publication">
+      
+      
 
-                <div class="heading flex-center">
-                  <div class="name flex-center" >
-                    <img src="/assets/was.png " alt="User Image">
-                     <span >{{post.user.anonyme}}</span> 
-                  </div>
-                  <p class="date" >{{post.date | date : 'shortDate'}}</p>
-                  <div class="public" >
-                    <p>{{post.desc}}.</p>
+  <div *ngIf="posts.content.length === 0">
+   
+    <img id='image'src="/../assets/nodata.jpg">
+    
+  </div>  
+  <div   *ngFor="let post of posts.content "  class="content-publication wrap shadow">
+
+    <div class="heading">
+      <button class="delete" (click)="deletePost(post.id)" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-trash-can"></i></button>
+
+      <div class="name" >
+        
+        <img src="/assets/userf.png " alt="User Image">
+        <p class="title" ><label>{{ nom }}</label></p>
+    
+        <!-- <h3 style="text-align: left;">{{profil.anonyme}}</h3> -->
+      </div>
+
+      <div >
+        <!-- <img src="https://placehold.co/600x400" style="width: 150px;height: 100px;" alt="Image"> -->
+        <!-- {{file.fileDownloadUri}} -->
+        <!-- {{file.fileName}} -->
+      </div>
+      <p class="date" style="text-align: right; "> {{ formatDate(post.date)| date }}</p>
       
-                  </div>
-                  <img src="https://placehold.co/600x400" style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" alt="Image" *ngFor="let file of post.files">
-      
-      
-                
-                  <div class="fav" >
-                    <button class="like">Like</button>
-                    <button class="comment">dislike</button>
-                  </div>
-                </div>
-              </div> 
-        </ng-container>
-    </article>
+      <div class="public" style="text-align: right;padding: 4%;padding-right: 10%;">
+        
+        <p style="text-align: left;size: 20px;">{{post.desc}}.</p>
+      </div>
+
+      <br>
+
+<div class="reaction">
+      <button class="like" (click)="deletePost(post.id)" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-heart"></i></button>
+      <button class="comment" (click)="deletePost(post.id)" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-comment"></i></button>
+      <button class="share" (click)="deletePost(post.id)" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-share-from-square"></i></button>
+
+
+    </div>
+    </div>
+  </div> 
+      </article>
+   
+
+  </div>
+
+
 </div>
+
