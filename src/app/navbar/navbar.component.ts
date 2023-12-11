@@ -94,7 +94,7 @@ navigateToProfil(){
 isNotifOpen =false
 toggleNotif(){
   this.isNotifOpen =!this.isNotifOpen
-
+  this.notif.newMsgs=0
 }
 
 

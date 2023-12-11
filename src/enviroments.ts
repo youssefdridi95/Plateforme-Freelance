@@ -3,10 +3,11 @@
 export const environments= {
  
    // backendUrl : "http://192.168.194.250/:9090" ,
-    webSocketBackendUrl : 'ws://192.168.195.70:9090/ws',
+    // webSocketBackendUrl : 'ws://192.168.195.70:9090/ws',
 
-    backendUrl : "http://192.168.195.70:9090" ,
-    //  webSocketBackendUrl : 'ws://localhost:9090/ws',
+    // backendUrl : "http://192.168.195.70:9090" ,
+    backendUrl : "http://localhost:9090" ,
+      webSocketBackendUrl : 'ws://localhost:9090/ws',
     connectUser : '/user/connectUser',
     disConnectUser : '/user/disconnectUser',
     chatList : '/api/chats/get/userId/',

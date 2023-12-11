@@ -44,18 +44,21 @@
           </g>
         </svg>
       </div>
-      <i class="fa-regular fa-bell " (mouseenter)="toggleNotif()" *ngIf="notif.msgList.length==0"></i>
-      <i class="fa-regular fa-bell red" (mouseenter)="toggleNotif()" *ngIf="notif.msgList.length>0"></i>
+      <div class="notifContainer"(click)="toggleNotif()" >
 
-<div class="notificationWrapper">
+      <i class="fa-regular fa-bell" ></i>
+       <span class="red" *ngIf="notif.newMsgs > 0"> {{notif.newMsgs}}</span>
+    </div>
+<div class="notificationWrapper"  *ngIf="notif.msgList.length > 0">
 
 
       <div class="notifications" *ngIf="isNotifOpen">
      
         <div class="notif" *ngFor="let message of notif.msgList">
-          <div class="name">John Doe</div>
-          <p>{{ message.replymessage }} - {{ message.time.split('T')[0] }}</p>
-          <div class="date">December 10, 2023</div>
+          you have unreaded  message from <br>
+          <div class="name">{{ message.senderId }}</div>
+          <!-- <p>{{ message.replymessage }}</p> -->
+          <div class="date">{{ message.time.split('T')[0] }} at {{ message.time| date  :'shortTime'}} </div>
 
         </div>
       </div>

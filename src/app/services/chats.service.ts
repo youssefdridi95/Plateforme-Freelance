@@ -9,6 +9,25 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class ChatsService {
 
   private env: Env = environments as Env
+  chatList: any
+
+  activeChat: any = {
+    "chatId": "",
+    "firstUserId": "",
+    "secondUserId": "",
+    "messageList": [
+
+    ]
+  }
+
+  emptychat: any = {
+    "chatId": "",
+    "firstUserId": "",
+    "secondUserId": "",
+    "messageList": [
+
+    ]
+  }
   constructor(private http: HttpClient) {
   }
 

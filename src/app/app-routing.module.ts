@@ -67,7 +67,12 @@ const routes: Routes = [
   {path: "user/profile/create" , component : UserFormComponent,canActivate: [AuthGuard]},
   {path: "verif/email/:role/:email" , component : VerifEmailComponent,canActivate: [AuthGuard]},
   {path: "user/update", component :UserUpdateComponent,canActivate: [AuthGuard]},
-  {path: "chat", component :ChatsComponent},
+  {path: "chat", component :ChatsComponent,
+  children: [
+    {path: "id/:activeId" , component : ChatsComponent},
+
+  ]
+},
   
   
  

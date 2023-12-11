@@ -10,20 +10,25 @@
               <input type="text" placeholder="Search...">
             </div>
           </div>
-      
-  <ng-container *ngFor="let chat of chatList ; let i = index">
-          <div class="discussion" *ngIf="chat.chatId!=activeChat.chatId" (click)="setActivechat(i)">
+          <ng-container *ngFor="let chat of chatsService.chatList ; let i = index">
+       
+            <ng-container *ngIf="chat.fUser && chat.sUser"> 
+          <div class="discussion" *ngIf="chat.chatId!=chatsService.activeChat.chatId" (click)="setActivechat(i)">
               <div class="photo" style="background-image: url(https://i.pinimg.com/originals/a9/26/52/a926525d966c9479c18d3b4f8e64b434.jpg);">
-                <div class="online"></div>
+                <div class="online" *ngIf="chat.firstUserId!==userid && chat.fUser.status== 'ONLINE'"></div>
+                <div class="offline" *ngIf="chat.firstUserId!==userid && chat.fUser.status == 'OFFLINE'"></div>
+                <div class="online" *ngIf="chat.secondUserId!==userid && chat.sUser.status == 'ONLINE'"></div>
+                <div class="offline" *ngIf="chat.secondUserId!==userid && chat.sUser.status == 'OFFLINE'"></div>
               </div>
               <div class="desc-contact">
                 <p class="name" *ngIf="chat.firstUserId==userid">{{chat.sUsername}}</p>
                 <p class="name" *ngIf="chat.secondUserId==userid">{{chat.fUsername}}</p>
-                <p class="message"  *ngIf="chat.messageList!=0">{{chat.messageList[chat.messageList.length -1].replymessage}}</p>
+                <p class="message"  *ngIf="chat.messageList!=0 && chat.messageList[chat.messageList.length -1].senderId == userid">vous :{{chat.messageList[chat.messageList.length -1].replymessage}} <span *ngIf="chat.messageList!=0 && chat.messageList[chat.messageList.length -1].seen == true"><i class="fa-solid fa-eye"></i></span> </p>
+                <p class="message"  *ngIf="chat.messageList!=0 && chat.messageList[chat.messageList.length -1].senderId != userid">{{chat.messageList[chat.messageList.length -1].replymessage}}</p>
               </div>
               <div class="timer" *ngIf="chat.messageList.length!=0">{{calculateTimeDifference(chat.messageList[chat.messageList.length -1].time)}}</div>
             </div>
-          <div class="discussion message-active" *ngIf="chat.chatId==activeChat.chatId">
+          <div class="discussion message-active" *ngIf="chat.chatId==chatsService.activeChat.chatId">
 
             <div class="photo" style="background-image: url(https://i.pinimg.com/originals/a9/26/52/a926525d966c9479c18d3b4f8e64b434.jpg);">
               <div class="online"></div>
@@ -31,29 +36,37 @@
             <div class="desc-contact">
               <p class="name" *ngIf="chat.firstUserId==userid">{{chat.sUsername}}</p>
               <p class="name" *ngIf="chat.secondUserId==userid">{{chat.fUsername}}</p>
-              <p class="message lastMessage" *ngIf="chat.messageList!=0">{{chat.messageList[chat.messageList.length -1].replymessage}}</p>
+              <p class="message" *ngIf="chat.messageList!=0">{{chat.messageList[chat.messageList.length -1].replymessage}}</p>
             </div>
             <div class="timer"  *ngIf="chat.messageList!=0">{{calculateTimeDifference(chat.messageList[chat.messageList.length -1].time)}}</div>
           </div>
         </ng-container>
-   
+      </ng-container>
         </section>
-        <section class="chat">
+        <section class="chat" >
           <div class="header-chat" >
             <i class="icon fa fa-user-o" aria-hidden="true"></i>
-            <p class="name" *ngIf="activeChat.firstUserId==userid">{{activeChat.sUsername}}</p>
-            <p class="name"*ngIf="activeChat.secondUserId==userid">{{activeChat.fUsername}}</p>
+            <p class="" *ngIf="chatsService.activeChat.firstUserId==userid">{{chatsService.activeChat.sUsername}}</p>
+            <p class=""*ngIf="chatsService.activeChat.secondUserId==userid">{{chatsService.activeChat.fUsername}}</p>
           </div>
           <div class="messages-chat" #chatContainer >
-            <ng-container *ngIf="activeChat.messageList!=[]">
-            <ng-container *ngFor="let msg of activeChat.messageList ; let i = index">
+            <section class="dots-container" *ngIf="isLoading">
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </section>
+            
+            <ng-container *ngIf="chatsService.activeChat.messageList!=[]">
+            <ng-container *ngFor="let msg of chatsService.activeChat.messageList ; let i = index">
 
             <div class="message" *ngIf="msg.senderId==userid" >
              
-              <div class="photo" *ngIf="(i<activeChat.messageList.length-1  && msg.senderId==activeChat.messageList.at(i+1).senderId) " style="visibility: hidden;background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
+              <div class="photo" *ngIf="(i<chatsService.activeChat.messageList.length-1  && msg.senderId==chatsService.activeChat.messageList.at(i+1).senderId) " style="visibility: hidden;background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
                 <div class="online"></div>
               </div>
-                <div class="photo" *ngIf="(i<activeChat.messageList.length-1  && msg.senderId!=activeChat.messageList.at(i+1).senderId) || i==activeChat.messageList.length-1 " style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
+                <div class="photo" *ngIf="(i<chatsService.activeChat.messageList.length-1  && msg.senderId!=chatsService.activeChat.messageList.at(i+1).senderId) || i==chatsService.activeChat.messageList.length-1 " style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
                 <div class="online"></div>
               </div>
               <p class="text"> {{msg.replymessage}} </p>
@@ -62,15 +75,16 @@
             <div class="message text-only" *ngIf="msg.senderId!=userid">
               <p class="text">  {{msg.replymessage}}</p>
             </div>
-            <p class="time" *ngIf="msg.senderId==userid && i===activeChat.messageList.length-1"> 14h58</p>
+            <p class="time" *ngIf="msg.senderId==userid && i===chatsService.activeChat.messageList.length-1"> 14h58</p>
               
-            <p class="response-time time" *ngIf="msg.senderId!=userid && i===activeChat.messageList.length-1"> 15h04</p>
+            <p class="response-time time" *ngIf="msg.senderId!=userid && i===chatsService.activeChat.messageList.length-1"> 15h04</p>
           </ng-container>
         </ng-container>
           </div>
-          <div class="footer-chat">
+          <div class="footer-chat" *ngIf="chatsService.activeChat.chatId">
             <input type="text" class="write-message" placeholder="Type your message here" [(ngModel)]="textMsg" >
-            <i class="fa-regular fa-paper-plane send" (click)="onSendMessage()"></i>
+            <i class="fa-regular fa-paper-plane send" (click)="onSendMessage()" *ngIf="!isSending"></i>
+            <div class="loader" *ngIf="isSending"></div>
           </div>
         </section>
     

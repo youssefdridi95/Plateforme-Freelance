@@ -4,6 +4,7 @@ import { RxStompService } from '../rx-stomp.service';
 import { Message } from '@stomp/stompjs';
 import { NgZone } from '@angular/core';
 import { NotificationMessageListService } from '../notification-message-list.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chats',
@@ -16,19 +17,17 @@ export class ChatsComponent implements OnInit, OnDestroy {
   userid = sessionStorage.getItem('id')
   useridIN = ''
   username = ''
-  chatList: any
-  activeChat: any = {
-    "chatId": "",
-    "firstUserId": "",
-    "secondUserId": "",
-    "messageList": [
 
-    ]
-  }
   textMsg = ''
+ isLoading =false
+ isSending =false
+activeId :any
+  constructor(private route :ActivatedRoute,protected chatsService: ChatsService, private rxStompService: RxStompService, private ngZone: NgZone,private notif :NotificationMessageListService) {
+    this.route.paramMap.subscribe(params =>{this.activeId=params.get('activeId')
 
+  
+  })
 
-  constructor(private chatsService: ChatsService, private rxStompService: RxStompService, private ngZone: NgZone,private notif :NotificationMessageListService) {
     this.chatsService.connectUser(this.userid).subscribe(
       (res) => {
         // console.log(res);
@@ -46,11 +45,16 @@ export class ChatsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.chatsService.getChatList(this.userid).subscribe(
       (res: any) => {
-        let chats = []
+      let  chats = []
+      console.log('avant for ',res);
+      
         for (let chat of res) {
+        
           this.chatsService.getUsername(chat.firstUserId).subscribe(
             (res: any) => {
               chat['fUsername'] = res.username
+              chat.fUser = res
+
             },
             (err: any) => {
               console.log(err);
@@ -58,15 +62,17 @@ export class ChatsComponent implements OnInit, OnDestroy {
           this.chatsService.getUsername(chat.secondUserId).subscribe(
             (res: any) => {
               chat['sUsername'] = res.username
+              chat.sUser= res
+              
+
             },
             (err: any) => {
               console.log(err);
             });
 
-
         }
-        console.log(res);
-        this.chatList = res
+        console.log('baaad l for ',res);
+        this.chatsService.chatList = res
       },
       (err) => {
         console.log(err);
@@ -75,8 +81,8 @@ export class ChatsComponent implements OnInit, OnDestroy {
       this.rxStompService.watch('/topic/chats/' + this.userid).subscribe((message: Message) => {
         let msg = JSON.parse(message.body)
   
-        if ((this.activeChat.chatId === msg.chatId)) {
-          this.activeChat.messageList.push(JSON.parse(message.body));
+        if ((this.chatsService.activeChat.chatId === msg.chatId)) {
+          this.chatsService.activeChat.messageList.push(JSON.parse(message.body));
           this.ngZone.runOutsideAngular(() => {
             setTimeout(() => {
               // Update the scrollTop property here
@@ -86,9 +92,11 @@ export class ChatsComponent implements OnInit, OnDestroy {
               this.ngZone.run(() => { });
             });
           });
+          
         }else {
           this.notif.msgList.unshift(msg)
-          
+          this.notif.newMsgs+=1
+          this.notif.playNotificationSound()
         }
       });
   }
@@ -119,12 +127,16 @@ export class ChatsComponent implements OnInit, OnDestroy {
   }
 
   setActivechat(index: any) {
-    this.chatsService.getChat(this.chatList.at(index).chatId).subscribe(
+    this.isLoading=true
+    this.chatsService.getChat(this.chatsService.chatList.at(index).chatId).subscribe(
       (res: any) => {
         let chat = res
         this.chatsService.getUsername(chat.firstUserId).subscribe(
           (res: any) => {
+         
             chat['fUsername'] = res.username
+            chat.fUser= res
+
           },
           (err: any) => {
             console.log(err);
@@ -132,14 +144,19 @@ export class ChatsComponent implements OnInit, OnDestroy {
         this.chatsService.getUsername(chat.secondUserId).subscribe(
           (res: any) => {
             chat['sUsername'] = res.username
+            chat.sUser= res
+
           },
           (err: any) => {
             console.log(err);
           });
 
 
-        this.chatList[index] = chat
-        this.activeChat = this.chatList.at(index)
+        this.chatsService.chatList[index] = chat
+        this.isLoading=false
+
+        this.chatsService.activeChat = this.chatsService.chatList.at(index)
+
         this.ngZone.runOutsideAngular(() => {
           setTimeout(() => {
             // Update the scrollTop property here
@@ -150,9 +167,9 @@ export class ChatsComponent implements OnInit, OnDestroy {
           });
         });
 
-        this.chatsService.markMsgSeen(this.chatList.at(index).chatId, this.userid).subscribe(
+        this.chatsService.markMsgSeen(this.chatsService.chatList.at(index).chatId, this.userid).subscribe(
           (res) => {
-            console.log(res);
+          //  console.log(res);
 
           }, (err) => {
             console.log(err);
@@ -166,21 +183,32 @@ export class ChatsComponent implements OnInit, OnDestroy {
 
 
 
+console.log(this.chatsService.chatList);
 
 
   }
   onSendMessage() {
-    let receiverId = this.userid == this.activeChat.firstUserId ? this.activeChat.secondUserId : this.activeChat.firstUserId
+    
+   if (this.textMsg!=='') 
+    
+   
+   
+    { this.isSending =true
+
+    let receiverId = this.userid == this.chatsService.activeChat.firstUserId ? this.chatsService.activeChat.secondUserId : this.chatsService.activeChat.firstUserId
     let msg = {
       senderId: this.userid,
-      chatId: this.activeChat.chatId,
+      chatId: this.chatsService.activeChat.chatId,
       reciverId: receiverId,
       replymessage: this.textMsg
 
     }
-    this.rxStompService.publish({ destination: '/chats/addMessage/' + this.activeChat.chatId, body: JSON.stringify(msg) });
+
+    this.rxStompService.publish({ destination: '/chats/addMessage/' + this.chatsService.activeChat.chatId, body: JSON.stringify(msg) });
 
     this.textMsg = ''
+    this.isSending =false
+  }
 
 
   }
@@ -218,5 +246,6 @@ export class ChatsComponent implements OnInit, OnDestroy {
       return `${remainingMinutes}m`;
     }
   }
+
 
 }
