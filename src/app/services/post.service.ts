@@ -20,6 +20,8 @@ export class PostService {
     this.getUserPost = this.env.getUserPost
     this.getSkillPost = this.env.getSkillPost
     this.getFilePost = this.env.getFilePost
+    this.getpostFilt = this.env.getPostFilter
+    this.augnbrReact = this.env.augnbrReact
    }
   
 
@@ -30,7 +32,8 @@ export class PostService {
    private getUserPost 
    private getSkillPost 
    private getFilePost 
-
+   private getpostFilt 
+   private augnbrReact
 
   // function signup api call
 add(data:any ,params: any){
@@ -75,6 +78,26 @@ getFile(URI: any): Observable<Blob> {
   });
 }
 
+getPostFilter(skill: any  ){
+  console.log(skill);
+  
+  let params = new HttpParams().set('skill', skill)
+
+  return this.http.get(this.url + this.getpostFilt,{params});
+
+} 
+addmnbrReact(idprofil  : any , idVisiteur : any ,  postId : any ){
+  
+  let params = new HttpParams()
+  .set('profileId', idprofil)
+  .set('idVisiteur', idVisiteur )
+  .set('postId', postId  )
+
+  console.log(params);
+
+ return this.http.put(this.url + this.augnbrReact,{},{params});
+
+}
 
 
 }

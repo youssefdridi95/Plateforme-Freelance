@@ -1,0 +1,106 @@
+<div>
+  <button (click)="generatePdf()">Generate PDF</button>
+</div>
+<div class="rectangle-container">
+  <div class="rectangle1">
+    <div class="icon">
+      <i  class="fa-regular fa-envelope" ></i>
+    </div>
+    <div>
+      <p>Message</p>
+    </div>
+  </div>
+  <div class="rectangle2">
+    <div class="icon">
+      <i class="fa-regular fa-file"></i>
+    </div>
+    <div>
+      <p>Message</p>
+    </div>
+  </div>
+  <div class="rectangle3">
+    <div class="icon">
+      <i class="fa-regular fa-envelope"></i>
+    </div>
+    <div>
+      <p>Message</p>
+    </div>
+  </div>
+  <div class="rectangle4">
+    <div class="icon">
+      <i class="fa-regular fa-heart"></i>  </div>
+    <div>
+      <p>Message</p>
+    </div>
+  </div>
+</div>
+<br><br>
+<div class="dashboard">
+  <div class="widget">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <i class="fa fa-comments fa-2x"></i>
+      </div>
+      <div class="panel-body">
+        <div class="huge">26</div>
+        <div>New Comments!</div>
+      </div>
+      <a href="#" class="panel-footer">
+        <span class="pull-left">View Details</span>
+        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+        <div class="clearfix"></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="widget">
+    <div class="panel panel-green">
+      <div class="panel-heading">
+        <i class="fa fa-tasks fa-2x"></i>
+      </div>
+      <div class="panel-body">
+        <div class="huge">12</div>
+        <div>New Tasks!</div>
+      </div>
+      <a href="#" class="panel-footer">
+        <span class="pull-left">View Details</span>
+        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+        <div class="clearfix"></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="widget">
+    <div class="panel panel-yellow">
+      <div class="panel-heading">
+        <i class="fa fa-user fa-2x"></i>
+      </div>
+      <div class="panel-body">
+        <div class="huge">124</div>
+        <div>New Orders!</div>
+      </div>
+      <a href="#" class="panel-footer">
+        <span class="pull-left">View Details</span>
+        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+        <div class="clearfix"></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="widget">
+    <div class="panel panel-red">
+      <div class="panel-heading">
+        <i class="fa fa-user fa-2x"></i>
+      </div>
+      <div class="panel-body">
+        <div class="huge">{{ profil?.vuesTalent }}</div>
+        <div>Nombre des vues</div>
+      </div>
+      <a href="#" class="panel-footer">
+        <span class="pull-left">View Details</span>
+        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+        <div class="clearfix"></div>
+      </a>
+    </div>
+  </div>
+</div>

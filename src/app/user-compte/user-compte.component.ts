@@ -6,6 +6,7 @@ import { UserProfil } from '../services/user-profil';
 import { map, catchError, of, Observable } from 'rxjs';
 import { PostService } from '../services/post.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user-compte',
@@ -15,12 +16,15 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 export class UserCompteComponent {
 
-  constructor(private toastr: ToastrService, private userProfilService: UserProfil, private router: Router, private roote: ActivatedRoute, private postService: PostService) {
+  constructor(private toastr: ToastrService, private userProfilService: UserProfil, private router: Router, private roote: ActivatedRoute, private postService: PostService, private userService: UserService) {
 
-    this.roote.paramMap.subscribe(params => { this.userId = params.get('id') 
-    this.getProfil();
-    this.getPost(this.userId);
-  })
+    this.roote.paramMap.subscribe(params => {
+      this.userId = params.get('id')
+      this.getProfil();
+      this.getPost(this.userId);
+      console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', this.profil);
+
+    })
   }
 
   navigateToCvCreer(link: String) {
@@ -28,7 +32,7 @@ export class UserCompteComponent {
     this.router.navigate([link]);
 
   }
-
+  pub = false;
   username: string = '';
   email: string = '';
   userId: any;
@@ -36,30 +40,16 @@ export class UserCompteComponent {
   posts: any;
   profilImage: string = '';  // Ajoutez cette ligne dans votre classe
   test: any;
-  isMine=false
+  isMine = false
   // user-compte.component.ts
   userImage: string = '';  // Ajoutez cette ligne dans votre classe
 
   // Dans la méthode ngOnInit
   ngOnInit() {
- 
-   
-
-    const storedUserId = sessionStorage.getItem('user');
-    if (storedUserId) {
-      const storedUser = JSON.parse(storedUserId);
-      // Comparaison pour déterminer si le bouton doit être visible
-      // this.isMine = this.userId === storedUser.id;
-
-      // Récupérez le chemin de l'image de l'utilisateur depuis la session
-
-      this.profil = JSON.parse(sessionStorage.getItem('profil')!);
-      this.profilImage = this.profil.fileDownloadUri;
 
 
-      console.log('testing image', this.profil);
 
-    }
+
 
   }
   isButtonVisible(): boolean {
@@ -67,28 +57,29 @@ export class UserCompteComponent {
   }
 
   getProfil() {
-    sessionStorage.removeItem('profil');
-
-    let params = new HttpParams().set('userId', JSON.parse(sessionStorage.getItem('user')!).id);
+    // 
+    let params = new HttpParams().set('userId', this.userId);
 
     this.userProfilService.getProfil(params).subscribe(
       res => {
         // console.log('reussite', res);
         // this.toastr.success('reussite');
-        console.log(this.userId);
 
         if (this.userId == JSON.parse(sessionStorage.getItem('user')!).id) {
-console.log('tgegte');
+          console.log('tgegte');
+          sessionStorage.setItem('post', JSON.stringify(res));
 
-        sessionStorage.setItem('profil',JSON.stringify(res));
-        this.isMine=true
-          this.profil = JSON.parse(sessionStorage.getItem('profil')!);
+          sessionStorage.setItem('profil', JSON.stringify(res));
+          this.isMine = true
+          this.profil = res;
+
           this.profilImage = this.profil.file.fileDownloadUri;  // Assurez-vous que le champ est correct
         } else {
           this.profil = res;
           this.profilImage = this.profil.file.fileDownloadUri;  // Assurez-vous que le champ est correct
         }
-        console.log(this.profil);
+        console.log('eeeeeeeeeeeeee,jyteku-,yer', this.profil);
+        this.updateViewNmbr();
 
       },
       err => {
@@ -99,15 +90,13 @@ console.log('tgegte');
   }
 
   getPost(userId: any) {
-    
+
     this.postService.getUserPosts(userId).subscribe(
       res => {
         this.posts = res;
-        console.log('reussite des posts', res);
-        this.toastr.success('post ')
+
         // Faites quelque chose avec les posts récupérés, par exemple, assignez-les à une variable de composant
         // this.posts = res;
-        sessionStorage.setItem('posts', JSON.stringify(res))
 
       },
       err => {
@@ -135,7 +124,7 @@ console.log('tgegte');
   deletePost(postId: string) {
     if (confirm('Are you sure you want to delete this post?')) {
       console.log(postId);
-      
+
       this.postService.delete(postId).subscribe(
         (res) => {
           console.log(res);
@@ -152,6 +141,43 @@ console.log('tgegte');
       );
     }
   }
+  updateViewNmbr() {
+    console.log('Avant la fonction ddedd');
+    console.log("hhhhhhh",this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id);
+
+    const storedProfileId = sessionStorage.getItem('lastViewedProfileId');
+    if (storedProfileId !== this.profil.id) {
+    this.userService.updateViewNbr(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
+      (res) => {
+        console.log('modification avec succès', res);
+        this.toastr.success('Modification avec succès');
+        sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
+      },
+      (err) => {
+        console.log('échec de la modification', err);
+        this.toastr.error('Erreur de modification', 'Erreur');
+      }
+    );
+    }
+  }
+
+  addmnbrReact(postId:any) {
+    console.log('Avant la fonction ddedd');
+    console.log(postId);
 
 
-}
+    this.postService.addmnbrReact(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id,postId  ).subscribe(
+      (res) => {
+        console.log('modification avec succès', res);
+        this.toastr.success('react avec succès');
+        sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
+      },
+      (err) => {
+        console.log('échec de la modification', err);
+        this.toastr.error('Erreur de reacter', 'Erreur');
+      }
+    );
+    }
+  }
+
+

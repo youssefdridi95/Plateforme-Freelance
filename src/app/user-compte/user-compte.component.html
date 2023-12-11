@@ -3,7 +3,7 @@
   <div class="contact">
 
     <div class="userInfo">
-      <i class="fas fa-edit editProfil" [routerLink]="['/user/update']" ></i>
+      <i class="fas fa-edit editProfil" *ngIf="isButtonVisible()" [routerLink]="['/user/update']" ></i>
 
       <!-- <img src="/assets/was.png" id="blah" alt="Avatar" /> -->
       <!-- user-compte.component.html -->
@@ -12,10 +12,10 @@
       <div class="contact_card">
         <!-- <span> <i class="fa-solid fa-phone"></i> : </span><br><br> -->
         <span> <i class="fa-solid fa-envelope"></i> :  </span><br><br>
-        <span><i class="fa-solid fa-location-dot"></i> : {{profil.timezone}} </span>
+        <span><i class="fa-solid fa-location-dot"></i> : {{profil?.timezone}} </span>
       </div>
       <div>
-        <p>Compétence Principale : {{profil.mainSkill}} </p>
+        <p>Compétence Principale : {{profil?.mainSkill}} </p>
 
         <p>Formations : </p>
 
@@ -25,10 +25,10 @@
       </div>
 
       <div class="button">
-        <button  class="edit" (click)="navigateToCvCreer('/cv/edit')">
+        <button *ngIf="isButtonVisible()" class="edit" (click)="navigateToCvCreer('/cv/edit')">
           <h3>Modifier cv</h3>
         </button>
-        <button  class="read" (click)="navigateToCvCreer('cv/afficher')">
+        <button *ngIf="isButtonVisible()" class="read" (click)="navigateToCvCreer('cv/afficher')">
           <h3>Afficher cv</h3>
         </button>
 
@@ -43,7 +43,12 @@
   </div>
   <div class="post">
 
-    <h3 class="title"> Publication</h3>
+    <div class="title-container">
+      <h3 (click)="pub = true" class="title" [class.underlined]="pub">Publication</h3>
+      <h3 (click)="pub = false" class="title" [class.underlined]="!pub">Dashboard</h3>
+    </div>
+    
+    
 
     <div class="popup-1-wrap">
       <input id="popup-1-coupon" type="checkbox">
@@ -60,14 +65,14 @@
 
 
 
-    <article class="publication">
+
+    <article *ngIf="pub===true" class="publication">
       <!--  Send post  -->
 
       <label  for="popup-1-coupon" class="popup-1-open">
 
         <img class="add" src="/assets/was.png">
         <div class="input-post">Quoi de neuf</div>
-
       </label>
 
 
@@ -75,19 +80,19 @@
       <!--  Publications  -->
 
 
-      <ng-container>
+      <ng-container *ngIf="posts.content">
         <div *ngFor="let post of posts.content " class="content-publication wrap shadow">
-          <button *ngIf="isButtonVisible()" class="delete" (click)="deletePost(post.id)"><i
+          <button  class="delete" (click)="deletePost(post.id)"><i
               class="fa-regular fa-trash-can"></i></button>
 
           <div class="heading flex-center">
             <div class="name flex-center">
               <img src="/assets/was.png " alt="User Image">
-              <span>{{profil.anonyme}}</span>
+              <span>{{profil?.anonyme}}</span>
             </div>
-            <p class="date">{{post.date | date : 'shortDate'}}</p>
+            <p class="date">{{post?.date | date : 'shortDate'}}</p>
             <div class="public">
-              <p>{{post.desc}}.</p>
+              <p>{{post?.desc}}.</p>
 
             </div>
             <img src="https://placehold.co/600x400" style="width: 150px; height: 100px; border-radius: 0;margin: 5px;"
@@ -96,7 +101,7 @@
 
 
             <div class="fav">
-              <button class="like">j'aime</button>
+              <button class="like" (click)="addmnbrReact(post.id)">j'aime</button>
               <button class="comment">commentaire</button>
               <button class="share">partager</button>
 
@@ -104,6 +109,16 @@
           </div>
         </div>
       </ng-container>
+
+    </article>
+
+
+    <article *ngIf="pub===false" class="dashboard">
+      <app-dashboard></app-dashboard>
+    <!-- <article *ngIf="pub===false" class="publication">
+       <app-dashboard></app-dashboard> -->
+
+ 
 
     </article>
 

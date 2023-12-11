@@ -131,7 +131,11 @@ position: relative;
 .contact_card span {
   padding-top: 15.5rem; /* Ajoutez la marge souhaitée entre les éléments */
 }
-
+.title:hover,
+.underlined {
+  text-decoration: underline;
+  color: blue; /* Change the color to blue when underlined */
+}
 
 button {
   background-color: #007CF8;
@@ -158,13 +162,17 @@ button {
   padding: 1rem;
   /* font-size: 16px;   */
 }
-
+.title-container {
+  display: flex;
+  justify-content: space-between; /* Adjust the spacing as needed */
+  margin-bottom: 1rem; /* Optional: Add margin for spacing */
+}
 
 h3.title {
   font-weight: bold;
   text-align: center;
   color: #007CF8;
-  width: 100%;
+  width: 48%;
   font-size: 1rem;
 
 }

@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { EntrepriseService } from '../services/entreprise.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PostService } from '../services/post.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-profil-entreprise',
@@ -16,6 +17,8 @@ export class ProfilEntrepriseComponent {
   arrowUp: boolean = false;
   entreprise:any;
   posts: any;
+  profil: any;
+
   post = {
     date: '2023-12-06T12:42:31.039', // Mettez votre date ici
     // Autres propriétés du post
@@ -28,7 +31,8 @@ export class ProfilEntrepriseComponent {
   constructor(
     private enterpriseService: EntrepriseService,
     private route: ActivatedRoute,
-    private toastr: ToastrService,private router: Router, private postService: PostService) {
+    private toastr: ToastrService,private router: Router, private postService: PostService,
+     private userService: UserService) {
       this.route.params.subscribe(params => {
         this.idEntreprise = params['id'];
         this.getPost(this.idEntreprise);
@@ -63,18 +67,22 @@ formatDate(dateString: string): string {
   getEntrepriseById(idEntreprise: string) {
     this.enterpriseService.getEntrepriseByid(idEntreprise).subscribe(
       (data: any) => {
-          this.entreprise = data; 
-          if (idEntreprise == JSON.parse(sessionStorage.getItem('user')!).id ||
+        this.entreprise = data; 
+        if (idEntreprise == JSON.parse(sessionStorage.getItem('user')!).id ||
           idEntreprise == JSON.parse(sessionStorage.getItem('user')!).idEntreprise ) {
-            sessionStorage.setItem('profil',JSON.stringify(data));
-        
-           }
+          sessionStorage.setItem('profil', JSON.stringify(data));
+          this.profil = data; // Ajoutez cette ligne pour initialiser this.profil
+  
+          console.log('piiiiiiiiiiiip');
+          this.updateViewNmbrEntreprise();
+        }
       },
       error => {
         console.error('Erreur lors de la récupération des entreprises:', error);
       }
     );
   }
+  
   getPost(userId: any) {
     this.postService.getUserPosts(userId).subscribe(
       res => {
@@ -108,6 +116,24 @@ formatDate(dateString: string): string {
         (err) => {
           console.log(err);
           this.toastr.error('Erreur lors de la suppression de la publication', 'Error');
+        }
+      );
+    }
+  }
+  updateViewNmbrEntreprise() {
+    console.log('Avant la fonction ddedd');
+
+    const storedProfileId = sessionStorage.getItem('lastViewedProfileId');
+    if (storedProfileId !== this.profil.id) {
+      this.userService.updateViewNbrEntreprise(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
+        (res) => {
+          console.log('modification avec succès entreprise', res);
+          this.toastr.success('Modification avec succès');
+          sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
+        },
+        (err) => {
+          console.log('échec de la modification', err);
+          this.toastr.error('Erreur de modification', 'Erreur');
         }
       );
     }

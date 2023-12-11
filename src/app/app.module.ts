@@ -45,6 +45,7 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 import { RechercheComponent } from './recherche/recherche.component';
 import { TalentFeedComponent } from './talent-feed/talent-feed.component';
 import { EntrepriseFeedComponent } from './entreprise-feed/entreprise-feed.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import { EntrepriseFeedComponent } from './entreprise-feed/entreprise-feed.compo
     EntrepriseupdateComponent,
     RechercheComponent,
     TalentFeedComponent,
-    EntrepriseFeedComponent
+    EntrepriseFeedComponent,
+    DashboardComponent
    
 
     

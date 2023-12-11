@@ -2,9 +2,9 @@
 
 export const environments= {
  
+    backendUrl : "http://192.168.195.29:9090" ,
   //  backendUrl : "http://localhost:9090" ,
     //  backendUrl : "http://192.168.195.29:9090" ,
-     backendUrl : "http://localhost:9090" ,
    // backendUrl : "http://192.168.195.26:9090" ,
  // backendUrl : "http://localhost:9090" ,
   //  backendUrl : "http://192.168.195.29:9090" ,
@@ -46,9 +46,11 @@ export const environments= {
     getUserPost: '/api/umanlink/postes/all/by-user',
     getSkillPost: '/api/umanlink/postes/all/by-skill',
 
-
+    getPostFilter: '',
+    viewNumberEntreprise:'/api/umanlink/profiles/entreprises/update-Nombre De Vues',
+    viewNumber:'/api/umanlink/profiles/individuals/update-Nombre De Vues',
     getFilePost: '/api/umanlink/postes/get-post-file',
-
+    augnbrReact : '/api/umanlink/postes/Augmente-nombre-reacts',
 
     getUserProfil: '/api/umanlink/profiles/individuals/get-one/by-user',
     editUserProfil: '/api/umanlink/profiles/individuals/update-Talent',
