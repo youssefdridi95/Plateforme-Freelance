@@ -56,6 +56,7 @@
         </td>
       </tr> -->
       <tr *ngFor="let user of users" class="responsive-table__row">
+        
           <td class="responsive-table__body__text responsive-table__body__text--name">
             <!-- <i class="fa-solid fa-user-tie" style="margin-right: 17%; "></i> -->
             {{ user.username }}
@@ -93,10 +94,11 @@
           <button class="btn-info">Supprimer</button>
         </td>
       </tr> -->
-	  <tr class="responsive-table__row">
+	 
+   <tr class="responsive-table__row"  style="background-color:rgba(177, 174, 174, 0.05);">
         <td class="responsive-table__body__text responsive-table__body__text--name">
         
-         
+          <img src="/../assets/liste.jpg" >
         </td>
         <td class="responsive-table__body__text responsive-table__body__text--types">
           <form [formGroup]="userForm">

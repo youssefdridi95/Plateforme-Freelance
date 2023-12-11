@@ -1,7 +1,7 @@
 <body>
   <div class="container" [ngClass]="{'gray-background': popup}">
-    <h2>Mon Compte</h2>
-
+    <h2>Mes préférences</h2>
+    <img src="/../assets/update.jpg" />
     <div class="user-image">
       
       <label  *ngIf="popup == false" for="file" class="file-button"></label>
@@ -10,7 +10,7 @@
 
     <div class="card">
       <div class="info-container">
-        <p class="name">Informations personnelles</p>
+        <p class="mail">Nom</p>
 
         <div class="field">
           <span>
@@ -23,13 +23,13 @@
               readonly
             />
           </span>
-          <button class="edit-button" (click)="enableEdit('fname')"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button class="edit-button" (click)="enableEdit('fname')"></button>
         </div>
 
         <div class="field">
-          <p class="mail">Email </p>
+          <p class="mail">Adresse e-mail </p>
           <span>   
-                   <button class="edit-button" (click)="toggleButtonAndEdit('email')"><i class="fa-solid fa-pen-to-square"></i></button>
+                   <button class="edit-button" (click)="toggleButtonAndEdit('email')"></button>
 
 
                    <input
@@ -55,9 +55,18 @@
               readonly
             />
           </span>
-          <button class="edit-button" (click)="popup =! popup " ><i class="fa-solid fa-pen-to-square"></i></button>
+          <button class="edit-button" (click)="popup =! popup " ><i class="fa-solid fa-pen"></i></button>
 
         </div>
+      </div>
+     
+      <div class="field">
+        <br>
+        <span>
+        <p class="mail">Supprimer mon compte</p>
+        <button class="delete"> <i class="fa-solid fa-trash-can"></i></button>
+      </span>
+      
       </div>
       <!-- <button (click)="openDialog()"> contact us</button> -->
     </div>
@@ -79,11 +88,13 @@
 
     </div>
   </form>
+  
     <div class="button-group">
       <button [disabled]="!form.valid"  (click)="editPassword()"  class="save-button">Enregistrer</button>
       <button class="cancel-button"  (click)="popup =! popup">Annuler</button>
     </div>
+    
   </div>
   <button *ngIf="button==true"> name</button>
-
+ 
 </body>

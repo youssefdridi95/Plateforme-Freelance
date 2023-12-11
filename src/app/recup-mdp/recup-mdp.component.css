@@ -10,6 +10,15 @@
   margin: 4rem auto;
  
 }
+img{
+  max-width: 40%;
+  height: 50%;
+  display: flex;
+  justify-content: flex-end;
+  margin: -2px auto;
+  margin-bottom: -10%;
+  background-color: white !important;
+}
   
   .heading {
     text-align: center;

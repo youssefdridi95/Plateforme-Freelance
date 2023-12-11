@@ -59,7 +59,7 @@
 }
  .responsive-table__body .responsive-table__row:hover {
 	 color: black;
-	 background-color:rgba(177, 174, 174, 0.05);;
+	 background-color:rgba(177, 174, 174, 0.05);
 }
  .responsive-table__body__text {
 	 display: flex;
@@ -123,9 +123,11 @@
 	 background: #febf02;
 }
 .responsive-table__row img{
-	max-width: 20%;
-    border-radius:100%;
+	max-width: 40%;
 	margin-right: 1.2rem;
+	
+	
+	
  }
  i{
 	display: flex imp;
@@ -174,4 +176,3 @@ btn-info{
 	border-radius: 0.3rem;
 	}
 
-	

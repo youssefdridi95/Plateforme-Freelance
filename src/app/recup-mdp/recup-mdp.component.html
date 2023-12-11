@@ -1,36 +1,36 @@
 <div class="container">
-    <div class="heading">Choisissez un nouveau mot de passe</div>
-      <form action="" [formGroup]="pwdForm"class="form" >
-        
-        <input type="password" class="input" formControlName="password" placeholder=" nouveau mot de passe*"/>
+  <div class="heading">Choisissez un nouveau mot de passe<img src="/../assets/key.jpg" alt="Description of the image"></div>
+    <form action="" [formGroup]="pwdForm"class="form" >
+      
+      <input type="password" class="input" formControlName="password" placeholder=" nouveau mot de passe*"/>
+   
+  <div *ngIf="   pwdForm.controls['password'].touched " class="text-danger" >
+        <span *ngIf="pwdForm.controls['password'].errors?.['required']">
+          ce champ est obligatoire! <br>
+        </span>
+        <span *ngIf="pwdForm.controls['password'].errors?.['minlength']">
+          la longueur minimal est 6.
+        </span>
+
      
-    <div *ngIf="   pwdForm.controls['password'].touched " class="text-danger" >
-          <span *ngIf="pwdForm.controls['password'].errors?.['required']">
-            ce champ est obligatoire! <br>
-          </span>
-          <span *ngIf="pwdForm.controls['password'].errors?.['minlength']">
-            la longueur minimal est 6.
-          </span>
+ </div>
 
-       
-   </div>
 
- 
-    <input type="password" class="input" formControlName="confirmPwd"placeholder="Confirm nouveau mot de passe*"  />
-    <div  class="text-danger" *ngIf="   pwdForm.controls['password'].touched"> 
- <span *ngIf="isMush===false ">
-        Confirmer le mot de passe! <br>
-      </span>
-      <span *ngIf="pwdForm.controls['confirmPwd'].errors?.['required']">
-        ce champ est obligatoire! <br>
-      </span>
-      <span *ngIf="pwdForm.controls['confirmPwd'].errors?.['minlength']">
-        la longueur minimal est 6.
-      </span>
+  <input type="password" class="input" formControlName="confirmPwd"placeholder="Confirm nouveau mot de passe*"  />
+  <div  class="text-danger" *ngIf="   pwdForm.controls['password'].touched"> 
+<span *ngIf="isMush===false ">
+      Confirmer le mot de passe! <br>
+    </span>
+    <span *ngIf="pwdForm.controls['confirmPwd'].errors?.['required']">
+      ce champ est obligatoire! <br>
+    </span>
+    <span *ngIf="pwdForm.controls['confirmPwd'].errors?.['minlength']">
+      la longueur minimal est 6.
+    </span>
 
-  </div> 
-        <input class="login-button" type="submit" (click)="changePswword()" value="Changez le mot de passe">
-  <br>
-      </form>
-  
-  </div>
+</div> 
+      <input class="login-button" type="submit" (click)="changePswword()" value="Changez le mot de passe">
+<br>
+    </form>
+
+</div>

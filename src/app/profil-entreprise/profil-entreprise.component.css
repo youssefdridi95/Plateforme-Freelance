@@ -12,7 +12,15 @@
       width: 100%;
 }
 
+#image{
+  width: 90%;
+  height: 90%;
+  margin-left: 9%;
+  margin-top: -9%;
 
+ 
+
+}
 .contact p {
   color: #007CF8;
   text-align: left;

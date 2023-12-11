@@ -2,7 +2,7 @@
 
 
 .imgt{
-  background: url("/../assets/TEE.png") no-repeat;
+  background: url("/../assets/cc.png") no-repeat;
   display: flex;
   justify-content: center;
   background-size: 100%;
@@ -40,7 +40,7 @@
   }
   h3 {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
     color: #1f194c;
     margin: 1em 0;
   }
@@ -57,7 +57,7 @@
     background-color: #034f9b;
     position: relative;
     margin: auto;
-    font-size: 30px;
+    font-size: 28px;
     height: 2.5em;
     width: 2.5em;
     color: #ffffff;
@@ -102,7 +102,7 @@
 
 
 .wrapper {
-  min-height: 27rem;
+  min-height: 24rem;
   width: 45%;
   display: flex;
 
@@ -241,7 +241,7 @@ background-image: url('../../assets/cyber.png');
   width: 70%;
   background-color: white;
   color:#034f9b ;
-  border-radius: 17px;
+  border-radius: 19px;
   padding: 16px 20px 16px 70px;
   height: 7rem;
   display: flex;
@@ -264,8 +264,8 @@ background-image: url('../../assets/cyber.png');
 }
 .title {
   text-transform: uppercase;
-  font-size: 25px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 900;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
