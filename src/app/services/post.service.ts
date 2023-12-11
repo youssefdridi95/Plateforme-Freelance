@@ -21,7 +21,7 @@ export class PostService {
     this.getSkillPost = this.env.getSkillPost
     this.getFilePost = this.env.getFilePost
     this.getpostFilt = this.env.getPostFilter
-
+    this.augnbrReact = this.env.augnbrReact
    }
   
 
@@ -33,6 +33,7 @@ export class PostService {
    private getSkillPost 
    private getFilePost 
    private getpostFilt 
+   private augnbrReact
 
   // function signup api call
 add(data:any ,params: any){
@@ -85,6 +86,18 @@ getPostFilter(skill: any  ){
   return this.http.get(this.url + this.getpostFilt,{params});
 
 } 
+addmnbrReact(idprofil  : any , idVisiteur : any ,  postId : any ){
+  
+  let params = new HttpParams()
+  .set('profileId', idprofil)
+  .set('idVisiteur', idVisiteur )
+  .set('postId', postId  )
+
+  console.log(params);
+
+ return this.http.put(this.url + this.augnbrReact,{},{params});
+
+}
 
 
 }

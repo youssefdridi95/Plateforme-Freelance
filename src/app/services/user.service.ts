@@ -17,6 +17,7 @@ export class UserService {
     this.userSignup = this.env.usersSignup
     this.userSignin  = this.env.usersSignin
     this.viewNumber = this.env.viewNumber
+    this.viewNumberEntreprise = this.env.viewNumberEntreprise
    }
   
 
@@ -24,7 +25,7 @@ export class UserService {
    private  userSignup 
    private  userSignin 
   private viewNumber 
-
+private viewNumberEntreprise
 
   // function signup api call
 signup(user: any){
@@ -38,9 +39,19 @@ updateViewNbr(id  : any , idVisiteur : any  ){
   let params = new HttpParams()
   .set('id', id)
   .set('idVisiteur', idVisiteur )
-  console.log(params);
+  // console.log(params);
 
  return this.http.put(this.url + this.viewNumber,{},{params});
+
+}
+updateViewNbrEntreprise(id  : any , idVisiteur : any  ){
+  
+  let params = new HttpParams()
+  .set('id', id)
+  .set('idVisiteur', idVisiteur )
+  // console.log(params);
+
+ return this.http.put(this.url + this.viewNumberEntreprise,{},{params});
 
 }
 

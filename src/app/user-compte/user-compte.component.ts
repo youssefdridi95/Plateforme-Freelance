@@ -16,14 +16,15 @@ import { UserService } from '../services/user.service';
 
 export class UserCompteComponent {
 
-  constructor(private toastr: ToastrService, private userProfilService: UserProfil, private router: Router, private roote: ActivatedRoute, private postService: PostService,private userService: UserService ) {
+  constructor(private toastr: ToastrService, private userProfilService: UserProfil, private router: Router, private roote: ActivatedRoute, private postService: PostService, private userService: UserService) {
 
-    this.roote.paramMap.subscribe(params => { this.userId = params.get('id') 
-    this.getProfil();
-    this.getPost(this.userId);
-console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',this.profil);
+    this.roote.paramMap.subscribe(params => {
+      this.userId = params.get('id')
+      this.getProfil();
+      this.getPost(this.userId);
+      console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', this.profil);
 
-  })
+    })
   }
 
   navigateToCvCreer(link: String) {
@@ -31,7 +32,7 @@ console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',this.profil);
     this.router.navigate([link]);
 
   }
-pub = false ;
+  pub = false;
   username: string = '';
   email: string = '';
   userId: any;
@@ -39,14 +40,14 @@ pub = false ;
   posts: any;
   profilImage: string = '';  // Ajoutez cette ligne dans votre classe
   test: any;
-  isMine=false
+  isMine = false
   // user-compte.component.ts
   userImage: string = '';  // Ajoutez cette ligne dans votre classe
 
   // Dans la méthode ngOnInit
   ngOnInit() {
 
-   
+
 
 
 
@@ -56,8 +57,8 @@ pub = false ;
   }
 
   getProfil() {
-// 
-    let params = new HttpParams().set('userId',this.userId);
+    // 
+    let params = new HttpParams().set('userId', this.userId);
 
     this.userProfilService.getProfil(params).subscribe(
       res => {
@@ -65,18 +66,19 @@ pub = false ;
         // this.toastr.success('reussite');
 
         if (this.userId == JSON.parse(sessionStorage.getItem('user')!).id) {
-        console.log('tgegte');
+          console.log('tgegte');
+          sessionStorage.setItem('post', JSON.stringify(res));
 
-        sessionStorage.setItem('profil',JSON.stringify(res));
-        this.isMine=true
+          sessionStorage.setItem('profil', JSON.stringify(res));
+          this.isMine = true
           this.profil = res;
-          
+
           this.profilImage = this.profil.file.fileDownloadUri;  // Assurez-vous que le champ est correct
         } else {
           this.profil = res;
           this.profilImage = this.profil.file.fileDownloadUri;  // Assurez-vous que le champ est correct
         }
-        console.log('eeeeeeeeeeeeee,jyteku-,yer',this.profil);
+        console.log('eeeeeeeeeeeeee,jyteku-,yer', this.profil);
         this.updateViewNmbr();
 
       },
@@ -88,11 +90,11 @@ pub = false ;
   }
 
   getPost(userId: any) {
-    
+
     this.postService.getUserPosts(userId).subscribe(
       res => {
         this.posts = res;
-       
+
         // Faites quelque chose avec les posts récupérés, par exemple, assignez-les à une variable de composant
         // this.posts = res;
 
@@ -122,7 +124,7 @@ pub = false ;
   deletePost(postId: string) {
     if (confirm('Are you sure you want to delete this post?')) {
       console.log(postId);
-      
+
       this.postService.delete(postId).subscribe(
         (res) => {
           console.log(res);
@@ -141,22 +143,41 @@ pub = false ;
   }
   updateViewNmbr() {
     console.log('Avant la fonction ddedd');
+    console.log("hhhhhhh",this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id);
 
     const storedProfileId = sessionStorage.getItem('lastViewedProfileId');
     if (storedProfileId !== this.profil.id) {
-      this.userService.updateViewNbr(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
-        res => {
-          console.log('modification avec succès', res);
-          this.toastr.success('Modification avec succès');
-          sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
-        },
-        err => {
-          console.log('échec de la modification', err);
-          this.toastr.error('Erreur de modification', 'Erreur');
-        }
-      );
+    this.userService.updateViewNbr(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
+      (res) => {
+        console.log('modification avec succès', res);
+        this.toastr.success('Modification avec succès');
+        sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
+      },
+      (err) => {
+        console.log('échec de la modification', err);
+        this.toastr.error('Erreur de modification', 'Erreur');
+      }
+    );
     }
   }
-  
 
-}
+  addmnbrReact(postId:any) {
+    console.log('Avant la fonction ddedd');
+    console.log(postId);
+
+
+    this.postService.addmnbrReact(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id,postId  ).subscribe(
+      (res) => {
+        console.log('modification avec succès', res);
+        this.toastr.success('react avec succès');
+        sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
+      },
+      (err) => {
+        console.log('échec de la modification', err);
+        this.toastr.error('Erreur de reacter', 'Erreur');
+      }
+    );
+    }
+  }
+
+

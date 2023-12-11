@@ -1,70 +1,170 @@
-.row {
-    display: flex;
-    justify-content: space-between;
-    padding: 1%;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .col-lg-3 {
-    flex: 0 0 23%;
-    margin-bottom: 20px;
-    border-radius: 15px; /* Ajoutez cette ligne pour définir le border radius */
-  }
-  
-  .panel {
-    text-align: center;
-    border-radius: 15px; /* Ajoutez cette ligne pour définir le border radius */
-  }
-  
-  .panel-heading {
-    padding: 10px;
-  }
-  
-  .panel-footer {
-    padding: 10px;
-    border-radius: 15px; /* Ajoutez cette ligne pour définir le border radius */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-  }
-  
-  .panel-primary {
-    background-color: #3498db;
-  }
-  
-  .panel-green {
-    background-color: #2ce0d7;
-  }
-  
-  .panel-yellow {
-    background-color: gray;
-  }
-  
-  .panel-red {
-    background-color: #dbdbd4;
-  }
-  
-  .huge {
-    font-size: 24px;
-    margin-bottom: 5px;
-  }
-  
-  .panel-primary .panel-footer {
-    background-color: #2980b9;
-  }
-  
-  .panel-green .panel-footer {
-    background-color: #08afa7;
-  }
-  
-  .panel-yellow .panel-footer {
-    background-color: rgb(104, 97, 97);
-  }
-  
-  .panel-red .panel-footer {
-    background-color: #a8a8a5;
-  }
-  
-  .panel-footer span {
-    color: #fff;
-  }
-  
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Style de la ligne de rectangles */
+/* Style de la ligne de rectangles */
+.rectangle-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Style des rectangles */
+.rectangle1 {
+  flex: 1;
+  /* Chaque rectangle occupe une part égale de l'espace disponible */
+  height: 90px;
+  /* Hauteur minimale des rectangles (ajustez selon vos besoins) */
+  margin-right: 10px;
+  /* Espace entre les rectangles (ajustez selon vos besoins) */
+  /* background: linear-gradient(to right, #5BC0EB 40%, white 40%, red 100%); Dégradé linéaire pour diviser les couleurs */
+  background: linear-gradient(to right, #5BC0EB 40%,rgb(236, 233, 233) 40%, rgb(255, 253, 253) 100%);
+  /* Dégradé linéaire pour diviser les couleurs */
+  border-radius: 10px;
+  border: rgb(197, 193, 193) solid;
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.rectangle2 {
+  flex: 1;
+  /* Chaque rectangle occupe une part égale de l'espace disponible */
+  height: 90px;
+  /* Hauteur minimale des rectangles (ajustez selon vos besoins) */
+  margin-right: 10px;
+  /* Espace entre les rectangles (ajustez selon vos besoins) */
+  /* background: linear-gradient(to right, #5BC0EB 40%, white 40%, red 100%); Dégradé linéaire pour diviser les couleurs */
+  background: linear-gradient(to right, #9BC53E 40%, rgb(221, 219, 219) 40%, rgb(221, 219, 219) 100%);
+  /* Dégradé linéaire pour diviser les couleurs */
+  border-radius: 10px;
+  border: rgb(197, 193, 193) solid;
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.rectangle3 {
+  flex: 1;
+  /* Chaque rectangle occupe une part égale de l'espace disponible */
+  height: 90px;
+  /* Hauteur minimale des rectangles (ajustez selon vos besoins) */
+  margin-right: 10px;
+  /* Espace entre les rectangles (ajustez selon vos besoins) */
+  /* background: linear-gradient(to right, #5BC0EB 40%, white 40%, red 100%); Dégradé linéaire pour diviser les couleurs */
+  background: linear-gradient(to right, #FDE74C 40%, rgb(194, 191, 191) 40%, rgb(207, 205, 205) 100%);
+  /* Dégradé linéaire pour diviser les couleurs */
+  border-radius: 10px;
+  border: rgb(197, 193, 193) solid;
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.rectangle4 {
+  flex: 1;
+  /* Chaque rectangle occupe une part égale de l'espace disponible */
+  height: 90px;
+  /* Hauteur minimale des rectangles (ajustez selon vos besoins) */
+  margin-right: 10px;
+  /* Espace entre les rectangles (ajustez selon vos besoins) */
+  /* background: linear-gradient(to right, #5BC0EB 40%, white 40%, red 100%); Dégradé linéaire pour diviser les couleurs */
+  background: linear-gradient(to right, #E55935 40%, rgb(194, 191, 191) 40%, rgb(207, 205, 205) 100%);
+  /* Dégradé linéaire pour diviser les couleurs */
+  border-radius: 10px;
+  /* border: rgb(197, 193, 193) solid; */
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  font-size: 3rem;
+  border-color: #ddd;
+}
+i{
+color: white;
+}
+p {
+  font-weight: bold;
+
+}
+
+.widget {
+  flex: 0 0 calc(48% - 20px);
+  /* Adjust width and margin as needed */
+  margin-bottom: 20px;
+}
+
+.panel {
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.panel:hover {
+  transform: scale(1.05);
+}
+
+.panel-heading {
+  padding: 20px;
+  background-color: #3498db;
+  color: #fff;
+}
+
+.panel-body {
+  padding: 20px;
+}
+
+.huge {
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+.panel-footer {
+  padding: 10px 20px;
+  background-color: #2980b9;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  transition: background-color 0.3s;
+}
+
+.panel-footer:hover {
+  background-color: #1c6dad;
+}
+
+.panel-footer span {
+  margin-right: 10px;
+}
+
+button {
+  width: 20%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}

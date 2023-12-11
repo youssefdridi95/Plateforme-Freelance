@@ -12,10 +12,10 @@
       <div class="contact_card">
         <!-- <span> <i class="fa-solid fa-phone"></i> : </span><br><br> -->
         <span> <i class="fa-solid fa-envelope"></i> :  </span><br><br>
-        <span><i class="fa-solid fa-location-dot"></i> : {{profil.timezone}} </span>
+        <span><i class="fa-solid fa-location-dot"></i> : {{profil?.timezone}} </span>
       </div>
       <div>
-        <p>Compétence Principale : {{profil.mainSkill}} </p>
+        <p>Compétence Principale : {{profil?.mainSkill}} </p>
 
         <p>Formations : </p>
 
@@ -88,11 +88,11 @@
           <div class="heading flex-center">
             <div class="name flex-center">
               <img src="/assets/was.png " alt="User Image">
-              <span>{{profil.anonyme}}</span>
+              <span>{{profil?.anonyme}}</span>
             </div>
-            <p class="date">{{post.date | date : 'shortDate'}}</p>
+            <p class="date">{{post?.date | date : 'shortDate'}}</p>
             <div class="public">
-              <p>{{post.desc}}.</p>
+              <p>{{post?.desc}}.</p>
 
             </div>
             <img src="https://placehold.co/600x400" style="width: 150px; height: 100px; border-radius: 0;margin: 5px;"
@@ -101,7 +101,7 @@
 
 
             <div class="fav">
-              <button class="like">j'aime</button>
+              <button class="like" (click)="addmnbrReact(post.id)">j'aime</button>
               <button class="comment">commentaire</button>
               <button class="share">partager</button>
 
@@ -113,8 +113,10 @@
     </article>
 
 
-    <article *ngIf="pub===false" class="publication">
-       <app-dashboard></app-dashboard>
+    <article *ngIf="pub===false" class="dashboard">
+      <app-dashboard></app-dashboard>
+    <!-- <article *ngIf="pub===false" class="publication">
+       <app-dashboard></app-dashboard> -->
 
  
 

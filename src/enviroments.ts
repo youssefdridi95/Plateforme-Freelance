@@ -44,10 +44,10 @@ export const environments= {
     getSkillPost: '/api/umanlink/postes/all/by-skill',
 
     getPostFilter: '',
-
+    viewNumberEntreprise:'/api/umanlink/profiles/entreprises/update-Nombre De Vues',
     viewNumber:'/api/umanlink/profiles/individuals/update-Nombre De Vues',
     getFilePost: '/api/umanlink/postes/get-post-file',
-
+    augnbrReact : '/api/umanlink/postes/Augmente-nombre-reacts',
 
     getUserProfil: '/api/umanlink/profiles/individuals/get-one/by-user',
     editUserProfil: '/api/umanlink/profiles/individuals/update-Talent',

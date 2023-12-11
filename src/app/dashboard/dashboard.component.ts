@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,11 +8,24 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  profil: any; // Assurez-vous que le type de profil correspond à la structure de vos données
+  profil: any; // Make sure the type of 'profil' matches the structure of your data
 
   constructor(private route: ActivatedRoute) {}
 
-  ngOnInit(): void {
+  generatePdf() {
+    const doc = new jsPDF();
+    doc.setFontSize(22);
+    doc.text('hello ', 10, 10);
+    doc.save('mypdf.pdf');
+  }
 
+  ngOnInit(): void {
+    // Retrieve 'profil' from sessionStorage
+    const profilString = sessionStorage.getItem('profil');
+
+    if (profilString) {
+      // Parse the JSON string to get the 'profil' object
+      this.profil = JSON.parse(profilString);
+    }
   }
 }
