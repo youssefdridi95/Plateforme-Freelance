@@ -73,6 +73,7 @@ nav.nav{
   max-width: 20%;
   border-radius: 50%;
   padding-right: 1rem;
+  position: relative;
 }
 .profile i , .menu{
   font-size: 1.5rem;
@@ -316,4 +317,82 @@ color: #034f9b;
 
 .fa-bell, .fa-user {
   cursor: pointer;
+}
+
+.notificationWrapper{
+  position: absolute;
+  top: 3rem;
+  right: 5%;
+  width:  350px;
+  z-index: 10;
+  overflow-y: scroll;
+  max-height: 70vh;
+
+}
+.notifications{
+ 
+  background-color: #ccc;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width:  100%;
+  z-index: 10;
+  height: 100%;
+
+}
+
+.notifications .notif {
+    width: 100%;
+    background: white;
+    padding: 0.5rem ;
+    border-radius: 0.3rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+  }
+
+.notifications .notif p {
+  text-align: left;
+  margin-left: 1rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.notifContainer{
+  position: relative;
+}
+.red {
+  position: absolute;
+  top: 3px; /* Adjust the top value as needed to align the dot vertically */
+  right: 3px; /* Adjust the right value to control the distance from the bell */
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  z-index: 1; 
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.name {
+  font-weight: bold;
+  margin-right: 8px;
+  width: 100%;
+  color: #727272;
+
+}
+
+.date {
+  color: #888;
+  width: 100%;
+  text-align: right;
+  font-size: .7rem;
 }

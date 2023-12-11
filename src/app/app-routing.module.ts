@@ -33,6 +33,7 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 import { TalentFeedComponent } from './talent-feed/talent-feed.component';
 import { EntrepriseFeedComponent } from './entreprise-feed/entreprise-feed.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ChatsComponent } from './chats/chats.component';
 
 
 const routes: Routes = [
@@ -41,7 +42,7 @@ const routes: Routes = [
   {path : "user/connexion/:type" , component : UserInscritComponent ,canActivate:[loggedinGuard]},
   {path:"section",component :SectionComponent },
   {path:"CreerCompteEmployee/:email/:idEntreprise/:role",component :AddUserComponent,canActivate: [AuthGuard] },
-  {path:"recherche",component :RechercheComponent ,canActivate: [AuthGuard] },
+  {path:"recherche",component :RechercheComponent },
 
   {path:"talents/list/:skill",component :ListeEmpComponent,canActivate: [AuthGuard] },
   {path:"entreprise/feed/:skill",component :EntrepriseFeedComponent ,canActivate: [AuthGuard]},
@@ -68,6 +69,9 @@ const routes: Routes = [
   {path: "verif/email/:role/:email" , component : VerifEmailComponent,canActivate: [AuthGuard]},
   {path: "user/update", component :UserUpdateComponent,canActivate: [AuthGuard]},
   {path: "dashboard" , component : DashboardComponent},
+  {path: "chat", component :ChatsComponent,},
+  {path: "id/:activeId" , component : ChatsComponent},
+  
   
  
 
