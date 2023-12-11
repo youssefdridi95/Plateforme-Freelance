@@ -6,6 +6,15 @@ header {
   min-height: 75vh;
 background-color: white;
 }
+img{
+  max-width: 40%;
+  height: 50%;
+  display: flex;
+  justify-content: flex-end;
+  margin: -2px auto;
+  margin-bottom: -10%;
+  background-color: white !important;
+}
 .container {
   max-width: 27.4rem;
   width: 95%;

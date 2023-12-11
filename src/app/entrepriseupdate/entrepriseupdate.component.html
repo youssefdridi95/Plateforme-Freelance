@@ -1,91 +1,91 @@
 
 <div class="container">
-    <div class="heading">Modifier Profil Entreprise</div>
-      <form [formGroup]="updateForm" (ngSubmit)="update()"  class="form">
+  <div class="heading">Modifier Profil Entreprise<img src="/../assets/update.jpg" /></div>
+    <form [formGroup]="updateForm" (ngSubmit)="update()"  class="form">
 
-        
       
-          <input type="text"  class="input" formControlName="title" id="title" placeholder="Nom entreprise*" />
+    
+        <input type="text"  class="input" formControlName="title" id="title" placeholder="Nom entreprise*" />
 
-          <div
-            *ngIf=" updateForm.controls['title'].invalid &&(updateForm.controls['title'].dirty ||updateForm.controls['title'].touched) "class="text-danger">
-            <div *ngIf="updateForm.controls['title'].errors?.['minlength']">
-             nom entreprise min len 3
-            </div>
-
-            <div *ngIf="updateForm.controls['title'].errors?.['required']" >
-              Nom entreprise Req *
-            </div>
+        <div
+          *ngIf=" updateForm.controls['title'].invalid &&(updateForm.controls['title'].dirty ||updateForm.controls['title'].touched) "class="text-danger">
+          <div *ngIf="updateForm.controls['title'].errors?.['minlength']">
+           nom entreprise min len 3
           </div>
 
-          <select class="input pp"  formControlName="activity" id="activity">
-            <option value=""  disabled selected>Secteur d'activité*</option>
-            <option value="Technologie de l'Information (TI)">Technologie de l'Information (TI) </option>
-            <option value="Santé et Sciences de la Vie">Santé et Sciences de la Vie </option>
-            <option value="Finance et Banque ">Finance et Banque </option>
-            <option value="Énergie et Environnement">Énergie et Environnement </option>
-            
-            <option value="Commerce de Détail et E-commerce">Commerce de Détail et E-commerce </option>
-            <option value="Industrie Automobile">Industrie Automobile  </option>
-            <option value="Agroalimentaire">Agroalimentaire </option>
-            <option value="Éducation">Éducation</option>
-            <option value="Divertissement et Médias ">Divertissement et Médias </option>
-          </select>
-      
-          <div *ngIf="updateForm.controls['activity'].invalid && 
-                     (updateForm.controls['activity'].dirty || 
-                     updateForm.controls['activity'].touched)" class="text-danger">
-            <div *ngIf="updateForm.controls['activity'].errors?.['required']">
-              Secteur d'activité Req *
-            </div>
-          </div >
-<div class="division">
-          <input type="text" class="input"  formControlName="adresse"  placeholder="adresse*" />
-
-          <div
-            *ngIf=" updateForm.controls['adresse'].invalid &&(updateForm.controls['adresse'].dirty ||updateForm.controls['adresse'].touched) "class="text-danger">
-            <div *ngIf="updateForm.controls['adresse'].errors?.['minlength']">
-              Pays min 5
-            </div>
-
-            <div *ngIf="updateForm.controls['adresse'].errors?.['required']" >
-              Pays Req *
-            </div>
-          </div>
-          <div *ngIf="updateForm.controls['timezone'].errors?.['required']" >
+          <div *ngIf="updateForm.controls['title'].errors?.['required']" >
             Nom entreprise Req *
           </div>
         </div>
 
-        <select class="input pp"  formControlName="timezone" id="timezone">
-          <option value=""  disabled selected>Timezone*</option>
-          <option value="America/New_York">America/New_York</option>
-          <option value="America/Chicago">America/Chicago </option>
-          <option value="America/Los_Angeles">America/Los_Angeles</option>
-          <option value="Europe/London"> Europe/London </option>
-          <option value="Europe/Berlin">Europe/Berlin </option>
-          <option value="Asia/Kolkata">Asia/Kolkata </option>
-          <option value="Australia/Sydney">Australia/Sydney </option>
-          <option value="Australia/Adelaide ">Australia/Adelaide </option>
-          <option value="Australia/Perth">Australia/Perth</option>
-          <option value="Asia/Shanghai">Asia/Shanghai </option>
-          <option value="Africa/Tunis">Africa/Tunis </option>
-          <option value="Europe/Paris">Europe/Paris </option>
-          <option value="Asia/Phnom_Penh">Asia/Phnom_Penh </option>
-          <option value="Europe/Istanbul"> Europe/Istanbul </option>
-          <option value="Pacific/Auckland">Pacific/Auckland </option>
-          <option value="Europe/Moscow">Europe/Moscow </option>
-          <option value="America/Mexico_City">America/Mexico_City </option>
-          <option value="Asia/Tokyo">Asia/Tokyo</option>
-          <option value="America/Sao_Paulo">America/Sao_Paulo </option>
-
+        <select class="input pp"  formControlName="activity" id="activity">
+          <option value=""  disabled selected>Secteur d'activité*</option>
+          <option value="Technologie de l'Information (TI)">Technologie de l'Information (TI) </option>
+          <option value="Santé et Sciences de la Vie">Santé et Sciences de la Vie </option>
+          <option value="Finance et Banque ">Finance et Banque </option>
+          <option value="Énergie et Environnement">Énergie et Environnement </option>
+          
+          <option value="Commerce de Détail et E-commerce">Commerce de Détail et E-commerce </option>
+          <option value="Industrie Automobile">Industrie Automobile  </option>
+          <option value="Agroalimentaire">Agroalimentaire </option>
+          <option value="Éducation">Éducation</option>
+          <option value="Divertissement et Médias ">Divertissement et Médias </option>
         </select>
-        
-      
+    
+        <div *ngIf="updateForm.controls['activity'].invalid && 
+                   (updateForm.controls['activity'].dirty || 
+                   updateForm.controls['activity'].touched)" class="text-danger">
+          <div *ngIf="updateForm.controls['activity'].errors?.['required']">
+            Secteur d'activité Req *
+          </div>
+        </div >
+<div class="division">
+        <input type="text" class="input"  formControlName="adresse"  placeholder="adresse*" />
 
-        <input class="login-button" type="submit" value="Modifier" >
-      </form>
+        <div
+          *ngIf=" updateForm.controls['adresse'].invalid &&(updateForm.controls['adresse'].dirty ||updateForm.controls['adresse'].touched) "class="text-danger">
+          <div *ngIf="updateForm.controls['adresse'].errors?.['minlength']">
+            Pays min 5
+          </div>
+
+          <div *ngIf="updateForm.controls['adresse'].errors?.['required']" >
+            Pays Req *
+          </div>
+        </div>
+        <div *ngIf="updateForm.controls['timezone'].errors?.['required']" >
+          Nom entreprise Req *
+        </div>
+      </div>
+
+      <select class="input pp"  formControlName="timezone" id="timezone">
+        <option value=""  disabled selected>Timezone*</option>
+        <option value="America/New_York">America/New_York</option>
+        <option value="America/Chicago">America/Chicago </option>
+        <option value="America/Los_Angeles">America/Los_Angeles</option>
+        <option value="Europe/London"> Europe/London </option>
+        <option value="Europe/Berlin">Europe/Berlin </option>
+        <option value="Asia/Kolkata">Asia/Kolkata </option>
+        <option value="Australia/Sydney">Australia/Sydney </option>
+        <option value="Australia/Adelaide ">Australia/Adelaide </option>
+        <option value="Australia/Perth">Australia/Perth</option>
+        <option value="Asia/Shanghai">Asia/Shanghai </option>
+        <option value="Africa/Tunis">Africa/Tunis </option>
+        <option value="Europe/Paris">Europe/Paris </option>
+        <option value="Asia/Phnom_Penh">Asia/Phnom_Penh </option>
+        <option value="Europe/Istanbul"> Europe/Istanbul </option>
+        <option value="Pacific/Auckland">Pacific/Auckland </option>
+        <option value="Europe/Moscow">Europe/Moscow </option>
+        <option value="America/Mexico_City">America/Mexico_City </option>
+        <option value="Asia/Tokyo">Asia/Tokyo</option>
+        <option value="America/Sao_Paulo">America/Sao_Paulo </option>
+
+      </select>
+      
+    
+
+      <input class="login-button" type="submit" value="Modifier" >
+    </form>
 </div>
 
 
-      
+    

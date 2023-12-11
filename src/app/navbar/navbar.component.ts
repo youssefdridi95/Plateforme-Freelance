@@ -30,7 +30,7 @@ this.isTalent='both'
     }
   }
 
-  role = JSON.parse(sessionStorage.getItem('user')!).roles;
+  // role = JSON.parse(sessionStorage.getItem('user')!).roles;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {

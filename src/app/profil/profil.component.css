@@ -1,259 +1,286 @@
 
 .container {
   
-    margin: 2rem auto;
-    width: 100%;
-    max-width: 50rem;
-    background-color: white;
-    padding: 2rem 5rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s ease; /* Optional: Add a smooth transition effect */
-  }
-  
-  .gray-background {
-    background-color: #dddddd; /* Set your desired gray color */
-  }
-  
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 50rem;
+  background-color: white;
+  padding: 2rem 5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease; /* Optional: Add a smooth transition effect */
+}
+
+.gray-background {
+  background-color: #dddddd; /* Set your desired gray color */
+}
+
 .container h2{
-   
-    text-align: left;
-    
+ color: #007CF8;
+  text-align: left;
+  font-weight: 800;
+ font-style: normal;
 }
 .card {
-    font-size: 1rem;
-    font-weight: bold;
-    width: 100%;
-    align-items: center;  
-  border-radius: 40px;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 100%;
+  align-items: center;  
+border-radius: 40px;
+margin-left: auto;
+margin-right: auto;
 
-  }
-  .card input:focus{
-    border: 1px solid #2E90E5;
-    padding: 0.5rem;
-    border-radius: 0.3rem;
-    transition: all 0.3s;
-    color: gray;
-    
-  }
+}
+.card input:focus{
+  border: 1px solid #2E90E5;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  transition: all 0.3s;
+  color: gray;
   
-  .card2 {
-    font-size: 1rem;
-    font-weight: bold;
-    background-color:#EEEEEE;
-    width: 50rem;
-    align-items: center;  
-  border-radius: 40px;
-  margin-left: auto;
-  margin-right: auto;
+}
 
-  }
-  
+.card2 {
+  font-size: 1rem;
+  font-weight: bold;
+  background-color:#EEEEEE;
+  width: 50rem;
+  align-items: center;  
+border-radius: 40px;
+margin-left: auto;
+margin-right: auto;
+
+}
+
 
 .name{
-    font-size: .875rem!important;
-    font-weight: 700;
-    margin-top: 10px;
-    border-bottom: 2px solid #e1e3eb; /* Vous pouvez ajuster l'épaisseur et la couleur selon vos besoins */
-    padding-bottom: 0.6rem;
-    margin-bottom: 0.6rem;
-    margin-top: 3rem;
+  font-size: .875rem!important;
+  font-weight: 700;
+  margin-top: 10px;
+  border-bottom: 2px solid #e1e3eb; /* Vous pouvez ajuster l'épaisseur et la couleur selon vos besoins */
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.6rem;
+  margin-top: 3rem;
 
 
- /* Ajoute un espacement entre les éléments */
+/* Ajoute un espacement entre les éléments */
 
 }
 
 .mail{
-    font-size: .875rem!important;
-    font-weight: 700;    margin-top: 10px;
-    border-bottom: 2px solid #e1e3eb; /* Vous pouvez ajuster l'épaisseur et la couleur selon vos besoins */
-    padding-bottom: 0.6rem;
-    margin-bottom: 0.6rem;
-    margin-top: 3rem;
+  font-size: .875rem!important;
+  font-weight: 700;    margin-top: 10px;
+  border-bottom: 2px solid #e1e3eb; /* Vous pouvez ajuster l'épaisseur et la couleur selon vos besoins */
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.6rem;
+  margin-top: 3rem;
 
 
 
 }
 .password{
-    font-size: .875rem!important;
-    font-weight: 700;    margin-top: 10px;
-    border-bottom: 2px solid #e1e3eb; /* Vous pouvez ajuster l'épaisseur et la couleur selon vos besoins */
-    padding-bottom: 0.6rem;
-    margin-bottom: 0.6rem;
-    margin-top: 3rem;
+  font-size: .875rem!important;
+  font-weight: 700;    margin-top: 10px;
+  border-bottom: 2px solid #e1e3eb; /* Vous pouvez ajuster l'épaisseur et la couleur selon vos besoins */
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.6rem;
+  margin-top: 3rem;
 }
 .user-image {
-    position: relative;
-    width: 40%; /* Ajustez la largeur et la hauteur selon vos besoins */
-    border-radius: 50%;
-    overflow: hidden;
-    background-color: #2e90e5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 4rem;
-    margin-bottom: 3rem;
+  position: relative;
+  width: 40%; /* Ajustez la largeur et la hauteur selon vos besoins */
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #2e90e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
 }
 
 .file-input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
 }
 
 /* .file-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 5px;
-    background-color: #cdd6df;
-    color: #ffffff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  background-color: #cdd6df;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1;
 } */
 
 .file-button::before {
-    content: '📷';  /* Remplacez le contenu par l'emoji ou l'icône que vous souhaitez utiliser */
-    font-size: 25px;  /* Ajustez la taille de l'icône selon vos préférences */
+  content: '📷';  /* Remplacez le contenu par l'emoji ou l'icône que vous souhaitez utiliser */
+  font-size: 25px;  /* Ajustez la taille de l'icône selon vos préférences */
 }
 
 
 .user-image img {
-    width: 100%; /* Pour remplir complètement le conteneur */
-    height: 100%;
-    object-fit: cover; /* Ajuste la taille de l'image tout en conservant les proportions */
+  width: 100%; /* Pour remplir complètement le conteneur */
+  height: 100%;
+  object-fit: cover; /* Ajuste la taille de l'image tout en conservant les proportions */
 }
 
 .file-input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-  }
-  .file-button {
-    position: absolute;
-    top: 22%;
-    left: 84%;
-    transform: translate(-50%, -50%);
-    padding: 5px;
-    background-color: transparent;
-    color: #ffffff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 1;
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.file-button {
+  position: absolute;
+  top: 22%;
+  left: 84%;
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  background-color: transparent;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1;
+}
 
 .card input {
-    border: none; /* Supprime la bordure par défaut */
-    outline: none; /* Supprime également la bordure de focus */
-    background-color: transparent; /* Rend le fond transparent */
-    font-size: 1rem; /* Ajoute la taille de police */
+  border: none; /* Supprime la bordure par défaut */
+  outline: none; /* Supprime également la bordure de focus */
+  background-color: transparent; /* Rend le fond transparent */
+  font-size: 1rem; /* Ajoute la taille de police */
 }
 
 .field {
-    position: relative;
-    border-bottom: none; /* Supprime la bordure inférieure */
+  position: relative;
+  border-bottom: none; /* Supprime la bordure inférieure */
 }
 
 .field button {
-    position: absolute;
-    right: 0;
-    top: 90%;
-    transform: translateY(-50%);
-    padding: 5px 10px;
-   background-color: white;
-    color: #2E90E5;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 90%;
+  transform: translateY(-50%);
+  padding: 5px 10px;
+ background-color: white;
+  color: #2E90E5;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .field:focus-within {
-    border-bottom: none; /* Supprime la bordure lorsque l'un des enfants a le focus */
+  border-bottom: none; /* Supprime la bordure lorsque l'un des enfants a le focus */
 }
- i {
-    color: #2E90E5;
-    font-size: 1.5rem;
- }
- .password-change-card {
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    width: 40%;
-    /* height: 40%; */
-    margin: auto;
-    /* add other styles as needed */
-  }
-  
-  
-  h2 {
-    text-align: center;
-    color: #333333;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555555;
-  }
-  
-  input {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    outline: none;
-  }
-  
-  .button-group {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-  }
-  
-  button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .cancel-button {
-    background-color: #dddddd;
-    color: #333333;
-  }
+img{
+max-width: 40%;
+height: 50%;
+display: flex;
+justify-content: flex-end;
+margin: -60px auto;
+margin-bottom: -23%;
+margin-left: 65%;
+background-color: white !important;
+}
+i {
+  color: #2E90E5;
+  font-size: 1rem;
+}
+button.delete i {
+position :absolute;
+color: #007CF8;
+right: -1rem;
+top: -1.3rem;
+width: 3rem;
+font-size: 1.2rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+button.delete i:hover {
+background-color:white;
+color: red;
 
-  
-  .save-button {
-    background-color: #2e90e5;
-    color: #ffffff;
-  }
-  .validator{
-    color: red;
-  }
-  
+}
+
+.password-change-card {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  width: 40%;
+  /* height: 40%; */
+  margin: auto;
+  /* add other styles as needed */
+}
+
+
+h2 {
+  text-align: center;
+  color: #333333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555555;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background-color: #dddddd;
+  color: #333333;
+}
+
+
+.save-button {
+  background-color: #2e90e5;
+  color: #ffffff;
+}
+.validator{
+  color: red;
+}

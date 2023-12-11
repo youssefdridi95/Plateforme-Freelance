@@ -19,18 +19,18 @@ header {
     justify-content: center;
     gap: 3rem;
     flex-direction: column;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     background-position: center !important;
   }
   .header-content h1 {
-    font-size: 1rem;
-    font-weight: 700 !important;
+    font-size: 0.8rem;
+    font-weight: 600 !important;
     text-align: center !important;
   }
 
   .header-content span {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 400;
     width: 100%;
     text-align: center;
     padding-left: 0;
@@ -42,29 +42,28 @@ header {
   }
 }
 header .header-content {
-  max-width: 50rem;
-  padding: 2rem;
+  max-width: 47rem;
+  padding: 1.9rem;
   width: 100%;
   min-height: 75vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 2.3rem;
   flex-direction: column;
-  font-size: 16px;
-  font-weight: 900;
+  font-size: 14px;
+  font-weight: 700;
   padding: 1rem;
 }
 .header-content h1 {
-  font-size: 2rem;
+  font-size: 1.6rem;
   width: 100%;
-
   text-wrap: balance;
   padding: 1rem;
   margin: 0 auto;
-  margin-top: 3rem;
+  margin-top: 2.7rem;
   text-align: left;
-  font-weight: 600;
+  font-weight: 900;
   letter-spacing: 2.5px;
   background-image: linear-gradient(80deg, #0d4b85, #0d4b85);
   background-size: 100%;
@@ -79,7 +78,7 @@ header .header-content {
 .header-content h1 span {
   font-size: 2.5rem;
 
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 2.5px;
   background-image: linear-gradient(55deg, #007cf8, #007cf8);
   background-size: 100%;
@@ -94,7 +93,7 @@ header .header-content {
 
 .header-content span {
   font-size: 1rem;
-  letter-spacing: 3px;
+  letter-spacing: 2.7px;
   font-weight: normal;
   padding-left: 1rem;
   font-weight: 100;
@@ -102,10 +101,10 @@ header .header-content {
 
 .signup-button {
   font-weight: bold;
-  border: 0.8px solid #0d4b85;
+  border: 0.9px solid #0d4b85;
   color: #0d4b85;
   padding: 1rem 2rem;
-  border-radius: 1.2rem;
+  border-radius: 0.9rem;
   border-color: #0d4b85;
   box-shadow: rgba(232, 235, 236, 0.878) 0rem 1.25rem 0.625rem -0.9375rem;
   background-color: white;
@@ -113,7 +112,7 @@ header .header-content {
   text-decoration: none;
   text-align: center !important;
   justify-self: center;
-  margin: 1rem;
+  margin: 0.8rem;
   font-size: 1rem;
 }
 
