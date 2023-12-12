@@ -44,12 +44,23 @@ export class UserCompteComponent {
   isMine = false
   // user-compte.component.ts
   userImage: string = '';  // Ajoutez cette ligne dans votre classe
-
+img :any 
   // Dans la méthode ngOnInit
   ngOnInit() {
 
 
+this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
+  (fileBlob: Blob) => {
+    // Handle the successful response here
+    console.log('File downloaded successfully:', fileBlob);
+     this.img = URL.createObjectURL(fileBlob);
 
+  },
+  (error :any) => {
+    // Handle errors
+    console.error('Error downloading file:', error);
+  }
+);
 
 
   }
@@ -93,12 +104,41 @@ export class UserCompteComponent {
   getPost(userId: any) {
 
     this.postService.getUserPosts(userId).subscribe(
-      res => {
+     ( res:any) => {
+
+        for(let post of res.content)
+      {  
+        post['filesURLS']=[]
+
+        let filesURLS:any[]=[]
+        for (let file of post.files) {
+          // this.postService.getFile( file.fileDownloadUri).subscribe(
+
+        this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
+          (fileBlob: Blob) => {
+            // Handle the successful response here
+            console.log('File downloaded successfully:', fileBlob);
+          
+            filesURLS.push( URL.createObjectURL(fileBlob));
+          },
+          (error :any) => {
+            // Handle errors
+            filesURLS.push('image');
+            console.error('Error downloading file:', error);
+          }
+        );
+                 
+          
+      }
+      post['filesURLS'].push(filesURLS)
+       }
+       
         this.posts = res;
+
 
         // Faites quelque chose avec les posts récupérés, par exemple, assignez-les à une variable de composant
         // this.posts = res;
-
+        
       },
       err => {
         console.log('failed to get posts', err);
@@ -111,15 +151,19 @@ export class UserCompteComponent {
   // Exemple dans UserCompteComponent
   getFile(fileDownloadUri: any) {
 
-    this.postService.getFile(fileDownloadUri).subscribe(
-      (blob: Blob) => {
-        return URL.createObjectURL(blob);
+    this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
+      (fileBlob: Blob) => {
+        // Handle the successful response here
+        console.log('File downloaded successfully:', fileBlob);
+        return URL.createObjectURL(fileBlob);
+    
       },
-      error => {
-        return 'https://th.bing.com/th/id/OIF.3rMDm1LTbMPxj0MbWPHlKQ?w=309&h=180&c=7&r=0&o=5&pid=1.7';
-        // console.error('Error fetching file:', error<);
+      (error :any) => {
+        // Handle errors
+        console.error('Error downloading file:', error);
       }
     );
+    
 
   }
   deletePost(postId: string) {
