@@ -48,7 +48,6 @@
           </g>
         </svg>
       </div>
-      <i class="fa-regular fa-bell"></i>
      
      
       <div>
@@ -63,6 +62,28 @@
         </ng-template>
       </div>
       
+      <div class="notifContainer"(click)="toggleNotif()" >
+
+      <i class="fa-regular fa-bell" ></i>
+       <span class="red" *ngIf="notif.newMsgs > 0"> {{notif.newMsgs}}</span>
+    </div>
+<div class="notificationWrapper"  *ngIf="notif.msgList.length > 0">
+
+
+      <div class="notifications" *ngIf="isNotifOpen">
+     
+        <div class="notif" *ngFor="let message of notif.msgList" [routerLink]="['/id',message.chatId]">
+          you have unreaded  message from <br>
+          <div class="name">{{ message.senderId }}</div>
+          <!-- <p>{{ message.replymessage }}</p> -->
+          <div class="date">{{ message.time.split('T')[0] }} at {{ message.time| date  :'shortTime'}} </div>
+
+        </div>
+      </div>
+    </div>
+      <!-- <i class="fa-regular fa-bell" style="color :red" *ngIf=""></i> -->
+      <i class="fa-regular fa-user" (mouseenter)="toggleDropdown()" ></i>
+    
       <div (mouseleave)="toggleDropdown()" class="dropdown-content2" *ngIf="isDropdownOpen">
         
        <div class="name"> {{getUserName()}}</div>

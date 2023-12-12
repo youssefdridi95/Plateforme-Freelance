@@ -162,7 +162,7 @@ if(control.length == 0)
   console.log(res);
         
     
-  this.toastr.success('a été crée avec succés ','Compétence Principale')
+  this.toastr.success('a été modifiée avec succés ','Compétence Principale')
 
       },
       err=>{

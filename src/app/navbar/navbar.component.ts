@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener } from '@angular/core';
 import { WidthCheckService } from '../services/width-check.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { NotificationMessageListService } from '../notification-message-list.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class NavbarComponent {
 isTalent = 'both'
-  constructor(private widhtChecker :WidthCheckService,private router: Router ,private elementRef: ElementRef ,private auth:AuthService){
+  constructor(private widhtChecker :WidthCheckService,private router: Router ,private elementRef: ElementRef ,private auth:AuthService,protected  notif :NotificationMessageListService){
         this.widhtChecker.width=this.checkScreenWidth()
         this.navItemsDisplay=this.widhtChecker.width < 900 ? "none" : "flex"
 if (JSON.parse(sessionStorage.getItem('user')!))
@@ -91,6 +92,8 @@ this.router.navigate(['/'])
 
 getUserRole(): string {
   // Get roles from session storage
+  if (JSON.parse(sessionStorage.getItem('user')!)==null)
+  return ''
   const roles = JSON.parse(sessionStorage.getItem('user')!).roles;
 
   // Check the role and return a corresponding value
@@ -128,7 +131,11 @@ navigateToProfil(){
         this.router.navigate(['/entreprise/profil',JSON.parse(sessionStorage.getItem('user')!).idEntreprise])
 
 }
-
+isNotifOpen =false
+toggleNotif(){
+  this.isNotifOpen =!this.isNotifOpen
+  this.notif.newMsgs=0
+}
 
 
 }
