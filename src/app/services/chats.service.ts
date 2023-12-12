@@ -1,7 +1,11 @@
-import { Injectable } from '@angular/core';
+import { ElementRef, Injectable, NgZone, ViewChild } from '@angular/core';
 import { Env } from '../env';
 import { environments } from 'src/enviroments';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { RxStompService } from '../rx-stomp.service';
+import { NotificationMessageListService } from '../notification-message-list.service';
+import { Message } from '@stomp/stompjs';
+import { EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -10,25 +14,24 @@ export class ChatsService {
 
   private env: Env = environments as Env
   chatList: any
+  userid = ""
 
   activeChat: any = {
-    "chatId": "",
-    "firstUserId": "",
-    "secondUserId": "",
-    "messageList": [
+    "chat": {
+        "chatId": "",
+        "firstUserId": "",
+        "secondUserId": "",
+        "messageList": []
+    },
+    "fannonyme": "",
+    "sannonyme": "",
+    "fstatus": "",
+    "sstatus": ""
+}
+newMessageAdded: EventEmitter<any> = new EventEmitter<any>();
 
-    ]
-  }
 
-  emptychat: any = {
-    "chatId": "",
-    "firstUserId": "",
-    "secondUserId": "",
-    "messageList": [
-
-    ]
-  }
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private rxStompService: RxStompService,private notif: NotificationMessageListService, private ngZone: NgZone) {
   }
 
 
@@ -77,7 +80,25 @@ export class ChatsService {
 
     return this.http.get(this.env.backendUrl + this.env.chat +chatId)
   }
+watch(){
+  this.userid=JSON.parse(sessionStorage.getItem('user')!).id
+  if(this.userid)
+  this.rxStompService.watch('/topic/chats/' + this.userid).subscribe((message: Message) => {
+    let msg = JSON.parse(message.body)
 
+    if ((this.activeChat.chat.chatId === msg.chatId) ) {
+      this.activeChat.chat.messageList.push(JSON.parse(message.body));
+      this.notif.playNotificationSound()
+      this.newMessageAdded.emit();
+    
+
+    } else {
+      this.notif.msgList.unshift(msg)
+      this.notif.newMsgs += 1
+      this.notif.playNotificationSound()
+    }
+  });
+}
   }
 
 

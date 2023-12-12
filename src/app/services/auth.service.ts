@@ -1,10 +1,13 @@
 // auth.service.ts
 import { Injectable } from '@angular/core';
+import { ChatsService } from './chats.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  constructor(private chatsService :ChatsService){}
   navigate(arg0: string[]) {
       throw new Error('Method not implemented.');
   }
@@ -19,8 +22,15 @@ export class AuthService {
     // Perform logout logic
     this.isAuthenticated = false;
 
-    sessionStorage.removeItem('user');
-  
+ 
+    this.chatsService.disConnectUser(JSON.parse(sessionStorage.getItem('user')!).id).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      });
+      sessionStorage.removeItem('user');
   }
   Authenticated(): boolean {
     this.login() ;

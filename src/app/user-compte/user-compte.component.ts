@@ -186,8 +186,9 @@ export class UserCompteComponent {
 
     addOrGOToChat(){
       this.chatService.addChat(this.userId,JSON.parse(sessionStorage.getItem('user')!).id).subscribe(
-        (res)=>{
+        (res:any)=>{
           console.log(res);
+          this.router.navigate(['/id',res.chatId])
         },
         (err)=>{
           console.log(err);

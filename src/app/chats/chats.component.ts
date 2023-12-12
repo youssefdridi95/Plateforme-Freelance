@@ -14,92 +14,58 @@ import { ActivatedRoute } from '@angular/router';
 export class ChatsComponent implements OnInit, OnDestroy {
   @ViewChild('chatContainer') chatContainer!: ElementRef;
 
-  userid =JSON.parse(sessionStorage.getItem('user')!).id
+  userid = ''
   useridIN = ''
   username = ''
 
   textMsg = ''
- isLoading =false
- isSending =false
-activeId :any
-  constructor(private route :ActivatedRoute,protected chatsService: ChatsService, private rxStompService: RxStompService, private ngZone: NgZone,private notif :NotificationMessageListService) {
-
-   
+  isLoading = false
+  isSending = false
+  activeId: any
+  constructor(private route: ActivatedRoute, protected chatsService: ChatsService, private rxStompService: RxStompService, private ngZone: NgZone, private notif: NotificationMessageListService) {
+    this.userid = JSON.parse(sessionStorage.getItem('user')!).id
 
     window.addEventListener('beforeunload', this.onBeforeUnload.bind(this));
-
   }
 
 
   ngOnInit(): void {
     this.chatsService.getChatList(this.userid).subscribe(
       (res: any) => {
-  
-   
-        for (let chat of res) {
-        
-          this.chatsService.getUsername(chat.firstUserId).subscribe(
-            (res: any) => {
-              chat['fUsername'] = res.username
-              chat.fUser = res
 
-            },
-            (err: any) => {
-              console.log(err);
-            });
-          this.chatsService.getUsername(chat.secondUserId).subscribe(
-            (res: any) => {
-              chat['sUsername'] = res.username
-              chat.sUser= res
-              
 
-            },
-            (err: any) => {
-              console.log(err);
-            });
-
-        }
-        
         this.chatsService.chatList = res
+        console.log(res);
 
-        this.route.paramMap.subscribe(params =>{this.activeId=params.get('activeId')
+        this.route.paramMap.subscribe(params => {
+          this.activeId = params.get('activeId')
 
-    
-        if(params.get('activeId')!=null && this.getActiveId(params.get('activeId'))!=null)
-        
-        this.chatsService.activeChat=res.at(this.getActiveId(params.get('activeId')))
-     
-      
-      })
+
+          if (params.get('activeId') != null && this.getActiveId(params.get('activeId')) != null)
+
+            this.chatsService.activeChat = res.at(this.getActiveId(params.get('activeId')))
+
+
+        })
       },
       (err) => {
         console.log(err);
       });
+// this.chatsService.watch();
+this.chatsService.newMessageAdded.subscribe(() => {
+  this.ngZone.runOutsideAngular(() => {
+    setTimeout(() => {
+      // Update the scrollTop property here
+      this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
 
-      this.rxStompService.watch('/topic/chats/' + this.userid).subscribe((message: Message) => {
-        let msg = JSON.parse(message.body)
+      // Run change detection manually
+      this.ngZone.run(() => {});
+    });
+  });
+});
+}
   
-        if ((this.chatsService.activeChat.chatId === msg.chatId)) {
-          this.chatsService.activeChat.messageList.push(JSON.parse(message.body));
-          this.notif.playNotificationSound()
-
-          this.ngZone.runOutsideAngular(() => {
-            setTimeout(() => {
-              // Update the scrollTop property here
-              this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
-
-              // Run change detection manually
-              this.ngZone.run(() => { });
-            });
-          });
-          
-        }else {
-          this.notif.msgList.unshift(msg)
-          this.notif.newMsgs+=1
-          this.notif.playNotificationSound()
-        }
-      });
-  }
+  
 
 
   ngOnDestroy(): void {
@@ -127,35 +93,18 @@ activeId :any
   }
 
   setActivechat(index: any) {
-    this.isLoading=true
-    this.chatsService.getChat(this.chatsService.chatList.at(index).chatId).subscribe(
+    this.isLoading = true
+    this.chatsService.getChat(this.chatsService.chatList.at(index).chat.chatId).subscribe(
       (res: any) => {
         let chat = res
-        this.chatsService.getUsername(chat.firstUserId).subscribe(
-          (res: any) => {
-         
-            chat['fUsername'] = res.username
-            chat.fUser= res
 
-          },
-          (err: any) => {
-            console.log(err);
-          });
-        this.chatsService.getUsername(chat.secondUserId).subscribe(
-          (res: any) => {
-            chat['sUsername'] = res.username
-            chat.sUser= res
-
-          },
-          (err: any) => {
-            console.log(err);
-          });
 
 
         this.chatsService.chatList[index] = chat
-        this.isLoading=false
+        this.isLoading = false
 
         this.chatsService.activeChat = this.chatsService.chatList.at(index)
+        console.log("active", chat);
 
         this.ngZone.runOutsideAngular(() => {
           setTimeout(() => {
@@ -169,13 +118,13 @@ activeId :any
 
         this.chatsService.markMsgSeen(this.chatsService.chatList.at(index).chatId, this.userid).subscribe(
           (res) => {
-          //  console.log(res);
+              console.log(res);
 
           }, (err) => {
             console.log(err);
 
           })
-      
+
       }, (err) => {
         console.log(err);
 
@@ -183,27 +132,24 @@ activeId :any
 
   }
   onSendMessage() {
-    
-   if (this.textMsg!=='') 
-    
-   
-   
-    { this.isSending =true
 
-    let receiverId = this.userid == this.chatsService.activeChat.firstUserId ? this.chatsService.activeChat.secondUserId : this.chatsService.activeChat.firstUserId
-    let msg = {
-      senderId: this.userid,
-      chatId: this.chatsService.activeChat.chatId,
-      reciverId: receiverId,
-      replymessage: this.textMsg
+    if (this.textMsg !== '') {
+      this.isSending = true
 
+      let receiverId = this.userid == this.chatsService.activeChat.firstUserId ? this.chatsService.activeChat.secondUserId : this.chatsService.activeChat.firstUserId
+      let msg = {
+        senderId: this.userid,
+        chatId: this.chatsService.activeChat.chat.chatId,
+        reciverId: receiverId,
+        replymessage: this.textMsg
+
+      }
+
+      this.rxStompService.publish({ destination: '/chats/addMessage/' + this.chatsService.activeChat.chatId, body: JSON.stringify(msg) });
+
+      this.textMsg = ''
+      this.isSending = false
     }
-
-    this.rxStompService.publish({ destination: '/chats/addMessage/' + this.chatsService.activeChat.chatId, body: JSON.stringify(msg) });
-
-    this.textMsg = ''
-    this.isSending =false
-  }
 
 
   }
@@ -242,12 +188,12 @@ activeId :any
     }
   }
 
-getActiveId(id:any){
-  
-  for (let index = 0; index < this.chatsService.chatList.length; index++) {
-    const chat = this.chatsService.chatList[index];
-    if(chat.chatId == id) return index 
+  getActiveId(id: any) {
+
+    for (let index = 0; index < this.chatsService.chatList.length; index++) {
+      const chat = this.chatsService.chatList[index];
+      if (chat.chatId == id) return index
+    }
+    return null
   }
-  return null
-}
 }

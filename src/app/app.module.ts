@@ -112,10 +112,17 @@ import { NotificationMessageListService } from './notification-message-list.serv
     }), // ToastrModule added
     
   ],
-  providers: [ AuthGuard,loggedinGuard,talentGuard,NotificationMessageListService, {
-    provide: RxStompService,
-    useFactory: rxStompServiceFactory,
-  },],
+  providers: [
+    AuthGuard,
+    loggedinGuard,
+    talentGuard,
+    NotificationMessageListService,
+    {
+      provide: RxStompService,
+      useFactory: rxStompServiceFactory,
+    },
+    ChatsService,  // Add this line if not already there
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

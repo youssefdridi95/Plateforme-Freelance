@@ -10,7 +10,7 @@ export const environments= {
     backendUrl : "http://192.168.195.70:9092" ,
       webSocketBackendUrl : 'ws://192.168.195.70:9092/ws',
     connectUser : '/user/connectUser',
-    disConnectUser : '/user/disconnectUser',
+    disConnectUser : '/auth/disconnectUser',
     chatList : '/api/chats/get/userId/',
     chat: '/api/chats/get/',
     username : '/user/get/',
