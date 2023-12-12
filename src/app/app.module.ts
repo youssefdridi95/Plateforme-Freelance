@@ -96,7 +96,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ReactiveFormsModule,
     HttpClientModule, 
     BrowserAnimationsModule,
-
+   
     CommonModule,
     NgSelectModule,
      // required animations module
