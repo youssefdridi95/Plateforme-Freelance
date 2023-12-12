@@ -14,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ChatsComponent implements OnInit, OnDestroy {
   @ViewChild('chatContainer') chatContainer!: ElementRef;
 
-  userid = sessionStorage.getItem('id')
+  userid =JSON.parse(sessionStorage.getItem('user')!).id
   useridIN = ''
   username = ''
 
@@ -24,14 +24,7 @@ export class ChatsComponent implements OnInit, OnDestroy {
 activeId :any
   constructor(private route :ActivatedRoute,protected chatsService: ChatsService, private rxStompService: RxStompService, private ngZone: NgZone,private notif :NotificationMessageListService) {
 
-    this.chatsService.connectUser(this.userid).subscribe(
-      (res) => {
-        // console.log(res);
-      },
-      (err) => {
-        console.log(err);
-      });
-
+   
 
     window.addEventListener('beforeunload', this.onBeforeUnload.bind(this));
 

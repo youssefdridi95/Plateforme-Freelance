@@ -7,6 +7,7 @@ import { map, catchError, of, Observable } from 'rxjs';
 import { PostService } from '../services/post.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UserService } from '../services/user.service';
+import { ChatsService } from '../services/chats.service';
 
 @Component({
   selector: 'app-user-compte',
@@ -16,7 +17,7 @@ import { UserService } from '../services/user.service';
 
 export class UserCompteComponent {
 
-  constructor(private toastr: ToastrService, private userProfilService: UserProfil, private router: Router, private roote: ActivatedRoute, private postService: PostService, private userService: UserService) {
+  constructor(private chatService :ChatsService,private toastr: ToastrService, private userProfilService: UserProfil, private router: Router, private roote: ActivatedRoute, private postService: PostService, private userService: UserService) {
 
     this.roote.paramMap.subscribe(params => {
       this.userId = params.get('id')
@@ -178,6 +179,26 @@ export class UserCompteComponent {
       }
     );
     }
+
+
+
+
+
+    addOrGOToChat(){
+      this.chatService.addChat(this.userId,JSON.parse(sessionStorage.getItem('user')!).id).subscribe(
+        (res)=>{
+          console.log(res);
+        },
+        (err)=>{
+          console.log(err);
+        },
+      )
+    }
+
+
+
+
+
   }
 
 

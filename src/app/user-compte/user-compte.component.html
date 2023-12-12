@@ -31,7 +31,9 @@
         <button *ngIf="isButtonVisible()" class="read" (click)="navigateToCvCreer('cv/afficher')">
           <h3>Afficher cv</h3>
         </button>
-
+        <button *ngIf="!isButtonVisible()" class="read" (click)="addOrGOToChat()">
+          <h3>Cantacter</h3>
+        </button>
 
       </div>
     </div>

@@ -32,11 +32,11 @@ export class ChatsService {
   }
 
 
-  connectUser(userId: any) {
-    return this.http.post(this.env.backendUrl + this.env.connectUser, {
-      "userId": userId
-    })
-  }
+  // connectUser(userId: any) {
+  //   return this.http.post(this.env.backendUrl + this.env.connectUser, {
+  //     "userId": userId
+  //   })
+  // }
 
   disConnectUser(userId: any) {
     return this.http.post(this.env.backendUrl + this.env.disConnectUser, {
