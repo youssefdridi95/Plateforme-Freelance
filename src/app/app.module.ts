@@ -102,7 +102,7 @@ import { NotificationMessageListService } from './notification-message-list.serv
     ReactiveFormsModule,
     HttpClientModule, 
     BrowserAnimationsModule,
-
+   
     CommonModule,
     NgSelectModule,
      // required animations module
