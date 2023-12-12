@@ -27,6 +27,7 @@ export class EntrepriseService {
     this.profilEntreprise = this.env.profilEntreprise
     this.delete = this.env.delete
     this.update = this.env.update
+    this.deleteCompte = this.env.deleteCompte
    }
    private url 
    private  userSignup 
@@ -38,6 +39,7 @@ export class EntrepriseService {
    private profilEntreprise
    private delete
   private update
+  private deleteCompte
   
 signup(entreprise: any){
   return this.http.post(this.url  + this.userSignup,entreprise);
@@ -77,5 +79,11 @@ updateEntreprise(data:any) {
   console.log(data);
   
   return this.http.put(this.url + this.update,data);
+}
+deletecompte(userId:any) {
+  console.log(userId);
+  let params = new HttpParams();
+  params = params.append('id', userId);
+  return this.http.post(this.url + this.deleteCompte,{},{params});
 }
 }
