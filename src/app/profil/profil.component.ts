@@ -1,10 +1,11 @@
 // import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserProfil } from '../services/user-profil';
 import { HttpParams } from '@angular/common/http';
+import { EntrepriseService } from '../services/entreprise.service';
 
 @Component({
   selector: 'app-profil',
@@ -16,7 +17,8 @@ export class ProfilComponent {
 
   form!: FormGroup;
 
-  constructor(private toastr : ToastrService, private router: Router, private userProfilService: UserProfil) {
+  constructor(private toastr : ToastrService, private router: Router, private userProfilService: UserProfil,private enterpriseService: EntrepriseService,
+    private route: ActivatedRoute) {
     const userString = sessionStorage.getItem('profil');
   console.log(this.profil);
   
@@ -128,4 +130,21 @@ console.log(params);
   
   }
   
+  delete() {
+   
+    if (confirm('Are you sure you want to delete this user?')) {
+        this.enterpriseService.deletecompte(JSON.parse ( sessionStorage.getItem('user')!).id ).subscribe(
+            () => {
+                this.toastr.success('Demande de suppression , ce compte va être supprimé après 30 jours');
+                // After deleting the user, refresh the user list
+                const idEntreprise = JSON.parse(sessionStorage.getItem('user')!).id;
+                
+            },
+            (err) => {
+                console.log(err);
+                this.toastr.error('Error deleting user', 'Error');
+            }
+        );
+    }
+}
 }

@@ -36,6 +36,7 @@ export interface Env {
     addemp:string,
     employer:string,
     entreprise:string;
+    deleteCompte:string;
     profilEntreprise:string;
     delete:string;
     getFilePost : string,

@@ -58,7 +58,7 @@ flex-wrap: wrap;
 }
 
 .contact {
-width: 25%;
+width: 20%;
 min-height: 25vh;
 max-height: 100vh; 
 padding: 1rem 0 !important;
@@ -86,6 +86,11 @@ display: none;
 label:hover{
 color:#034f9b;
 
+}
+label{
+  text-align: left;
+ padding: 20%;
+  font-size: 1rem;
 }
 .post {
 border:0.5px solid #034f9b;
@@ -182,7 +187,7 @@ border-radius: 50%;
 
 
 .contact_card {
-width: 70%;
+width: 80%;
 background-color: #fcfcfc;
 border-radius: 10px;
 margin: 0 auto;
@@ -502,6 +507,12 @@ transition: .3s ease;
 display: flex;
 
 }
+.filter{
+  width: 100%;
+  background: white;
+  border-radius: 1rem;
+  padding: 0.5rem  !important;
+}
 
 button.like {
 background-color: #fcfdff;
@@ -555,4 +566,3 @@ color: #034f9b;
 
 
 }
-
