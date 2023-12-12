@@ -8,6 +8,7 @@ import { PostService } from '../services/post.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UserService } from '../services/user.service';
 import { ChatsService } from '../services/chats.service';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-user-compte',
@@ -17,8 +18,12 @@ import { ChatsService } from '../services/chats.service';
 
 export class UserCompteComponent {
 
-  constructor(private chatService :ChatsService,private toastr: ToastrService, private userProfilService: UserProfil, private router: Router, private roote: ActivatedRoute, private postService: PostService, private userService: UserService) {
 
+
+  constructor(private toastr: ToastrService, private userProfilService: UserProfil, 
+    private router: Router, private roote: ActivatedRoute, private postService: PostService, 
+    private userService: UserService, private sharedService: SharedService,private chatService :ChatsService) {
+   
     this.roote.paramMap.subscribe(params => {
       this.userId = params.get('id')
       this.getProfil();
@@ -102,7 +107,6 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
   }
 
   getPost(userId: any) {
-
     this.postService.getUserPosts(userId).subscribe(
      ( res:any) => {
 
@@ -139,15 +143,36 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
         // Faites quelque chose avec les posts récupérés, par exemple, assignez-les à une variable de composant
         // this.posts = res;
         
+        sessionStorage.setItem('postss', JSON.stringify(res));
+  
+        // Variables pour le comptage des réactions
+        let totalReactionsCount = 0;
+        const reactionsCounts: number[] = [];
+  
+        if (this.posts.content) {
+          this.posts.content.forEach((post: any) => {
+            const reactionsCount = post.idreacts.length;
+            post.reactionsCount = reactionsCount;
+            totalReactionsCount += reactionsCount;
+            reactionsCounts.push(reactionsCount);
+          });
+        }
+  
+        // Affichez les valeurs dans la console
+        console.log('Total des réactions pour tous les posts :', totalReactionsCount);
+        console.log('Réactions pour chaque post :', reactionsCounts);
+  
+        // Faites quelque chose avec les posts récupérés, par exemple, assignez-les à une variable de composant
+        // this.posts = res;
       },
       err => {
         console.log('failed to get posts', err);
-
         // Vérifiez si err.error et err.error.message existent avant d'y accéder
-
       }
     );
   }
+  
+  
   // Exemple dans UserCompteComponent
   getFile(fileDownloadUri: any) {
 
@@ -206,7 +231,7 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
     }
   }
 
-  addmnbrReact(postId:any) {
+  addnmbrReact(postId:any) {
     console.log('Avant la fonction ddedd');
     console.log(postId);
 
@@ -244,6 +269,37 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
 
 
 
+    subnmbrReact(postId:any) {
+      console.log('Avant la fonction ddedd');
+      console.log(postId);
+  
+  
+      this.postService.submnbrReact(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id,postId  ).subscribe(
+        (res) => {
+          console.log('modification avec succès', res);
+          this.toastr.success('react  annuler avec succès');
+          sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
+        },
+        (err) => {
+          console.log('échec de la modification', err);
+          this.toastr.error('Erreur de reacter', 'Erreur');
+        }
+      );
+      }
+      toggleReact(post: any) {
+        const hasReacted = this.hasReacted(post);
+        
+        if (hasReacted) {
+          this.subnmbrReact(post.id);
+        } else {
+          this.addnmbrReact(post.id);
+        }
+      }
+    
+      hasReacted(post: any): boolean {
+        const loggedInUserId = JSON.parse(sessionStorage.getItem('profil')!).id;
+        return post.idreacts.includes(loggedInUserId);
+      }
   }
 
 

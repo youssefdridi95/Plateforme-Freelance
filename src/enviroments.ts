@@ -3,7 +3,7 @@
 export const environments= {
  
   
-   // backendUrl : "http://192.168.194.250/:9090" ,
+  //  backendUrl : "http://192.168.195.26:9090" ,
     // webSocketBackendUrl : 'ws://192.168.195.70:9090/ws',
 
      backendUrl : "http://192.168.195.29:9090" ,
@@ -46,7 +46,7 @@ export const environments= {
     profilEntreprise:"/api/umanlink/profiles/entreprises/get-one/by-user",
     delete:"/api/umanlink/gestion-entreprise/deleteEmployee",
     update:"/api/umanlink/profiles/entreprises/update-Entreprise",  
-   
+    deleteCompte:"/api/umanlink/delete",
     //  (the role receied from the backend )
    
     editPost: '',
@@ -60,7 +60,7 @@ export const environments= {
     viewNumber:'/api/umanlink/profiles/individuals/update-Nombre De Vues',
     getFilePost: '/api/umanlink/postes/get-post-file',
     augnbrReact : '/api/umanlink/postes/Augmente-nombre-reacts',
-
+    subnbrReact : '',
     getUserProfil: '/api/umanlink/profiles/individuals/get-one/by-user',
     editUserProfil: '/api/umanlink/profiles/individuals/update-Talent',
      updatepassword: '/auth/updatePassword',

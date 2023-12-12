@@ -371,7 +371,7 @@ h3.title {
   font-size: 1.2rem;
   /* background: #57707D; */
   background-color: white;
-  border: none;
+  border-color: red;
   color: #007CF8;
   width: 30%;
   cursor: pointer;
@@ -385,6 +385,7 @@ h3.title {
 .content-publication  .like   {
   margin-right: 10px;
   font-size: 100%;
+  border-color: red;
 
 }
 .content-publication  .comment   {
@@ -402,9 +403,15 @@ h3.title {
   right: 1rem;
 
 }
+button.like:hover {
+  background-color:#fcfdff;
 
+  color: #034f9b;
+  
+ 
+}
 .content-publication  .like:before {
-  content: '\f164  ';
+  content: '\2665'; /* Code Unicode pour un cœur solide */
   font-family: fontAwesome;
   margin-right: 10px;
   font-size: 100%;
@@ -412,7 +419,7 @@ h3.title {
 .content-publication .like:hover:before,
 .content-publication .comment:hover:before,
 .content-publication .share:hover:before {
-  transform: scale(2.1); /* Ajustez la valeur selon vos préférences, 1.1 agrandit légèrement l'icône */
+  transform: scale(1.6); /* Ajustez la valeur selon vos préférences, 1.1 agrandit légèrement l'icône */
 }
 .delete {
   background-color: white;

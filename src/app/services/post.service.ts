@@ -22,6 +22,7 @@ export class PostService {
     this.getFilePost = this.env.getFilePost
     this.getpostFilt = this.env.getPostFilter
     this.augnbrReact = this.env.augnbrReact
+    this.subnbrReact = this.env.subnbrReact
    }
   
 
@@ -34,7 +35,7 @@ export class PostService {
    private getFilePost 
    private getpostFilt 
    private augnbrReact
-
+private subnbrReact
   // function signup api call
 add(data:any ,params: any){
   
@@ -98,6 +99,18 @@ addmnbrReact(idprofil  : any , idVisiteur : any ,  postId : any ){
   console.log(params);
 
  return this.http.put(this.url + this.augnbrReact,{},{params});
+
+}
+submnbrReact(idprofil  : any , idVisiteur : any ,  postId : any ){
+  
+  let params = new HttpParams()
+  .set('profileId', idprofil)
+  .set('idVisiteur', idVisiteur )
+  .set('postId', postId  )
+
+  console.log(params);
+
+ return this.http.put(this.url + this.subnbrReact,{},{params});
 
 }
 
