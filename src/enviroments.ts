@@ -6,9 +6,9 @@ export const environments= {
   //  backendUrl : "http://192.168.195.26:9090" ,
     // webSocketBackendUrl : 'ws://192.168.195.70:9090/ws',
 
-    // backendUrl : "http://192.168.195.70:9090" ,
-    backendUrl : "http://192.168.195.70:9092" ,
-      webSocketBackendUrl : 'ws://192.168.195.70:9092/ws',
+    // backendUrl : "http://192.168.195.29:9090" ,
+    backendUrl : "http://localhost:9090" ,
+      webSocketBackendUrl : 'ws://localhost:9090/ws',
     connectUser : '/user/connectUser',
     disConnectUser : '/auth/disconnectUser',
     chatList : '/api/chats/get/userId/',
@@ -60,7 +60,7 @@ export const environments= {
     viewNumber:'/api/umanlink/profiles/individuals/update-Nombre De Vues',
     getFilePost: '/api/umanlink/postes/get-post-file',
     augnbrReact : '/api/umanlink/postes/Augmente-nombre-reacts',
-
+    subnbrReact : '',
     getUserProfil: '/api/umanlink/profiles/individuals/get-one/by-user',
     editUserProfil: '/api/umanlink/profiles/individuals/update-Talent',
      updatepassword: '/auth/updatePassword',
