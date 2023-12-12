@@ -11,7 +11,7 @@
 
       <div class="contact_card">
         <!-- <span> <i class="fa-solid fa-phone"></i> : </span><br><br> -->
-        <span> <i class="fa-solid fa-envelope"></i> :  </span><br><br>
+        <span> <i class="fa-solid fa-envelope"></i> : {{profil.email}} </span><br><br>
         <span><i class="fa-solid fa-location-dot"></i> : {{profil?.timezone}} </span>
       </div>
       <div>
@@ -92,8 +92,8 @@
             </div>
             <p class="date">{{post?.date | date : 'shortDate'}}</p>
             <div class="public">
-              <p>{{post?.desc}}.</p>
-
+              <p>{{post?.desc}}</p>
+              <p>{{post?.reactionsCount}} réactions</p> <!-- Utilisez la propriété reactionsCount pour chaque post -->
             </div>
             <img src="https://placehold.co/600x400" style="width: 150px; height: 100px; border-radius: 0;margin: 5px;"
               alt="Image" *ngFor="let file of post.files">
@@ -101,7 +101,10 @@
 
 
             <div class="fav">
-              <button class="like" (click)="addmnbrReact(post.id)">j'aime</button>
+              <!-- <button class="like" (click)="addnmbrReact(post.id)" ><i class="fa-regular fa-heart"></i></button> -->
+              <!-- <button class="like custom-like" (click)="addnmbrReact(post.id)"> {{post?.reactionsCount}} j'aime</button> -->
+
+              <button class="like" (click)="addnmbrReact(post.id)"> {{post?.reactionsCount}} j'aime</button>
               <button class="comment">commentaire</button>
               <button class="share">partager</button>
 

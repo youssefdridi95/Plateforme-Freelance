@@ -37,7 +37,7 @@ loginUser(user: any){
 updateViewNbr(id  : any , idVisiteur : any  ){
   
   let params = new HttpParams()
-  .set('id', id)
+  .set('profileId', id)
   .set('idVisiteur', idVisiteur )
   // console.log(params);
 
@@ -47,7 +47,7 @@ updateViewNbr(id  : any , idVisiteur : any  ){
 updateViewNbrEntreprise(id  : any , idVisiteur : any  ){
   
   let params = new HttpParams()
-  .set('id', id)
+  .set('profileId ', id)
   .set('idVisiteur', idVisiteur )
   // console.log(params);
 

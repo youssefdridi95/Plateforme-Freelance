@@ -44,6 +44,7 @@ export interface Env {
     viewNumber: string,
     viewNumberEntreprise : string,
     augnbrReact : string,
+    subnbrReact : string,
     roles : {
     userRole : string , // used in the signup (the role sent to the backend )
     user : string , //  (the role receied from the backend )
