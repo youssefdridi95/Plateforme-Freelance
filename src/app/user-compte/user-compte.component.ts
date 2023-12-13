@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { ChangeDetectorRef, Component, NgModule } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpParams } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
@@ -21,7 +21,7 @@ export class UserCompteComponent {
 
 
   constructor(private toastr: ToastrService, private userProfilService: UserProfil, 
-    private router: Router, private roote: ActivatedRoute, private postService: PostService, 
+    private router: Router, private roote: ActivatedRoute, private postService: PostService, private cdRef: ChangeDetectorRef,
     private userService: UserService, private sharedService: SharedService,private chatService :ChatsService) {
    
     this.roote.paramMap.subscribe(params => {
@@ -116,9 +116,9 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
 
         let filesURLS:any[]=[]
         for (let file of post.files) {
-          // this.postService.getFile( file.fileDownloadUri).subscribe(
+          this.postService.getFile( file.fileDownloadUri).subscribe(
 
-        this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
+        // this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
           (fileBlob: Blob) => {
             // Handle the successful response here
             console.log('File downloaded successfully:', fileBlob);
@@ -230,72 +230,70 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
     );
     }
   }
+  addOrGOToChat(){
+    this.chatService.addChat(this.userId,JSON.parse(sessionStorage.getItem('user')!).id).subscribe(
+      (res:any)=>{
+        console.log(res);
+        this.router.navigate(['/id',res.chatId])
+      },
+      (err)=>{
+        console.log(err);
+      },
+    )
+  }
 
-  addnmbrReact(postId:any) {
-    console.log('Avant la fonction ddedd');
-    console.log(postId);
 
 
-    this.postService.addmnbrReact(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id,postId  ).subscribe(
+
+  addnmbrReact(postId: any, index: any) {
+    this.postService.addmnbrReact(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(
       (res) => {
         console.log('modification avec succès', res);
         this.toastr.success('react avec succès');
         sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
+        this.posts.content[index].idreacts.push(JSON.parse(sessionStorage.getItem('profil')!).id);
+        this.posts.content[index].reactionsCount++;
       },
       (err) => {
         console.log('échec de la modification', err);
         this.toastr.error('Erreur de reacter', 'Erreur');
       }
     );
-    }
-
-
-
-
-
-    addOrGOToChat(){
-      this.chatService.addChat(this.userId,JSON.parse(sessionStorage.getItem('user')!).id).subscribe(
-        (res:any)=>{
-          console.log(res);
-          this.router.navigate(['/id',res.chatId])
-        },
-        (err)=>{
-          console.log(err);
-        },
-      )
-    }
-
-
-
-
-
-    subnmbrReact(postId:any) {
-      console.log('Avant la fonction ddedd');
-      console.log(postId);
+  }
   
+  subnmbrReact(postId: any, index: any) {
+    this.postService.submnbrReact(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(
+      (res) => {
+        console.log('modification avec succès', res);
+        this.toastr.success('react annuler avec succès');
+        sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
   
-      this.postService.submnbrReact(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id,postId  ).subscribe(
-        (res) => {
-          console.log('modification avec succès', res);
-          this.toastr.success('react  annuler avec succès');
-          sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
-        },
-        (err) => {
-          console.log('échec de la modification', err);
-          this.toastr.error('Erreur de reacter', 'Erreur');
+        const profileId = JSON.parse(sessionStorage.getItem('profil')!).id;
+        const post = this.posts.content[index];
+        const profileIndex = post.idreacts.indexOf(profileId);
+  
+        if (profileIndex !== -1) {
+          post.idreacts.splice(profileIndex, 1);
+          post.reactionsCount--;
         }
-      );
+      },
+      (err) => {
+        console.log('échec de la modification', err);
+        this.toastr.error('Erreur de  supprime reacter', 'Erreur');
       }
-      toggleReact(post: any) {
-        const hasReacted = this.hasReacted(post);
-        
-        if (hasReacted) {
-          this.subnmbrReact(post.id);
-        } else {
-          this.addnmbrReact(post.id);
-        }
-      }
-    
+    );
+  }
+  
+  toggleReact(post: any, index: any) {
+    const hasReacted = this.hasReacted(post);
+  
+    if (hasReacted) {
+      this.subnmbrReact(post.id, index);
+    } else {
+      this.addnmbrReact(post.id, index);
+    }
+  }
+  
       hasReacted(post: any): boolean {
         const loggedInUserId = JSON.parse(sessionStorage.getItem('profil')!).id;
         return post.idreacts.includes(loggedInUserId);

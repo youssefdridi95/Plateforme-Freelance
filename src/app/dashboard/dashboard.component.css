@@ -126,7 +126,11 @@ body {
   width: 40%; /* Ajustez la largeur de l'icône selon vos besoins */
   font-size: 2rem;
 }
-
+h4{
+  color: black;
+  padding-left: 5px;
+  padding-bottom: 2rem;
+}
 .icon1 {
   color: white;
   display: flex;
@@ -143,16 +147,18 @@ body {
   font-size: 3rem;
   display: flex;
   justify-content: space-between;
-  gap:2.5rem;
+  gap:2.9rem;
 }
 .text {
   flex-grow: 1;
-  padding-left: 15px; /* Ajustez la marge à gauche selon vos besoins */
+  padding-left: 10px; /* Ajustez la marge à gauche selon vos besoins */
   width: 30%;
   color: white;
   font-size: large;
 }
-
+h1{
+text-align: center;
+}
 .text p {
   text-align: left; 
   margin: 0;

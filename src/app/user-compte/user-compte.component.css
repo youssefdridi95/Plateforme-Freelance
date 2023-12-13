@@ -411,7 +411,7 @@ button.like:hover {
  
 }
 .content-publication  .like:before {
-  content: '\2665'; /* Code Unicode pour un cœur solide */
+  /* content: '\2665';  */
   font-family: fontAwesome;
   margin-right: 10px;
   font-size: 100%;

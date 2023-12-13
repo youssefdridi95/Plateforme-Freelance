@@ -60,7 +60,7 @@ export const environments= {
     viewNumber:'/api/umanlink/profiles/individuals/update-Nombre De Vues',
     getFilePost: '/api/umanlink/postes/get-post-file',
     augnbrReact : '/api/umanlink/postes/Augmente-nombre-reacts',
-    subnbrReact : '',
+    subnbrReact : '/api/umanlink/postes/Diminue-nombre-reacts',
     getUserProfil: '/api/umanlink/profiles/individuals/get-one/by-user',
     editUserProfil: '/api/umanlink/profiles/individuals/update-Talent',
      updatepassword: '/auth/updatePassword',
