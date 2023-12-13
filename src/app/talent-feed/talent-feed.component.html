@@ -19,20 +19,23 @@
 <div class="contact_card">
 
   <div class="filter">
-    <input type="radio" id="recent" name="sortOrder" value="asc" [(ngModel)]="selectedSortOption" />
-    <label for="recent" (click)="sortPostsByDate('asc')"><p>Date la plus récente</p></label><br><br>
-  
-    <input type="radio" id="oldest" name="sortOrder" value="desc" [(ngModel)]="selectedSortOption" />
-    <label for="oldest" (click)="sortPostsByDate('desc')"><p> Date la plus ancienne</p></label>
-    <input type="radio" id="relevance" name="sortOrder" value="likes" [(ngModel)]="selectedSortOption" />
-    <label for="relevance" (click)="sortPostsByLikes()"><p> Pertinence</p></label>
+    <input type="radio" id="recent" name="sortOrder1" value="desc" [(ngModel)]="selectedSortOption" (click)="sortPostsByDate('desc')"/>
+    <label id="txt" for="sortOrder1" >Date la plus récente</label><br><br>
+    <input type="radio" id="oldest" name="sortOrder2" value="asc" [(ngModel)]="selectedSortOption" (click)="sortPostsByDate('asc')"/>
+    <label id="txt"for="sortOrder2" >Date la plus ancienne </label><br><br>
+    <input type="radio" id="relevance" name="sortOrder3" value="likes" [(ngModel)]="selectedSortOption"(click)="sortPostsByLikes()" />
+    <label id="txt" for="sortOrder3"  >Pertinence</label>
   </div>
   
 
 
 </div>
 <br><br>
-<div class="contact_card"></div>
+<div class="contact_card">
+  <!-- Add this input field to your HTML template -->
+<input type="text" [(ngModel)]="searchTerm" placeholder="Search by description" (change)="filterPosts()" />
+
+</div>
   </div>
   
 
