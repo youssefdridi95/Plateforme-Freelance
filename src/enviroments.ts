@@ -1,12 +1,12 @@
 
 
 export const environments= {
-  // backendUrl : "http://localhost:9090" ,
+  backendUrl : "http://localhost:9090" ,
   
     // backendUrl : "http://192.168.195.29:9090" ,
     // webSocketBackendUrl : 'ws://192.168.195.70:9090/ws',
 
-    backendUrl : "http://192.168.195.29:9090" ,
+    // backendUrl : "http://192.168.195.29:9090" ,
     //backendUrl : "http://192.168.195.70:9092" ,
       webSocketBackendUrl : 'ws://192.168.195.70:9092/ws',
     connectUser : '/user/connectUser',
