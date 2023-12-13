@@ -14,8 +14,7 @@ import { UserProfil } from '../services/user-profil';
 export class TalentFeedComponent {
 
   constructor(private toastr: ToastrService, private router: Router, private roote: ActivatedRoute, private postService: PostService, private profil: UserProfil) {
-    this.mainskill = JSON.parse(sessionStorage.getItem('profil')!).mainSkill
-    this.getPost(this.mainskill);
+ 
 
   }
 
@@ -23,18 +22,19 @@ export class TalentFeedComponent {
   mainskill: string = '';
   posts: any
   searchTerm: string = '';
-  filteredPosts: any[] = []; // This array will store the filtered posts
+  filteredPosts: any; // This array will store the filtered posts
 
 
   ngOnInit() {
-
+    this.mainskill = JSON.parse(sessionStorage.getItem('profil')!).mainSkill
+   this.getPost(this.mainskill);
   }
 
 
   nom = JSON.parse(sessionStorage.getItem('profil')!).anonyme;
   idreacts = JSON.parse(sessionStorage.getItem('profil')!).anonyme;
   sortPostsByDate(order: 'asc' | 'desc'): void {
-    this.posts.sort((a: { date: string }, b: { date: string }) => {
+    this.filteredPosts.sort((a: { date: string }, b: { date: string }) => {
       const dateA = new Date(a.date).getTime();
       const dateB = new Date(b.date).getTime();
 
@@ -42,8 +42,9 @@ export class TalentFeedComponent {
     });
   }
   filterPosts(): void {
+    
     // Filter posts based on the description using the searchTerm
-    this.posts = this.posts.filter((post: any) => post.desc.toLowerCase().includes(this.searchTerm.toLowerCase()));
+   this.filteredPosts= this.posts.filter((post: any) => post.desc.toLowerCase().includes(this.searchTerm.toLowerCase()));
 
   }
 
@@ -51,7 +52,7 @@ export class TalentFeedComponent {
   sortPostsByLikes(): void {
 console.log(this.posts);
 
-    this.posts = this.posts.sort((a: { idreacts: any[] }, b: { idreacts: any[] }) => {
+    this.filteredPosts = this.filteredPosts.sort((a: { idreacts: any[] }, b: { idreacts: any[] }) => {
       return b.idreacts.length - a.idreacts.length;
     })
     console.log('ilyfgçè-tf',this.posts);
@@ -77,7 +78,10 @@ console.log(this.posts);
 
           })
         }
-        this.posts = postswithProfiles
+        this.posts = postswithProfiles;
+   this.filteredPosts= this.posts
+
+        return this.posts;
         console.log('after for ', postswithProfiles);
       },
       err => {
