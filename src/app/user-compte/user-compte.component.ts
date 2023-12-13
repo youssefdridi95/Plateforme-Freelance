@@ -7,11 +7,8 @@ import { map, catchError, of, Observable } from 'rxjs';
 import { PostService } from '../services/post.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UserService } from '../services/user.service';
-<<<<<<< HEAD
 import { ChatsService } from '../services/chats.service';
-=======
 import { SharedService } from '../shared.service';
->>>>>>> wadii
 
 @Component({
   selector: 'app-user-compte',
@@ -21,15 +18,10 @@ import { SharedService } from '../shared.service';
 
 export class UserCompteComponent {
 
-<<<<<<< HEAD
-  constructor(private chatService :ChatsService,private toastr: ToastrService, private userProfilService: UserProfil, private router: Router, private roote: ActivatedRoute, private postService: PostService, private userService: UserService) {
-
-=======
   constructor(private toastr: ToastrService, private userProfilService: UserProfil, 
     private router: Router, private roote: ActivatedRoute, private postService: PostService, 
-    private userService: UserService, private sharedService: SharedService) {
+    private userService: UserService, private sharedService: SharedService , private chatService : ChatsService) {
    
->>>>>>> wadii
     this.roote.paramMap.subscribe(params => {
       this.userId = params.get('id')
       this.getProfil();
@@ -206,7 +198,6 @@ export class UserCompteComponent {
       }
     );
     }
-<<<<<<< HEAD
 
 
 
@@ -228,7 +219,6 @@ export class UserCompteComponent {
 
 
 
-=======
     subnmbrReact(postId:any) {
       console.log('Avant la fonction ddedd');
       console.log(postId);
@@ -260,7 +250,6 @@ export class UserCompteComponent {
         const loggedInUserId = JSON.parse(sessionStorage.getItem('profil')!).id;
         return post.idreacts.includes(loggedInUserId);
       }
->>>>>>> wadii
   }
 
 
