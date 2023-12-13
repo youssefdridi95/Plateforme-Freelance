@@ -13,23 +13,26 @@ import { UserProfil } from '../services/user-profil';
 })
 export class TalentFeedComponent {
 
-  constructor(private toastr: ToastrService, private router: Router, private roote: ActivatedRoute, private postService: PostService,private profil:UserProfil) {
-this.mainskill=JSON.parse(sessionStorage.getItem('profil')!).mainSkill
-this.getPost(this.mainskill);
+  constructor(private toastr: ToastrService, private router: Router, private roote: ActivatedRoute, private postService: PostService, private profil: UserProfil) {
+    this.mainskill = JSON.parse(sessionStorage.getItem('profil')!).mainSkill
+    this.getPost(this.mainskill);
 
   }
 
   selectedSortOption: 'asc' | 'desc' = 'asc';
   mainskill: string = '';
-  posts: any 
+  posts: any
+  searchTerm: string = '';
+  filteredPosts: any[] = []; // This array will store the filtered posts
 
 
   ngOnInit() {
-    
+
   }
 
 
   nom = JSON.parse(sessionStorage.getItem('profil')!).anonyme;
+  idreacts = JSON.parse(sessionStorage.getItem('profil')!).anonyme;
   sortPostsByDate(order: 'asc' | 'desc'): void {
     this.posts.sort((a: { date: string }, b: { date: string }) => {
       const dateA = new Date(a.date).getTime();
@@ -38,22 +41,22 @@ this.getPost(this.mainskill);
       return order === 'asc' ? dateA - dateB : dateB - dateA;
     });
   }
+  filterPosts(): void {
+    // Filter posts based on the description using the searchTerm
+    this.posts = this.posts.filter((post: any) => post.desc.toLowerCase().includes(this.searchTerm.toLowerCase()));
 
-  sortPosts(): void {
-
-      this.sortPostsByLikes();
-    
   }
+
 
   sortPostsByLikes(): void {
+console.log(this.posts);
 
-    
-    this.posts.sort((a: { likes: number }, b: { likes: number }) => {
-      return a.likes - b.likes;
-    });
+    this.posts = this.posts.sort((a: { idreacts: any[] }, b: { idreacts: any[] }) => {
+      return b.idreacts.length - a.idreacts.length;
+    })
+    console.log('ilyfgçè-tf',this.posts);
+
   }
-
-
 
 
 
@@ -62,18 +65,19 @@ this.getPost(this.mainskill);
       res => {
         this.posts = res;
         console.log(this.posts);
-        let postswithProfiles:any = []
-       
-        for(let post of this.posts.content )
-      {  let params = new HttpParams().set('userId', post.user);
-              
-            this.profil.getProfil(params).subscribe((profile)=>{
-              post.user=profile
+        let postswithProfiles: any = []
 
-              postswithProfiles.push(post)
-              
-            })}
-            this.posts=postswithProfiles
+        for (let post of this.posts.content) {
+          let params = new HttpParams().set('userId', post.user);
+
+          this.profil.getProfil(params).subscribe((profile) => {
+            post.user = profile
+
+            postswithProfiles.push(post)
+
+          })
+        }
+        this.posts = postswithProfiles
         console.log('after for ', postswithProfiles);
       },
       err => {
@@ -97,23 +101,23 @@ this.getPost(this.mainskill);
     );
 
   }
-calculatePassedTime(date:any){
-  
-const  datet= new Date(date)
+  calculatePassedTime(date: any) {
 
-// Get the current date and time
-const currentDate = new Date();
+    const datet = new Date(date)
 
-// Calculate the time difference in milliseconds
-const timeDifference = currentDate.getTime() -datet.getTime();
+    // Get the current date and time
+    const currentDate = new Date();
 
-const seconds = Math.floor(timeDifference / 1000);
-const minutes = Math.floor(seconds / 60);
-const hours = Math.floor(minutes / 60);
-const days = Math.floor(hours / 24);
+    // Calculate the time difference in milliseconds
+    const timeDifference = currentDate.getTime() - datet.getTime();
 
-return(` ${days} d, ${hours % 24} h, ${minutes % 60} min`);
+    const seconds = Math.floor(timeDifference / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
 
-}
+    return (` ${days} d, ${hours % 24} h, ${minutes % 60} min`);
+
+  }
 }
 
