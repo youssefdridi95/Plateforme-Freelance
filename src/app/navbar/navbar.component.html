@@ -73,8 +73,8 @@
       <div class="notifications" *ngIf="isNotifOpen">
      
         <div class="notif" *ngFor="let message of notif.msgList" [routerLink]="['/id',message.chatId]">
-          you have unreaded  message from <br>
-          <div class="name">{{ message.senderId }}</div>
+          you have unread  message from <br>
+          <div class="name">{{ message.senderannonyme }}</div>
           <!-- <p>{{ message.replymessage }}</p> -->
           <div class="date">{{ message.time.split('T')[0] }} at {{ message.time| date  :'shortTime'}} </div>
 

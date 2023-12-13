@@ -116,9 +116,9 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
 
         let filesURLS:any[]=[]
         for (let file of post.files) {
-          // this.postService.getFile( file.fileDownloadUri).subscribe(
+          this.postService.getFile( file.fileDownloadUri).subscribe(
 
-        this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
+        //this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
           (fileBlob: Blob) => {
             // Handle the successful response here
             console.log('File downloaded successfully:', fileBlob);
@@ -254,7 +254,15 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
 
 
     addOrGOToChat(){
-      this.chatService.addChat(this.userId,JSON.parse(sessionStorage.getItem('user')!).id).subscribe(
+    let  id=JSON.parse(sessionStorage.getItem('user')!).id
+
+      if(JSON.parse(sessionStorage.getItem('user')!).roles.at(0)=='ROLE_RECRUTER')
+      id=JSON.parse(sessionStorage.getItem('user')!).idEntreprise
+    console.log('connected',id);
+    console.log('visited',this.userId);
+    
+    
+      this.chatService.addChat(this.userId,id).subscribe(
         (res:any)=>{
           console.log(res);
           this.router.navigate(['/id',res.chatId])
