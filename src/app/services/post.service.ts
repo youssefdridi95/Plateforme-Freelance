@@ -69,9 +69,11 @@ getUserPosts(data: any  ){
 
 }
 getFile(URI: any): Observable<Blob> {
-  const params = new HttpParams().set('fileDownloadUriReport', "/Postes/65675f9f74da756d91ababa0/2023-11-30/2023-11-30 101724 325Z/Untitled.png//");
-  const headers = new HttpHeaders().set('Accept', 'image/png'); // Adjust content type based on your response
+  const params = new HttpParams().set('fileDownloadUriReport',URI);
+ 
 
+  const headers = new HttpHeaders().set('Accept', 'application/octet-stream');
+  
   return this.http.get(this.url + this.getFilePost, {
     params,
     responseType: 'blob',

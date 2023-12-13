@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './chats.component.html',
   styleUrls: ['./chats.component.css']
 })
-export class ChatsComponent implements OnInit, OnDestroy {
+export class ChatsComponent implements OnInit {
   @ViewChild('chatContainer') chatContainer!: ElementRef;
 
   userid = ''
@@ -25,7 +25,6 @@ export class ChatsComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, protected chatsService: ChatsService, private rxStompService: RxStompService, private ngZone: NgZone, private notif: NotificationMessageListService) {
     this.userid = JSON.parse(sessionStorage.getItem('user')!).id
 
-    window.addEventListener('beforeunload', this.onBeforeUnload.bind(this));
   }
 
 
@@ -68,29 +67,8 @@ this.chatsService.newMessageAdded.subscribe(() => {
   
 
 
-  ngOnDestroy(): void {
-    // Remove the event listener when the component is destroyed
-    window.removeEventListener('beforeunload', this.onBeforeUnload.bind(this));
 
-    this.chatsService.disConnectUser(this.userid).subscribe(
-      (res) => {
-        console.log(res);
-      },
-      (err) => {
-        console.log(err);
-      });
-  }
 
-  private onBeforeUnload(event: Event): void {
-    // Handle cleanup logic here
-    this.chatsService.disConnectUser(this.userid).subscribe(
-      (res) => {
-        console.log(res);
-      },
-      (err) => {
-        console.log(err);
-      });
-  }
 
   setActivechat(index: any) {
     this.isLoading = true
@@ -135,8 +113,12 @@ this.chatsService.newMessageAdded.subscribe(() => {
 
     if (this.textMsg !== '') {
       this.isSending = true
+console.log(this.userid);
+console.log(this.chatsService.activeChat);
+console.log(this.chatsService.activeChat.chat.firstUserId);
+console.log(this.chatsService.activeChat.chat.secondUserId);
 
-      let receiverId = this.userid == this.chatsService.activeChat.firstUserId ? this.chatsService.activeChat.secondUserId : this.chatsService.activeChat.firstUserId
+      let receiverId = this.userid == this.chatsService.activeChat.chat.firstUserId ? this.chatsService.activeChat.chat.secondUserId : this.chatsService.activeChat.chat.firstUserId
       let msg = {
         senderId: this.userid,
         chatId: this.chatsService.activeChat.chat.chatId,
@@ -145,7 +127,7 @@ this.chatsService.newMessageAdded.subscribe(() => {
 
       }
 
-      this.rxStompService.publish({ destination: '/chats/addMessage/' + this.chatsService.activeChat.chatId, body: JSON.stringify(msg) });
+      this.rxStompService.publish({ destination: '/chats/addMessage/' + this.chatsService.activeChat.chat.chatId, body: JSON.stringify(msg) });
 
       this.textMsg = ''
       this.isSending = false
