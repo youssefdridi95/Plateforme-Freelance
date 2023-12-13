@@ -150,7 +150,7 @@ getControls() {
       res=>{
       
   console.log(res);
-
+location.reload()
      
   this.toastr.success('a été publié avec success ','Post')
   // this.postForm = this.formBuilder.group({

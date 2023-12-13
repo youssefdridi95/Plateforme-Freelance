@@ -6,6 +6,7 @@ import { EntrepriseService } from '../services/entreprise.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PostService } from '../services/post.service';
 import { UserService } from '../services/user.service';
+import { ChatsService } from '../services/chats.service';
 
 @Component({
   selector: 'app-profil-entreprise',
@@ -32,7 +33,8 @@ export class ProfilEntrepriseComponent {
     private enterpriseService: EntrepriseService,
     private route: ActivatedRoute,
     private toastr: ToastrService,private router: Router, private postService: PostService,
-     private userService: UserService) {
+     private userService: UserService,
+     private chatService :ChatsService) {
       this.route.params.subscribe(params => {
         this.idEntreprise = params['id'];
         this.getPost(this.idEntreprise);
@@ -139,5 +141,23 @@ formatDate(dateString: string): string {
     }
   }
 
-  
+  addOrGOToChat(){
+    let  id=JSON.parse(sessionStorage.getItem('user')!).id
+
+      if(JSON.parse(sessionStorage.getItem('user')!).roles.at(0)=='ROLE_RECRUTER')
+      id=JSON.parse(sessionStorage.getItem('user')!).idEntreprise
+    console.log('connected',id);
+    console.log('visited',this.idEntreprise);
+    
+    
+      this.chatService.addChat(this.idEntreprise,id).subscribe(
+        (res:any)=>{
+          console.log(res);
+          this.router.navigate(['/id',res.chatId])
+        },
+        (err)=>{
+          console.log(err);
+        },
+      )
+    }
 }
