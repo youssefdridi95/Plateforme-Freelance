@@ -45,7 +45,79 @@ export class DashboardComponent implements OnInit {
       // Parse the JSON string to get the 'profil' object
       this.profil = JSON.parse(profilString);
     }
-    
+    const postString = sessionStorage.getItem('post');
+
+    if (postString) {
+      // Parse the JSON string to get the 'profil' object
+      this.posts = JSON.parse(postString);
+    }
+    this.getPost(this.userId);
   }
+  getPost(userId: any) {
+    this.postService.getUserPosts(userId).subscribe(
+     ( res:any) => {
+
+        for(let post of res.content)
+      {  
+        post['filesURLS']=[]
+
+        let filesURLS:any[]=[]
+        for (let file of post.files) {
+          this.postService.getFile( file.fileDownloadUri).subscribe(
+
+        // this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
+          (fileBlob: Blob) => {
+            // Handle the successful response here
+            console.log('File downloaded successfully:', fileBlob);
+          
+            filesURLS.push( URL.createObjectURL(fileBlob));
+          },
+          (error :any) => {
+            // Handle errors
+            filesURLS.push('image');
+            console.error('Error downloading file:', error);
+          }
+        );
+                 
+          
+      }
+      post['filesURLS'].push(filesURLS)
+       }
+       
+        this.posts = res;
+
+
+        // Faites quelque chose avec les posts récupérés, par exemple, assignez-les à une variable de composant
+        // this.posts = res;
+        
+        sessionStorage.setItem('postss', JSON.stringify(res));
+  
+        // Variables pour le comptage des réactions
+        let totalReactionsCount = 0;
+        const reactionsCounts: number[] = [];
+  
+        if (this.posts.content) {
+          this.posts.content.forEach((post: any) => {
+            const reactionsCount = post.idreacts.length;
+            post.reactionsCount = reactionsCount;
+            totalReactionsCount += reactionsCount;
+            reactionsCounts.push(reactionsCount);
+          });
+        }
+  
+        // Affichez les valeurs dans la console
+        console.log('Total des réactions pour tous les posts :', totalReactionsCount);
+        console.log('Réactions pour chaque post :', this.posts);
+  
+        // Faites quelque chose avec les posts récupérés, par exemple, assignez-les à une variable de composant
+        // this.posts = res;
+      },
+      err => {
+        console.log('failed to get posts', err);
+        // Vérifiez si err.error et err.error.message existent avant d'y accéder
+      }
+    );
+  }
+  
 
 }
