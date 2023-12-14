@@ -2,7 +2,7 @@
 
 <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="addPost">
   <h4>
-    postuler quleque chose : 
+    Créez votre publication : 
   </h4>
     <div>
       <input type="text" id="competence" formControlName="competence" placeholder="Compétence..." required/>
@@ -15,7 +15,7 @@
     </div>
 
     <div>
-      <input type="text" id="category" formControlName="category" placeholder="Category..." required/>
+      <input type="text" id="category" formControlName="category" placeholder="Catégorie..." required/>
     </div>
     <div *ngIf="postForm.get('category')!.invalid && postForm.get('category')!.touched" class="error">
       <p>
@@ -100,6 +100,6 @@
   </div>   
      
   
-    <button class="submit" type="submit" >Postuler</button>
+    <button class="submit" type="submit" >Publier</button>
   </form>
   

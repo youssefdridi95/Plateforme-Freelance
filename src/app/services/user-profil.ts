@@ -9,6 +9,7 @@ import { environments } from 'src/enviroments';
 export class UserProfil {
 
   private env :Env 
+  id: string | undefined;
 
   constructor(private http: HttpClient) {
     this.env =environments as Env
