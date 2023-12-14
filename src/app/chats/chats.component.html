@@ -107,7 +107,7 @@
         </ng-container>
           </div>
           <div class="footer-chat" *ngIf="chatsService.activeChat.chat.chatId">
-            <input type="text" class="write-message" placeholder="Type your message here" [(ngModel)]="textMsg" >
+            <textarea  type="text" class="write-message" placeholder="Type your message here" [(ngModel)]="textMsg" (keydown.enter)="onEnterKey($event)"></textarea>
             <i class="fa-regular fa-paper-plane send" (click)="onSendMessage()" *ngIf="!isSending"></i>
             <div class="loader" *ngIf="isSending"></div>
           </div>

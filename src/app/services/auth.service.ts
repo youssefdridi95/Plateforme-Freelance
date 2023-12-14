@@ -31,6 +31,7 @@ export class AuthService {
         console.log(err);
       });
       sessionStorage.removeItem('user');
+      this.chatsService.chatSubscription.unsubscribe();
   }
   Authenticated(): boolean {
     this.login() ;

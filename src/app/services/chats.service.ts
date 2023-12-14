@@ -15,7 +15,7 @@ export class ChatsService {
   private env: Env = environments as Env
   chatList: any
   userid = ""
-
+  chatSubscription  : any
   activeChat: any = {
     "chat": {
         "chatId": "",
@@ -87,7 +87,7 @@ watch(){
   id=JSON.parse(sessionStorage.getItem('user')!).idEntreprise
   this.userid=id
   if(this.userid)
-  this.rxStompService.watch('/topic/chats/' + this.userid).subscribe((message: Message) => {
+  this.chatSubscription= this.rxStompService.watch('/topic/chats/' + this.userid).subscribe((message: Message) => {
     let msg = JSON.parse(message.body)
 
     if ((this.activeChat.chat.chatId === msg.chatId) ) {
