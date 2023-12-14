@@ -3,10 +3,10 @@
     <div class="contact_card">
       <div class="image">
         <img src="/assets/userf.png" id="blah" alt="Avatar" />
-         <p>{{ nom }}</p> 
-        </div>
-      
-      
+        <p>{{ nom }}</p>
+      </div>
+
+
     </div>
 
     <br />
@@ -14,108 +14,95 @@
     <div class="contact_card">
       <div class="filter">
         <div class="txt" (click)="sortPostsByDate('desc')">
-          <input
-            type="radio"
-            id="recent"
-            name="sortOrder1"
-            value="desc"
-            [(ngModel)]="selectedSortOption"
-          />
+          <input type="radio" id="recent" name="sortOrder1" value="desc" [(ngModel)]="selectedSortOption" />
           <label for="sortOrder1">Date la plus récente</label><br /><br />
         </div>
         <div class="txt" (click)="sortPostsByDate('asc')">
-          <input
-            type="radio"
-            id="oldest"
-            name="sortOrder2"
-            value="asc"
-            [(ngModel)]="selectedSortOption"
-          />
+          <input type="radio" id="oldest" name="sortOrder2" value="asc" [(ngModel)]="selectedSortOption" />
           <label for="sortOrder2">Date la plus ancienne </label><br /><br />
         </div>
         <div class="txt" (click)="sortPostsByLikes()">
-          <input
-            type="radio"
-            id="relevance"
-            name="sortOrder3"
-            value="likes"
-            [(ngModel)]="selectedSortOption"
-          />
+          <input type="radio" id="relevance" name="sortOrder3" value="likes" [(ngModel)]="selectedSortOption" />
           <label for="sortOrder3">Pertinence</label>
         </div>
       </div>
     </div>
     <br /><br />
-   
 
-    
+
+
   </div>
 
   <div class="post">
     <h3 class="h">Publication</h3>
     <br>
-    <label for="popup-1-coupon" class="popup-1-open" >
-          
+    <label for="popup-1-coupon" class="popup-1-open">
+
       <img class="add" src="/assets/userf.png">
-        <div class="search">  <input class="input-post"
-          type="text" 
-          [(ngModel)]="searchTerm"
-          placeholder="Recherche par description"
-          (keyup)="filterPosts()"
-        />
+      <div class="search"> <input class="input-post" type="text" [(ngModel)]="searchTerm"
+          placeholder="Recherche par description" (keyup)="filterPosts()" />
       </div>
 
-</label>
-<br>
+    </label>
+    <br>
 
-    
-
+ 
     <article class="publication">
       <div *ngIf="filteredPosts.length === 0 ">
-       
-        <img id='image'src="/../assets/nodata.jpg">
-        
-      </div> 
-      
-        <div
-          *ngFor="let post of filteredPosts , let i = index"
-          class="content-publication wrap shadow"
-        >
-          <div class="heading">
-            <div class="name">
-              <img src="/assets/userf.png " alt="User Image" />
-              <p class="title">
-                <label>{{ post.user.anonyme }}</label>
-              </p>
-            </div>
-            <p class="date" style="text-align: right">
-              {{ post.date | date : "dd/MM/yyyy HH:mm:ss" }}
-            </p>
-            <div
-              class="public"
-              style="text-align: right; padding: 4%; padding-right: 10%"
-            >
-              <p style="text-align: left; size: 20px">{{ post.desc }}.</p>
-            </div>
-            <img
-              src="https://placehold.co/600x400"
-              style="width: 150px; height: 100px; border-radius: 0; margin: 5px"
-              alt="Image"
-              *ngFor="let file of post.files"
-            />
 
-            <div class="reaction">
-              <button (click)="addnmbrReact(post.id,i)" class="like"><i class="fa-regular fa-heart"></i></button>
-              <button class="comment">
-                <i class="fa-regular fa-comment"></i>
+        <img id='image' src="/../assets/nodata.jpg">
+
+      </div>
+     
+  
+      <div *ngFor="let post of filteredPosts , let i = index" class="content-publication wrap shadow">
+        <div >
+          <h3  class="title" >Publication</h3>
+          <h3 >Dashboard</h3>
+        </div>
+    
+        <div class="heading">
+          <div class="name">
+            <img src="/assets/userf.png " alt="User Image" />
+            <p class="title">
+              <label>{{ post.user.anonyme }}</label>
+            </p>
+          </div>
+          <p class="date" style="text-align: right">
+            {{ post.date | date : "dd/MM/yyyy HH:mm:ss" }}
+          </p>
+          <div class="public" style="text-align: right; padding: 4%; padding-right: 10%">
+            <p style="text-align: left; size: 20px">{{ post.desc }}.</p>
+          </div>
+          <img src="https://placehold.co/600x400" style="width: 150px; height: 100px; border-radius: 0; margin: 5px"
+            alt="Image" *ngFor="let file of post.files" />
+
+          <div class="reaction">
+            <ng-container *ngIf="!hasReacted(post)">
+
+              <button (click)="addnmbrReact(post.id,i)" class="like"><i class="fa-regular fa-heart"></i>
+                <hr>
+                <hr>{{post?.idreacts.length}} j'aime
               </button>
-              <button class="share">
-                <i class="fa-regular fa-share-from-square"></i>
-              </button>
-            </div>
+            </ng-container>
+            <ng-container *ngIf="hasReacted(post)">
+
+              <button class="like" (click)="subnmbrReact(post.id, i)">
+                <i class="fa-solid fa-heart"></i>
+                <hr>
+                <hr>{{post?.idreacts.length}} j'aime
+              </button> </ng-container>
+
+            <button class="comment">
+              <i class="fa-regular fa-comment"></i>
+            </button>
+            <button class="share">
+              <i class="fa-regular fa-share-from-square"></i>
+            </button>
           </div>
         </div>
-      
+      </div>
+
     </article>
   </div>
 </div>

@@ -51,7 +51,7 @@
       <i class="fa-solid fa-signs-post"></i>  </div>
       <div class="text">
         <p>nombre des postes</p>
-        <h1>{{totalPosts}} </h1>
+        <h1>{{posts.content.length}} </h1>
       </div>
   </div>
 
@@ -156,6 +156,31 @@
     </div>
   </div>
 </div>  -->
+<div >
+  <div *ngIf="role==='ROLE_TALENT'">
+
+<!-- Section Finance -->
+<div class="section section-finance">
+  <h2>Section cagnotte</h2>
+  <div class="finance-details">
+    <div class="finance-item">
+      <p>nbre contrat</p>
+      <h1>  </h1>
+    </div>
+    <div class="finance-item">
+      <p>chiffre d'affaire</p>
+      <h1></h1>
+    </div>
+    <div class="finance-item">
+      <p>retraits </p>
+      <h3> 1000.00$ </h3>
+    </div>
+ 
+  </div>
+</div>
+</div>
+
+  <div *ngIf="role==='ROLE_ENTREPRISE'">
 <div class="section section-rh">
   <h2>Section RH</h2>
   <div class="rh-stats">
@@ -181,7 +206,7 @@
   <div class="finance-details">
     <div class="finance-item">
       <p>Plan</p>
-      <h1> planDetails </h1>
+      <h1>  </h1>
     </div>
     <div class="finance-item">
       <p>Facturation</p>
@@ -189,18 +214,18 @@
     </div>
     <div class="finance-item">
       <p>Business</p>
-      <h1> businessDetails </h1>
+      <h1>  </h1>
     </div>
     <div class="finance-item">
       <p>N°cv restant 25</p>
-      <h1> remainingCVs</h1>
+      <h1> </h1>
     </div>
     <div class="finance-item">
       <p>Upgrade Plan</p>
-      <h1>upgradeDetails </h1>
+      <h1> </h1>
       
     </div>
   </div>
 </div>
-
+</div>
 

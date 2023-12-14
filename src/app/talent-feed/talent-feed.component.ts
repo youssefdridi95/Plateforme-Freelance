@@ -127,25 +127,66 @@ console.log(this.posts);
   }
   
   addnmbrReact(postId: any, index : any) {
+    console.log(this.filteredPosts.at(index).user.id);
     
-    this.postService.addmnbrReact(this.posts.at(index).user.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(
+    this.postService.addmnbrReact(this.filteredPosts.at(index).user.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(
     
       (res) => {
         console.log('modification avec succès', res);
-        this.toastr.success('react avec succès');
+       // this.toastr.success('react avec succès');
         // sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
-     console.log(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId);
+     console.log(this.filteredPosts.at(index));
      
+     this.filteredPosts.at(index).idreacts.push(JSON.parse(sessionStorage.getItem('profil')!).id);
       },
       (err) => {
         console.log('échec de la modification', err);
         this.toastr.error('Erreur de reacter', 'Erreur');
-            console.log('ppppp',this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId);
+            console.log('ppppp',this.filteredPosts.at(index).user.id, JSON.parse(sessionStorage.getItem('profil')!).id, postId);
        
         
       }
     );
   }
+  subnmbrReact(postId: any, index: any) {
+    this.postService.submnbrReact(this.filteredPosts.at(index).user.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(
+      (res) => {
+        console.log('modification avec succès', res);
+      //  this.toastr.success('react annuler avec succès');
+        this.filteredPosts.at(index).idreacts= this.filteredPosts.at(index).idreacts.filter((item : any)  => item !== JSON.parse(sessionStorage.getItem('profil')!).id);
+
+        // sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
   
-}
+        // const profileId = JSON.parse(sessionStorage.getItem('profil')!).id;
+        // const post = this.posts.content[index];
+        // const profileIndex = post.idreacts.indexOf(profileId);
+  
+        // if (profileIndex !== -1) {
+        //   post.idreacts.splice(profileIndex, 1);
+        //   post.reactionsCount--;
+        // }
+      },
+      (err) => {
+        console.log('échec de la modification', err);
+        this.toastr.error('Erreur de  supprime react', 'Erreur');
+      }
+    );
+  }
+  toggleReact(post: any, index: any) {
+    const hasReacted = this.hasReacted(post);
+  
+    if (hasReacted) {
+      this.subnmbrReact(post.id, index);
+    } else {
+      this.addnmbrReact(post.id, index);
+    }
+  }
+  
+      hasReacted(post: any): boolean {
+        const loggedInUserId = JSON.parse(sessionStorage.getItem('profil')!).id;
+        return post.idreacts.includes(loggedInUserId);
+      }
+  }
+
+
 

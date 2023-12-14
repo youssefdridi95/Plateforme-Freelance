@@ -16,11 +16,19 @@
       </div>
       <div>
         <p>Compétence Principale : {{profil?.mainSkill}} </p>
-
-        <p>Formations : </p>
-
-
-        <p>Expérience :</p>
+        <div class="filter">
+          <!-- <input type="radio" id="huey" name="drone" value="huey" /> Tri par date la plus <label for="huey"></label><br><br> -->
+          <!-- <input type="radio" id="huey" name="drone" value="huey" /> Tri par date la plus <label for="huey"></label> -->
+          <div class="title-container">
+    
+            <h3 (click)="pub = true" class="title" [class.underlined]="pub">Publication</h3>
+            
+            <h3 *ngIf="isButtonVisible() "  (click)="pub = false" class="title" [class.underlined]="!pub">Dashboard</h3>
+          </div>
+      
+        
+        
+        </div>
 
       </div>
 
@@ -37,19 +45,27 @@
 
       </div>
     </div>
-    <div class="filter">
-      <input type="radio" id="huey" name="drone" value="huey" /> Tri par date la plus <label for="huey"></label><br><br>
-      <input type="radio" id="huey" name="drone" value="huey" /> Tri par date la plus <label for="huey"></label>
-    </div>
+    <!-- <div class="filter"> -->
+      <!-- <input type="radio" id="huey" name="drone" value="huey" /> Tri par date la plus <label for="huey"></label><br><br> -->
+      <!-- <input type="radio" id="huey" name="drone" value="huey" /> Tri par date la plus <label for="huey"></label> -->
+      <!-- <div class="title-container">
+
+        <h3 (click)="pub = true" class="title" [class.underlined]="pub">Publication</h3>
+        
+        <h3 *ngIf="isButtonVisible() "  (click)="pub = false" class="title" [class.underlined]="!pub">Dashboard</h3>
+      </div>
+   -->
+    
+    
+    <!-- </div> -->
 
   </div>
   <div class="post">
 
     <div class="title-container">
-      <h3 (click)="pub = true" class="title" [class.underlined]="pub">Publication</h3>
-      <h3 *ngIf="isButtonVisible()"  (click)="pub = false" class="title" [class.underlined]="!pub">Dashboard</h3>
+      <!-- <h3 (click)="pub = true" class="title" [class.underlined]="pub">Publication</h3> -->
+      <!-- <h3 *ngIf="isButtonVisible() "  (click)="pub = false" class="title" [class.underlined]="!pub">Dashboard</h3> -->
     </div>
-
 
 
     <div class="popup-1-wrap">
@@ -67,11 +83,10 @@
 
 
 
-
-    <article *ngIf="pub===true" class="publication">
+    <article *ngIf="pub===true " class="publication">
       <!--  Send post  -->
 
-      <label for="popup-1-coupon" class="popup-1-open">
+      <label *ngIf="isButtonVisible()" for="popup-1-coupon" class="popup-1-open">
 
         <img class="add" src="/assets/was.png">
         <div class="input-post">Quoi de neuf</div>
@@ -110,20 +125,20 @@
               <ng-container *ngIf="hasReacted(post)">
                 <!-- If the user has reacted, show the unlike button -->
                 <button class="like" (click)="subnmbrReact(post.id, i)">
-                  <i class="fa-solid fa-heart"></i>  <hr><hr>{{post?.reactionsCount}} j'aime
+                  <i class="fa-solid fa-heart"></i>  <hr><hr>{{post?.reactionsCount}} 
                 </button>
               </ng-container>
             
               <ng-container *ngIf="!hasReacted(post)">
                 <!-- If the user has not reacted, show the like button -->
                 <button class="like" (click)="addnmbrReact(post.id, i)">
-                  <i class="fa-regular fa-heart"></i><hr><hr>{{post.reactionsCount}} j'aime
+                  <i class="fa-regular fa-heart"></i><hr><hr>{{post.reactionsCount}}
                 </button>
               </ng-container>
             
               <!-- Add your other buttons here -->
-              <button class="comment">commentaire</button>
-              <button class="share">partager</button>
+              <button class="comment"><i class="fa-regular fa-comment"></i></button>
+              <button class="share"><i class="fa-regular fa-share-from-square"></i></button>
             </div>
             
 

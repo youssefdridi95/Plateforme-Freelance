@@ -38,7 +38,7 @@ export class UserCompteComponent {
     this.router.navigate([link]);
 
   }
-  pub = false;
+  pub = true;
   username: string = '';
   email: string = '';
   userId: any;
@@ -259,7 +259,7 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
     this.postService.addmnbrReact(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(
       (res) => {
         console.log('modification avec succès', res);
-        this.toastr.success('react avec succès');
+        // this.toastr.success('react avec succès');
         sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
         this.posts.content[index].idreacts.push(JSON.parse(sessionStorage.getItem('profil')!).id);
         this.posts.content[index].reactionsCount++;
@@ -275,7 +275,7 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
     this.postService.submnbrReact(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(
       (res) => {
         console.log('modification avec succès', res);
-        this.toastr.success('react annuler avec succès');
+        // this.toastr.success('react annuler avec succès');
         sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
   
         const profileId = JSON.parse(sessionStorage.getItem('profil')!).id;
