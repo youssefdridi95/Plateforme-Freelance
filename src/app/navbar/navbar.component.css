@@ -160,7 +160,7 @@ display: initial;    }
 }
 .name{
   text-transform: uppercase;
-text-align: center;
+text-align: left;
 font-size: 17px;
 font-weight: bold;
 color: #034f9b;

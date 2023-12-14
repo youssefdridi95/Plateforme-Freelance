@@ -2,9 +2,21 @@
   <div class="logo" [style]="logoUrl"></div>
 
   <div class="nav-items" [style.display]="navItemsDisplay">
+<<<<<<< HEAD
     <div class="nav-item" [routerLink]="['/recherche']">Accueil</div>
     <div class="nav-item" [routerLink]="['/post/feed']">Posts</div>
     <div class="nav-item" [routerLink]="['/post']">Rapports</div>
+=======
+    <div class="nav-item"  [routerLink]="['/recherche']">Accueil</div>
+     <div class="nav-item"  [routerLink]="['/post/feed']">Posts </div>
+     <div class="nav-item"  [routerLink]="['/post']">Rapports </div>   
+
+     <div class="nav-item"  [routerLink]="['/chat']">Messages</div>
+
+
+
+
+>>>>>>> chat
 
     <div class="nav-item" [routerLink]="['']">Messages</div>
   </div>
@@ -115,7 +127,15 @@
       </div>
 
      
+<<<<<<< HEAD
      
+=======
+        <div class="notif" *ngFor="let message of notif.msgList" [routerLink]="['/id',message.chatId]">
+          you have unread  message from <br>
+          <div class="name">{{ message.senderannonyme }}</div>
+          <!-- <p>{{ message.replymessage }}</p> -->
+          <div class="date">{{ message.time.split('T')[0] }} at {{ message.time| date  :'shortTime'}} </div>
+>>>>>>> chat
 
       <div
         (mouseleave)="toggleDropdown()"

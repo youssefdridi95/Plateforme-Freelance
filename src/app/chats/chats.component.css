@@ -234,7 +234,7 @@
   
   .chat .messages-chat .message {
     display:flex;
-    align-items: flex-start;
+    align-items: flex-end;
     
     margin-bottom: 8px;
   }
@@ -263,9 +263,16 @@
   
   .text-only {
     margin-left: 45px;
-    text-align: right;
+    text-align: center !important;
     display: flex;
     justify-content: flex-end;
+  }
+  .eye{
+    font-size: 0.6rem;
+    text-align: center !important;
+    display: flex;
+    justify-content: center;
+    height: 100%;
   }
   .text-only .text {
     background-color: antiquewhite !important;

@@ -23,7 +23,12 @@ export class ChatsComponent implements OnInit {
   isSending = false
   activeId: any
   constructor(private route: ActivatedRoute, protected chatsService: ChatsService, private rxStompService: RxStompService, private ngZone: NgZone, private notif: NotificationMessageListService) {
-    this.userid = JSON.parse(sessionStorage.getItem('user')!).id
+    
+    let  id=JSON.parse(sessionStorage.getItem('user')!).id
+
+    if(JSON.parse(sessionStorage.getItem('user')!).roles.at(0)=='ROLE_RECRUTER')
+    id = JSON.parse(sessionStorage.getItem('user')!).idEntreprise
+    this.userid = id
 
   }
 
@@ -75,31 +80,34 @@ this.chatsService.newMessageAdded.subscribe(() => {
     this.chatsService.getChat(this.chatsService.chatList.at(index).chat.chatId).subscribe(
       (res: any) => {
         let chat = res
-
-
-
+        
+        
         this.chatsService.chatList[index] = chat
+        console.log(chat.sannonyme);
+        console.log(chat.fannonyme);
+        
+        this.activeId=chat.chat.chatId
         this.isLoading = false
-
+        
         this.chatsService.activeChat = this.chatsService.chatList.at(index)
-        console.log("active", chat);
-
+        
         this.ngZone.runOutsideAngular(() => {
           setTimeout(() => {
             // Update the scrollTop property here
             this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
-
+            
             // Run change detection manually
             this.ngZone.run(() => { });
           });
         });
-
-        this.chatsService.markMsgSeen(this.chatsService.chatList.at(index).chatId, this.userid).subscribe(
+        
+        this.lastSeenmsg()
+        this.chatsService.markMsgSeen(this.chatsService.chatList.at(index).chat.chatId, this.userid).subscribe(
           (res) => {
-              console.log(res);
-
+            console.log('seeen',res);
+            
           }, (err) => {
-            console.log(err);
+            console.log('senn errr',err);
 
           })
 
@@ -113,10 +121,7 @@ this.chatsService.newMessageAdded.subscribe(() => {
 
     if (this.textMsg !== '') {
       this.isSending = true
-console.log(this.userid);
-console.log(this.chatsService.activeChat);
-console.log(this.chatsService.activeChat.chat.firstUserId);
-console.log(this.chatsService.activeChat.chat.secondUserId);
+
 
       let receiverId = this.userid == this.chatsService.activeChat.chat.firstUserId ? this.chatsService.activeChat.chat.secondUserId : this.chatsService.activeChat.chat.firstUserId
       let msg = {
@@ -124,7 +129,6 @@ console.log(this.chatsService.activeChat.chat.secondUserId);
         chatId: this.chatsService.activeChat.chat.chatId,
         reciverId: receiverId,
         replymessage: this.textMsg
-
       }
 
       this.rxStompService.publish({ destination: '/chats/addMessage/' + this.chatsService.activeChat.chat.chatId, body: JSON.stringify(msg) });
@@ -174,8 +178,26 @@ console.log(this.chatsService.activeChat.chat.secondUserId);
 
     for (let index = 0; index < this.chatsService.chatList.length; index++) {
       const chat = this.chatsService.chatList[index];
-      if (chat.chatId == id) return index
+      if (chat.chat.chatId == id) return index
     }
     return null
   }
+
+
+  lastSeenmsg(){
+    const messageList = this.chatsService.activeChat.chat.messageList;
+
+// Find the index of the last seen message
+
+for (let i = messageList.length - 1; i >= 0; i--) {
+  const message = messageList[i];
+  if (message.reciverId !== this.userid && message.seen) {
+    
+      return i;
+  }
 }
+
+return undefined; // Return undefined if no matching message is found
+}
+  }
+

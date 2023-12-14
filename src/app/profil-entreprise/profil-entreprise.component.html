@@ -26,6 +26,13 @@
           </button>
         
         </div>
+        <div class="button" *ngIf="role!=='ROLE_ENTREPRISE' && role!=='ROLE_RECRUTER'" >
+          <button  class="read" (click)="addOrGOToChat()">
+            <h3>Cantacter</h3>
+          </button>
+        
+        </div>
+        
 
         </div>
        

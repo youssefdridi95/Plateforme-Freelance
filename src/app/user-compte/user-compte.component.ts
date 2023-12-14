@@ -129,6 +129,7 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
           this.postService.getFile( file.fileDownloadUri).subscribe(
 
         // this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
+        //this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
           (fileBlob: Blob) => {
             // Handle the successful response here
             // console.log('File downloaded successfully:', fileBlob);
@@ -269,7 +270,43 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
         this.toastr.error('Erreur de reacter', 'Erreur');
       }
     );
+<<<<<<< HEAD
   }
+=======
+    }
+
+
+
+
+
+    addOrGOToChat(){
+    let  id=JSON.parse(sessionStorage.getItem('user')!).id
+
+      if(JSON.parse(sessionStorage.getItem('user')!).roles.at(0)=='ROLE_RECRUTER')
+      id=JSON.parse(sessionStorage.getItem('user')!).idEntreprise
+    console.log('connected',id);
+    console.log('visited',this.userId);
+    
+    
+      this.chatService.addChat(this.userId,id).subscribe(
+        (res:any)=>{
+          console.log(res);
+          this.router.navigate(['/id',res.chatId])
+        },
+        (err)=>{
+          console.log(err);
+        },
+      )
+    }
+
+
+
+
+
+    subnmbrReact(postId:any) {
+      console.log('Avant la fonction ddedd');
+      console.log(postId);
+>>>>>>> chat
   
   subnmbrReact(postId: any, index: any) {
     this.postService.submnbrReact(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(

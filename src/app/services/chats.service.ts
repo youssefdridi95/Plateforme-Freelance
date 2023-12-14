@@ -81,19 +81,26 @@ newMessageAdded: EventEmitter<any> = new EventEmitter<any>();
     return this.http.get(this.env.backendUrl + this.env.chat +chatId)
   }
 watch(){
-  this.userid=JSON.parse(sessionStorage.getItem('user')!).id
+  let  id=JSON.parse(sessionStorage.getItem('user')!).id
+
+  if(JSON.parse(sessionStorage.getItem('user')!).roles.at(0)=='ROLE_RECRUTER')
+  id=JSON.parse(sessionStorage.getItem('user')!).idEntreprise
+  this.userid=id
   if(this.userid)
   this.rxStompService.watch('/topic/chats/' + this.userid).subscribe((message: Message) => {
     let msg = JSON.parse(message.body)
 
     if ((this.activeChat.chat.chatId === msg.chatId) ) {
       this.activeChat.chat.messageList.push(JSON.parse(message.body));
+      
       this.notif.playNotificationSound()
       this.newMessageAdded.emit();
     
 
     } else {
       this.notif.msgList.unshift(msg)
+      console.log('notif',  this.notif.msgList);
+
       this.notif.newMsgs += 1
       this.notif.playNotificationSound()
     }
