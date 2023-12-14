@@ -126,7 +126,11 @@ body {
   width: 40%; /* Ajustez la largeur de l'icône selon vos besoins */
   font-size: 2rem;
 }
-
+h4{
+  color: black;
+  padding-left: 5px;
+  padding-bottom: 2rem;
+}
 .icon1 {
   color: white;
   display: flex;
@@ -143,16 +147,28 @@ body {
   font-size: 3rem;
   display: flex;
   justify-content: space-between;
+  gap:2.9rem;
+}
+.icon3 {
+  color: white; /* Couleur grisâtre avec une composante alpha (transparence) */
+  /* display: flex; */
+  /* justify-content: center; */
+   /* Ajustez la largeur de l'icône selon vos besoins */
+  font-size: 3rem;
+  display: flex;
+  justify-content: space-between;
   gap:2.5rem;
 }
 .text {
   flex-grow: 1;
-  padding-left: 15px; /* Ajustez la marge à gauche selon vos besoins */
+  padding-left: 10px; /* Ajustez la marge à gauche selon vos besoins */
   width: 30%;
   color: white;
   font-size: large;
 }
-
+h1{
+text-align: center;
+}
 .text p {
   text-align: left; 
   margin: 0;
@@ -224,4 +240,65 @@ button {
 
 button:hover {
   background-color: #45a049;
+}
+/* ... (previous CSS code) ... */
+h2 {
+  color: #3498db;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* Styles pour les sections RH et Finance */
+.section {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff; /* Fond blanc pour les sections */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère pour un effet de profondeur */
+}
+
+/* Styles pour les statistiques RH */
+.rh-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.stat {
+  text-align: center;
+  padding: 20px;
+  background-color: #3498db;
+  color: #fff;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stat:hover {
+  background-color: #2980b9;
+}
+
+/* Styles pour les détails financiers */
+.finance-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.finance-item {
+  flex: 1;
+  padding: 20px;
+  background-color: #2ecc71;
+  color: #fff;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.finance-item:hover {
+  background-color: #27ae60;
 }

@@ -3,15 +3,15 @@
   <div class="contact">
 
     <div class="userInfo">
-      <i class="fas fa-edit editProfil" *ngIf="isButtonVisible()" [routerLink]="['/user/update']" ></i>
+      <i class="fas fa-edit editProfil" *ngIf="isButtonVisible()" [routerLink]="['/user/update']"></i>
 
       <!-- <img src="/assets/was.png" id="blah" alt="Avatar" /> -->
       <!-- user-compte.component.html -->
       <img src="/assets/was.png" id="blah" alt="Avatar" />
-
+      <h2>{{profil?.anonyme}}</h2>
       <div class="contact_card">
         <!-- <span> <i class="fa-solid fa-phone"></i> : </span><br><br> -->
-        <span> <i class="fa-solid fa-envelope"></i> : {{profil.email}} </span><br><br>
+        <span *ngIf="isButtonVisible()"> <i class="fa-solid fa-envelope"></i> : {{user?.email}} </span><br><br>
         <span><i class="fa-solid fa-location-dot"></i> : {{profil?.timezone}} </span>
       </div>
       <div>
@@ -47,10 +47,10 @@
 
     <div class="title-container">
       <h3 (click)="pub = true" class="title" [class.underlined]="pub">Publication</h3>
-      <h3 (click)="pub = false" class="title" [class.underlined]="!pub">Dashboard</h3>
+      <h3 *ngIf="isButtonVisible()"  (click)="pub = false" class="title" [class.underlined]="!pub">Dashboard</h3>
     </div>
-    
-    
+
+
 
     <div class="popup-1-wrap">
       <input id="popup-1-coupon" type="checkbox">
@@ -71,7 +71,7 @@
     <article *ngIf="pub===true" class="publication">
       <!--  Send post  -->
 
-      <label  for="popup-1-coupon" class="popup-1-open">
+      <label for="popup-1-coupon" class="popup-1-open">
 
         <img class="add" src="/assets/was.png">
         <div class="input-post">Quoi de neuf</div>
@@ -83,9 +83,8 @@
 
 
       <ng-container *ngIf="posts.content">
-        <div *ngFor="let post of posts.content " class="content-publication wrap shadow">
-          <button  class="delete" (click)="deletePost(post.id)"><i
-              class="fa-regular fa-trash-can"></i></button>
+        <div *ngFor="let post of posts.content , let i = index" class="content-publication wrap shadow">
+          <button class="delete" (click)="deletePost(post.id)"><i class="fa-regular fa-trash-can"></i></button>
 
           <div class="heading flex-center">
             <div class="name flex-center">
@@ -95,38 +94,51 @@
             <p class="date">{{post?.date | date : 'shortDate'}}</p>
             <div class="public">
               <p>{{post?.desc}}</p>
-              <p>{{post?.reactionsCount}} réactions</p> <!-- Utilisez la propriété reactionsCount pour chaque post -->
+              <p></p> <!-- Utilisez la propriété reactionsCount pour chaque post -->
             </div>
-            <ng-container  *ngFor="let file of post.filesURLS">
-              <img src={{file}} style="width: 150px; height: 100px; border-radius: 0;margin: 5px;"
-              alt="file">
+            <ng-container *ngFor="let file of post.filesURLS">
+              <img src={{file}} style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" alt="file">
 
             </ng-container>
-         
+
+            <!-- <button class="like" (click)="addnmbrReact(post.id)" ><i class="fa-regular fa-heart"></i></button> -->
+            <!-- <button class="like custom-like" (click)="addnmbrReact(post.id)"> {{post?.reactionsCount}} j'aime</button> -->
 
 
             <div class="fav">
-              <!-- <button class="like" (click)="addnmbrReact(post.id)" ><i class="fa-regular fa-heart"></i></button> -->
-              <!-- <button class="like custom-like" (click)="addnmbrReact(post.id)"> {{post?.reactionsCount}} j'aime</button> -->
-
-              <button class="like" (click)="addnmbrReact(post.id)"> {{post?.reactionsCount}} j'aime</button>
+              <!-- Check if the user has reacted or not -->
+              <ng-container *ngIf="hasReacted(post)">
+                <!-- If the user has reacted, show the unlike button -->
+                <button class="like" (click)="subnmbrReact(post.id, i)">
+                  <i class="fa-solid fa-heart"></i>  <hr><hr>{{post?.reactionsCount}} j'aime
+                </button>
+              </ng-container>
+            
+              <ng-container *ngIf="!hasReacted(post)">
+                <!-- If the user has not reacted, show the like button -->
+                <button class="like" (click)="addnmbrReact(post.id, i)">
+                  <i class="fa-regular fa-heart"></i><hr><hr>{{post.reactionsCount}} j'aime
+                </button>
+              </ng-container>
+            
+              <!-- Add your other buttons here -->
               <button class="comment">commentaire</button>
               <button class="share">partager</button>
-
             </div>
+            
+
           </div>
         </div>
       </ng-container>
 
     </article>
 
-
-    <article *ngIf="pub===false" class="dashboard">
+    <article *ngIf="pub===false"  class="dashboard" >
       <app-dashboard></app-dashboard>
-    <!-- <article *ngIf="pub===false" class="publication">
+      <!-- <article *ngIf="pub===false" class="publication">
        <app-dashboard></app-dashboard> -->
 
- 
+
 
     </article>
 
@@ -134,4 +146,3 @@
   </div>
 
 </div>
-

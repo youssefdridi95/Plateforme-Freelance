@@ -100,7 +100,16 @@
     box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px;
   }
   
-  
+  img{
+    max-width: 40%;
+    height: 50%;
+    display: flex;
+    justify-content: flex-end;
+    margin: -7px auto;
+    margin-bottom: -13%;
+    
+    
+  }
 
 
 .validator{

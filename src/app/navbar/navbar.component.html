@@ -1,27 +1,28 @@
 <nav class="nav" *ngIf="!shouldShowNavbar()">
-  <div class="logo " [style]="logoUrl"></div>
+  <div class="logo" [style]="logoUrl"></div>
 
   <div class="nav-items" [style.display]="navItemsDisplay">
-    <div class="nav-item"  [routerLink]="['/recherche']">Accueil</div>
-     <div class="nav-item"  [routerLink]="['/post/feed']">Posts </div>
-     <div class="nav-item"  [routerLink]="['/post']">Rapports </div>   
+    <div class="nav-item" [routerLink]="['/recherche']">Accueil</div>
+    <div class="nav-item" [routerLink]="['/post/feed']">Posts</div>
+    <div class="nav-item" [routerLink]="['/post']">Rapports</div>
 
-     <div class="nav-item"  [routerLink]="['']">Messages</div>
-
-
-
-
-
+    <div class="nav-item" [routerLink]="['']">Messages</div>
   </div>
 
-
   <div class="btn">
-
     <div class="dropdown">
-      <button class="dropdown-button" (mouseenter)="toggleDropdown()" *ngIf="showBtn()">
+      <button
+        class="dropdown-button"
+        (mouseenter)="toggleDropdown()"
+        *ngIf="showBtn()"
+      >
         Connexion <i class="fa-solid fa-chevron-down"></i>
       </button>
-      <div class="dropdown-content"  (mouseleave)="toggleDropdown()" *ngIf="isDropdownOpen && showBtn()">
+      <div
+        class="dropdown-content"
+        (mouseleave)="toggleDropdown()"
+        *ngIf="isDropdownOpen && showBtn()"
+      >
         <!-- Dropdown items go here -->
         <a [routerLink]="['/user/connexion/signin']">Talent</a>
         <div class="dropdown-divider"></div>
@@ -31,83 +32,130 @@
         <!-- Add more dropdown items as needed -->
       </div>
     </div>
-    <button class="login-button" type="submit" [routerLink]="['/role']" *ngIf="showBtn()">
+    <button
+      class="login-button"
+      type="submit"
+      [routerLink]="['/role']"
+      *ngIf="showBtn()"
+    >
       S'inscrire
     </button>
     <div class="profile" *ngIf="!showBtn()">
       <div class="input-container">
-        <input type="text" name="text" class="input" placeholder="Chercher...">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="" viewBox="0 0 24 24" class="icon">
+        <input
+          type="text"
+          name="text"
+          class="input"
+          placeholder="Chercher..."
+        />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill=""
+          viewBox="0 0 24 24"
+          class="icon"
+        >
           <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
-          <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
+          <g
+            stroke-linejoin="round"
+            stroke-linecap="round"
+            id="SVGRepo_tracerCarrier"
+          ></g>
           <g id="SVGRepo_iconCarrier">
             <rect fill="white" height="24" width="24"></rect>
-            <path fill=""
+            <path
+              fill=""
               d="M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12ZM9 11.5C9 10.1193 10.1193 9 11.5 9C12.8807 9 14 10.1193 14 11.5C14 12.8807 12.8807 14 11.5 14C10.1193 14 9 12.8807 9 11.5ZM11.5 7C9.01472 7 7 9.01472 7 11.5C7 13.9853 9.01472 16 11.5 16C12.3805 16 13.202 15.7471 13.8957 15.31L15.2929 16.7071C15.6834 17.0976 16.3166 17.0976 16.7071 16.7071C17.0976 16.3166 17.0976 15.6834 16.7071 15.2929L15.31 13.8957C15.7471 13.202 16 12.3805 16 11.5C16 9.01472 13.9853 7 11.5 7Z"
-              clip-rule="evenodd" fill-rule="evenodd"></path>
+              clip-rule="evenodd"
+              fill-rule="evenodd"
+            ></path>
           </g>
         </svg>
       </div>
-     
-     
+      <div class="notifContainer" (click)="toggleNotif()">
+        <i class="fa-regular fa-bell"></i>
+        <span class="red" *ngIf="notif.newMsgs > 0"> {{ notif.newMsgs }}</span>
+      </div>
+      <div class="notificationWrapper" *ngIf="notif.msgList.length > 0">
+        <div class="notifications" *ngIf="isNotifOpen">
+          <div
+            class="notif"
+            *ngFor="let message of notif.msgList"
+            [routerLink]="['/id', message.chatId]"
+          >
+            you have unreaded message from <br />
+            <div class="name">{{ message.senderId }}</div>
+            <!-- <p>{{ message.replymessage }}</p> -->
+            <div class="date">
+              {{ message.time.split("T")[0] }} at
+              {{ message.time | date : "shortTime" }}
+            </div>
+          </div>
+        </div>
+      </div>
       <div>
         <ng-container *ngIf="getUserRole() === 'Admin'; else notAdmin">
           <!-- Content to display if the user role is admin -->
-        
-          <img src="/assets/userf.png" style="width: 4rem; text-align: center;" id="blah" (mouseenter)="toggleDropdown()" />
+
+          <img
+            src="/assets/userf.png"
+            style="width: 4rem; text-align: center"
+            id="blah"
+            (mouseenter)="toggleDropdown()"
+          />
         </ng-container>
         <ng-template #notAdmin>
           <!-- Content to display if the user role is not admin -->
-          <img src="/assets/was.png" style="width: 4rem; text-align: center;"id="blah"  (mouseenter)="toggleDropdown()" />
+          <img
+            src="/assets/was.png"
+            style="width: 4rem; text-align: center"
+            id="blah"
+            (mouseenter)="toggleDropdown()"
+          />
         </ng-template>
       </div>
-      
-      <div class="notifContainer"(click)="toggleNotif()" >
 
-      <i class="fa-regular fa-bell" ></i>
-       <span class="red" *ngIf="notif.newMsgs > 0"> {{notif.newMsgs}}</span>
-    </div>
-<div class="notificationWrapper"  *ngIf="notif.msgList.length > 0">
-
-
-      <div class="notifications" *ngIf="isNotifOpen">
      
-        <div class="notif" *ngFor="let message of notif.msgList" [routerLink]="['/id',message.chatId]">
-          you have unreaded  message from <br>
-          <div class="name">{{ message.senderId }}</div>
-          <!-- <p>{{ message.replymessage }}</p> -->
-          <div class="date">{{ message.time.split('T')[0] }} at {{ message.time| date  :'shortTime'}} </div>
+     
 
-        </div>
-      </div>
-    </div>
-      <!-- <i class="fa-regular fa-bell" style="color :red" *ngIf=""></i> -->
-      <i class="fa-regular fa-user" (mouseenter)="toggleDropdown()" ></i>
-    
-      <div (mouseleave)="toggleDropdown()" class="dropdown-content2" *ngIf="isDropdownOpen">
-        
-       <div class="name"> {{getUserName()}}</div>
-       
-        
-       <div class="title">{{getUserRole()}}</div>
+      <div
+        (mouseleave)="toggleDropdown()"
+        class="dropdown-content2"
+        *ngIf="isDropdownOpen"
+      >
+        <div class="name">{{ getUserName() }}</div>
+
+        <div class="title">{{ getUserRole() }}</div>
         <div class="dropdown-divider"></div>
-        <a (click)="navigateToProfil()"><i class="fa-solid fa-user"style="font-size: 1rem ; margin-right: 1rem;"></i>Mon profil</a>
-        <a [routerLink]="['/user/profil']"><i class="fa-solid fa-gear" style="font-size: 1rem ; margin-right: 1rem;"></i>Paramètres</a>
+        <a (click)="navigateToProfil()"
+          ><i
+            class="fa-solid fa-user"
+            style="font-size: 1rem; margin-right: 1rem"
+          ></i
+          >Mon profil</a
+        >
+        <a [routerLink]="['/user/profil']"
+          ><i
+            class="fa-solid fa-gear"
+            style="font-size: 1rem; margin-right: 1rem"
+          ></i
+          >Paramètres</a
+        >
 
         <div class="dropdown-divider"></div>
-        <a (click)="logout()" ><i class="fa-solid fa-arrow-right-from-bracket"style="font-size: 1rem ; margin-right: 1rem;"></i>Déconnexion</a>
+        <a (click)="logout()"
+          ><i
+            class="fa-solid fa-arrow-right-from-bracket"
+            style="font-size: 1rem; margin-right: 1rem"
+          ></i
+          >Déconnexion</a
+        >
       </div>
-
     </div>
     <div class="profile">
       <div class="menu" (click)="showNavItems()">
         <i class="fa-solid fa-bars" *ngIf="!isMenuOpen"></i>
         <i class="fa-solid fa-xmark" *ngIf="isMenuOpen"></i>
       </div>
-
     </div>
-
   </div>
-
-
 </nav>

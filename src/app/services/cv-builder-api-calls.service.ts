@@ -43,7 +43,7 @@ const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
  updateMain(skillName: any, profilId: any) {
 
   const params = new HttpParams()
-    .set('id', profilId)
+    .set('profileId', profilId)
     .set('newMainSkill', skillName); // Remove the extra space in 'newMainSkill'
 
   // Make the API call with parameters

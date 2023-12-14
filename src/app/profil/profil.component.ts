@@ -132,7 +132,7 @@ console.log(params);
   
   delete() {
    
-    if (confirm('Are you sure you want to delete this user?')) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer ce compte?')) {
         this.enterpriseService.deletecompte(JSON.parse ( sessionStorage.getItem('user')!).id ).subscribe(
             () => {
                 this.toastr.success('Demande de suppression , ce compte va être supprimé après 30 jours');
