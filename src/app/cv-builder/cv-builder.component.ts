@@ -156,20 +156,7 @@ if(control.length == 0)
       cvJSON.competences.push(compJSON);
     });
     
-    this.cvApi.updateMain(competences.principale.nom.toUpperCase(),JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
-      res=>{
-      
-  console.log(res);
-        
-    
-  this.toastr.success('a été modifiée avec succés ','Compétence Principale')
 
-      },
-      err=>{
-    console.log(err);
-   // this.toastr.error(err.error.message,'erreur')
-      }
-    )
     
 
     this.cvApi.build(cvJSON,JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
@@ -180,6 +167,20 @@ if(control.length == 0)
      this.route.navigate(['/user/compte',JSON.parse(sessionStorage.getItem('user')!).id])
     
   this.toastr.success('a été crée avec succés ','CV')
+
+      },
+      err=>{
+    console.log(err);
+    this.toastr.error(err.error.message,'erreur')
+      }
+    )
+    this.cvApi.updateMain(competences.principale.nom.toUpperCase(),JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
+      res=>{
+      
+  console.log('res new skill ',res);
+        
+    
+  this.toastr.success('a été modifiée avec succés ','Compétence Principale')
 
       },
       err=>{

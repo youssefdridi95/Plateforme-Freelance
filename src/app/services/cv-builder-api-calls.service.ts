@@ -41,17 +41,19 @@ const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
  }
 
  updateMain(skillName: any, profilId: any) {
+  console.log('Skill',skillName);
+  console.log('profileId',profilId);
 
   const params = new HttpParams()
     .set('profileId', profilId)
     .set('newMainSkill', skillName); // Remove the extra space in 'newMainSkill'
 
   // Make the API call with parameters
-  console.log(params);
+  console.log('params newMainSkill',params);
 
   // Use object literal syntax for options instead of passing params and headers separately
 
-  return this.http.put(this.url+this.updateMainSkill,{} ,{params});
+  return this.http.post(this.url+this.updateMainSkill,{} ,{params});
 }
 
  update(cv:any){

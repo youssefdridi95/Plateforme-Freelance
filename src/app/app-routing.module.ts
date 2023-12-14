@@ -41,7 +41,7 @@ const routes: Routes = [
 
   {path : "user/connexion/:type" , component : UserInscritComponent ,canActivate:[loggedinGuard]},
   {path:"section",component :SectionComponent },
-  {path:"CreerCompteEmployee/:email/:idEntreprise/:role",component :AddUserComponent,canActivate: [AuthGuard] },
+  {path:"CreerCompteEmployee/:email/:idEntreprise/:role",component :AddUserComponent },
   {path:"recherche",component :RechercheComponent },
 
   {path:"talents/list/:skill",component :ListeEmpComponent,canActivate: [AuthGuard] },
@@ -66,7 +66,7 @@ const routes: Routes = [
   {path: "user/compte/:id", component : UserCompteComponent, canActivate: [AuthGuard] },
   {path: "user/form" , component : UserFormComponent , canActivate: [AuthGuard]},
   {path: "user/profile/create" , component : UserFormComponent,canActivate: [AuthGuard]},
-  {path: "verif/email/:role/:email" , component : VerifEmailComponent,canActivate: [AuthGuard]},
+  {path: "verif/email/:role/:email" , component : VerifEmailComponent},
   {path: "user/update", component :UserUpdateComponent,canActivate: [AuthGuard]},
   {path: "dashboard" , component : DashboardComponent},
   {path: "chat", component :ChatsComponent,},
