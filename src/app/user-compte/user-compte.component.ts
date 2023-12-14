@@ -241,17 +241,7 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
     );
     }
   }
-  addOrGOToChat(){
-    this.chatService.addChat(this.userId,JSON.parse(sessionStorage.getItem('user')!).id).subscribe(
-      (res:any)=>{
-        console.log(res);
-        this.router.navigate(['/id',res.chatId])
-      },
-      (err)=>{
-        console.log(err);
-      },
-    )
-  }
+
 
 
 
@@ -270,10 +260,8 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
         this.toastr.error('Erreur de reacter', 'Erreur');
       }
     );
-<<<<<<< HEAD
   }
-=======
-    }
+    
 
 
 
@@ -303,10 +291,6 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
 
 
 
-    subnmbrReact(postId:any) {
-      console.log('Avant la fonction ddedd');
-      console.log(postId);
->>>>>>> chat
   
   subnmbrReact(postId: any, index: any) {
     this.postService.submnbrReact(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(
