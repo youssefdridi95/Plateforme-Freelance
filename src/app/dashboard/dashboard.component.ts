@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit {
     id = JSON.parse(sessionStorage.getItem('user')!).idEntreprise
     this.useridchat = id
   }
-
+  role = JSON.parse(sessionStorage.getItem('user')!).roles[0];
   generatePdf() {
     const doc = new jsPDF();
     doc.setFontSize(22);
@@ -53,18 +53,20 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('bbbbbb', this.chat);
+
     this.chatsService.getChatList(this.useridchat).subscribe(
       (res: any) => {
 
  this.chat = res.totalElements
-console.log('bbbbbb', this.chat);
+console.log('bbbbbb', res);
 
         // console.log(res);
 
      
       },
       (err) => {
-        // console.log(err);
+        console.log('gggggggggg',err);
       });
     // Retrieve 'profil' from sessionStorage
     const profilString = sessionStorage.getItem('profil');
@@ -83,69 +85,47 @@ console.log('bbbbbb', this.chat);
   }
   getPost(userId: any) {
     this.postService.getUserPosts(userId).subscribe(
-     ( res:any) => {
-
-        for(let post of res.content)
-      {  
-        post['filesURLS']=[]
-
-        let filesURLS:any[]=[]
-        for (let file of post.files) {
-          this.postService.getFile( file.fileDownloadUri).subscribe(
-
-        // this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
-          (fileBlob: Blob) => {
-            // Handle the successful response here
-            // console.log('File downloaded successfully:', fileBlob);
-          
-            filesURLS.push( URL.createObjectURL(fileBlob));
-            this.totalPosts = res.totalElements;
-
-            console.log('Nombre total de posts :', this.totalPosts);
-          },
-          (error :any) => {
-            // Handle errors
-            filesURLS.push('image');
-            // console.error('Error downloading file:', error);
-          }
-        );
-                 
-          
-      }
-      post['filesURLS'].push(filesURLS)
-       }
-       
-        this.posts = res;
-
-// console.log('alllllllllll',this.posts);
-
-        // Faites quelque chose avec les posts récupérés, par exemple, assignez-les à une variable de composant
-        // this.posts = res;
-        
-        sessionStorage.setItem('postss', JSON.stringify(res));
-  
-        // Variables pour le comptage des réactions
+      (res: any) => {
+        // Reset counters before processing posts
+        this.totalReactionsCount = 0;
         const reactionsCounts: number[] = [];
   
-        if (this.posts.content) {
-          this.posts.content.forEach((post: any) => {
-            const reactionsCount = post.idreacts.length;
-            post.reactionsCount = reactionsCount;
-            this.totalReactionsCount += reactionsCount;
-            reactionsCounts.push(reactionsCount);
-          });
+        for (let post of res.content) {
+          post['filesURLS'] = [];
+  
+          let filesURLS: any[] = [];
+          for (let file of post.files) {
+            this.postService.getFile(file.fileDownloadUri).subscribe(
+              (fileBlob: Blob) => {
+                // Handle the successful response here
+                filesURLS.push(URL.createObjectURL(fileBlob));
+              },
+              (error: any) => {
+                // Handle errors
+                filesURLS.push('image');
+              }
+            );
+          }
+  
+          post['filesURLS'].push(filesURLS);
+  
+          // Update reactions count for each post
+          const reactionsCount = post.idreacts.length;
+          post.reactionsCount += post.idreacts.length;
+          this.totalReactionsCount += reactionsCount;
+          reactionsCounts.push(reactionsCount);
         }
   
-        // Affichez les valeurs dans la console
-        // console.log('Total des réactions pour tous les posts777777777 :', this.totalReactionsCount);
-        // console.log('Réactions pour chaque post77777777777 :', reactionsCounts);
+        // Display total reactions count and counts for each post
+        console.log('Total des réactions pour tous les posts :', this.totalReactionsCount);
+        console.log('Réactions pour chaque post :', reactionsCounts);
   
-        // Faites quelque chose avec les posts récupérés, par exemple, assignez-les à une variable de composant
-        // this.posts = res;
+        // Assign posts to the component variable
+        this.posts = res;
+        sessionStorage.setItem('postss', JSON.stringify(res));
       },
-      err => {
-        // console.log('failed to get posts', err);
-        // Vérifiez si err.error et err.error.message existent avant d'y accéder
+      (err) => {
+        // Handle errors
       }
     );
   }

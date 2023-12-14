@@ -14,15 +14,16 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 0.5rem;
+  background-color: rgb(238, 231, 231);
 }
 
 /* Style des rectangles */
 .rectangle1 {
   height: 90px;
   margin-right: 10px;
-  background: linear-gradient(to right, #5BC0EB 40%, rgb(236, 233, 233) 40%, rgb(255, 253, 253) 100%);
+  background: linear-gradient(to right, #5BC0EB 40%, rgb(255, 252, 252) 40%, rgb(255, 253, 253)100%);
   border-radius: 10px;
-  border: rgb(197, 193, 193) solid;
+  /* border: #5BC0EB solid; */
   display: flex;
   align-items: center;
   width: 30%;
@@ -31,11 +32,11 @@ body {
   height: 90px;
   margin-right: 10px;
   border-radius: 10px;
-  border: rgb(197, 193, 193) solid;
+  /* border: rgb(197, 193, 193) solid; */
   display: flex;
   align-items: center;
   width: 30%;
-  background: linear-gradient(to right, #9BC53E 40%, rgb(236, 233, 233) 40%, rgb(255, 253, 253) 100%);
+  background: linear-gradient(to right, #9BC53E 40%, rgb(255, 252, 252) 40%, rgb(255, 253, 253) 100%);
 
 }
 
@@ -46,12 +47,12 @@ body {
   margin-right: 10px;
   background: linear-gradient(to right, #5BC0EB 40%,rgb(194, 191, 191) 40%, rgb(207, 205, 205) 100%);
   border-radius: 10px;
-  border: rgb(197, 193, 193) solid;
+  /* border: rgb(197, 193, 193) solid; */
   display: flex;
   align-items: center;
   width: 30%;
 
-  background: linear-gradient(to right, #E55935 40%,   rgb(236, 233, 233) 40%, rgb(255, 253, 253) 100%);
+  background: linear-gradient(to right, #E55935 40%,  rgb(255, 252, 252) 40%, rgb(255, 253, 253) 100%);
 
 }
 .rectangle4 {
