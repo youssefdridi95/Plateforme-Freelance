@@ -67,21 +67,18 @@
 
 </label>
 <br>
-    <div class="popup-1-wrap">
-      <input id="popup-1-coupon" type="checkbox" />
-      <div class="popup-1-overlay">
-        <label for="popup-1-coupon" class="popup-1-trigger"></label>
-        <div class="popup-1-content">
-          <label for="popup-1-coupon" class="popup-1-close">×</label>
-          <app-add-post></app-add-post>
-        </div>
-      </div>
-    </div>
+
+    
 
     <article class="publication">
-      <ng-container>
+      <div *ngIf="filteredPosts.length === 0 ">
+       
+        <img id='image'src="/../assets/nodata.jpg">
+        
+      </div> 
+      
         <div
-          *ngFor="let post of filteredPosts"
+          *ngFor="let post of filteredPosts , let i = index"
           class="content-publication wrap shadow"
         >
           <div class="heading">
@@ -108,7 +105,7 @@
             />
 
             <div class="reaction">
-              <button class="like"><i class="fa-regular fa-heart"></i></button>
+              <button (click)="addnmbrReact(post.id,i)" class="like"><i class="fa-regular fa-heart"></i></button>
               <button class="comment">
                 <i class="fa-regular fa-comment"></i>
               </button>
@@ -118,7 +115,7 @@
             </div>
           </div>
         </div>
-      </ng-container>
+      
     </article>
   </div>
 </div>

@@ -4,7 +4,11 @@
  
     <article class="publication">
       
-        <ng-container>
+      <div *ngIf="posts.content.length === 0 ">
+       
+        <img id='image'src="/../assets/nodata.jpg">
+        
+      </div> 
             <div  *ngFor="let post of posts " class="content-publication wrap shadow">
 
                 <div class="heading flex-center">
@@ -26,6 +30,6 @@
                   </div>
                 </div>
               </div> 
-        </ng-container>
+        
     </article>
 </div>

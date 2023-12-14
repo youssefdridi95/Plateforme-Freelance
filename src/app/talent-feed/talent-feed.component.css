@@ -7,7 +7,15 @@
   background-color: transparent;
   width: 100%;
 }
+#image{
+  width: 70%;
+  height: 90%;
+  margin-left: 10%;
+  
 
+ 
+
+}
 
 .contact p {
   color: #007cf8;

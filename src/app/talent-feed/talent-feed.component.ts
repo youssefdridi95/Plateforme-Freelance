@@ -17,7 +17,7 @@ export class TalentFeedComponent {
  
 
   }
-
+      ;
   selectedSortOption: 'asc' | 'desc' = 'asc';
   mainskill: string = '';
   posts: any
@@ -29,7 +29,7 @@ export class TalentFeedComponent {
     this.mainskill = JSON.parse(sessionStorage.getItem('profil')!).mainSkill
    this.getPost(this.mainskill);
   }
-
+  
 
   nom = JSON.parse(sessionStorage.getItem('profil')!).anonyme;
   idreacts = JSON.parse(sessionStorage.getItem('profil')!).anonyme;
@@ -83,6 +83,7 @@ console.log(this.posts);
 
         return this.posts;
         console.log('after for ', postswithProfiles);
+     
       },
       err => {
         console.log('failed to get posts', err);
@@ -93,6 +94,7 @@ console.log(this.posts);
   }
   // Exemple dans UserCompteComponent
   getFile(fileDownloadUri: any) {
+    console.log(JSON.parse(sessionStorage.getItem('profil')!).id);
 
     this.postService.getFile(fileDownloadUri).subscribe(
       (blob: Blob) => {
@@ -123,5 +125,27 @@ console.log(this.posts);
     return (` ${days} d, ${hours % 24} h, ${minutes % 60} min`);
 
   }
+  
+  addnmbrReact(postId: any, index : any) {
+    
+    this.postService.addmnbrReact(this.posts.at(index).user.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(
+    
+      (res) => {
+        console.log('modification avec succès', res);
+        this.toastr.success('react avec succès');
+        // sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
+     console.log(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId);
+     
+      },
+      (err) => {
+        console.log('échec de la modification', err);
+        this.toastr.error('Erreur de reacter', 'Erreur');
+            console.log('ppppp',this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId);
+       
+        
+      }
+    );
+  }
+  
 }
 

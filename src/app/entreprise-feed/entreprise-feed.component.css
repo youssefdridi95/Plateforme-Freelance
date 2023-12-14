@@ -12,7 +12,15 @@
    
   }
   
+  #image{
+    width: 90%;
+    height: 90%;
+    margin-left: 9%;
+    margin-top: -9%;
   
+   
+  
+  }
   .contact {
     width: 20%;
     min-height: 98vh;
