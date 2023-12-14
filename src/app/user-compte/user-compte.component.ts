@@ -28,7 +28,7 @@ export class UserCompteComponent {
       this.userId = params.get('id')
       this.getProfil();
       this.getPost(this.userId);
-      console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', this.profil);
+      // console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee', this.profil);
 
     })
   }
@@ -47,23 +47,33 @@ export class UserCompteComponent {
   profilImage: string = '';  // Ajoutez cette ligne dans votre classe
   test: any;
   isMine = false
+   totalReactionsCount = 0;
+  user : any
   // user-compte.component.ts
   userImage: string = '';  // Ajoutez cette ligne dans votre classe
 img :any 
   // Dans la méthode ngOnInit
   ngOnInit() {
+    const userString = sessionStorage.getItem('user');
 
+    if (userString) {
+      // Parsez la chaîne JSON pour obtenir l'objet utilisateur
+      this.user = JSON.parse(userString);
+
+      // Vous pouvez maintenant utiliser les propriétés de l'objet user dans votre composant
+      // console.log('Informations de l\'utilisateur :', this.user);
+    }
 
 this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
   (fileBlob: Blob) => {
     // Handle the successful response here
-    console.log('File downloaded successfully:', fileBlob);
+    // console.log('File downloaded successfully:', fileBlob);
      this.img = URL.createObjectURL(fileBlob);
 
   },
   (error :any) => {
     // Handle errors
-    console.error('Error downloading file:', error);
+    // console.error('Error downloading file:', error);
   }
 );
 
@@ -83,7 +93,7 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
         // this.toastr.success('reussite');
 
         if (this.userId == JSON.parse(sessionStorage.getItem('user')!).id) {
-          console.log('tgegte');
+          // console.log('tgegte');
           sessionStorage.setItem('post', JSON.stringify(res));
 
           sessionStorage.setItem('profil', JSON.stringify(res));
@@ -95,7 +105,7 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
           this.profil = res;
           this.profilImage = this.profil.file.fileDownloadUri;  // Assurez-vous que le champ est correct
         }
-        console.log('eeeeeeeeeeeeee,jyteku-,yer', this.profil);
+        // console.log('eeeeeeeeeeeeee,jyteku-,yer', this.profil);
         this.updateViewNmbr();
 
       },
@@ -121,14 +131,14 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
         // this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
           (fileBlob: Blob) => {
             // Handle the successful response here
-            console.log('File downloaded successfully:', fileBlob);
+            // console.log('File downloaded successfully:', fileBlob);
           
             filesURLS.push( URL.createObjectURL(fileBlob));
           },
           (error :any) => {
             // Handle errors
             filesURLS.push('image');
-            console.error('Error downloading file:', error);
+            // console.error('Error downloading file:', error);
           }
         );
                  
@@ -139,6 +149,7 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
        
         this.posts = res;
 
+// console.log('ahmedsssss',this.posts);
 
         // Faites quelque chose avec les posts récupérés, par exemple, assignez-les à une variable de composant
         // this.posts = res;
@@ -146,27 +157,26 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
         sessionStorage.setItem('postss', JSON.stringify(res));
   
         // Variables pour le comptage des réactions
-        let totalReactionsCount = 0;
         const reactionsCounts: number[] = [];
   
         if (this.posts.content) {
           this.posts.content.forEach((post: any) => {
             const reactionsCount = post.idreacts.length;
             post.reactionsCount = reactionsCount;
-            totalReactionsCount += reactionsCount;
+            this.totalReactionsCount += reactionsCount;
             reactionsCounts.push(reactionsCount);
           });
         }
   
         // Affichez les valeurs dans la console
-        console.log('Total des réactions pour tous les posts :', totalReactionsCount);
-        console.log('Réactions pour chaque post :', reactionsCounts);
+        // console.log('Total des réactions pour tous les posts :', this.totalReactionsCount);
+        // console.log('Réactions pour chaque post :', reactionsCounts);
   
         // Faites quelque chose avec les posts récupérés, par exemple, assignez-les à une variable de composant
         // this.posts = res;
       },
       err => {
-        console.log('failed to get posts', err);
+        // console.log('failed to get posts', err);
         // Vérifiez si err.error et err.error.message existent avant d'y accéder
       }
     );
@@ -179,7 +189,7 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
     this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
       (fileBlob: Blob) => {
         // Handle the successful response here
-        console.log('File downloaded successfully:', fileBlob);
+        // console.log('File downloaded successfully:', fileBlob);
         return URL.createObjectURL(fileBlob);
     
       },
@@ -193,7 +203,7 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
   }
   deletePost(postId: string) {
     if (confirm('Are you sure you want to delete this post?')) {
-      console.log(postId);
+      // console.log(postId);
 
       this.postService.delete(postId).subscribe(
         (res) => {
@@ -212,16 +222,16 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
     }
   }
   updateViewNmbr() {
-    console.log('Avant la fonction ddedd');
-    console.log("hhhhhhh",this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id);
+    // console.log('Avant la fonction ddedd');
+    // console.log("hhhhhhh",this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id);
 
     const storedProfileId = sessionStorage.getItem('lastViewedProfileId');
     if (storedProfileId !== this.profil.id) {
     this.userService.updateViewNbr(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
       (res) => {
         console.log('modification avec succès', res);
-        this.toastr.success('Modification avec succès');
-        sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
+        // this.toastr.success('Modification avec succès');
+        // sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
       },
       (err) => {
         console.log('échec de la modification', err);
