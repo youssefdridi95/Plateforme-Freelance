@@ -8,6 +8,7 @@ import { environments } from 'src/enviroments';
 import { HttpParams } from '@angular/common/http';
 import { UserProfil } from '../services/user-profil';
 import { Observable, map, catchError, of } from 'rxjs';
+import { ChatsService } from '../services/chats.service';
 
 
 
@@ -142,6 +143,11 @@ export class UserInscritComponent {
             }
           );
         }
+        console.log('sdgfqsdgfqsdgqrge');
+        setTimeout(()=>{ this.chatsService.watch();},2000)
+       
+
+   
       },
       err => {
         this.toastr.error(err.error.message, 'Compte');
@@ -153,7 +159,7 @@ export class UserInscritComponent {
   
   private env : Env
 
-  constructor(private roote : ActivatedRoute,private userService: UserService ,private toastr : ToastrService, private router: Router, private userProfilService: UserProfil){
+  constructor(private chatsService: ChatsService,private roote : ActivatedRoute,private userService: UserService ,private toastr : ToastrService, private router: Router, private userProfilService: UserProfil){
     this.roote.paramMap.subscribe(params =>{this.inscrit=params.get('type')})
     this.env = environments as Env 
   }

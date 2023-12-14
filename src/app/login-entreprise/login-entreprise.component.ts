@@ -7,6 +7,7 @@ import { Env } from '../env';
 import { environments } from 'src/enviroments';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { ChatsService } from '../services/chats.service';
 
 
 
@@ -33,7 +34,7 @@ export class LoginEntrepriseComponent {
   display: any;
   signupForm !: FormGroup
   env: Env = environments as Env
-  constructor(private formBuilder: FormBuilder, private enterpriseService: EntrepriseService, private route: ActivatedRoute, private toastr: ToastrService, private entrepriseService: EntrepriseService, private router: Router) {
+  constructor(private chatsService: ChatsService,private formBuilder: FormBuilder, private enterpriseService: EntrepriseService, private route: ActivatedRoute, private toastr: ToastrService, private entrepriseService: EntrepriseService, private router: Router) {
     this.route.paramMap.subscribe(params => { this.display = params.get('type'); });
 
   }
@@ -190,6 +191,9 @@ export class LoginEntrepriseComponent {
 
           this.toastr.error("vous n'êtes pas une entreprise.  essayez de se connecter en tant qu'un developpeur", 'erreur');
         }
+        setTimeout(()=>{ this.chatsService.watch();},2000)
+
+      
       },
       err => {
         console.log(err);

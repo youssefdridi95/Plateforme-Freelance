@@ -43,25 +43,21 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // Check if there is an item in the session storage called 'user'
-    const user = JSON.parse(sessionStorage.getItem('user')!);
-    let  id=JSON.parse(sessionStorage.getItem('user')!).id
 
-    if(JSON.parse(sessionStorage.getItem('user')!).roles.at(0)=='ROLE_RECRUTER')
-      id=JSON.parse(sessionStorage.getItem('user')!).idEntreprise
+   const user = JSON.parse(sessionStorage.getItem('user')!);
+   let  id=JSON.parse(sessionStorage.getItem('user')!)!.id
 
-    if (user && id) {
-      // If 'user' is present, invoke the watch method of ChatsService
-      this.chatsService.watch();
-    }
+   if(JSON.parse(sessionStorage.getItem('user')!).roles.at(0)=='ROLE_RECRUTER')
+     id=JSON.parse(sessionStorage.getItem('user')!).idEntreprise
 
-    // Listen for changes in the session storage
-    this.renderer.listen(window, 'storage', (event) => {
-      if (event.key === 'user') {
-        // Trigger the watch method of ChatsService when 'user' is modified
-        this.chatsService.watch();
-      }
-    });
+   if (user && id) {
+     // If 'user' is present, invoke the watch method of ChatsService
+    console.log('Storage event trisdfghergtzergtergtegdgggered:');
+
+     this.chatsService.watch();
+   }
+
+
   }
 
   ngOnDestroy(): void {

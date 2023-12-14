@@ -53,7 +53,7 @@ const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   // Use object literal syntax for options instead of passing params and headers separately
 
-  return this.http.post(this.url+this.updateMainSkill,{} ,{params});
+  return this.http.put(this.url+this.updateMainSkill,{} ,{params});
 }
 
  update(cv:any){

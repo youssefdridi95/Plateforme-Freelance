@@ -199,5 +199,15 @@ for (let i = messageList.length - 1; i >= 0; i--) {
 
 return undefined; // Return undefined if no matching message is found
 }
+
+onEnterKey(event: any): void {
+  // Prevent the default behavior of Enter (preventing a new line in the input)
+  event.preventDefault();
+
+  // Append a newline character to the message
+  this.textMsg += "\n";
+  console.log(this.textMsg);
+  
+}
   }
 
