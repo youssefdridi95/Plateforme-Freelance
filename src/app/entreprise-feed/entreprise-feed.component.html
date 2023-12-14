@@ -2,10 +2,22 @@
     <h3 class="title">Publication</h3>
 
  
+
     <article class="publication">
       
-      <div *ngIf="posts.content.length === 0 ">
-       
+      <div *ngIf=" posts|| posts.content.length === 0 ">
+          <div class="imgt">
+  
+
+      <div class="center" style="margin-top: 3rem ;">
+        <input type="text" placeholder="Compétences..." [(ngModel)]="skill">
+        <select [(ngModel)]="option">
+          <option value="talent" >TALENT</option>
+          <option value="post">POSTS</option>
+        </select>
+        <button  (click)="rechercher()">Rechercher</button>
+      </div>
+  </div>
         <img id='image'src="/../assets/nodata.jpg">
         
       </div> 

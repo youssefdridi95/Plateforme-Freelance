@@ -12,11 +12,66 @@
    
   }
   
+
+    .center
+    {
+      position: absolute;
+      top: 20%;
+      left:50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+     
+        }
+    .center input[type=text]
+    {
+      border-radius:15px 0px 0px 15px; 
+      width: 320px;
+      height: 45px;
+      border: 1px solid black ;
+      padding-left: 20px;
+      color:black;
+      background-color: #f0f0f0;
+    }
+    .center input[type=text]:hover::placeholder {
+      color: black;
+      /* Change this to the desired color using a valid CSS color value */
+    }
+    .center input[type=text]:placeholder {
+      color: black;
+      /* Change this to the desired color using a valid CSS color value */
+    }
+     
+    .center input[type=text]:hover {
+      border: 3px solid #034f9b ;
+      color: black;
+      
+      }
+    .center select
+    {
+      padding-left: 10px;
+      border-right: 10px solid #f0f0f0;
+      background: #f0f0f0;
+      border: 1px solid black ;
+    }
+    .center select:hover {
+      border: 3px solid #034f9b ;
+      color: black;
+      
+      }
+    .center button
+    {border-radius:0px 15px 15px 0px; 
+      width: 150px;
+      background: #034f9b;
+      color: #fff;
+      cursor: pointer;
+    }
+
+
   #image{
     width: 90%;
     height: 90%;
     margin-left: 9%;
-    margin-top: -9%;
+   
   
    
   

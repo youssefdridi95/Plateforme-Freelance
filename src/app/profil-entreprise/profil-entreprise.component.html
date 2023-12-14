@@ -94,9 +94,9 @@
           <br>
 
 <div class="reaction">
-          <button class="like" (click)="deletePost(post.id)" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-heart"></i></button>
-          <button class="comment" (click)="deletePost(post.id)" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-comment"></i></button>
-          <button class="share" (click)="deletePost(post.id)" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-share-from-square"></i></button>
+          <button class="like"  *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-heart"></i></button>
+          <button class="comment"  *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-comment"></i></button>
+          <button class="share"  *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-share-from-square"></i></button>
 
 
         </div>

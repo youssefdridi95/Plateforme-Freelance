@@ -24,7 +24,7 @@ export class EntrepriseFeedComponent {
       }
     
     
-      skill:  any;
+      skill:  any = '';
       posts: any 
     profile: any
       ngOnInit() {
@@ -32,7 +32,17 @@ export class EntrepriseFeedComponent {
 
       }
     
-    
+      
+      option :string = 'talent'
+ 
+
+  rechercher() {
+     if(this.option==='talent')
+    this.router.navigate(['/talents/list', this.skill]);
+  else
+  this.router.navigate(['/entreprise/feed', this.skill]);
+
+  }
       getPost(skill: any) {
         this.postService.getPostsBySkill(skill).subscribe(
           res => {
@@ -54,7 +64,7 @@ export class EntrepriseFeedComponent {
           },
           err => {
             console.log('failed to get posts', err);
-    
+            this.posts=[];
     
           }
         );

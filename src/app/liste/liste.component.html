@@ -65,7 +65,9 @@
           {{ user.email }}
           </td>
           <td class="responsive-table__body__text responsive-table__body__text--update">
-            {{ user.roles[0].name }}
+            <!-- Display role based on user's role -->
+            <span *ngIf="user.roles[0].name === 'ROLE_RECRUTER'">Recruteur RH</span>
+            <span *ngIf="user.roles[0].name === 'ROLE_EDITOR'">Éditeur</span>
           </td>
           <td class="responsive-table__body__text responsive-table__body__text--country">
             <button class="btn-info" (click)="delete(user.id)" >Supprimer  <i class="fa-solid fa-trash-can " style="margin-left: 7%; color:rgb(209, 55, 55);"></i></button>

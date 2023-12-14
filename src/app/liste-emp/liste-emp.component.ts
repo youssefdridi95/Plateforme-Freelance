@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { PostService } from '../services/post.service';
 import { UserProfil } from '../services/user-profil';
 
+
 @Component({
   selector: 'app-liste-emp',
   templateUrl: './liste-emp.component.html',
@@ -13,7 +14,8 @@ import { UserProfil } from '../services/user-profil';
 export class ListeEmpComponent implements OnInit {
   talents: any
   profil: any; // Déclarez la propriété profil ici
-skill : any
+skill : any;
+selectedTimezone: string = "";
   constructor(private toastr: ToastrService, private userProfilService: UserProfil, private router: Router, private route: ActivatedRoute, private postService: PostService) {
     this.route.paramMap.subscribe(params => { 
       this.skill= params.get('skill')?.toUpperCase() ;
@@ -38,6 +40,7 @@ skill : any
     this.userProfilService.getUserBySkill(params).subscribe(
       res => {
         this.talents = res 
+        console.log(this.talents);
         console.log('reussite', res);
         this.toastr.success('reussite');
         // this.talents = res;
@@ -47,5 +50,12 @@ skill : any
         // this.toastr.error(err.error.message, 'failed');
       }
     );
+  }
+
+
+  onTimezone(){
+
+
+    
   }
 }

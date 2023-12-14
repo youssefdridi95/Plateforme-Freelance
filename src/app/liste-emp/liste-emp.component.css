@@ -141,7 +141,7 @@ span {
 }
 
 .container {
-  width: 100%;
+  width: 90%;
   min-height: 100vh;
   display: flex;
   align-items: flex-start;
@@ -255,13 +255,12 @@ max-height: 100vh; */
 }
 
 .contact_card {
-  width: 80%;
+  width: 25%;
   background-color: #fcfcfc;
   border-radius: 10px;
   margin: 0 auto;
   text-align: left;
   font-size: 0.9rem;
- 
   border: 0.01px solid #034f9b;
   display: flex;
 }
