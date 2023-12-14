@@ -128,9 +128,7 @@ this.chatsService.newMessageAdded.subscribe(() => {
         senderId: this.userid,
         chatId: this.chatsService.activeChat.chat.chatId,
         reciverId: receiverId,
-        replymessage: this.textMsg,
-        time: new Date(),
-
+        replymessage: this.textMsg
       }
 
       this.rxStompService.publish({ destination: '/chats/addMessage/' + this.chatsService.activeChat.chat.chatId, body: JSON.stringify(msg) });
