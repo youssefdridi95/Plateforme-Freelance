@@ -76,7 +76,7 @@
           </g>
         </svg>
       </div>
-      <div class="notifContainer" (click)="toggleNotif()">
+      <div class="notifContainer" (mouseenter)="toggleNotif()">
         <i class="fa-regular fa-bell"></i>
         <span class="red" *ngIf="notif.newMsgs > 0"> {{ notif.newMsgs }}</span>
       </div>

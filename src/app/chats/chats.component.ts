@@ -46,8 +46,19 @@ export class ChatsComponent implements OnInit {
 
 
           if (params.get('activeId') != null && this.getActiveId(params.get('activeId')) != null)
-
+{
             this.chatsService.activeChat = res.at(this.getActiveId(params.get('activeId')))
+            this.ngZone.runOutsideAngular(() => {
+              setTimeout(() => {
+                // Update the scrollTop property here
+                this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
+          
+                // Run change detection manually
+                this.ngZone.run(() => {});
+              });
+            });
+          
+}
 
 
         })
