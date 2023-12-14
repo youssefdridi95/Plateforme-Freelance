@@ -50,7 +50,7 @@ export class TalentFeedComponent {
 
 
   sortPostsByLikes(): void {
-console.log(this.posts);
+     console.log(this.posts);
 
     this.filteredPosts = this.filteredPosts.sort((a: { idreacts: any[] }, b: { idreacts: any[] }) => {
       return b.idreacts.length - a.idreacts.length;
