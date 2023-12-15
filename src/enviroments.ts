@@ -3,14 +3,14 @@
 export const environments= {
 
   
-    // backendUrl : "http://192.168.195.29:9090" ,
-  //   webSocketBackendUrl : 'ws://localhost:9092/ws',
+     backendUrl : "http://192.168.195.29:9090" ,
+     webSocketBackendUrl : 'ws://192.168.195.29:9090//ws',
 
-    backendUrl : "http://192.168.195.70:9090" ,
+  //  backendUrl : "http://localhost:9090" ,
     // backendUrl : "http://192.168.195.70:9092" ,
-     webSocketBackendUrl : 'ws://192.168.195.70:9090/ws',
+    // webSocketBackendUrl : 'ws://192.168.195.70:9090/ws',
     connectUser : '/user/connectUser',
-    disConnectUser : '/auth/disconnectUser',
+    disConnectUser : '/api/auth/disconnectUser',
     chatList : '/api/chats/get/userId/',
     chat: '/api/chats/get/',
     username : '/user/get/',
@@ -18,14 +18,14 @@ export const environments= {
     markMessageSeen : '/api/chats/markMessagesAsSeen/',
 
     
-    usersSignup :"/auth/signup",
-    usersSignin :"/auth/signin",
+    usersSignup :"/api/auth/signup",
+    usersSignin :"/api/auth/signin",
    
-    requestResetPwd : '/auth/forgot/sendEmail' ,
-    resetPwd : '/auth/setPassword' , 
+    requestResetPwd : '/api/auth/forgot/sendEmail' ,
+    resetPwd : '/api/auth/setPassword' , 
    
-    verifcompte : '/auth/verifCompte',
-    regenerateOtp : '/auth/regenerateOtp',
+    verifcompte : '/api/auth/verifCompte',
+    regenerateOtp : '/api/auth/regenerateOtp',
    
     getUserSkill: '/api/umanlink/profiles/individuals/all/by-skill',
    
@@ -63,7 +63,7 @@ export const environments= {
     subnbrReact : '/api/umanlink/postes/Diminue-nombre-reacts',
     getUserProfil: '/api/umanlink/profiles/individuals/get-one/by-user',
     editUserProfil: '/api/umanlink/profiles/individuals/update-Talent',
-     updatepassword: '/auth/updatePassword',
+     updatepassword: '/api/auth/updatePassword',
     roles: {
 
         userRole: "talent", // used in the signup (the role sent to the backend )

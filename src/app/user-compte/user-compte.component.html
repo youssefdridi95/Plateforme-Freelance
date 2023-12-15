@@ -97,7 +97,7 @@
       <!--  Publications  -->
 
 
-      <ng-container *ngIf="posts.content">
+      <ng-container *ngIf="posts">
         <div *ngFor="let post of posts.content , let i = index" class="content-publication wrap shadow">
           <button class="delete" (click)="deletePost(post.id)"><i class="fa-regular fa-trash-can"></i></button>
 
@@ -111,8 +111,14 @@
               <p>{{post?.desc}}</p>
               <p></p> <!-- Utilisez la propriété reactionsCount pour chaque post -->
             </div>
+            
             <ng-container *ngFor="let file of post.filesURLS">
-              <img src={{file}} style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" alt="file">
+              <img [src]="file.url" style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" alt="file" *ngIf="file.type=='image'">
+              <video width="320" height="240" controls style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" *ngIf="file.type=='video'">
+                <source [src]="file.url" type="{{file.original}}">
+                Your browser does not support the video tag.
+              </video>
+              <!-- <img src="file:///C:/Users/ja.ahmed/Desktop/UMANLINK/Uploads/Postes/657c08a746db1d55a6ef91ee/2023-12-15/2023-12-15%20091428%20358Z/Umanlink-Group-Logo-Header.png"style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" alt="file"> -->
 
             </ng-container>
 

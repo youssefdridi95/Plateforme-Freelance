@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../services/post.service';
 import { UserProfil } from '../services/user-profil';
 import { HttpParams } from '@angular/common/http';
+import { EntrepriseService } from '../services/entreprise.service';
 
 @Component({
   selector: 'app-entreprise-feed',
@@ -12,7 +13,7 @@ import { HttpParams } from '@angular/common/http';
   styleUrls: ['./entreprise-feed.component.css']
 })
 export class EntrepriseFeedComponent {
-  constructor(private toastr: ToastrService, private router: Router, private route: ActivatedRoute , private postService: PostService,private profil:UserProfil) {
+  constructor(private toastr: ToastrService, private router: Router, private route: ActivatedRoute , private postService: PostService,private profil:UserProfil,  private enterpriseService: EntrepriseService) {
     this.route.paramMap.subscribe(params => { 
       this.skill= params.get('skill') ;
       
@@ -45,22 +46,59 @@ export class EntrepriseFeedComponent {
   }
       getPost(skill: any) {
         this.postService.getPostsBySkill(skill).subscribe(
-          res => {
-            this.posts = res;
-            console.log(this.posts);
-            let postswithProfiles:any = []
-           
-            for(let post of this.posts.content )
-          {  let params = new HttpParams().set('userId', post.user);
-                  
-                this.profil.getProfil(params).subscribe((profile)=>{
+          (res: any) => {
+            res['filesURLS']=[]
+            for(let post of res.content )
+          { 
+                if(post.type === 'TALENT')
+             {   let params = new HttpParams().set('userId', post.user);
+                   this.profil.getProfil(params).subscribe((profile)=>{
                   post.user=profile
     
-                  postswithProfiles.push(post)
-                  
                 })}
-                this.posts=postswithProfiles
-            console.log('after for ', postswithProfiles);
+                else {
+                
+                    this.enterpriseService.getEntrepriseByid(post.user).subscribe(
+                      (profil: any) => {
+                        post.user=profil
+    
+                      },
+                      error => {
+                        console.error('Erreur lors de la récupération des entreprises:', error);
+                      }
+                    );
+                  
+                }
+                let filesURLS:any[]=[]
+                for (let file of post.files) {
+               
+                  this.postService.getFile( file.fileDownloadUri).subscribe(
+        
+                  (fileBlob: Blob) => {
+        
+                  console.log(fileBlob.type);
+                  
+                    filesURLS.push( {
+                      url :URL.createObjectURL(fileBlob) ,
+                      type : fileBlob.type.split('/')[0],
+                      original : fileBlob.type
+                    });
+                  },
+                  (error :any) => {
+                    // Handle errors
+                    filesURLS.push('image');
+                    // console.error('Error downloading file:', error);
+                  }
+                );
+                         
+                  
+              }
+              post['filesURLS']=filesURLS
+              
+              
+              }
+                this.posts=res
+            console.log('after for ', this.posts);
           },
           err => {
             console.log('failed to get posts', err);
@@ -100,6 +138,14 @@ export class EntrepriseFeedComponent {
     
     return(` ${days} d, ${hours % 24} h, ${minutes % 60} min`);
     
+    }
+
+    navigate(type:any,id : any){
+        if (type ==="TALENT")
+        this.router.navigate(['user/compte',id])
+      else 
+      this.router.navigate(['entreprise/profil',id])
+
     }
     }
     

@@ -9,6 +9,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { UserService } from '../services/user.service';
 import { ChatsService } from '../services/chats.service';
 import { SharedService } from '../shared.service';
+import { environments } from 'src/enviroments';
+import { Env } from '../env';
 
 @Component({
   selector: 'app-user-compte',
@@ -19,7 +21,7 @@ import { SharedService } from '../shared.service';
 export class UserCompteComponent {
 
 
-
+env = environments as Env
   constructor(private toastr: ToastrService, private userProfilService: UserProfil, 
     private router: Router, private roote: ActivatedRoute, private postService: PostService, private cdRef: ChangeDetectorRef,
     private userService: UserService, private sharedService: SharedService,private chatService :ChatsService) {
@@ -64,18 +66,18 @@ img :any
       // console.log('Informations de l\'utilisateur :', this.user);
     }
 
-this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
-  (fileBlob: Blob) => {
-    // Handle the successful response here
-    // console.log('File downloaded successfully:', fileBlob);
-     this.img = URL.createObjectURL(fileBlob);
+// this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
+//   (fileBlob: Blob) => {
+//     // Handle the successful response here
+//     // console.log('File downloaded successfully:', fileBlob);
+//      this.img = URL.createObjectURL(fileBlob);
 
-  },
-  (error :any) => {
-    // Handle errors
-    // console.error('Error downloading file:', error);
-  }
-);
+//   },
+//   (error :any) => {
+//     // Handle errors
+//     // console.error('Error downloading file:', error);
+//   }
+// );
 
 
   }
@@ -120,21 +122,24 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
     this.postService.getUserPosts(userId).subscribe(
      ( res:any) => {
 
+       res['filesURLS']=[]
         for(let post of res.content)
       {  
-        post['filesURLS']=[]
 
         let filesURLS:any[]=[]
         for (let file of post.files) {
+       
           this.postService.getFile( file.fileDownloadUri).subscribe(
 
-        // this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
-        //this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
           (fileBlob: Blob) => {
-            // Handle the successful response here
-            // console.log('File downloaded successfully:', fileBlob);
+
+          console.log(fileBlob.type);
           
-            filesURLS.push( URL.createObjectURL(fileBlob));
+            filesURLS.push( {
+              url :URL.createObjectURL(fileBlob) ,
+              type : fileBlob.type.split('/')[0],
+              original : fileBlob.type
+            });
           },
           (error :any) => {
             // Handle errors
@@ -145,17 +150,17 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
                  
           
       }
-      post['filesURLS'].push(filesURLS)
+      post['filesURLS']=filesURLS
        }
        
-        this.posts = res;
+       this.posts = res;
+
 
 // console.log('ahmedsssss',this.posts);
 
         // Faites quelque chose avec les posts récupérés, par exemple, assignez-les à une variable de composant
         // this.posts = res;
         
-        sessionStorage.setItem('postss', JSON.stringify(res));
   
         // Variables pour le comptage des réactions
         const reactionsCounts: number[] = [];
@@ -187,7 +192,7 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
   // Exemple dans UserCompteComponent
   getFile(fileDownloadUri: any) {
 
-    this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
+    this.postService.getFile( fileDownloadUri).subscribe(
       (fileBlob: Blob) => {
         // Handle the successful response here
         // console.log('File downloaded successfully:', fileBlob);
@@ -236,7 +241,7 @@ this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-1
       },
       (err) => {
         console.log('échec de la modification', err);
-        this.toastr.error('Erreur de modification', 'Erreur');
+        // this.toastr.error('Erreur de modification', 'Erreur');
       }
     );
     }

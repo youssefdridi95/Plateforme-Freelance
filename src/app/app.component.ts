@@ -45,9 +45,11 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
    const user = JSON.parse(sessionStorage.getItem('user')!);
-   let  id=JSON.parse(sessionStorage.getItem('user')!)!.id
+   let  id 
+   if(user)
+     id=JSON.parse(sessionStorage.getItem('user')!)!.id
 
-   if(JSON.parse(sessionStorage.getItem('user')!).roles.at(0)=='ROLE_RECRUTER')
+   if( user && JSON.parse(sessionStorage.getItem('user')!).roles.at(0)=='ROLE_RECRUTER')
      id=JSON.parse(sessionStorage.getItem('user')!).idEntreprise
 
    if (user && id) {

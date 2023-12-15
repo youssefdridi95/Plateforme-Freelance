@@ -87,11 +87,39 @@ formatDate(dateString: string): string {
   
   getPost(userId: any) {
     this.postService.getUserPosts(userId).subscribe(
-      res => {
+      (res : any ) => {
         this.posts = res;
         console.log('reussite affichage des publications', res);
-     
-        sessionStorage.setItem('posts', JSON.stringify(res))
+        res['filesURLS']=[]
+        for(let post of res.content)
+      {  
+
+        let filesURLS:any[]=[]
+        for (let file of post.files) {
+       
+          this.postService.getFile( file.fileDownloadUri).subscribe(
+
+          (fileBlob: Blob) => {
+
+          console.log(fileBlob.type);
+          
+            filesURLS.push( {
+              url :URL.createObjectURL(fileBlob) ,
+              type : fileBlob.type.split('/')[0],
+              original : fileBlob.type
+            });
+          },
+          (error :any) => {
+            // Handle errors
+            filesURLS.push('image');
+            // console.error('Error downloading file:', error);
+          }
+        );
+                 
+          
+      }
+      post['filesURLS']=filesURLS
+       }
 
       },
       err => {
@@ -130,12 +158,12 @@ formatDate(dateString: string): string {
       this.userService.updateViewNbrEntreprise(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
         (res) => {
           console.log('modification avec succès entreprise', res);
-          this.toastr.success('Modification avec succès');
+          // this.toastr.success('Modification avec succès');
           sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
         },
         (err) => {
           console.log('échec de la modification', err);
-          this.toastr.error('Erreur de modification', 'Erreur');
+          // this.toastr.error('Erreur de modification', 'Erreur');
         }
       );
     }

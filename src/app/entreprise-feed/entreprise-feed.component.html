@@ -5,7 +5,7 @@
 
     <article class="publication">
       
-      <div *ngIf=" posts|| posts.content.length === 0 ">
+      <div *ngIf=" posts ">
           <div class="imgt">
   
 
@@ -18,30 +18,42 @@
         <button  (click)="rechercher()">Rechercher</button>
       </div>
   </div>
-        <img id='image'src="/../assets/nodata.jpg">
+        <!-- <img id='image'src="/../assets/nodata.jpg"> -->
         
       </div> 
-            <div  *ngFor="let post of posts " class="content-publication wrap shadow">
+      <ng-container *ngIf="posts">
+        <div  *ngFor="let post of posts.content " class="content-publication wrap shadow">
 
-                <div class="heading flex-center">
-                  <div class="name flex-center" [routerLink]="['/user/compte',post.user.user]">
-                    <img  src="/assets/was.png " alt="User Image">
-                     <span >{{post.user.anonyme}}</span> 
-                  </div>
-                  <p class="date" >{{post.date | date : 'shortDate'}}</p>
-                  <div class="public" >
-                    <p>{{post.desc}}.</p>
-   </div>
-                  <img src="https://placehold.co/600x400" style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" alt="Image" *ngFor="let file of post.files">
-      
-      
-                
-                  <div class="fav" >
-                    <button class="like">Like</button>
-                    <button class="comment">dislike</button>
-                  </div>
-                </div>
-              </div> 
+          <div class="heading flex-center">
+            <div class="name flex-center" (click)="navigate(post.type,post.user.user)" >
+              <img  src="/assets/was.png " alt="User Image">
+               <span *ngIf="post.type=='TALENT'">{{post.user.anonyme}}</span> 
+               <span *ngIf="post.type=='ENTREPRISE'">{{post.user.profileHeadline}}</span> 
+            </div>
+            <p class="date" >{{post.date | date : 'shortDate'}}</p>
+            <div class="public" >
+              <p>{{post.desc}}.</p>
+</div>
+<ng-container *ngFor="let file of post.filesURLS">
+  <img [src]="file.url" style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" alt="file" *ngIf="file.type=='image'">
+  <video width="320" height="240" controls style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" *ngIf="file.type=='video'">
+    <source [src]="file.url" type="{{file.original}}">
+    Your browser does not support the video tag.
+  </video>
+
+</ng-container>
+
+
+
+          
+            <div class="fav" >
+              <button class="like">Like</button>
+              <button class="comment">dislike</button>
+            </div>
+          </div>
+        </div> 
+      </ng-container>
+           
         
     </article>
 </div>
