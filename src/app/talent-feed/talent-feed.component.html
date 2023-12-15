@@ -42,7 +42,7 @@
       <div class="search"> <input class="input-post" type="text" [(ngModel)]="searchTerm"
           placeholder="Recherche par description" (keyup)="filterPosts()" />
       </div>
-
+   
     </label>
     <br>
 
@@ -57,6 +57,7 @@
   
       <div *ngFor="let post of filteredPosts , let i = index" class="content-publication wrap shadow">
  
+        
     
         <div class="heading">
           <div class="name" (click)="navigate(post.type,post.user.user)">

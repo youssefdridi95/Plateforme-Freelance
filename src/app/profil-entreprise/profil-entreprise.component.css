@@ -21,11 +21,11 @@ margin-top: -9%;
 }
 #title-container{
 
-display: flex;
-justify-content: space-around;
-justify-items: center;
-margin-left: -5rem;
-
+  display: flex;
+  justify-content: space-around;
+  justify-items: center;
+  margin-left: -5rem;
+  
 }
 
 .contact p {
@@ -37,10 +37,10 @@ font-weight: bold;
 }
 
 .title-container .title {
-text-align: center;
-font-weight: 700;
-font-size: 0.5rem !important;
-color: #007CF8;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.5rem !important;
+  color: #007CF8;
 
 }
 
@@ -225,10 +225,14 @@ margin: 1rem 0;
 border: 0.2px solid #858282;
 }
 #titl{
-margin-left: 7rem;
+  font-size: 1rem;
+  margin-left: 5.1rem;
+}
+:hover{
+  color:#034f9b
 }
 #title{
-font-size: 1rem;
+  font-size: 1rem;
 
 }
 .text-container {
