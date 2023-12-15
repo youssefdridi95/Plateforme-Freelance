@@ -45,7 +45,7 @@ const routes: Routes = [
   {path:"recherche",component :RechercheComponent },
 
   {path:"talents/list/:skill",component :ListeEmpComponent,canActivate: [AuthGuard] },
-  {path:"entreprise/feed/:skill",component :EntrepriseFeedComponent ,canActivate: [AuthGuard]},
+  {path:"entreprise/feed/:skill",component:EntrepriseFeedComponent ,canActivate: [AuthGuard]},
   {path:"entreprise/liste",component :ListeComponent , canActivate: [AuthGuard]},
 
   {path:"entreprise/update",component :EntrepriseupdateComponent ,canActivate: [AuthGuard]},

@@ -6,16 +6,16 @@
   
     <div class="contact_card">
       <div class="filter">
-      <form>
 
-
+         <span>Timezone :</span><br>
         
-        <select class="input pp" formControlName="timezone" id="timezone" [(ngModel)]="selectedTimezone" (change)="onTimezone()">
-        <option value=""  disabled selected>Timezone*</option>
+        <select class="input pp" [(ngModel)]="selectedTimezone" id="timezone" (change)="onTimezone()">
+          <option value="" disabled  selected>Timezone*</option>
+        <option value="albania">albania</option>
         <option value="America/New_York">America/New_York</option>
+        <option value="Europe/London"> Europe/London </option>
         <option value="America/Chicago">America/Chicago </option>
         <option value="America/Los_Angeles">America/Los_Angeles</option>
-        <option value="Europe/London"> Europe/London </option>
         <option value="Europe/Berlin">Europe/Berlin </option>
         <option value="Asia/Kolkata">Asia/Kolkata </option>
         <option value="Australia/Sydney">Australia/Sydney </option>
@@ -33,12 +33,63 @@
         <option value="America/Sao_Paulo">America/Sao_Paulo </option>
 
       </select>
-      </form>
-       
+      <button (click)="reload()" class="delete" id="reset"><i class="fa-solid fa-rotate-right"></i></button>
       
+      <hr>
+      <br>
+      <span>Niveau Expertise :</span><br>
+      <div class="txt">
+        <select class="input pp" [(ngModel)]="niveauSkill" id="timezone" (change)="onniveauSkill()">
+          <option value="" disabled  selected>Niveau*</option>
+          <option value="debutant" selected>débutant</option>
+          <option value="intermediaire">intermediaire</option>
+          <option value="avance">avancé</option>
+          <option value="expert">expert</option>
+        </select>
+        <button (click)="reload()">Reset</button>
       </div>
+      <hr>
+      <br>
+      <span>Compétences Secondaires :</span><br>
+      <div class="txt">
+        <select class="input pp" [(ngModel)]="niveauSkill" id="timezone" (change)="onniveauSkill()">
+          <option value="" disabled  selected>Compétences*</option>
+          <option value="debutant" selected>JAVA</option>
+          <option value="intermediaire">C</option>
+          <option value="avance">SQL</option>
+          <option value="expert">JS</option>
+          <option value="expert">PHP</option>
+          <option value="expert">SPRING</option>
+        
+        </select>
+       
+      </div>
+      <div class="txt">
+        <input
+          type="checkbox"
+          id="checkbox"
+          name="sortOrder3"
+          value="likes"
+        />
+        <span>Disponibilite</span>
+      </div>
+      <hr>
+      <br>
+      <div class="txt">
+        <input
+          type="checkbox"
+          id="relevance"
+          name="sortOrder3"
+          value="likes"
+        />
+        <span>Disponibilite</span>
+      </div>
+      </div>
+     <br/><br/>
+     
+
     </div>
-    <br /><br />
+    <br /><br/>
    
 
     
@@ -46,18 +97,12 @@
 
     <div class="post">
     <h3 class="h">Liste Talent </h3>
-    <br>
-
-<br>
-
-    
-
     <article class="publication">
 
-<div class="container">
+<div class="container"*ngIf="talents!=null">
   <div *ngFor="let talent of talents.content" class="card">
     <div class="imgBx">
-      <i class="fa-solid fa-xmark"></i>
+     
       <!-- <img [src]="talent.imageURL" alt="{{talent.name}} Avatar"> -->
       <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxivAs4UknzmDfLBXGMxQkayiZDhR2ftB4jcIV7LEnIEStiUyMygioZnbLXCAND-I_xWQpVp0jv-dv9NVNbuKn4sNpXYtLIJk2-IOdWQNpC2Ldapnljifu0pnQqAWU848Ja4lT9ugQex-nwECEh3a96GXwiRXlnGEE6FFF_tKm66IGe3fzmLaVIoNL/s1600/img_avatar.png">
     </div>
@@ -65,7 +110,7 @@
       <h2> {{talent.anonyme}} </h2><br>
       <p> {{talent.mainSkill}} </p>
       <a [routerLink]="['/user/compte',talent.user]"><span>Profil</span></a>
-      <a href="#"><span>Contacter</span></a>
+      <a (click)=" addOrGOToChat(talent.user)"><span>Contacter</span></a>
     </div>
   </div>
 </div>

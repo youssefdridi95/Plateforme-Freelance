@@ -16,7 +16,25 @@
   border: 1px solid #034f9b;
   box-shadow: -6px -6px 20px rgba(255, 255, 255, 0.6), 6px 6px 20px rgba(0, 0, 0, 0.1);
 }
+button.delete {
+  background-color: white;
+  position :absolute;
+  color: #007CF8;
+  right: 0;
+  top: 0px;
+  width: 5rem;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+button.delete:hover {
+  background-color:#eef3f8;
 
+  color: red;
+ 
+}
 .container .card:hover {
 
   outline: 1px solid #034f9b;
@@ -50,7 +68,12 @@
 .container .card .contentBx p {
   color: #034f9b;
 }
-
+#reset{
+  display: flex;
+  justify-content: flex-start;
+ justify-items: flex-start !important;
+ margin-top: 2rem;
+}
 .container .card .contentBx a {
   display: inline-flex; /* Utiliser flexbox */
   justify-content: center; /* Centrer horizontalement */
@@ -71,11 +94,7 @@
   transform: scale(0.98);
 }
 
-i {
-  display: flex;
-  justify-content: end;
-  color: #fff;
-}
+
 
 a {
   display: inline-block;
@@ -135,11 +154,14 @@ span {
   color: #007cf8;
 }
 
-.fa {
-  color: #007cf8;
-  cursor: pointer;
-}
 
+#checkbox{
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 17.5rem;
+  margin-top: -1rem;
+  size: 20px;
+}
 .container {
   width: 90%;
   min-height: 100vh;
@@ -274,7 +296,7 @@ button {
   margin: 1rem;
   display: flex;
   justify-content: center;
-  color: #eef3f8;
+  color:#007CF8;
 }
 
 .post-send {
@@ -397,46 +419,8 @@ cursor: pointer;
   align-items: center;
 }
 
-.content-publication .fav .like,
-.content-publication .fav .comment {
-  padding: 0.5rem 1rem;
-  background: #007cf8;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  margin-bottom: 1rem;
-  transition: all 0.1s;
-  width: 45%;
-}
 
-.content-publication .fav .like:active,
-.content-publication .fav .comment:active {
-  transform: scale(0.95);
-}
 
-.content-publication .fav .like:before {
-  content: "\f164  ";
-  font-family: fontAwesome;
-  margin-right: 10px;
-}
-
-.content-publication .fav .comment:before {
-  content: "\f075";
-  font-family: fontAwesome;
-  margin-right: 7px;
-  box-shadow: 0px 6px 16px -6px rgba(94, 92, 92, 0.5);
-}
-
-.button {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-.popup-1-wrap input {
-  display: none;
-}
 
 .popup-1-trigger {
   position: absolute;
@@ -495,77 +479,8 @@ cursor: pointer;
   text-align: center;
   width: 1rem !important;
 }
-button.delete {
-  background-color: white;
-  position: absolute;
-  color: #007cf8;
-  right: 0;
-  top: 0px;
-  width: 5rem;
-  font-size: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-button.delete:hover {
-  background-color: #eef3f8;
 
-  color: red;
-}
 
-.contact i {
-  color: #007cf8;
-  right: 0;
-  width: 5rem;
-  font-size: 1.2rem;
-  gap: 1rem;
-}
-.contact .button {
-  background-color: #fcfdff;
-  color: #007cf8;
-  right: 0;
-
-  align-items: center;
-}
-.search{
-  width: 90%;
-  display: flex;
-  justify-content: center;
-}
-button.like:hover {
-  background-color: #fcfdff;
-  color: #034f9b;
-}
-.popup-1-open {
-  margin-top: 0.5rem;
-  display: flex;
-  justify-content: flex-start;
-margin-left: 1rem;
-  /*cursor: pointer; */
-  transition: 0.3s ease;
-  width: 95%;
-  border: 0.7px solid #034f9b;
-  background: #fcfdff;
-  border-radius: 10px;
-
-  box-shadow: 0px 15px 20px -15px rgba(143, 142, 142, 0.5);
-
-  padding: 2rem 3rem;
-}
-
-.popup-1-open .add {
-  width: 5rem !important;
-  height: 5rem !important;
-  object-fit: cover;
-  margin: 0 !important;
-}
-/*
-.popup-1-open:hover{
-background:#000;
-color:#fff;
-transition: .3s ease;
-}
-*/
 .reaction {
   display: flex;
 }
@@ -577,50 +492,3 @@ transition: .3s ease;
   margin-left: 0 !important;
 }
 
-button.like {
-  background-color: #fcfdff;
-  color: #007cf8;
-  right: 0;
-  top: 0px;
-  width: 20rem;
-  font-size: 1.2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-button.like:hover {
-  background-color: #fcfdff;
-
-  color: #034f9b;
-}
-button.comment {
-  background-color: #fcfdff;
-  color: #007cf8;
-  right: 0;
-  top: 0px;
-  width: 20rem;
-  font-size: 1.2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-button.comment:hover {
-  background-color: #fcfdff;
-  color: #034f9b;
-}
-button.share {
-  background-color: #fcfdff;
-  color: #007cf8;
-  right: 0;
-  top: 0px;
-  width: 20rem;
-  font-size: 1.2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-button.share:hover {
-  background-color: #fcfdff;
-
-  color: #034f9b;
-}

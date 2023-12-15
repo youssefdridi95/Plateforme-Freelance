@@ -7,8 +7,6 @@
       
       <div *ngIf=" posts|| posts.content.length === 0 ">
           <div class="imgt">
-  
-
       <div class="center" style="margin-top: 3rem ;">
         <input type="text" placeholder="Compétences..." [(ngModel)]="skill">
         <select [(ngModel)]="option">
@@ -36,9 +34,12 @@
       
       
                 
-                  <div class="fav" >
-                    <button class="like">Like</button>
-                    <button class="comment">dislike</button>
+                  <div class="reaction">
+                    <button class="like"  ><i class="fa-regular fa-heart"></i></button>
+                    <button class="comment"  ><i class="fa-regular fa-comment"></i></button>
+                    <button class="share"  ><i class="fa-regular fa-share-from-square"></i></button>
+          
+          
                   </div>
                 </div>
               </div> 

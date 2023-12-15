@@ -63,6 +63,12 @@ newMessageAdded: EventEmitter<any> = new EventEmitter<any>();
   }
 
   addChat(sUserId: any,fUserId :any) {
+    console.log({
+      "firstUserId": fUserId,
+      "secondUserId": sUserId,
+      "messageList": []
+  });
+    
     return this.http.post(this.env.backendUrl + this.env.createChat, {
       "firstUserId": fUserId,
       "secondUserId": sUserId,
