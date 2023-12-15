@@ -494,7 +494,6 @@ button.like {
   width: 20rem;
   font-size: 1.2rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
 }
 button.like:hover {
@@ -532,4 +531,9 @@ button.share:hover {
   background-color: #fcfdff;
 
   color: #034f9b;
+}
+
+
+span {
+  font-size: 0.8rem;
 }

@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../services/post.service';
 import { HttpParams } from '@angular/common/http';
 import { UserProfil } from '../services/user-profil';
+import { EntrepriseService } from '../services/entreprise.service';
 
 @Component({
   selector: 'app-talent-feed',
@@ -13,7 +14,7 @@ import { UserProfil } from '../services/user-profil';
 })
 export class TalentFeedComponent {
 
-  constructor(private toastr: ToastrService, private router: Router, private roote: ActivatedRoute, private postService: PostService, private profil: UserProfil) {
+  constructor(private toastr: ToastrService, private router: Router, private roote: ActivatedRoute, private postService: PostService, private profil: UserProfil,private enterpriseService: EntrepriseService) {
  
 
   }
@@ -27,6 +28,8 @@ export class TalentFeedComponent {
 
   ngOnInit() {
     this.mainskill = JSON.parse(sessionStorage.getItem('profil')!).mainSkill
+    console.log(this.mainskill);
+    
    this.getPost(this.mainskill);
   }
   
@@ -34,7 +37,7 @@ export class TalentFeedComponent {
   nom = JSON.parse(sessionStorage.getItem('profil')!).anonyme;
   idreacts = JSON.parse(sessionStorage.getItem('profil')!).anonyme;
   sortPostsByDate(order: 'asc' | 'desc'): void {
-    this.filteredPosts.sort((a: { date: string }, b: { date: string }) => {
+    this.posts.sort((a: { date: string }, b: { date: string }) => {
       const dateA = new Date(a.date).getTime();
       const dateB = new Date(b.date).getTime();
 
@@ -52,42 +55,73 @@ export class TalentFeedComponent {
   sortPostsByLikes(): void {
      console.log(this.posts);
 
-    this.filteredPosts = this.filteredPosts.sort((a: { idreacts: any[] }, b: { idreacts: any[] }) => {
+    this.posts = this.posts.sort((a: { idreacts: any[] }, b: { idreacts: any[] }) => {
       return b.idreacts.length - a.idreacts.length;
     })
-    console.log('ilyfgçè-tf',this.posts);
 
   }
 
 
-
   getPost(skill: any) {
     this.postService.getPostsBySkill(skill).subscribe(
-      res => {
-        this.posts = res;
-        console.log(this.posts);
-        let postswithProfiles: any = []
+      (res: any) => {
+        res['filesURLS']=[]
+        for(let post of res.content )
+      { 
+            if(post.type === 'TALENT')
+         {   let params = new HttpParams().set('userId', post.user);
+               this.profil.getProfil(params).subscribe((profile)=>{
+              post.user=profile
 
-        for (let post of this.posts.content) {
-          let params = new HttpParams().set('userId', post.user);
+            })}
+            else {
+            
+                this.enterpriseService.getEntrepriseByid(post.user).subscribe(
+                  (profil: any) => {
+                    post.user=profil
 
-          this.profil.getProfil(params).subscribe((profile) => {
-            post.user = profile
-
-            postswithProfiles.push(post)
-
-          })
-        }
-        this.posts = postswithProfiles;
-   this.filteredPosts= this.posts
-
-        return this.posts;
-        console.log('after for ', postswithProfiles);
-     
+                  },
+                  error => {
+                    console.error('Erreur lors de la récupération des entreprises:', error);
+                  }
+                );
+              
+            }
+            let filesURLS:any[]=[]
+            for (let file of post.files) {
+           
+              this.postService.getFile( file.fileDownloadUri).subscribe(
+    
+              (fileBlob: Blob) => {
+    
+              console.log(fileBlob.type);
+              
+                filesURLS.push( {
+                  url :URL.createObjectURL(fileBlob) ,
+                  type : fileBlob.type.split('/')[0],
+                  original : fileBlob.type
+                });
+              },
+              (error :any) => {
+                // Handle errors
+                filesURLS.push('image');
+                // console.error('Error downloading file:', error);
+              }
+            );
+                     
+              
+          }
+          post['filesURLS']=filesURLS
+          
+          
+          }
+            this.posts=res.content
+            this.filteredPosts=res.content
+        console.log('after for ', this.posts);
       },
       err => {
         console.log('failed to get posts', err);
-
+        this.posts=[];
 
       }
     );
@@ -127,33 +161,32 @@ export class TalentFeedComponent {
   }
   
   addnmbrReact(postId: any, index : any) {
-    console.log(this.filteredPosts.at(index).user.id);
     
-    this.postService.addmnbrReact(this.filteredPosts.at(index).user.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(
+    this.postService.addmnbrReact(this.posts.at(index).user.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(
     
       (res) => {
         console.log('modification avec succès', res);
        // this.toastr.success('react avec succès');
         // sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
-     console.log(this.filteredPosts.at(index));
+     console.log(this.posts.at(index));
      
-     this.filteredPosts.at(index).idreacts.push(JSON.parse(sessionStorage.getItem('profil')!).id);
+     this.posts.at(index).idreacts.push(JSON.parse(sessionStorage.getItem('profil')!).id);
       },
       (err) => {
         console.log('échec de la modification', err);
         this.toastr.error('Erreur de reacter', 'Erreur');
-            console.log('ppppp',this.filteredPosts.at(index).user.id, JSON.parse(sessionStorage.getItem('profil')!).id, postId);
+            console.log('ppppp',this.posts.at(index).user.id, JSON.parse(sessionStorage.getItem('profil')!).id, postId);
        
         
       }
     );
   }
   subnmbrReact(postId: any, index: any) {
-    this.postService.submnbrReact(this.filteredPosts.at(index).user.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(
+    this.postService.submnbrReact(this.posts.at(index).user.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(
       (res) => {
         console.log('modification avec succès', res);
       //  this.toastr.success('react annuler avec succès');
-        this.filteredPosts.at(index).idreacts= this.filteredPosts.at(index).idreacts.filter((item : any)  => item !== JSON.parse(sessionStorage.getItem('profil')!).id);
+        this.posts.at(index).idreacts= this.posts.at(index).idreacts.filter((item : any)  => item !== JSON.parse(sessionStorage.getItem('profil')!).id);
 
         // sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
   
@@ -186,6 +219,14 @@ export class TalentFeedComponent {
         const loggedInUserId = JSON.parse(sessionStorage.getItem('profil')!).id;
         return post.idreacts.includes(loggedInUserId);
       }
+
+      navigate(type:any,id : any){
+        if (type ==="TALENT")
+        this.router.navigate(['user/compte',id])
+      else 
+      this.router.navigate(['entreprise/profil',id])
+
+    }
   }
 
 

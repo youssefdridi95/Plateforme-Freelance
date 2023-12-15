@@ -17,24 +17,19 @@
   box-shadow: -6px -6px 20px rgba(255, 255, 255, 0.6), 6px 6px 20px rgba(0, 0, 0, 0.1);
 }
 button.delete {
-  background-color: white;
+  background-color: white !important;
   position :absolute;
   color: #007CF8;
   right: 0;
-  top: 0px;
-  width: 5rem;
+  top: 0;
+  width: 1rem;
   font-size: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   
 }
-button.delete:hover {
-  background-color:#eef3f8;
 
-  color: red;
- 
-}
 .container .card:hover {
 
   outline: 1px solid #034f9b;
@@ -72,7 +67,7 @@ button.delete:hover {
   display: flex;
   justify-content: flex-start;
  justify-items: flex-start !important;
- margin-top: 2rem;
+ padding: 0 !important;
 }
 .container .card .contentBx a {
   display: inline-flex; /* Utiliser flexbox */
@@ -197,7 +192,7 @@ span {
 .txt{
   color:#034f9b;
   font-size: 12px;
-  
+  position: relative;
   
 }
 .contact::-webkit-scrollbar {
@@ -492,3 +487,6 @@ cursor: pointer;
   margin-left: 0 !important;
 }
 
+.pp{
+  width: 80%;
+}

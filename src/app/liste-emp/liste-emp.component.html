@@ -2,13 +2,14 @@
 <div class="container">
   
   
-
   
-    <div class="contact_card">
-      <div class="filter">
-
-         <span>Timezone :</span><br>
-        
+  
+  <div class="contact_card">
+    <div class="filter">
+      <div class="txt">
+      <span>Timezone :</span><br>
+      
+      <button (click)="reload()" class="delete" id="reset"><i class="fa-solid fa-rotate-right"></i></button>
         <select class="input pp" [(ngModel)]="selectedTimezone" id="timezone" (change)="onTimezone()">
           <option value="" disabled  selected>Timezone*</option>
         <option value="albania">albania</option>
@@ -33,12 +34,12 @@
         <option value="America/Sao_Paulo">America/Sao_Paulo </option>
 
       </select>
-      <button (click)="reload()" class="delete" id="reset"><i class="fa-solid fa-rotate-right"></i></button>
-      
+      </div>
       <hr>
       <br>
-      <span>Niveau Expertise :</span><br>
       <div class="txt">
+      <span>Niveau Expertise :</span><br>
+        <button (click)="reload()" class="delete" id="reset"><i class="fa-solid fa-rotate-right"></i></button>
         <select class="input pp" [(ngModel)]="niveauSkill" id="timezone" (change)="onniveauSkill()">
           <option value="" disabled  selected>Niveau*</option>
           <option value="debutant" selected>débutant</option>
@@ -46,22 +47,19 @@
           <option value="avance">avancé</option>
           <option value="expert">expert</option>
         </select>
-        <button (click)="reload()">Reset</button>
       </div>
       <hr>
       <br>
-      <span>Compétences Secondaires :</span><br>
       <div class="txt">
-        <select class="input pp" [(ngModel)]="niveauSkill" id="timezone" (change)="onniveauSkill()">
-          <option value="" disabled  selected>Compétences*</option>
-          <option value="debutant" selected>JAVA</option>
-          <option value="intermediaire">C</option>
-          <option value="avance">SQL</option>
-          <option value="expert">JS</option>
-          <option value="expert">PHP</option>
-          <option value="expert">SPRING</option>
-        
-        </select>
+      <span>Compétences Secondaires :</span><br>
+
+        <button (click)="reload()" class="delete" id="reset"><i class="fa-solid fa-rotate-right"></i></button>
+
+        <ng-select [items]="devSkills" class="input pp" (change)="onSecondSkill()"
+        bindLabel="name"
+        autofocus
+        [(ngModel)]="secondSkill" >
+        </ng-select>
        
       </div>
       <div class="txt">
@@ -99,8 +97,8 @@
     <h3 class="h">Liste Talent </h3>
     <article class="publication">
 
-<div class="container"*ngIf="talents!=null">
-  <div *ngFor="let talent of talents.content" class="card">
+<div class="container"*ngIf="filtredtalents!=null">
+  <div *ngFor="let talent of filtredtalents.content" class="card">
     <div class="imgBx">
      
       <!-- <img [src]="talent.imageURL" alt="{{talent.name}} Avatar"> -->
