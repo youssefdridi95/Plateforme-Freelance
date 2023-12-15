@@ -19,7 +19,7 @@ export class ProfilEntrepriseComponent {
   entreprise:any;
   posts: any;
   profil: any;
-
+pub = true ;
   post = {
     date: '2023-12-06T12:42:31.039', // Mettez votre date ici
     // Autres propriétés du post

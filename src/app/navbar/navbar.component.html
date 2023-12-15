@@ -3,7 +3,12 @@
 
   <div class="nav-items" [style.display]="navItemsDisplay" *ngIf="!showBtn()">
     <div class="nav-item"  [routerLink]="['/recherche']">Accueil</div>
-     <div class="nav-item"  [routerLink]="['/post/feed']">Posts </div>
+    <ng-container *ngIf="getUserRole() === 'Admin'; else notAdmin" >
+     
+    </ng-container>
+    <ng-template #notAdmin>
+      <div class="nav-item"  [routerLink]="['/post/feed']">Posts </div>
+    </ng-template>
      <div class="nav-item"  [routerLink]="['/post']">Rapports </div>   
 
      <div class="nav-item"  [routerLink]="['/chat']">Messages</div>

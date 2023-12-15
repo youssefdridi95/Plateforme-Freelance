@@ -18,13 +18,22 @@
           <b><i class="fa-solid fa-briefcase"></i></b> <span>{{ entreprise.activity }}</span> <br><br>
           
         </div>
-           
+     
          
         <div class="button" *ngIf="role==='ROLE_ENTREPRISE'">
           <button class="edit" (click)="navigateToCvCreer('/entreprise/liste')">
             Liste employers <i class="fa-solid fa-users" style="color: white;"></i>
           </button>
         
+        </div>
+
+<hr >
+<br>
+        <div id="title-container">
+    
+          <p (click)="pub=true" id="titl">Publication</p>
+          <hr style="margin-left: 4rem;margin-right: 4rem;">
+          <p (click)="pub = false" id="title">Dashboard</p>
         </div>
         <div class="button" *ngIf="role!=='ROLE_ENTREPRISE' && role!=='ROLE_RECRUTER'" >
           <button  class="read" (click)="addOrGOToChat()">
@@ -37,7 +46,7 @@
         </div>
        
       </div>
-  
+ 
       <div class="post">
        
     
@@ -52,10 +61,17 @@
           </div>
         </div>
     
-        
+        <article *ngIf="pub===false"  class="dashboard" >
+          <app-dashboard></app-dashboard>
+          <!-- <article *ngIf="pub===false" class="publication">
+           <app-dashboard></app-dashboard> -->
+    
+    
+    
+        </article>
        
 
-          <article class="publication">
+          <article *ngIf="pub===true" class="publication">
           
             <label for="popup-1-coupon" class="popup-1-open" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'">
           

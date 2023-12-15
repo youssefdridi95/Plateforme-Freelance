@@ -3,12 +3,12 @@
 export const environments= {
 
   
- backendUrl : "http://localhost:9090" ,
-  webSocketBackendUrl : 'ws://localhost:9090/ws',
+     backendUrl : "http://192.168.195.70:9090" ,
+     webSocketBackendUrl : 'ws://192.168.195.29:9090//ws',
 
-      // backendUrl : "http://192.168.195.70:9090" ,
+  //  backendUrl : "http://localhost:9090" ,
     // backendUrl : "http://192.168.195.70:9092" ,
-      // webSocketBackendUrl : 'ws://192.168.195.70:9090/ws',
+    // webSocketBackendUrl : 'ws://192.168.195.70:9090/ws',
     connectUser : '/user/connectUser',
     disConnectUser : '/api/auth/disconnectUser',
     chatList : '/api/chats/get/userId/',
@@ -16,7 +16,6 @@ export const environments= {
     username : '/user/get/',
     createChat : '/api/chats/createChat',
     markMessageSeen : '/api/chats/markMessagesAsSeen/',
-<<<<<<< HEAD
 
     
     usersSignup :"/api/auth/signup",
@@ -25,16 +24,6 @@ export const environments= {
     requestResetPwd : '/api/auth/forgot/sendEmail' ,
     resetPwd : '/api/auth/setPassword' , 
    
-=======
- 
-   
-    usersSignup :"/api/auth/signup",
-    usersSignin :"/api/auth/signin",
-   
-    requestResetPwd : '/api/auth/forgot/sendEmail' ,
-    resetPwd : '/api/auth/setPassword' ,
-   
->>>>>>> amal
     verifcompte : '/api/auth/verifCompte',
     regenerateOtp : '/api/auth/regenerateOtp',
    
