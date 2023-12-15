@@ -28,6 +28,7 @@
     font-weight: 900;
     font-size: 2rem;
     color: #FFFFFF;
+    
   }
   
   .form {
@@ -105,8 +106,8 @@
     height: 50%;
     display: flex;
     justify-content: flex-end;
-    margin: -7px auto;
-    margin-bottom: -13%;
+    margin:  auto;
+    /* margin-bottom: -13%; */
     
     
   }
