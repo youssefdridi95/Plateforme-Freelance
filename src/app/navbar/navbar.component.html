@@ -90,7 +90,7 @@
         </div>
       </div>
       <div>
-        <ng-container *ngIf="getUserRole() === 'Admin'; else notAdmin">
+        <ng-container *ngIf="getUserRole() === 'Admin'; else notAdmin" >
           <!-- Content to display if the user role is admin -->
 
           <img
@@ -117,9 +117,9 @@
       <div
         (mouseleave)="toggleDropdown()"
         class="dropdown-content2"
-        *ngIf="isDropdownOpen"
+        *ngIf="isDropdownOpen" 
       >
-        <div class="name">{{ getUserName() }}</div>
+        <div class="name" >{{ getUserName() }}</div>
 
         <div class="title">{{ getUserRole() }}</div>
         <div class="dropdown-divider"></div>

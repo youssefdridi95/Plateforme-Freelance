@@ -160,7 +160,7 @@ display: initial;    }
 }
 .name{
   text-transform: uppercase;
-text-align: left;
+text-align: center;
 font-size: 17px;
 font-weight: bold;
 color: #034f9b;
@@ -293,7 +293,8 @@ color: #034f9b;
   min-width: 160px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 10;
-  top: 2.5rem;
+  top: 3.5rem;
+  right: -6rem;
 }
 
 .dropdown-content2 a {
@@ -387,6 +388,8 @@ color: #034f9b;
   margin-right: 8px;
   width: 100%;
   color: #727272;
+  padding: 0.5rem 0;
+
 
 }
 
