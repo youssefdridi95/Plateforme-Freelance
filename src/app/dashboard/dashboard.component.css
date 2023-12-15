@@ -85,6 +85,43 @@ body {
   align-items: center;
   width: 30%;
 }
+.rectangle44 {
+  height: 110px;
+  margin-right: 10px;
+  background: linear-gradient(to right, #1fabe7 100%, #5BC0EB 40%, #5BC0EB);
+  border-radius: 10px;
+  border: rgb(197, 193, 193) solid;
+  display: flex;
+  align-items: center;
+  width: 30%;
+  flex-direction: row-reverse;
+}
+.rectangle55 {
+  height: 110px;
+  margin-right: 10px;
+  background: linear-gradient(to right, #8db92d 100%, #9BC53E 40%, #9BC53E 100%);
+  border-radius: 10px;
+  border: rgb(197, 193, 193) solid;
+  display: flex;
+  align-items: center;
+  width: 30%;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+
+}
+.rectangle66 {
+  height: 110px;
+  margin-right: 10px;
+  background: linear-gradient(to right, #ec4217 100%,  #E55935 40%,  #E55935 100%);
+  border-radius: 10px;
+  border: rgb(197, 193, 193) solid;
+  display: flex;
+  align-items: center;
+  width: 30%;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+
+}
 .rectangle7 {
   height: 150px;
   margin-right: 10px;
@@ -124,8 +161,8 @@ body {
   display: flex;
   /* align-items: center; */
   justify-content: center;
-  width: 40%; /* Ajustez la largeur de l'icône selon vos besoins */
-  font-size: 2rem;
+  width: 40%; 
+  font-size: 150%;
 }
 h4{
   color: black;
@@ -138,15 +175,15 @@ h4{
   /* align-items: center; */
   justify-content: center;
   width: 40%; /* Ajustez la largeur de l'icône selon vos besoins */
-  font-size: 2.5rem;
+  font-size: 180%;
 }
 .icon2 {
   color: white; /* Couleur grisâtre avec une composante alpha (transparence) */
   /* display: flex; */
   /* justify-content: center; */
    /* Ajustez la largeur de l'icône selon vos besoins */
-  font-size: 3rem;
-  display: flex;
+   font-size: 250%;
+   display: flex;
   justify-content: space-between;
   gap:2.9rem;
 }
@@ -155,8 +192,8 @@ h4{
   /* display: flex; */
   /* justify-content: center; */
    /* Ajustez la largeur de l'icône selon vos besoins */
-  font-size: 3rem;
-  display: flex;
+   font-size: 180%;
+   display: flex;
   justify-content: space-between;
   gap:2.5rem;
 }

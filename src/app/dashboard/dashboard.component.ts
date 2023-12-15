@@ -58,15 +58,20 @@ export class DashboardComponent implements OnInit {
     this.chatsService.getChatList(this.useridchat).subscribe(
       (res: any) => {
 
- this.chat = res.totalElements
-console.log('bbbbbb', res);
+ this.chat = res.length
+console.log('bbbbbb', this.chat);
 
         // console.log(res);
 
      
       },
       (err) => {
-        console.log('gggggggggg',err);
+
+
+
+ this.chat = 0
+ console.log('gggggggggg',this.chat);
+
       });
     // Retrieve 'profil' from sessionStorage
     const profilString = sessionStorage.getItem('profil');
