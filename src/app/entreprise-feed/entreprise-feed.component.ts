@@ -32,15 +32,14 @@ export class EntrepriseFeedComponent {
   searchTerm: string = '';
   filteredPosts: any; // 
   ngOnInit() {
-    this.mainskill = JSON.parse(sessionStorage.getItem('profil')!).mainSkill
-    this.getPost(this.mainskill);
+    this.getPost(this.skill);
   }
 
 
   nom = JSON.parse(sessionStorage.getItem('profil')!).anonyme;
   idreacts = JSON.parse(sessionStorage.getItem('profil')!).anonyme;
   sortPostsByDate(order: 'asc' | 'desc'): void {
-    this.filteredPosts.sort((a: { date: string }, b: { date: string }) => {
+    this.posts.sort((a: { date: string }, b: { date: string }) => {
       const dateA = new Date(a.date).getTime();
       const dateB = new Date(b.date).getTime();
 
@@ -48,35 +47,23 @@ export class EntrepriseFeedComponent {
     });
   }
   filterPosts(): void {
-
+    
     // Filter posts based on the description using the searchTerm
-    this.filteredPosts = this.posts.filter((post: any) => post.desc.toLowerCase().includes(this.searchTerm.toLowerCase()));
+   this.filteredPosts= this.posts.filter((post: any) => post.desc.toLowerCase().includes(this.searchTerm.toLowerCase()));
 
   }
 
 
   sortPostsByLikes(): void {
-    console.log(this.posts);
+     console.log(this.posts);
 
-    this.filteredPosts = this.filteredPosts.sort((a: { idreacts: any[] }, b: { idreacts: any[] }) => {
+    this.filteredPosts = this.posts.sort((a: { idreacts: any[] }, b: { idreacts: any[] }) => {
       return b.idreacts.length - a.idreacts.length;
     })
-    console.log('ilyfgçè-tf', this.posts);
 
   }
 
 
-  option: string = 'talent'
-
-
-  rechercher() {
-    if (this.option === 'talent')
-      this.router.navigate(['/talents/list', this.skill]);
-    else
-      this.router.navigate(['/entreprise/feed', this.skill]);
-
-  }
-  
   getPost(skill: any) {
     this.postService.getPostsBySkill(skill).subscribe(
       (res: any) => {
@@ -130,7 +117,8 @@ export class EntrepriseFeedComponent {
           
           
           }
-            this.posts=res
+            this.posts=res.content
+            this.filteredPosts=res.content
         console.log('after for ', this.posts);
       },
       err => {
@@ -142,6 +130,7 @@ export class EntrepriseFeedComponent {
   }
   // Exemple dans UserCompteComponent
   getFile(fileDownloadUri: any) {
+    console.log(JSON.parse(sessionStorage.getItem('profil')!).id);
 
     this.postService.getFile(fileDownloadUri).subscribe(
       (blob: Blob) => {
@@ -172,49 +161,41 @@ export class EntrepriseFeedComponent {
     return (` ${days} d, ${hours % 24} h, ${minutes % 60} min`);
 
   }
-
-  navigate(type: any, id: any) {
-    if (type === "TALENT")
-      this.router.navigate(['user/compte', id])
-    else
-      this.router.navigate(['entreprise/profil', id])
-
-  }
-  addnmbrReact(postId: any, index: any) {
-    console.log(this.filteredPosts.at(index).user.id);
-
-    this.postService.addmnbrReact(this.filteredPosts.at(index).user.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(
-
+  
+  addnmbrReact(postId: any, index : any) {
+    
+    this.postService.addmnbrReact(this.posts.at(index).user.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(
+    
       (res) => {
         console.log('modification avec succès', res);
-        // this.toastr.success('react avec succès');
+       // this.toastr.success('react avec succès');
         // sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
-        console.log(this.filteredPosts.at(index));
-
-        this.filteredPosts.at(index).idreacts.push(JSON.parse(sessionStorage.getItem('profil')!).id);
+     console.log(this.posts.at(index));
+     
+     this.posts.at(index).idreacts.push(JSON.parse(sessionStorage.getItem('profil')!).id);
       },
       (err) => {
         console.log('échec de la modification', err);
         this.toastr.error('Erreur de reacter', 'Erreur');
-        console.log('ppppp', this.filteredPosts.at(index).user.id, JSON.parse(sessionStorage.getItem('profil')!).id, postId);
-
-
+            console.log('ppppp',this.posts.at(index).user.id, JSON.parse(sessionStorage.getItem('profil')!).id, postId);
+       
+        
       }
     );
   }
   subnmbrReact(postId: any, index: any) {
-    this.postService.submnbrReact(this.filteredPosts.at(index).user.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(
+    this.postService.submnbrReact(this.posts.at(index).user.id as string, JSON.parse(sessionStorage.getItem('profil')!).id, postId).subscribe(
       (res) => {
         console.log('modification avec succès', res);
-        //  this.toastr.success('react annuler avec succès');
-        this.filteredPosts.at(index).idreacts = this.filteredPosts.at(index).idreacts.filter((item: any) => item !== JSON.parse(sessionStorage.getItem('profil')!).id);
+      //  this.toastr.success('react annuler avec succès');
+        this.posts.at(index).idreacts= this.posts.at(index).idreacts.filter((item : any)  => item !== JSON.parse(sessionStorage.getItem('profil')!).id);
 
         // sessionStorage.setItem('lastViewedProfileId', this.profil.id as string);
-
+  
         // const profileId = JSON.parse(sessionStorage.getItem('profil')!).id;
         // const post = this.posts.content[index];
         // const profileIndex = post.idreacts.indexOf(profileId);
-
+  
         // if (profileIndex !== -1) {
         //   post.idreacts.splice(profileIndex, 1);
         //   post.reactionsCount--;
@@ -228,17 +209,27 @@ export class EntrepriseFeedComponent {
   }
   toggleReact(post: any, index: any) {
     const hasReacted = this.hasReacted(post);
-
+  
     if (hasReacted) {
       this.subnmbrReact(post.id, index);
     } else {
       this.addnmbrReact(post.id, index);
     }
   }
+  
+      hasReacted(post: any): boolean {
+        const loggedInUserId = JSON.parse(sessionStorage.getItem('profil')!).id;
+        return post.idreacts.includes(loggedInUserId);
+      }
 
-  hasReacted(post: any): boolean {
-    const loggedInUserId = JSON.parse(sessionStorage.getItem('profil')!).id;
-    return post.idreacts.includes(loggedInUserId);
+      navigate(type:any,id : any){
+        if (type ==="TALENT")
+        this.router.navigate(['user/compte',id])
+      else 
+      this.router.navigate(['entreprise/profil',id])
+
+    }
   }
-}
+
+
 

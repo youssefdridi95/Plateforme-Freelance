@@ -40,7 +40,7 @@ env = environments as Env
     this.router.navigate([link]);
 
   }
-  pub = false;
+  pub = true;
   username: string = '';
   email: string = '';
   userId: any;

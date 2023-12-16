@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { PostService } from '../services/post.service';
 import { UserService } from '../services/user.service';
 import { ChatsService } from '../services/chats.service';
- 
+
 @Component({
   selector: 'app-profil-entreprise',
   templateUrl: './profil-entreprise.component.html',
@@ -27,8 +27,8 @@ pub = true ;
   emailpro = JSON.parse(sessionStorage.getItem('user')!).email;
   role = JSON.parse(sessionStorage.getItem('user')!).roles[0];
   nom = JSON.parse(sessionStorage.getItem('profil')!).profileHeadline;
- 
-  idEntreprise :any
+
+  idEntreprise :any 
   constructor(
     private enterpriseService: EntrepriseService,
     private route: ActivatedRoute,
@@ -38,19 +38,19 @@ pub = true ;
       this.route.params.subscribe(params => {
         this.idEntreprise = params['id'];
         this.getPost(this.idEntreprise);
- 
+
       this.getEntrepriseById( this.idEntreprise)
       const storedUsername = sessionStorage.getItem('user');
- 
+
       });
       const storedUsername = sessionStorage.getItem('user');
- 
+
     }
- 
+  
   ngOnInit (): void{
     console.log(this.entreprise);
- 
- 
+
+
 }
 formatDate(dateString: string): string {
   const parts = dateString.split('T')[0].split('-');
@@ -58,23 +58,23 @@ formatDate(dateString: string): string {
   return formattedDate;
 }
   // ... autres méthodes
- 
+
   navigateToCvCreer(link: String) {
-   
+    
     this.router.navigate([link]);
- 
+
   }
   username: string = '';
   email: string = '';
   getEntrepriseById(idEntreprise: string) {
     this.enterpriseService.getEntrepriseByid(idEntreprise).subscribe(
       (data: any) => {
-        this.entreprise = data;
+        this.entreprise = data; 
         if (idEntreprise == JSON.parse(sessionStorage.getItem('user')!).id ||
           idEntreprise == JSON.parse(sessionStorage.getItem('user')!).idEntreprise ) {
           sessionStorage.setItem('profil', JSON.stringify(data));
           this.profil = data; // Ajoutez cette ligne pour initialiser this.profil
- 
+  
           console.log('piiiiiiiiiiiip');
           this.updateViewNmbrEntreprise();
         }
@@ -84,7 +84,7 @@ formatDate(dateString: string): string {
       }
     );
   }
- 
+  
   getPost(userId: any) {
     this.postService.getUserPosts(userId).subscribe(
       (res : any ) => {
@@ -93,16 +93,16 @@ formatDate(dateString: string): string {
         res['filesURLS']=[]
         for(let post of res.content)
       {  
- 
+
         let filesURLS:any[]=[]
         for (let file of post.files) {
        
           this.postService.getFile( file.fileDownloadUri).subscribe(
- 
+
           (fileBlob: Blob) => {
- 
+
           console.log(fileBlob.type);
-         
+          
             filesURLS.push( {
               url :URL.createObjectURL(fileBlob) ,
               type : fileBlob.type.split('/')[0],
@@ -116,30 +116,30 @@ formatDate(dateString: string): string {
           }
         );
                  
-         
+          
       }
       post['filesURLS']=filesURLS
        }
- 
+
       },
       err => {
         console.log('failed to get posts', err);
         this.toastr.error('erreur affichage publication')
- 
+
         // Vérifiez si err.error et err.error.message existent avant d'y accéder
- 
+
       }
     );
   }
   deletePost(postId: string) {
     if (confirm('Es-tu sur de vouloir supprimer cette publication?')) {
       console.log(postId);
-     
+      
       this.postService.delete(postId).subscribe(
         (res) => {
           console.log(res);
           location.reload();
- 
+
           this.toastr.success('Publication supprimé avec succès', 'Success');
           // After deleting the post, refresh the posts list
         },
@@ -152,7 +152,7 @@ formatDate(dateString: string): string {
   }
   updateViewNmbrEntreprise() {
     console.log('Avant la fonction ddedd');
- 
+
     const storedProfileId = sessionStorage.getItem('lastViewedProfileId');
     if (storedProfileId !== this.profil.id) {
       this.userService.updateViewNbrEntreprise(this.profil.id as string, JSON.parse(sessionStorage.getItem('profil')!).id).subscribe(
@@ -168,16 +168,16 @@ formatDate(dateString: string): string {
       );
     }
   }
- 
+
   addOrGOToChat(){
     let  id=JSON.parse(sessionStorage.getItem('user')!).id
- 
+
       if(JSON.parse(sessionStorage.getItem('user')!).roles.at(0)=='ROLE_RECRUTER')
       id=JSON.parse(sessionStorage.getItem('user')!).idEntreprise
     console.log('connected',id);
     console.log('visited',this.idEntreprise);
-   
-   
+    
+    
       this.chatService.addChat(this.idEntreprise,id).subscribe(
         (res:any)=>{
           console.log(res);

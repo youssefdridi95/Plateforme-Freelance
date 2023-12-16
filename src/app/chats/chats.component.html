@@ -1,7 +1,16 @@
-
-    <div class="container">
+<div class="loadContainer"*ngIf="!chatsService.chatList">
+<div class="loaderr" >
+  <div class="loader__bar"></div>
+  <div class="loader__bar"></div>
+  <div class="loader__bar"></div>
+  <div class="loader__bar"></div>
+  <div class="loader__bar"></div>
+  <div class="loader__ball"></div>
+</div>  
+</div>
+    <div class="container" *ngIf="chatsService.chatList">
      
-      
+     
   
         <section class="discussions">
           <div class="discussion search">
@@ -100,9 +109,9 @@
               <p class="text">  {{msg.replymessage}}</p>
             </div>
 
-            <p class="time" *ngIf="msg.senderId==userid && i===chatsService.activeChat.chat.messageList.length-1"> 14h58</p>
+            <p class="time" *ngIf="msg.senderId==userid && i===chatsService.activeChat.chat.messageList.length-1"> {{calculateTimeDifference(msg.time)}}</p>
               
-            <p class="response-time time" *ngIf="msg.senderId!=userid && i===chatsService.activeChat.chat.messageList.length-1"> 15h04</p>
+            <p class="response-time time" *ngIf="msg.senderId!=userid && i===chatsService.activeChat.chat.messageList.length-1">{{calculateTimeDifference(msg.time)}} </p>
           </ng-container>
         </ng-container>
           </div>

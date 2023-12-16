@@ -1,8 +1,8 @@
 export const environments= {
  
  
-  backendUrl : "http://192.168.195.29:9090" ,
-  webSocketBackendUrl : 'ws://192.168.195.29:9090//ws',
+  backendUrl : "http://192.168.1.110:9090" ,
+  webSocketBackendUrl : 'ws://192.168.1.110:9090/ws',
 
 //  backendUrl : "http://localhost:9090" ,
  // backendUrl : "http://192.168.195.70:9092" ,

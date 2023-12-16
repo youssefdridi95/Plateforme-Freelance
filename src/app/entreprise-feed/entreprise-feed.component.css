@@ -16,7 +16,10 @@
  
 
 }
-
+.name > span {
+  font-size: 1rem;
+  font-weight: 600;
+}
 .contact p {
   color: #007cf8;
   text-align: left;

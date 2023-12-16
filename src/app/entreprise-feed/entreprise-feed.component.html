@@ -48,50 +48,68 @@
 
  
     <article class="publication">
-      <div *ngIf="posts.content.length === 0 ">
+      <div *ngIf="filteredPosts && filteredPosts.length === 0 ">
 
         <img id='image' src="/../assets/nodata.jpg">
 
       </div>
      
   
-      <div *ngFor="let post of posts.content , let i = index" class="content-publication wrap shadow">
+      <div *ngFor="let post of filteredPosts , let i = index" class="content-publication wrap shadow">
+ 
         
-      </div> 
-      <ng-container *ngIf="posts">
-        <div  *ngFor="let post of posts.content " class="content-publication wrap shadow">
-
-          <div class="heading flex-center">
-            <div class="name flex-center" (click)="navigate(post.type,post.user.user)" >
-              <img  src="/assets/was.png " alt="User Image">
-               <span *ngIf="post.type=='TALENT'">{{post.user.anonyme}}</span> 
-               <span *ngIf="post.type=='ENTREPRISE'">{{post.user.profileHeadline}}</span> 
-            </div>
-            <p class="date" >{{post.date | date : 'shortDate'}}</p>
-            <div class="public" >
-              <p>{{post.desc}}.</p>
-</div>
-<ng-container *ngFor="let file of post.filesURLS">
-  <img [src]="file.url" style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" alt="file" *ngIf="file.type=='image'">
-  <video width="320" height="240" controls style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" *ngIf="file.type=='video'">
-    <source [src]="file.url" type="{{file.original}}">
-    Your browser does not support the video tag.
-  </video>
-
-</ng-container>
-
-
-
-          
-            <div class="fav" >
-              <button class="like">Like</button>
-              <button class="comment">dislike</button>
-            </div>
+    
+        <div class="heading">
+          <div class="name" (click)="navigate(post.type,post.user.user)">
+            <img src="/assets/userf.png " alt="User Image" />
+            <p class="title" *ngIf="post.type=='TALENT'">
+              <label>{{ post.user.anonyme }}</label>
+            </p>
+    
+          <p class="title" *ngIf="post.type=='ENTREPRISE'">
+            <label>{{ post.user.profileHeadline }}</label>
+          </p>
+        </div>
+          <p class="date" style="text-align: right">
+            {{ post.date | date : "dd/MM/yyyy" }}
+          </p>
+          <div class="public" style="text-align: right; padding: 4%; padding-right: 10%">
+            <p style="text-align: left; size: 20px">{{ post.desc }}.</p>
           </div>
-        </div> 
-      </ng-container>
-           
-        
+          <ng-container *ngFor="let file of post.filesURLS">
+            <img [src]="file.url" style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" alt="file" *ngIf="file.type=='image'">
+            <video width="320" height="240" controls style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" *ngIf="file.type=='video'">
+              <source [src]="file.url" type="{{file.original}}">
+              Your browser does not support the video tag.
+            </video>
+          
+          </ng-container>
+
+          <div class="reaction">
+            <ng-container *ngIf="!hasReacted(post)">
+
+              <button (click)="addnmbrReact(post.id,i)" class="like"><i class="fa-regular fa-heart"></i>
+                {{post?.idreacts.length}}
+              </button>
+            </ng-container>
+            <ng-container *ngIf="hasReacted(post)">
+
+              <button class="like" (click)="subnmbrReact(post.id, i)">
+                <i class="fa-solid fa-heart"></i>
+                
+                {{post?.idreacts.length}} 
+              </button> </ng-container>
+
+            <button class="comment">
+              <i class="fa-regular fa-comment"></i>
+            </button>
+            <button class="share">
+              <i class="fa-regular fa-share-from-square"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
     </article>
   </div>
 </div>

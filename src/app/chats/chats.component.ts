@@ -23,7 +23,8 @@ export class ChatsComponent implements OnInit {
   isSending = false
   activeId: any
   constructor(private route: ActivatedRoute, protected chatsService: ChatsService, private rxStompService: RxStompService, private ngZone: NgZone, private notif: NotificationMessageListService) {
-    
+    // Usage example:
+
     let  id=JSON.parse(sessionStorage.getItem('user')!).id
 
     if(JSON.parse(sessionStorage.getItem('user')!).roles.at(0)=='ROLE_RECRUTER')
@@ -139,7 +140,8 @@ this.chatsService.newMessageAdded.subscribe(() => {
         senderId: this.userid,
         chatId: this.chatsService.activeChat.chat.chatId,
         reciverId: receiverId,
-        replymessage: this.textMsg
+        replymessage: this.textMsg,
+        time : new Date()
       }
 
       this.rxStompService.publish({ destination: '/chats/addMessage/' + this.chatsService.activeChat.chat.chatId, body: JSON.stringify(msg) });
@@ -152,38 +154,52 @@ this.chatsService.newMessageAdded.subscribe(() => {
   }
 
   calculateTimeDifference(timestamp: string) {
-    const currentTime = new Date();
-    const parsedTimestamp = new Date(timestamp);
+  
+    const start:any = new Date(timestamp);
+    const end :any= new Date();
 
-    // Calculate the time difference in milliseconds
-    const timeDifference = currentTime.getTime() - parsedTimestamp.getTime();
 
-    // Convert the time difference to seconds
-    const secondsDifference = Math.floor(timeDifference / 1000);
+    // Calculate the difference in milliseconds
+    const difference = Math.abs(end - start);
 
-    // Check if the time difference is more than a day (86400 seconds)
-    if (secondsDifference >= 86400) {
-      const days = Math.floor(secondsDifference / 86400);
-      return `+${days}d`;
-    }
 
-    // Check if the time difference is more than a minute (60 seconds)
-    if (secondsDifference >= 60) {
-      const minutes = Math.floor(secondsDifference / 60);
-      return `+${minutes}m`;
-    }
+    let seconds :any = Math.floor((difference / 1000) % 60);
+    let minutes :any = Math.floor((difference / (1000 * 60)) % 60);
+    let hours :any = Math.floor((difference / (1000 * 60 * 60)) % 24);
+    let days  :any= Math.floor(difference / (1000 * 60 * 60 * 24));
 
-    // Calculate hours, minutes, and seconds
-    const hours = Math.floor(secondsDifference / 3600);
-    const remainingMinutes = Math.floor((secondsDifference % 3600) / 60);
 
-    // Format the result
-    if (hours > 0) {
-      return `${hours}h ${remainingMinutes}m`;
-    } else {
-      return `${remainingMinutes}m`;
-    }
+    if(days>0 )
+   return days+'d'
+    if (hours > 0)
+    return hours+'h';
+    if (minutes > 0)
+    return minutes+'m'
+    return seconds+'s'
   }
+   calculateDuration(startDate :any, endDate:any) {
+    const start:any = new Date(startDate);
+    const end :any= new Date();
+
+    // Calculate the difference in milliseconds
+    const difference = Math.abs(end - start);
+
+
+    let seconds :any = Math.floor((difference / 1000) % 60);
+    let minutes :any = Math.floor((difference / (1000 * 60)) % 60);
+    let hours :any = Math.floor((difference / (1000 * 60 * 60)) % 24);
+    let days  :any= Math.floor(difference / (1000 * 60 * 60 * 24));
+
+
+    if(days>0 )
+   return days+'d'
+    if (hours > 0)
+    return hours+'h';
+    if (minutes > 0)
+    return minutes+'m'
+    return seconds+'s'
+}
+
 
   getActiveId(id: any) {
 

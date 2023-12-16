@@ -52,7 +52,7 @@ export class AppComponent implements OnInit, OnDestroy {
    if( user && JSON.parse(sessionStorage.getItem('user')!).roles.at(0)=='ROLE_RECRUTER')
      id=JSON.parse(sessionStorage.getItem('user')!).idEntreprise
 
-   if (user && id) {
+   if (user && id && this.chatsService.chatSubscription == null && this.chatsService.userid!=id) {
      // If 'user' is present, invoke the watch method of ChatsService
     console.log('Storage event trisdfghergtzergtergtegdgggered:');
 

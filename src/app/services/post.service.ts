@@ -96,7 +96,6 @@ addmnbrReact(idprofil  : any , idVisiteur : any ,  postId : any ){
   .set('idVisiteur', idVisiteur )
   .set('postId', postId  )
 
-  console.log(params);
 
  return this.http.put(this.url + this.augnbrReact,{},{params});
 
@@ -108,7 +107,6 @@ submnbrReact(idprofil  : any , idVisiteur : any ,  postId : any ){
   .set('idVisiteur', idVisiteur )
   .set('postId', postId  )
 
-  console.log(params);
 
  return this.http.put(this.url + this.subnbrReact,{},{params});
 
