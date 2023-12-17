@@ -104,7 +104,7 @@ export class ChatsService {
           if (this.activeChat.chat.chatId === msg.chatId) {
             this.activeChat.chat.messageList.push(JSON.parse(message.body));
 
-            this.notif.playNotificationSound();
+          //  this.notif.playNotificationSound();
             this.newMessageAdded.emit();
           } else {
             this.notif.msgList.unshift(msg);

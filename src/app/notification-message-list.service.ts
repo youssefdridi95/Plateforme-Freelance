@@ -8,7 +8,7 @@ export class NotificationMessageListService {
   
   ]
   newMsgs = 0
-  notificationSound = new Audio('../assets/notif.wav');
+  notificationSound = new Audio('../assets/notif.mp3');
   playNotificationSound() {
     this.notificationSound.play();
   }

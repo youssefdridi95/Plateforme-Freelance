@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './chats.component.html',
   styleUrls: ['./chats.component.css']
 })
-export class ChatsComponent implements OnInit {
+export class ChatsComponent implements OnInit,OnDestroy {
   @ViewChild('chatContainer') chatContainer!: ElementRef;
 
   userid = ''
@@ -19,7 +19,7 @@ export class ChatsComponent implements OnInit {
   username = ''
 
   textMsg = ''
-  isLoading = false
+  isLoading = true
   isSending = false
   activeId: any
   constructor(private route: ActivatedRoute, protected chatsService: ChatsService, private rxStompService: RxStompService, private ngZone: NgZone, private notif: NotificationMessageListService) {
@@ -32,6 +32,19 @@ export class ChatsComponent implements OnInit {
     this.userid = id
 
   }
+  ngOnDestroy(): void {
+this.chatsService.activeChat =  {
+  chat: {
+    chatId: '',
+    firstUserId: '',
+    secondUserId: '',
+    messageList: [],
+  },
+  fannonyme: '',
+  sannonyme: '',
+  fstatus: '',
+  sstatus: '',
+};  }
 
 
   ngOnInit(): void {
