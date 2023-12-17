@@ -3,137 +3,140 @@
 <div class="container"*ngIf="entreprise">
 
 
-      <div class="contact">
+  <div class="contact">
+
+ 
+    <div class="contact_card"  >
+    <i class="fa-solid fa-pencil editProfil"(click)="navigateToCvCreer('/entreprise/update')" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"></i>
+     <div class="image">
+      <img src="/assets/was.png" id="blah" alt="Avatar" *ngIf="!profilImage" />
+      <img [src]="profilImage" id="blah" alt="Avatar" *ngIf="profilImage" />
+    </div>
+      <div class="textcard">
+                                                                        <div class="name">
+      <br> <label >{{ nom }} </label><br><br><br></div>
+      <b> <i class="fa-solid fa-envelope"></i> </b> <span>{{ emailpro }}</span> <br><br>
+      <b><i class="fa-solid fa-location-dot"></i> </b><span>{{ entreprise.adresse }}</span> <br><br>
+      <b><i class="fa-solid fa-briefcase"></i></b> <span>{{ entreprise.activity }}</span> <br><br>
+      
+    </div>
+ 
+     
+    <div class="button" *ngIf="role==='ROLE_ENTREPRISE'">
+      <button class="edit" (click)="navigateToCvCreer('/entreprise/liste')">
+        Liste employers <i class="fa-solid fa-users" style="color: white;"></i>
+      </button>
     
-     
-        <div class="contact_card"  >
-        <i class="fa-solid fa-pencil editProfil"(click)="navigateToCvCreer('/entreprise/update')" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"></i>
-         <div class="image">
-          <img src="/assets/userf.png"  id="blah" alt="Avatar" /></div>
-          <div class="textcard">
-                                                                            <div class="name">
-          <br> <label >{{ nom }} </label><br><br><br></div>
-          <b> <i class="fa-solid fa-envelope"></i> </b> <span>{{ emailpro }}</span> <br><br>
-          <b><i class="fa-solid fa-location-dot"></i> </b><span>{{ entreprise.adresse }}</span> <br><br>
-          <b><i class="fa-solid fa-briefcase"></i></b> <span>{{ entreprise.activity }}</span> <br><br>
-          
-        </div>
-     
-         
-        <div class="button" *ngIf="role==='ROLE_ENTREPRISE'">
-          <button class="edit" (click)="navigateToCvCreer('/entreprise/liste')">
-            Liste employers <i class="fa-solid fa-users" style="color: white;"></i>
-          </button>
-        
-        </div>
+    </div>
 
 <hr >
 <br>
-        <div id="title-container">
-    
-          <p (click)="pub=true" id="titl">Publication</p>
-          <hr style="margin-left: 4rem;margin-right: 4rem;">
-          <p (click)="pub = false" id="title">Dashboard</p>
-        </div>
-        <div class="button" *ngIf="role!=='ROLE_ENTREPRISE' && role!=='ROLE_RECRUTER'" >
-          <button  class="read" (click)="addOrGOToChat()">
-            <h3>Cantacter</h3>
-          </button>
-        
-        </div>
-        
+    <div id="title-container">
 
+      <p (click)="pub=true" id="titl">Publication</p>
+      <hr style="margin-left: 4rem;margin-right: 4rem;">
+      <p (click)="pub = false" id="title">Dashboard</p>
+    </div>
+    <div class="button" *ngIf="role!=='ROLE_ENTREPRISE' && role!=='ROLE_RECRUTER'" >
+      <button  class="read" (click)="addOrGOToChat()">
+        <h3>Cantacter</h3>
+      </button>
+    
+    </div>
+    
+
+    </div>
+   
+  </div>
+
+  <div class="post">
+   
+
+    <div class="popup-1-wrap">
+      <input id="popup-1-coupon" type="checkbox">
+      <div class="popup-1-overlay">
+        <label for="popup-1-coupon" class="popup-1-trigger"></label>
+        <div class="popup-1-content">
+          <label for="popup-1-coupon" class="popup-1-close" >×</label>
+          <app-add-post></app-add-post>
         </div>
-       
       </div>
- 
-      <div class="post">
-       
-    
-        <div class="popup-1-wrap">
-          <input id="popup-1-coupon" type="checkbox">
-          <div class="popup-1-overlay">
-            <label for="popup-1-coupon" class="popup-1-trigger"></label>
-            <div class="popup-1-content">
-              <label for="popup-1-coupon" class="popup-1-close" >×</label>
-              <app-add-post></app-add-post>
-            </div>
-          </div>
-        </div>
-    
-        <article *ngIf="pub===false"  class="dashboard" >
-          <app-dashboard></app-dashboard>
-          <!-- <article *ngIf="pub===false" class="publication">
-           <app-dashboard></app-dashboard> -->
-    
-    
-    
-        </article>
-       
+    </div>
 
-          <article *ngIf="pub===true" class="publication">
-          
-            <label for="popup-1-coupon" class="popup-1-open" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'">
-          
-              <img class="add" src="/assets/userf.png">
-                <div class="input-post">publier quelque chose...</div>
+    <article *ngIf="pub===false"  class="dashboard" >
+      <app-dashboard></app-dashboard>
+      <!-- <article *ngIf="pub===false" class="publication">
+       <app-dashboard></app-dashboard> -->
 
-      </label>
 
-      <div *ngIf="posts.content.length === 0">
-       
-        <img id='image'src="/../assets/newpost.png">
+
+    </article>
+   
+
+      <article *ngIf="pub===true" class="publication">
+      
+        <label for="popup-1-coupon" class="popup-1-open" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'">
+      
+          <img src="/assets/was.png" class="add" alt="Avatar" *ngIf="!profilImage" />
+          <img [src]="profilImage" class="add" alt="Avatar" *ngIf="profilImage" />
+            <div class="input-post">publier quelque chose...</div>
+
+  </label>
+
+  <div *ngIf="posts.content.length === 0">
+   
+    <img id='image'src="/../assets/newpost.png">
+    
+  </div>  
+  <div   *ngFor="let post of posts.content "  class="content-publication wrap shadow">
+
+    <div class="heading">
+      <button class="delete" (click)="deletePost(post.id)" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-trash-can"></i></button>
+
+      <div class="name" >
         
-      </div>  
-      <div   *ngFor="let post of posts.content "  class="content-publication wrap shadow">
+        <img src="/assets/was.png" id="blah" alt="Avatar" *ngIf="!profilImage" />
+      <img [src]="profilImage" id="blah" alt="Avatar" *ngIf="profilImage" />
+        <p class="title" ><label>{{ nom }}</label></p>
+    
+        <!-- <h3 style="text-align: left;">{{profil.anonyme}}</h3> -->
+      </div>
 
-        <div class="heading">
-          <button class="delete" (click)="deletePost(post.id)" *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-trash-can"></i></button>
-
-          <div class="name" >
-            
-            <img src="/assets/userf.png " alt="User Image">
-            <p class="title" ><label>{{ nom }}</label></p>
+      <div >
+        <!-- <img src="https://placehold.co/600x400" style="width: 150px;height: 100px;" alt="Image"> -->
+        <!-- {{file.fileDownloadUri}} -->
+        <!-- {{file.fileName}} -->
+      </div>
+      <p class="date" style="text-align: right; "> {{ formatDate(post.date) }}</p>
+      
+      <div class="public" style="text-align: right;padding: 4%;padding-right: 10%;">
         
-            <!-- <h3 style="text-align: left;">{{profil.anonyme}}</h3> -->
-          </div>
+        <p style="text-align: left;size: 20px;">{{post.desc}}.</p>
+      </div>
+      <ng-container *ngFor="let file of post.filesURLS">
+        <img [src]="file.url" style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" alt="file" *ngIf="file.type=='image'">
+        <video width="320" height="240" controls style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" *ngIf="file.type=='video'">
+          <source [src]="file.url" type="{{file.original}}">
+          Your browser does not support the video tag.
+        </video>
+        <!-- <img src="file:///C:/Users/ja.ahmed/Desktop/UMANLINK/Uploads/Postes/657c08a746db1d55a6ef91ee/2023-12-15/2023-12-15%20091428%20358Z/Umanlink-Group-Logo-Header.png"style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" alt="file"> -->
 
-          <div >
-            <!-- <img src="https://placehold.co/600x400" style="width: 150px;height: 100px;" alt="Image"> -->
-            <!-- {{file.fileDownloadUri}} -->
-            <!-- {{file.fileName}} -->
-          </div>
-          <p class="date" style="text-align: right; "> {{ formatDate(post.date) }}</p>
-          
-          <div class="public" style="text-align: right;padding: 4%;padding-right: 10%;">
-            
-            <p style="text-align: left;size: 20px;">{{post.desc}}.</p>
-          </div>
-          <ng-container *ngFor="let file of post.filesURLS">
-            <img [src]="file.url" style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" alt="file" *ngIf="file.type=='image'">
-            <video width="320" height="240" controls style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" *ngIf="file.type=='video'">
-              <source [src]="file.url" type="{{file.original}}">
-              Your browser does not support the video tag.
-            </video>
-            <!-- <img src="file:///C:/Users/ja.ahmed/Desktop/UMANLINK/Uploads/Postes/657c08a746db1d55a6ef91ee/2023-12-15/2023-12-15%20091428%20358Z/Umanlink-Group-Logo-Header.png"style="width: 150px; height: 100px; border-radius: 0;margin: 5px;" alt="file"> -->
-
-          </ng-container>
-          <br>
+      </ng-container>
+      <br>
 
 <div class="reaction">
-          <button class="like"  *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-heart"></i></button>
-          <button class="comment"  *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-comment"></i></button>
-          <button class="share"  *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-share-from-square"></i></button>
+      <button class="like"  *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-heart"></i></button>
+      <button class="comment"  *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-comment"></i></button>
+      <button class="share"  *ngIf="role==='ROLE_ENTREPRISE' || role==='ROLE_EDITOR'"><i class="fa-regular fa-share-from-square"></i></button>
 
 
-        </div>
-        </div>
-      </div> 
-          </article>
-       
+    </div>
+    </div>
+  </div> 
+      </article>
+   
 
-      </div>
-  
-  
+  </div>
+
+
 </div>
-

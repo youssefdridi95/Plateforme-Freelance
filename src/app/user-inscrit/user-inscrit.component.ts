@@ -9,6 +9,7 @@ import { HttpParams } from '@angular/common/http';
 import { UserProfil } from '../services/user-profil';
 import { Observable, map, catchError, of } from 'rxjs';
 import { ChatsService } from '../services/chats.service';
+import { LoadingService } from '../services/loading.service';
 
 
 
@@ -58,6 +59,8 @@ export class UserInscritComponent {
 
 
   signupUser() {
+    this.loading.toglleLoading()
+
     const user= {
       'username' : this.userForm.value.username ,
       'email' : this.userForm.value.email ,
@@ -68,6 +71,7 @@ export class UserInscritComponent {
     this.userService.signup(user).subscribe(
       res=>{
         console.log(res);
+        this.loading.toglleLoading()
         
         this.router.navigate(['/verif/email/'+user.role+'/'+user.email]);
         
@@ -76,6 +80,7 @@ export class UserInscritComponent {
       },
       err=>{
         console.log(err);
+        this.loading.toglleLoading()
 
     // console.log('Formulaire soumis avec error', this.userForm.value);
     this.toastr.error(err, 'Connexion')
@@ -115,6 +120,7 @@ export class UserInscritComponent {
   }
   
   loginUser() {
+    this.loading.toglleLoading()
     const user = {
       'username': this.userFormlogin.value.username,
       'password': this.userFormlogin.value.password,
@@ -143,13 +149,15 @@ export class UserInscritComponent {
             }
           );
         }
-        console.log('sdgfqsdgfqsdgqrge');
         setTimeout(()=>{ this.chatsService.watch();},2000)
-       
+        this.loading.toglleLoading()
+
 
    
       },
       err => {
+        this.loading.toglleLoading()
+
         this.toastr.error(err.error.message, 'Compte');
       }
     );
@@ -159,7 +167,7 @@ export class UserInscritComponent {
   
   private env : Env
 
-  constructor(private chatsService: ChatsService,private roote : ActivatedRoute,private userService: UserService ,private toastr : ToastrService, private router: Router, private userProfilService: UserProfil){
+  constructor(private loading : LoadingService,private chatsService: ChatsService,private roote : ActivatedRoute,private userService: UserService ,private toastr : ToastrService, private router: Router, private userProfilService: UserProfil){
     this.roote.paramMap.subscribe(params =>{this.inscrit=params.get('type')})
     this.env = environments as Env 
   }

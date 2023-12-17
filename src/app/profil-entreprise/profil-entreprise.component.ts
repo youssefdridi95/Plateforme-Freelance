@@ -20,6 +20,7 @@ export class ProfilEntrepriseComponent {
   posts: any;
   profil: any;
 pub = true ;
+profilImage :any
   post = {
     date: '2023-12-06T12:42:31.039', // Mettez votre date ici
     // Autres propriétés du post
@@ -74,8 +75,17 @@ formatDate(dateString: string): string {
           idEntreprise == JSON.parse(sessionStorage.getItem('user')!).idEntreprise ) {
           sessionStorage.setItem('profil', JSON.stringify(data));
           this.profil = data; // Ajoutez cette ligne pour initialiser this.profil
+          this.postService.getFile( data.file.fileDownloadUri).subscribe(
+
+            (fileBlob: Blob) => {
   
-          console.log('piiiiiiiiiiiip');
+            console.log(fileBlob.type);
+            this.profilImage = URL.createObjectURL(fileBlob)// Assurez-vous que le champ est correct
+            
+          
+            },
+  
+          );
           this.updateViewNmbrEntreprise();
         }
       },

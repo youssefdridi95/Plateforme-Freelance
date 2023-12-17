@@ -3,6 +3,7 @@ import { WidthCheckService } from '../services/width-check.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { NotificationMessageListService } from '../notification-message-list.service';
+import { ChatsService } from '../services/chats.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +12,8 @@ import { NotificationMessageListService } from '../notification-message-list.ser
 })
 export class NavbarComponent {
 isTalent = 'both'
-  constructor(private widhtChecker :WidthCheckService,private router: Router ,private elementRef: ElementRef ,private auth:AuthService,protected  notif :NotificationMessageListService){
+
+  constructor(private widhtChecker :WidthCheckService,private router: Router ,private elementRef: ElementRef ,private auth:AuthService,protected  notif :NotificationMessageListService,protected chatService:ChatsService){
         this.widhtChecker.width=this.checkScreenWidth()
         this.navItemsDisplay=this.widhtChecker.width < 900 ? "none" : "flex"
 if (JSON.parse(sessionStorage.getItem('user')!))

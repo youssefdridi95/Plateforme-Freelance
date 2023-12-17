@@ -1,9 +1,17 @@
 
 
 <app-navbar></app-navbar>
-
+<div class="load-container" *ngIf="loading.loading">
+    
+    <div class="loading">
+        <div class="justify-content-center jimu-primary-loading"></div>
+      </div>
+    </div>
 <router-outlet >
 </router-outlet>
 
 
 <app-footer></app-footer>
+
+
+

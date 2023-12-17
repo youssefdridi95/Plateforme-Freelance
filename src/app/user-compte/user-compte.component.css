@@ -262,7 +262,12 @@ h3.title {
   margin-bottom: 1rem;
   padding: 2rem 1rem;
 }
-
+img.add{
+  width: 1rem !important;
+  height: 1rem !important;
+  object-fit: cover;
+  margin: 0 !important;
+}
 .popup-1-open .add {
   width: 5rem !important;
   height: 5rem !important;
@@ -338,10 +343,11 @@ h3.title {
   gap: 1rem;
 }
 .content-publication .heading .name img {
-  width: 2.5rem !important;
-  height: 2.5rem !important;
+  width: 50px !important;
+  height: 50px !important;
   border-radius: 50%;
   margin: 0 !important;
+  object-fit: contain;
 }
 
 .content-publication .heading .name span {

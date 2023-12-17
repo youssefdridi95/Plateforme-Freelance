@@ -61,8 +61,8 @@
     
         <div class="heading">
           <div class="name" (click)="navigate(post.type,post.user.user)">
-            <img src="/assets/userf.png " alt="User Image" />
-            <p class="title" *ngIf="post.type=='TALENT'">
+            <img [src]="post.user['img'] " alt="User Image" *ngIf="post.user['img']"/>
+            <img src="/assets/userf.png " alt="User Image" *ngIf="!post.user['img']" />            <p class="title" *ngIf="post.type=='TALENT'">
               <label>{{ post.user.anonyme }}</label>
             </p>
     

@@ -70,7 +70,8 @@ export class TalentFeedComponent {
       { 
             if(post.type === 'TALENT')
          {   let params = new HttpParams().set('userId', post.user);
-               this.profil.getProfil(params).subscribe((profile)=>{
+               this.profil.getProfil(params).subscribe((profile:any)=>{
+    
               post.user=profile
 
             })}
@@ -78,6 +79,7 @@ export class TalentFeedComponent {
             
                 this.enterpriseService.getEntrepriseByid(post.user).subscribe(
                   (profil: any) => {
+                  
                     post.user=profil
 
                   },
@@ -87,6 +89,7 @@ export class TalentFeedComponent {
                 );
               
             }
+  
             let filesURLS:any[]=[]
             for (let file of post.files) {
            
@@ -115,8 +118,31 @@ export class TalentFeedComponent {
           
           
           }
+          setTimeout(()=>{
+            for (let post of res.content ) {
+              this.postService.getFile( post.user.file.fileDownloadUri).subscribe(
+  
+                (fileBlob: Blob) => {
+      
+                console.log(fileBlob.type);
+                post.user['img'] = URL.createObjectURL(fileBlob)// Assurez-vous que le champ est correct
+                
+              
+                },
+      (err)=>{
+ // console.log(err);
+  post.user['img'] = '/assets/userf.png '// Assurez-vous que le champ est correct
+  
+      }
+              );
+              
+            }
+          },2000)
+     
             this.posts=res.content
             this.filteredPosts=res.content
+
+        
         console.log('after for ', this.posts);
       },
       err => {

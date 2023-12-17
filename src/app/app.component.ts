@@ -1,5 +1,6 @@
 import { Component, Renderer2 , OnDestroy, OnInit, } from '@angular/core';
 import { ChatsService } from './services/chats.service';
+import { LoadingService } from './services/loading.service';
 
           @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import { ChatsService } from './services/chats.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  constructor(private chatsService: ChatsService, private renderer: Renderer2) {
+  constructor(private chatsService: ChatsService, private renderer: Renderer2,protected loading :LoadingService) {
     window.addEventListener('beforeunload', () => {
       sessionStorage.setItem('isReloaded', 'true');
     });

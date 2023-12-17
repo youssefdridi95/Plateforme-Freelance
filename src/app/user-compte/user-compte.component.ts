@@ -62,22 +62,9 @@ img :any
       // Parsez la chaîne JSON pour obtenir l'objet utilisateur
       this.user = JSON.parse(userString);
 
-      // Vous pouvez maintenant utiliser les propriétés de l'objet user dans votre composant
-      // console.log('Informations de l\'utilisateur :', this.user);
     }
 
-// this.postService.getFile( "/Profiles/Individuals/656efd79e6e04003ea53bbaa/2023-12-06/2023-12-06 134423 163Z/Untitled.jpg//").subscribe(
-//   (fileBlob: Blob) => {
-//     // Handle the successful response here
-//     // console.log('File downloaded successfully:', fileBlob);
-//      this.img = URL.createObjectURL(fileBlob);
 
-//   },
-//   (error :any) => {
-//     // Handle errors
-//     // console.error('Error downloading file:', error);
-//   }
-// );
 
 
   }
@@ -102,14 +89,22 @@ img :any
           this.isMine = true
           this.profil = res;
 
-          this.profilImage = this.profil.file.fileDownloadUri;  // Assurez-vous que le champ est correct
         } else {
           this.profil = res;
-          this.profilImage = this.profil.file.fileDownloadUri;  // Assurez-vous que le champ est correct
         }
         // console.log('eeeeeeeeeeeeee,jyteku-,yer', this.profil);
         this.updateViewNmbr();
+        this.postService.getFile( this.profil.file.fileDownloadUri).subscribe(
 
+          (fileBlob: Blob) => {
+
+          console.log(fileBlob.type);
+          this.profilImage = URL.createObjectURL(fileBlob)// Assurez-vous que le champ est correct
+          
+        
+          },
+
+        );
       },
       err => {
         console.log('failed', err);

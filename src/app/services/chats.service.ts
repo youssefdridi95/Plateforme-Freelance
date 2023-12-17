@@ -8,32 +8,33 @@ import { Message } from '@stomp/stompjs';
 import { EventEmitter } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ChatsService {
-
-  private env: Env = environments as Env
-  chatList: any
-  userid = ""
-  chatSubscription  : any
+  private env: Env = environments as Env;
+  chatList: any[]=[];
+  userid = '';
+  chatSubscription: any;
   activeChat: any = {
-    "chat": {
-        "chatId": "",
-        "firstUserId": "",
-        "secondUserId": "",
-        "messageList": []
+    chat: {
+      chatId: '',
+      firstUserId: '',
+      secondUserId: '',
+      messageList: [],
     },
-    "fannonyme": "",
-    "sannonyme": "",
-    "fstatus": "",
-    "sstatus": ""
-}
-newMessageAdded: EventEmitter<any> = new EventEmitter<any>();
+    fannonyme: '',
+    sannonyme: '',
+    fstatus: '',
+    sstatus: '',
+  };
+  newMessageAdded: EventEmitter<any> = new EventEmitter<any>();
 
-
-  constructor(private http: HttpClient, private rxStompService: RxStompService,private notif: NotificationMessageListService, private ngZone: NgZone) {
-  }
-
+  constructor(
+    private http: HttpClient,
+    private rxStompService: RxStompService,
+    private notif: NotificationMessageListService,
+    private ngZone: NgZone
+  ) {}
 
   // connectUser(userId: any) {
   //   return this.http.post(this.env.backendUrl + this.env.connectUser, {
@@ -43,75 +44,78 @@ newMessageAdded: EventEmitter<any> = new EventEmitter<any>();
 
   disConnectUser(userId: any) {
     return this.http.post(this.env.backendUrl + this.env.disConnectUser, {
-      "userId": userId
-    })
-
-
+      userId: userId,
+    });
   }
 
   getChatList(userId: any) {
     // const params = new HttpParams()
     // .set('' ,userId)
-
-    return this.http.get(this.env.backendUrl + this.env.chatList +userId)
+    
+    return this.http.get(this.env.backendUrl + this.env.chatList + userId);
   }
   getUsername(userId: any) {
     // const params = new HttpParams()
     // .set('' ,userId)
 
-    return this.http.get(this.env.backendUrl + this.env.username +userId)
+    return this.http.get(this.env.backendUrl + this.env.username + userId);
   }
 
-  addChat(sUserId: any,fUserId :any) {
+  addChat(sUserId: any, fUserId: any) {
     console.log({
-      "firstUserId": fUserId,
-      "secondUserId": sUserId,
-      "messageList": []
-  });
-    
+      firstUserId: fUserId,
+      secondUserId: sUserId,
+      messageList: [],
+    });
+
     return this.http.post(this.env.backendUrl + this.env.createChat, {
-      "firstUserId": fUserId,
-      "secondUserId": sUserId,
-      "messageList": []
-  })
+      firstUserId: fUserId,
+      secondUserId: sUserId,
+      messageList: [],
+    });
   }
 
-
-  markMsgSeen(chatId: any,userId :any) {
-    return this.http.post(this.env.backendUrl + this.env.markMessageSeen+chatId+'/'+userId,{})
+  markMsgSeen(chatId: any, userId: any) {
+    return this.http.post(
+      this.env.backendUrl + this.env.markMessageSeen + chatId + '/' + userId,
+      {}
+    );
   }
   getChat(chatId: any) {
     // const params = new HttpParams()
     // .set('' ,userId)
 
-    return this.http.get(this.env.backendUrl + this.env.chat +chatId)
+    return this.http.get(this.env.backendUrl + this.env.chat + chatId);
   }
-watch(){
-  let  id=JSON.parse(sessionStorage.getItem('user')!).id
+  watch() {
+    let id = JSON.parse(sessionStorage.getItem('user')!).id;
 
-  if(JSON.parse(sessionStorage.getItem('user')!).roles.at(0)=='ROLE_RECRUTER')
-  id=JSON.parse(sessionStorage.getItem('user')!).idEntreprise
-  this.userid=id
-  if(this.userid)
-  this.chatSubscription= this.rxStompService.watch('/topic/chats/' + this.userid).subscribe((message: Message) => {
-    let msg = JSON.parse(message.body)
+    if (
+      JSON.parse(sessionStorage.getItem('user')!).roles.at(0) == 'ROLE_RECRUTER'
+    )
+      id = JSON.parse(sessionStorage.getItem('user')!).idEntreprise;
+    this.userid = id;
+    if (this.userid)
+      this.chatSubscription = this.rxStompService
+        .watch('/topic/chats/' + this.userid)
+        .subscribe((message: Message) => {
+          let msg = JSON.parse(message.body);
 
-    if ((this.activeChat.chat.chatId === msg.chatId) ) {
-      this.activeChat.chat.messageList.push(JSON.parse(message.body));
-      
-      this.notif.playNotificationSound()
-      this.newMessageAdded.emit();
-    
+          if (this.activeChat.chat.chatId === msg.chatId) {
+            this.activeChat.chat.messageList.push(JSON.parse(message.body));
 
-    } else {
-      this.notif.msgList.unshift(msg)
-      console.log('notif',  this.notif.msgList);
+            this.notif.playNotificationSound();
+            this.newMessageAdded.emit();
+          } else {
+            this.notif.msgList.unshift(msg);
+            console.log('notif', this.notif.msgList);
 
-      this.notif.newMsgs += 1
-      this.notif.playNotificationSound()
-    }
-  });
+            this.notif.newMsgs += 1;
+            this.notif.playNotificationSound();
+          }
+        });
+  }
+
+
+
 }
-  }
-
-

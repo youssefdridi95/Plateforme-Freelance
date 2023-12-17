@@ -117,6 +117,27 @@ export class EntrepriseFeedComponent {
           
           
           }
+          setTimeout(()=>{
+            for (let post of res.content ) {
+              this.postService.getFile( post.user.file.fileDownloadUri).subscribe(
+  
+                (fileBlob: Blob) => {
+      
+                console.log(fileBlob.type);
+                post.user['img'] = URL.createObjectURL(fileBlob)// Assurez-vous que le champ est correct
+                
+              
+                },
+      (err)=>{
+ // console.log(err);
+  post.user['img'] = '/assets/userf.png '// Assurez-vous que le champ est correct
+  
+      }
+              );
+              
+            }
+          },2000)
+          
             this.posts=res.content
             this.filteredPosts=res.content
         console.log('after for ', this.posts);

@@ -7,7 +7,8 @@
 
       <!-- <img src="/assets/was.png" id="blah" alt="Avatar" /> -->
       <!-- user-compte.component.html -->
-      <img src="/assets/was.png" id="blah" alt="Avatar" />
+      <img src="/assets/was.png" id="blah" alt="Avatar" *ngIf="!profilImage" />
+      <img [src]="profilImage" id="blah" alt="Avatar" *ngIf="profilImage" />
       <h2>{{profil?.anonyme}}</h2>
       <div class="contact_card">
         <!-- <span> <i class="fa-solid fa-phone"></i> : </span><br><br> -->
@@ -88,8 +89,8 @@
 
       <label *ngIf="isButtonVisible()" for="popup-1-coupon" class="popup-1-open">
 
-        <img class="add" src="/assets/was.png">
-        <div class="input-post">Quoi de neuf</div>
+        <img src="/assets/was.png" class="add" alt="Avatar" *ngIf="!profilImage" />
+        <img [src]="profilImage" class="add" alt="Avatar" *ngIf="profilImage" />        <div class="input-post">publier...</div>
       </label>
 
 
@@ -99,12 +100,13 @@
 
       <ng-container *ngIf="posts">
         <div *ngFor="let post of posts.content , let i = index" class="content-publication wrap shadow">
-          <button class="delete" (click)="deletePost(post.id)"><i class="fa-regular fa-trash-can"></i></button>
+          <button class="delete" (click)="deletePost(post.id)" *ngIf="isButtonVisible()"><i class="fa-regular fa-trash-can"></i></button>
 
           <div class="heading flex-center">
             <div class="name flex-center">
-              <img src="/assets/was.png " alt="User Image">
-              <span>{{profil?.anonyme}}</span>
+              <img src="/assets/was.png" id="blah" alt="Avatar" *ngIf="!profilImage" />
+              <img [src]="profilImage" id="blah" alt="Avatar" *ngIf="profilImage" />
+                            <span>{{profil?.anonyme}}</span>
             </div>
             <p class="date">{{post?.date | date : 'shortDate'}}</p>
             <div class="public">
