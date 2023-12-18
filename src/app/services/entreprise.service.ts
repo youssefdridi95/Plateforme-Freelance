@@ -86,4 +86,10 @@ deletecompte(userId:any) {
   params = params.append('id', userId);
   return this.http.post(this.url + this.deleteCompte,{},{params});
 }
+
+getStaus(id: any){
+  const params = new HttpParams()
+   .set('id' ,id)
+  return this.http.get(this.url + this.env.status,{params});
+}
 }

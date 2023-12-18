@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Env } from '../env';
 import { environments } from 'src/enviroments';
@@ -38,7 +38,11 @@ export class UserProfil {
   getProfil(params: any){
     return this.http.get(this.url + this.getUserProfil,{params});
   }
-  
+  getStaus(id: any){
+    const params = new HttpParams()
+     .set('id' ,id)
+    return this.http.get(this.url + this.env.status,{params});
+  }
   editProfil(data: any){
     return this.http.put(this.url + this.editUser,data);
   }

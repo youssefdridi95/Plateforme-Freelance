@@ -14,8 +14,8 @@
     </div>
       <div class="textcard">
                                                                         <div class="name">
-      <br> <label >{{ nom }} </label><br><br><br></div>
-      <b> <i class="fa-solid fa-envelope"></i> </b> <span>{{ emailpro }}</span> <br><br>
+      <br> <label >{{ nom }} </label><br></div>
+      <b *ngIf="role=='ROLE_ENTREPRISE' || role=='ROLE_RECRUTER'"> <i class="fa-solid fa-envelope" *ngIf="role=='ROLE_ENTREPRISE' || role=='ROLE_RECRUTER'"></i> </b> <span *ngIf="role=='ROLE_ENTREPRISE' || role=='ROLE_RECRUTER'">{{ emailpro }}</span> <br><br>
       <b><i class="fa-solid fa-location-dot"></i> </b><span>{{ entreprise.adresse }}</span> <br><br>
       <b><i class="fa-solid fa-briefcase"></i></b> <span>{{ entreprise.activity }}</span> <br><br>
       
@@ -33,13 +33,13 @@
 <br>
     <div id="title-container">
 
-      <p (click)="pub=true" id="titl">Publication</p>
+      <p (click)="pub=true" id="titl" *ngIf="role=='ROLE_ENTREPRISE' || role=='ROLE_RECRUTER'">Publication</p>
       <hr style="margin-left: 4rem;margin-right: 4rem;">
-      <p (click)="pub = false" id="title">Dashboard</p>
+      <p (click)="pub = false" id="title" *ngIf="role=='ROLE_ENTREPRISE' || role=='ROLE_RECRUTER'">Dashboard</p>
     </div>
     <div class="button" *ngIf="role!=='ROLE_ENTREPRISE' && role!=='ROLE_RECRUTER'" >
       <button  class="read" (click)="addOrGOToChat()">
-        <h3>Cantacter</h3>
+        <h3>Contacter<i class="fa-solid fa-circle" style="color: #009919;font-size: 0.65rem;" *ngIf="status=='ONLINE'"></i><i class="fa-solid fa-circle" style="color: #787978;font-size: 0.65rem;" *ngIf="status=='OFFLINE'"></i></h3>
       </button>
     
     </div>

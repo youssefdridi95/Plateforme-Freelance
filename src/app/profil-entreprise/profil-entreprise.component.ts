@@ -15,6 +15,8 @@ import { ChatsService } from '../services/chats.service';
 })
 export class ProfilEntrepriseComponent {
   // posts: any;
+  status :any
+
   arrowUp: boolean = false;
   entreprise:any;
   posts: any;
@@ -39,6 +41,7 @@ profilImage :any
       this.route.params.subscribe(params => {
         this.idEntreprise = params['id'];
         this.getPost(this.idEntreprise);
+console.log('gqsdfghdfhqdsbhftgnh');
 
       this.getEntrepriseById( this.idEntreprise)
       const storedUsername = sessionStorage.getItem('user');
@@ -71,10 +74,23 @@ formatDate(dateString: string): string {
     this.enterpriseService.getEntrepriseByid(idEntreprise).subscribe(
       (data: any) => {
         this.entreprise = data; 
+        this.enterpriseService.getStaus(data.user).subscribe(
+          (res:any)=>{
+            console.log('statuuuuus',res);
+            
+              this.status=res.message[1]
+          },
+          (err:any)=>{
+            console.log('statuuedsdfdsfsfffuuus',err);
+            
+              this.status="OFFLINE"
+          }
+        )
         if (idEntreprise == JSON.parse(sessionStorage.getItem('user')!).id ||
           idEntreprise == JSON.parse(sessionStorage.getItem('user')!).idEntreprise ) {
           sessionStorage.setItem('profil', JSON.stringify(data));
           this.profil = data; // Ajoutez cette ligne pour initialiser this.profil
+       
           this.postService.getFile( data.file.fileDownloadUri).subscribe(
 
             (fileBlob: Blob) => {
@@ -87,6 +103,9 @@ formatDate(dateString: string): string {
   
           );
           this.updateViewNmbrEntreprise();
+          console.log('gzerGZEgzegzegze');
+          
+        
         }
       },
       error => {

@@ -1,13 +1,14 @@
 export const environments= {
  
  
-  backendUrl : "http://localhost:9090" ,
-  webSocketBackendUrl : 'ws://localhost:9090/ws',
+  backendUrl : "http://192.168.195.29:9090" ,
+  webSocketBackendUrl : 'ws://192.168.195.29:9090/ws',
 
 //  backendUrl : "http://localhost:9090" ,
  // backendUrl : "http://192.168.195.70:9092" ,
  // webSocketBackendUrl : 'ws://192.168.195.70:9090/ws',
  connectUser : '/user/connectUser',
+ status : '/api/umanlink/status',
  disConnectUser : '/api/auth/disconnectUser',
  chatList : '/api/chats/get/userId/',
  chat: '/api/chats/get/',

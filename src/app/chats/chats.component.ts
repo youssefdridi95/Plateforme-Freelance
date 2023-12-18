@@ -19,7 +19,7 @@ export class ChatsComponent implements OnInit,OnDestroy {
   username = ''
 
   textMsg = ''
-  isLoading = true
+  isLoading = false
   isSending = false
   activeId: any
   constructor(private route: ActivatedRoute, protected chatsService: ChatsService, private rxStompService: RxStompService, private ngZone: NgZone, private notif: NotificationMessageListService) {

@@ -96,7 +96,11 @@
     <div class="post">
     <h3 class="h">Liste Talent </h3>
     <article class="publication">
+      <div *ngIf="filtredtalents && filtredtalents.content.length == 0 ">
 
+        <img id='image' src="/../assets/nodata.jpg">
+
+      </div>
 <div class="container"*ngIf="filtredtalents!=null">
   <div *ngFor="let talent of filtredtalents.content" class="card">
     <div class="imgBx">
@@ -106,7 +110,7 @@
     </div>
     <div class="contentBx">
       <h2> {{talent.anonyme}} </h2><br>
-      <p> {{talent.mainSkill}} </p>
+      <p> {{talent.resume.competences[0].title}} : {{talent.resume.competences[0].niveau}} </p>
       <a [routerLink]="['/user/compte',talent.user]"><span>Profil</span></a>
       <a (click)=" addOrGOToChat(talent.user)"><span>Contacter</span></a>
     </div>

@@ -4,6 +4,7 @@ export interface Env {
     webSocketBackendUrl : string ,
     connectUser : string,
     disConnectUser : string,
+    status : string,
 
     chatList : string,
     chat: string,

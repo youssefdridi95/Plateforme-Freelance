@@ -48,14 +48,14 @@
 
  
     <article class="publication">
-      <div *ngIf="filteredPosts && filteredPosts.length === 0 ">
+      <div *ngIf="filteredPosts && filteredPosts.length == 0 ">
 
         <img id='image' src="/../assets/nodata.jpg">
 
       </div>
      
   
-      <div *ngFor="let post of filteredPosts , let i = index" class="content-publication wrap shadow">
+      <div   *ngFor="let post of filteredPosts , let i = index" class="content-publication wrap shadow">
  
         
     

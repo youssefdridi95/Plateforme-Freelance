@@ -20,7 +20,7 @@ import { Env } from '../env';
 
 export class UserCompteComponent {
 
-
+status :any
 env = environments as Env
   constructor(private toastr: ToastrService, private userProfilService: UserProfil, 
     private router: Router, private roote: ActivatedRoute, private postService: PostService, private cdRef: ChangeDetectorRef,
@@ -77,7 +77,7 @@ img :any
     let params = new HttpParams().set('userId', this.userId);
 
     this.userProfilService.getProfil(params).subscribe(
-      res => {
+      (res:any) => {
         // console.log('reussite', res);
         // this.toastr.success('reussite');
 
@@ -93,6 +93,18 @@ img :any
           this.profil = res;
         }
         // console.log('eeeeeeeeeeeeee,jyteku-,yer', this.profil);
+        this.userProfilService.getStaus(res.user).subscribe(
+          (res:any)=>{
+            console.log('statuuuuus',res);
+            
+              this.status=res.message[1]
+          },
+          (err:any)=>{
+            console.log('statuuedsdfdsfsfffuuus',err);
+            
+              this.status="OFFLINE"
+          }
+        )
         this.updateViewNmbr();
         this.postService.getFile( this.profil.file.fileDownloadUri).subscribe(
 

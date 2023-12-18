@@ -12,7 +12,7 @@ import { EventEmitter } from '@angular/core';
 })
 export class ChatsService {
   private env: Env = environments as Env;
-  chatList: any[]=[];
+  chatList: any;
   userid = '';
   chatSubscription: any;
   activeChat: any = {

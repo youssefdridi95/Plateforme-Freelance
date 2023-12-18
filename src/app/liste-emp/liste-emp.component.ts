@@ -21,7 +21,6 @@ export class ListeEmpComponent implements OnInit {
   selectedTimezone = "";
   niveauSkill = '';
   secondSkill = '';
-  
   devSkills = skills
   constructor(private chatService: ChatsService, private toastr: ToastrService, private userProfilService: UserProfil, private router: Router, private route: ActivatedRoute, private postService: PostService) {
 

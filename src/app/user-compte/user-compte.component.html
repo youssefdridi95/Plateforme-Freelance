@@ -41,7 +41,7 @@
           <h3>Afficher cv</h3>
         </button>
         <button *ngIf="!isButtonVisible()" class="read" (click)="addOrGOToChat()">
-          <h3>Cantacter</h3>
+          <h3>Contacter  <i class="fa-solid fa-circle" style="color: #009919;font-size: 0.65rem;" *ngIf="status=='ONLINE'"></i><i class="fa-solid fa-circle" style="color: #787978;font-size: 0.65rem;" *ngIf="status=='OFFLINE'"></i></h3>
         </button>
 
       </div>
