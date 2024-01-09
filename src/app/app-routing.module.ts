@@ -59,9 +59,9 @@ const routes: Routes = [
   {path:"changeMdp/:role/:reset",component :RecupMDPComponent},
   {path:"mdp",component :MdpComponent},
   {path:"role",component :RoleComponent ,canActivate:[loggedinGuard] },
-  {path:"cv/creer",component :CvBuilderComponent,canActivate: [AuthGuard] },
-  {path:"cv/edit",component :CvUpdateComponent , canActivate: [AuthGuard] },
-  {path:"cv/afficher",component :CvPreviewComponent , canActivate: [AuthGuard]},
+  {path:"cv/creer",component :CvBuilderComponent ,canActivate: [AuthGuard]},
+  {path:"cv/edit",component :CvUpdateComponent  ,canActivate: [AuthGuard]},
+  {path:"cv/afficher",component :CvPreviewComponent,canActivate: [AuthGuard] },
   {path: "user/profil", component : ProfilComponent , canActivate: [AuthGuard]},
   {path: "user/compte/:id", component : UserCompteComponent, canActivate: [AuthGuard] },
   {path: "user/form" , component : UserFormComponent , canActivate: [AuthGuard]},
@@ -71,9 +71,9 @@ const routes: Routes = [
   {path: "dashboard" , component : DashboardComponent},
   {path: "chat", component :ChatsComponent,},
   {path: "id/:activeId" , component : ChatsComponent},
-  
-  
- 
+
+
+
 
   {
     path: 'post', canActivate: [AuthGuard] ,
